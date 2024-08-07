@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://citnfrr3catoj"]
+
+[ext_resource type="Texture2D" uid="uid://pdsvhbod1g46" path="res://Assets/pixil-frame-0 - 2024-08-05T151743.236.png" id="1_mskqs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xmi7"]
+
+[node name="weapon" type="StaticBody2D"]
+position = Vector2(0, 2)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8xmi7")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_mskqs")
+offset = Vector2(15, 0)
+region_enabled = true
+region_rect = Rect2(0, 0, 43, 22)

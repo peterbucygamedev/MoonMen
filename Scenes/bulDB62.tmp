@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbuby1yacepi4"]
+
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_3y6mo"]
+[ext_resource type="Texture2D" uid="uid://cdma4wvh2ef2t" path="res://Assets/pixil-frame-0 - 2024-08-06T114136.614.png" id="1_jhuys"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usoef"]
+
+[node name="bullet" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_3y6mo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_usoef")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_jhuys")
+region_enabled = true
+region_rect = Rect2(0, 5, 20, 11)
