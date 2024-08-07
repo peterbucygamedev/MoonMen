@@ -70,3 +70,7 @@ position = Vector2(152, 20)
 
 [node name="player" parent="." instance=ExtResource("1_yn0hc")]
 position = Vector2(-35, 19)
+
+[node name="player2" parent="." instance=ExtResource("1_yn0hc")]
+position = Vector2(-158, 18)
+playerNumber = 1

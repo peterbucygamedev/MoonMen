@@ -7,6 +7,8 @@ size = Vector2(8.5, 5)
 
 [node name="Tile1Teal" type="StaticBody2D"]
 scale = Vector2(2, 2)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6ugy8")

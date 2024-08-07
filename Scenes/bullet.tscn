@@ -4,16 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://cdma4wvh2ef2t" path="res://Assets/pixil-frame-0 - 2024-08-06T114136.614.png" id="1_jhuys"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_usoef"]
+size = Vector2(4, 2.1)
 
 [node name="bullet" type="RigidBody2D"]
-gravity_scale = 0.0
+collision_layer = 2
+collision_mask = 2
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 0.1)
+inertia = 30.0
 script = ExtResource("1_3y6mo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_usoef")
-disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, 0.1)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_jhuys")
 region_enabled = true

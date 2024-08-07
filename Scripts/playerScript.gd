@@ -6,23 +6,31 @@ const JUMP_VELOCITY = -400.0
 @onready var sprite_2d = $weapon/Sprite2D
 var bullet = preload("res://Scenes/bullet.tscn")
 @onready var player = $"."
-
-
+var health = 20
+@onready var healthBar = $health
 @export var playerNumber = 0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+
+
 
 func shoot():
 	var b = bullet.instantiate()
 	player.owner.add_child(b)
 	b.transform = $weapon.global_transform
-	b.apply_impulse($weapon.transform.x * 1000, Vector2(0,0))
-
-func _physics_process(delta):
-	print($weapon.global_transform)
+	b.apply_impulse($weapon.transform.x * 750, Vector2(0,0))
+	add_collision_exception_with(b)
+	$weapon.add_collision_exception_with(b)
 	
-	if Input.is_action_just_pressed("shoot"):
-		shoot()
+	
+func _physics_process(delta):
+	
+	if Input.get_joy_axis(playerNumber, 5):
+		if Input.is_action_just_pressed("shoot"):
+			shoot()
+		
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -57,6 +65,40 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		#print("stop")
 		animated_sprite_2d.play("idle")
+		
+	if health <= 0:
+		#print("you died")
+		pass
+		
+	if health <= 10:
+		healthBar.play("health 10")
+		
+	if health > 10 and health <= 20:
+		healthBar.play("health 20")
+		
+	if health > 20 and health <= 30:
+		healthBar.play("health 30")
+		
+	if health > 30 and health <= 40:
+		healthBar.play("health 40")
+		
+	if health > 40 and health <= 50:
+		healthBar.play("health 50")
+		
+	if health > 50 and health <= 60:
+		healthBar.play("health 60")
+		
+	if health > 60 and health <= 70:
+		healthBar.play("health 70")
+		
+	if health > 70 and health <= 80:
+		healthBar.play("health 80")
+		
+	if health > 80 and health <= 90:
+		healthBar.play("health 90")
+		
+	if health > 90 and health <= 100:
+		healthBar.play("health 100")
 	
 	var joystick_horizontal = Input.get_joy_axis(playerNumber, 2)
 	var joystick_vertical = Input.get_joy_axis(playerNumber, 3)
