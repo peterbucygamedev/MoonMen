@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cmhdl0u41ryx3" path="res://Assets/pixil-frame-0 - 2024-08-06T223108.068.png" id="8_qk2ns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6b1r"]
-size = Vector2(27, 25)
+size = Vector2(16, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ncjpy"]
 atlas = ExtResource("1_gv3uw")
@@ -115,7 +115,6 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xmi7"]
-size = Vector2(7, 3)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i2oau"]
 atlas = ExtResource("6_glway")
@@ -402,13 +401,13 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="player" type="CharacterBody2D" groups=["players"]]
+[node name="player" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_h1kp2")
 
-[node name="playerCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0.25, 4.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
 scale = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_l6b1r")
 
@@ -418,12 +417,10 @@ animation = &"idle"
 
 [node name="weapon" type="StaticBody2D" parent="."]
 position = Vector2(0, 2)
-collision_layer = 4
-collision_mask = 4
 
-[node name="weaponCollision" type="CollisionShape2D" parent="weapon"]
-position = Vector2(8, 0)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="weapon"]
 shape = SubResource("RectangleShape2D_8xmi7")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="weapon"]
 scale = Vector2(0.4, 0.4)

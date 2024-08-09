@@ -6,25 +6,115 @@ const JUMP_VELOCITY = -400.0
 @onready var sprite_2d = $weapon/Sprite2D
 var bullet = preload("res://Scenes/bullet.tscn")
 @onready var player = $"."
-var health = 20
+var health = 100
+var lastHealth = health
 @onready var healthBar = $health
+@onready var health_outline = $health/healthOutline
+@onready var bullet_spawn = $weapon/bulletSpawn
+
+
 @export var playerNumber = 0
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _ready():
+	healthBar.play("100")
 
-
-
+	
 func shoot():
 	var b = bullet.instantiate()
+	if playerNumber == 0:
+		b.speed = 2000
+		b.set_inertia(1000)
+		b.gravity_scale = 1
+		b.center_of_mass_mode = 1
+		b.center_of_mass = Vector2(0, 0.1)
+		
+	if playerNumber == 1:
+		b.speed = 2000
+		b.set_inertia(1000)
+		b.gravity_scale = 1
+		b.center_of_mass_mode = 1
+		b.center_of_mass = Vector2(0, 0.1)
+		
+	if playerNumber == 2:
+		b.speed = 2000
+		b.set_inertia(1000)
+		b.gravity_scale = 1
+		b.center_of_mass_mode = 1
+		b.center_of_mass = Vector2(0, 0.1)
+		
+	if playerNumber == 3:
+		b.speed = 2000
+		b.set_inertia(1000)
+		b.gravity_scale = 1
+		b.center_of_mass_mode = 1
+		b.center_of_mass = Vector2(0, 0.1)
+		
+		
 	player.owner.add_child(b)
-	b.transform = $weapon.global_transform
-	b.apply_impulse($weapon.transform.x * 750, Vector2(0,0))
-	add_collision_exception_with(b)
-	$weapon.add_collision_exception_with(b)
+	b.transform = bullet_spawn.global_transform
+	b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
 	
+	#add_collision_exception_with(b)
+	#$weapon.add_collision_exception_with(b)
+
 	
 func _physics_process(delta):
+	
+	print(health)
+	health_outline.play("scan")
+
+			
+	if health <= 0:
+		print("you died")
+		process_mode = Node.PROCESS_MODE_DISABLED
+		hide()
+		
+	if health <= 10 and health < lastHealth:
+		healthBar.play("10")
+		lastHealth = health
+
+	if health > 10 and health <= 20 and health < lastHealth:
+		healthBar.play("20")
+		health_outline.play("scan")
+		lastHealth = health
+
+	if health > 20 and health <= 30 and health < lastHealth:
+		healthBar.play("30")
+		lastHealth = health
+
+	if health > 30 and health <= 40 and health < lastHealth:
+		healthBar.play("40")
+		lastHealth = health
+
+	if health > 40 and health <= 50 and health < lastHealth:
+		healthBar.play("50")
+		lastHealth = health
+
+	if health > 50 and health <= 60 and health < lastHealth:
+		healthBar.play("60")
+		lastHealth = health
+
+	if health > 60 and health <= 70 and health < lastHealth:
+		healthBar.play("70")
+		lastHealth = health
+
+	if health > 70 and health <= 80 and health < lastHealth:
+		healthBar.play("80")
+		lastHealth = health
+
+	if health > 80 and health <= 90 and health < lastHealth:
+		healthBar.play("90")
+		lastHealth = health
+
+	if health > 90 and health <= 100 and health < lastHealth:
+		healthBar.play("100")
+			
+	
+	
+	
 	
 	if Input.get_joy_axis(playerNumber, 5):
 		if Input.is_action_just_pressed("shoot"):
@@ -66,39 +156,7 @@ func _physics_process(delta):
 		#print("stop")
 		animated_sprite_2d.play("idle")
 		
-	if health <= 0:
-		#print("you died")
-		pass
-		
-	if health <= 10:
-		healthBar.play("health 10")
-		
-	if health > 10 and health <= 20:
-		healthBar.play("health 20")
-		
-	if health > 20 and health <= 30:
-		healthBar.play("health 30")
-		
-	if health > 30 and health <= 40:
-		healthBar.play("health 40")
-		
-	if health > 40 and health <= 50:
-		healthBar.play("health 50")
-		
-	if health > 50 and health <= 60:
-		healthBar.play("health 60")
-		
-	if health > 60 and health <= 70:
-		healthBar.play("health 70")
-		
-	if health > 70 and health <= 80:
-		healthBar.play("health 80")
-		
-	if health > 80 and health <= 90:
-		healthBar.play("health 90")
-		
-	if health > 90 and health <= 100:
-		healthBar.play("health 100")
+	
 	
 	var joystick_horizontal = Input.get_joy_axis(playerNumber, 2)
 	var joystick_vertical = Input.get_joy_axis(playerNumber, 3)
@@ -110,3 +168,10 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
+
+
+
+		
+
+
+

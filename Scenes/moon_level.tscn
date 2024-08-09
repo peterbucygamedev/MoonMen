@@ -1,3 +1,42 @@
-[gd_scene format=3 uid="uid://dgpo1w76o5hx0"]
+[gd_scene load_steps=3 format=3 uid="uid://dgpo1w76o5hx0"]
+
+[ext_resource type="Texture2D" uid="uid://dg3a7i2d6r28q" path="res://Assets/pixil-frame-0 - 2024-08-04T120644.000.png" id="1_orsho"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mvwim"]
 
 [node name="MoonLevel" type="Node"]
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Wall" type="StaticBody2D" parent="Walls" groups=["ground"]]
+position = Vector2(-1, 162)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall"]
+shape = SubResource("WorldBoundaryShape2D_mvwim")
+
+[node name="Wall2" type="StaticBody2D" parent="Walls" groups=["ground"]]
+position = Vector2(-294, -1)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2"]
+shape = SubResource("WorldBoundaryShape2D_mvwim")
+
+[node name="Wall3" type="StaticBody2D" parent="Walls" groups=["ground"]]
+position = Vector2(288, -8)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall3"]
+shape = SubResource("WorldBoundaryShape2D_mvwim")
+
+[node name="Wall4" type="StaticBody2D" parent="Walls" groups=["ground"]]
+position = Vector2(-3, -163)
+rotation = -3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall4"]
+shape = SubResource("WorldBoundaryShape2D_mvwim")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(20, 10)
+texture = ExtResource("1_orsho")
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://33ltwejnfnxf"]
+[gd_scene load_steps=5 format=3 uid="uid://33ltwejnfnxf"]
 
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="1_yn0hc"]
 [ext_resource type="Texture2D" uid="uid://dg3a7i2d6r28q" path="res://Assets/pixil-frame-0 - 2024-08-04T120644.000.png" id="2_xl7b6"]
-[ext_resource type="PackedScene" uid="uid://bup27cxtkwqu" path="res://Scenes/tile_1_teal.tscn" id="3_lo81d"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g5gfe"]
 
@@ -16,15 +15,38 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(1.335, 1.335)
 
-[node name="Wall" type="StaticBody2D" parent="."]
+[node name="Walls" type="Node" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
-position = Vector2(0, 144)
+[node name="Wall" type="StaticBody2D" parent="Walls" groups=["ground"]]
+position = Vector2(-1, 162)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall"]
 shape = SubResource("WorldBoundaryShape2D_g5gfe")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="Wall2" type="StaticBody2D" parent="Walls" groups=["ground"]]
+position = Vector2(-294, -1)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2"]
+shape = SubResource("WorldBoundaryShape2D_g5gfe")
+
+[node name="Wall3" type="StaticBody2D" parent="Walls" groups=["ground"]]
+position = Vector2(288, -8)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall3"]
+shape = SubResource("WorldBoundaryShape2D_g5gfe")
+
+[node name="Wall4" type="StaticBody2D" parent="Walls" groups=["ground"]]
+position = Vector2(-3, -163)
+rotation = -3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall4"]
+shape = SubResource("WorldBoundaryShape2D_g5gfe")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." groups=["ground"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(-0.999969, 129)
@@ -64,9 +86,6 @@ offset_top = 62.0
 offset_right = 70.0
 offset_bottom = 93.0
 text = "Settings"
-
-[node name="Tile1Teal" parent="." instance=ExtResource("3_lo81d")]
-position = Vector2(152, 20)
 
 [node name="player" parent="." instance=ExtResource("1_yn0hc")]
 position = Vector2(-35, 19)

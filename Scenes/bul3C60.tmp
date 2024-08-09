@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbuby1yacepi4"]
+[gd_scene load_steps=4 format=3 uid="uid://cbuby1yacepi4"]
 
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_3y6mo"]
 [ext_resource type="Texture2D" uid="uid://cdma4wvh2ef2t" path="res://Assets/pixil-frame-0 - 2024-08-06T114136.614.png" id="1_jhuys"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_usoef"]
 size = Vector2(4, 2.1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ums84"]
-size = Vector2(4.5, 3)
 
 [node name="bullet" type="RigidBody2D" groups=["bullets"]]
 collision_layer = 3
@@ -27,11 +24,4 @@ texture = ExtResource("1_jhuys")
 region_enabled = true
 region_rect = Rect2(0, 5, 20, 11)
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.75, 0)
-shape = SubResource("RectangleShape2D_ums84")
-
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
