@@ -11,42 +11,50 @@ var lastHealth = health
 @onready var healthBar = $health
 @onready var health_outline = $health/healthOutline
 @onready var bullet_spawn = $weapon/bulletSpawn
-
-
 @export var playerNumber = 0
+var select = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	healthBar.play("100")
+	pass
 
 	
 func shoot():
 	var b = bullet.instantiate()
 	if playerNumber == 0:
-		b.speed = 2000
+		b.speed = GameManager.player1Speed
+		print("current bulletSpeed for player", playerNumber, " is ", b.speed)
+		b.damage = GameManager.player1Damage
 		b.set_inertia(1000)
 		b.gravity_scale = 1
 		b.center_of_mass_mode = 1
 		b.center_of_mass = Vector2(0, 0.1)
 		
 	if playerNumber == 1:
-		b.speed = 2000
+		b.speed = GameManager.player2Speed
+		print("current bulletSpeed for player", playerNumber, " is ", b.speed)
+		b.damage = GameManager.player2Damage
 		b.set_inertia(1000)
 		b.gravity_scale = 1
 		b.center_of_mass_mode = 1
 		b.center_of_mass = Vector2(0, 0.1)
 		
 	if playerNumber == 2:
-		b.speed = 2000
+		b.speed = GameManager.player3Speed
+		print("current bulletSpeed for player", playerNumber, " is ", b.speed)
+		b.damage = GameManager.player3Damage
 		b.set_inertia(1000)
 		b.gravity_scale = 1
 		b.center_of_mass_mode = 1
 		b.center_of_mass = Vector2(0, 0.1)
 		
 	if playerNumber == 3:
-		b.speed = 2000
+		b.speed = GameManager.player4Speed
+		print("current bulletSpeed for player", playerNumber, " is ", b.speed)
+		b.damage = GameManager.player4Damage
 		b.set_inertia(1000)
 		b.gravity_scale = 1
 		b.center_of_mass_mode = 1
@@ -63,14 +71,17 @@ func shoot():
 	
 func _physics_process(delta):
 	
-	print(health)
+	#print(playerDamage)
+	#print(health)
 	health_outline.play("scan")
 
 			
 	if health <= 0:
-		print("you died")
+		GameManager.deaths += 1
+		#print("you died")
 		process_mode = Node.PROCESS_MODE_DISABLED
 		hide()
+		
 		
 	if health <= 10 and health < lastHealth:
 		healthBar.play("10")
@@ -117,9 +128,15 @@ func _physics_process(delta):
 	
 	
 	if Input.get_joy_axis(playerNumber, 5):
+		
 		if Input.is_action_just_pressed("shoot"):
 			shoot()
+			select = true
+			
+		if Input.is_action_just_released("shoot"):
+			select = false
 		
+	print(select)
 	
 	# Add the gravity.
 	if not is_on_floor():

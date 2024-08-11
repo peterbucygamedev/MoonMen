@@ -1,42 +1,91 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgpo1w76o5hx0"]
+[gd_scene load_steps=6 format=3 uid="uid://dgpo1w76o5hx0"]
 
-[ext_resource type="Texture2D" uid="uid://dg3a7i2d6r28q" path="res://Assets/pixil-frame-0 - 2024-08-04T120644.000.png" id="1_orsho"]
+[ext_resource type="Script" path="res://Scripts/moon_level.gd" id="1_44yni"]
+[ext_resource type="Texture2D" uid="uid://bkiv3hjq5bc8o" path="res://Assets/pixil-frame-0 - 2024-08-09T111005.085.png" id="1_gewj3"]
+[ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="2_d43hg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mvwim"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afr4u"]
+size = Vector2(88, 20)
+
 [node name="MoonLevel" type="Node"]
+script = ExtResource("1_44yni")
 
 [node name="Walls" type="Node" parent="."]
 
 [node name="Wall" type="StaticBody2D" parent="Walls" groups=["ground"]]
-position = Vector2(-1, 162)
+position = Vector2(0, 325)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall"]
 shape = SubResource("WorldBoundaryShape2D_mvwim")
 
 [node name="Wall2" type="StaticBody2D" parent="Walls" groups=["ground"]]
-position = Vector2(-294, -1)
+position = Vector2(-575, 0)
 rotation = 1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2"]
 shape = SubResource("WorldBoundaryShape2D_mvwim")
 
 [node name="Wall3" type="StaticBody2D" parent="Walls" groups=["ground"]]
-position = Vector2(288, -8)
+position = Vector2(575, 0)
 rotation = -1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall3"]
 shape = SubResource("WorldBoundaryShape2D_mvwim")
 
 [node name="Wall4" type="StaticBody2D" parent="Walls" groups=["ground"]]
-position = Vector2(-3, -163)
+position = Vector2(0, -325)
 rotation = -3.14159
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall4"]
 shape = SubResource("WorldBoundaryShape2D_mvwim")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(20, 10)
-texture = ExtResource("1_orsho")
+position = Vector2(0, -25)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_gewj3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -29.0
+offset_top = -92.0
+offset_right = 11.0
+offset_bottom = -69.0
+
+[node name="NextLevel" type="MenuButton" parent="Label"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "NextLevel"
+
+[node name="nextLevelArea" type="Area2D" parent="."]
+position = Vector2(13, -75)
+
+[node name="nextLevelCollider" type="CollisionShape2D" parent="nextLevelArea"]
+shape = SubResource("RectangleShape2D_afr4u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+bus = &"Music"
+
+[node name="players" type="Node" parent="."]
+
+[node name="player" parent="players" instance=ExtResource("2_d43hg")]
+position = Vector2(-493, 273)
+
+[node name="player2" parent="players" instance=ExtResource("2_d43hg")]
+position = Vector2(-410, 268)
+playerNumber = 1
+
+[node name="player3" parent="players" instance=ExtResource("2_d43hg")]
+position = Vector2(143, 282)
+playerNumber = 2
+
+[node name="player4" parent="players" instance=ExtResource("2_d43hg")]
+position = Vector2(326, 304)
+playerNumber = 3
+
+[connection signal="pressed" from="Label/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="body_entered" from="nextLevelArea" to="." method="_on_next_level_area_body_entered"]
