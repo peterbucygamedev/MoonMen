@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgpo1w76o5hx0"]
+[gd_scene load_steps=7 format=3 uid="uid://hfn2jcrm06p8"]
 
-[ext_resource type="Script" path="res://Scripts/moon_level.gd" id="1_44yni"]
-[ext_resource type="Texture2D" uid="uid://bkiv3hjq5bc8o" path="res://Assets/pixil-frame-0 - 2024-08-09T111005.085.png" id="1_gewj3"]
-[ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="2_d43hg"]
+[ext_resource type="Script" path="res://Scripts/moon_level.gd" id="1_d2u1u"]
+[ext_resource type="Texture2D" uid="uid://bkiv3hjq5bc8o" path="res://Assets/pixil-frame-0 - 2024-08-09T111005.085.png" id="2_w377n"]
+[ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="3_t8bgn"]
+[ext_resource type="PackedScene" uid="uid://17as6hkt0je" path="res://Scenes/tile_4_red.tscn" id="4_c4gne"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mvwim"]
 
@@ -10,7 +11,7 @@
 size = Vector2(88, 20)
 
 [node name="MoonLevel" type="Node"]
-script = ExtResource("1_44yni")
+script = ExtResource("1_d2u1u")
 
 [node name="Walls" type="Node" parent="."]
 
@@ -43,8 +44,8 @@ shape = SubResource("WorldBoundaryShape2D_mvwim")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -25)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_gewj3")
+scale = Vector2(2, 2)
+texture = ExtResource("2_w377n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -72,20 +73,166 @@ bus = &"Music"
 
 [node name="players" type="Node" parent="."]
 
-[node name="player" parent="players" instance=ExtResource("2_d43hg")]
+[node name="player" parent="players" instance=ExtResource("3_t8bgn")]
 position = Vector2(-493, 273)
 
-[node name="player2" parent="players" instance=ExtResource("2_d43hg")]
+[node name="player2" parent="players" instance=ExtResource("3_t8bgn")]
 position = Vector2(-410, 268)
 playerNumber = 1
 
-[node name="player3" parent="players" instance=ExtResource("2_d43hg")]
+[node name="player3" parent="players" instance=ExtResource("3_t8bgn")]
 position = Vector2(143, 282)
 playerNumber = 2
 
-[node name="player4" parent="players" instance=ExtResource("2_d43hg")]
+[node name="player4" parent="players" instance=ExtResource("3_t8bgn")]
 position = Vector2(326, 304)
 playerNumber = 3
+
+[node name="tiles" type="Node" parent="."]
+
+[node name="tile_4_red" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-58, 189)
+scale = Vector2(1.98768, 1.97917)
+
+[node name="tile_4_red2" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-339, 13)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red3" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-547, -122)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red4" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-233, 132)
+rotation = 0.523598
+scale = Vector2(6.79195, 2)
+
+[node name="tile_4_red5" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-268, 205)
+rotation = 0.523598
+scale = Vector2(2, 2)
+
+[node name="tile_4_red6" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-384, 91)
+scale = Vector2(7.24, 2.02616)
+
+[node name="tile_4_red7" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-417, 174)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red8" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-527, 141)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red9" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-518, 58)
+rotation = 0.523598
+scale = Vector2(4.9288, 2)
+
+[node name="tile_4_red10" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-457, -43)
+rotation = 0.523598
+scale = Vector2(2, 2)
+
+[node name="tile_4_red11" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-441, -201)
+rotation = -0.523598
+scale = Vector2(2, 2)
+
+[node name="tile_4_red12" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-185, 14)
+rotation = -0.523598
+scale = Vector2(2, 2)
+
+[node name="tile_4_red13" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(70, 119)
+rotation = -0.523598
+scale = Vector2(2, 2)
+
+[node name="tile_4_red14" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(224, 53)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red15" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(252, 264)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red16" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(320, 236)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red17" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(399, 211)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red18" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(424, 303)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red19" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(532, 256)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red20" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(242, 177)
+rotation = -0.523598
+scale = Vector2(6.88, 2)
+
+[node name="tile_4_red21" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(45, 260)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red22" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(495, -90)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red23" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(334, -247)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red24" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(394, 136)
+scale = Vector2(6.72, 2)
+
+[node name="tile_4_red25" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(351, -77)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red26" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-524, 230)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red27" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-94, -90)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red28" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(138, -102)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red29" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(181, -197)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red30" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-120, -203)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red31" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-293, -255)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red32" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(432, 47)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red33" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(40, -239)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red34" parent="tiles" instance=ExtResource("4_c4gne")]
+position = Vector2(-293, -121)
+scale = Vector2(2, 2)
 
 [connection signal="pressed" from="Label/NextLevel" to="." method="_on_next_level_pressed"]
 [connection signal="body_entered" from="nextLevelArea" to="." method="_on_next_level_area_body_entered"]

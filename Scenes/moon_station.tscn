@@ -1,7 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://cit8phcg1ivkb"]
+[gd_scene load_steps=17 format=3 uid="uid://cit8phcg1ivkb"]
 
 [ext_resource type="Script" path="res://Scripts/moon_station.gd" id="1_30wtf"]
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="1_ysaun"]
+[ext_resource type="Texture2D" uid="uid://v2f8xwliq5d2" path="res://Assets/pixil-frame-0 - 2024-08-11T215328.916.png" id="2_npiqs"]
+[ext_resource type="Script" path="res://Scripts/player1Stats.gd" id="3_ffwt0"]
+[ext_resource type="AudioStream" uid="uid://7xgbaaojh4u7" path="res://Assets/atoning.mp3" id="3_oootw"]
+[ext_resource type="Script" path="res://Scripts/player2Stats.gd" id="4_g0whi"]
+[ext_resource type="Script" path="res://Scenes/player3Stats.gd" id="5_14tli"]
+[ext_resource type="Script" path="res://Scenes/player4Stats.gd" id="6_mlgim"]
+[ext_resource type="PackedScene" uid="uid://qnodxhgnflbx" path="res://Scenes/tile_2_dark_grey.tscn" id="8_amrgq"]
+[ext_resource type="PackedScene" uid="uid://dd4nvipurgdsu" path="res://Scenes/tile_4_dark_grey.tscn" id="9_dlptc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dcjre"]
 
@@ -15,10 +23,10 @@ size = Vector2(104, 20)
 size = Vector2(85, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwrvp"]
-size = Vector2(131, 20)
+size = Vector2(97, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy5sy"]
-size = Vector2(142, 22)
+size = Vector2(106, 22)
 
 [node name="moon_station" type="Node2D"]
 script = ExtResource("1_30wtf")
@@ -55,10 +63,21 @@ shape = SubResource("WorldBoundaryShape2D_dcjre")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -25)
 scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_npiqs")
+region_enabled = true
+region_rect = Rect2(69, -1, 778, 457)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -25)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_npiqs")
+region_enabled = true
+region_rect = Rect2(69, -1, 778, 457)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_oootw")
 autoplay = true
 bus = &"Music"
 
@@ -69,38 +88,39 @@ offset_bottom = -114.0
 
 [node name="addSpeed" type="MenuButton" parent="Label"]
 layout_mode = 0
-offset_left = -327.0
-offset_top = 416.0
-offset_right = -239.0
-offset_bottom = 447.0
+offset_left = -572.0
+offset_top = 333.0
+offset_right = -484.0
+offset_bottom = 364.0
 text = "add speed"
 
 [node name="addSpeedArea" type="Area2D" parent="Label/addSpeed"]
 
 [node name="addSpeedCollider" type="CollisionShape2D" parent="Label/addSpeed/addSpeedArea"]
-position = Vector2(42, 18)
+position = Vector2(49, 57)
 shape = SubResource("RectangleShape2D_v6sjl")
 
 [node name="addDamage" type="MenuButton" parent="Label"]
 layout_mode = 0
-offset_left = 186.0
-offset_top = 414.0
-offset_right = 290.0
-offset_bottom = 445.0
+offset_left = 173.0
+offset_top = 333.0
+offset_right = 277.0
+offset_bottom = 364.0
 text = "add damage"
 
 [node name="addDamageArea" type="Area2D" parent="Label/addDamage"]
 
 [node name="addDamageCollider" type="CollisionShape2D" parent="Label/addDamage/addDamageArea"]
-position = Vector2(52, 16)
+position = Vector2(52, 54)
 shape = SubResource("RectangleShape2D_gv8hw")
 
 [node name="nextLevel" type="MenuButton" parent="Label"]
 layout_mode = 0
-offset_left = -37.0
-offset_top = 181.0
-offset_right = 46.0
-offset_bottom = 212.0
+offset_left = -45.0
+offset_top = 47.0
+offset_right = 38.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(4.33177e-06, 0, 0.881772, 1)
 text = "next level"
 
 [node name="nextLevel" type="Area2D" parent="Label/nextLevel"]
@@ -111,59 +131,198 @@ shape = SubResource("RectangleShape2D_y4a3u")
 
 [node name="subtractSpeed" type="MenuButton" parent="Label"]
 layout_mode = 0
-offset_left = -189.0
-offset_top = 412.0
-offset_right = -66.0
-offset_bottom = 452.0
+offset_left = -287.0
+offset_top = 333.0
+offset_right = -164.0
+offset_bottom = 373.0
 text = "subtract speed"
 
 [node name="subtractSpeedArea" type="Area2D" parent="Label/subtractSpeed"]
 
 [node name="subtractSpeedCollider" type="CollisionShape2D" parent="Label/subtractSpeed/subtractSpeedArea"]
-position = Vector2(61.5, 19)
+position = Vector2(60.5, 58)
 shape = SubResource("RectangleShape2D_uwrvp")
 
 [node name="subtractDamage" type="MenuButton" parent="Label"]
 layout_mode = 0
-offset_left = 362.0
-offset_top = 420.0
-offset_right = 501.0
-offset_bottom = 460.0
+offset_left = 435.0
+offset_top = 333.0
+offset_right = 574.0
+offset_bottom = 373.0
 text = "subtract damage"
 
 [node name="subtractDamageArea" type="Area2D" parent="Label/subtractDamage"]
 
 [node name="subtractDamageCollider" type="CollisionShape2D" parent="Label/subtractDamage/subtractDamageArea"]
-position = Vector2(69, 22)
+position = Vector2(89, 58)
 shape = SubResource("RectangleShape2D_dy5sy")
 
 [node name="players" type="Node" parent="."]
 
 [node name="player" parent="players" instance=ExtResource("1_ysaun")]
-position = Vector2(-560, 270)
+position = Vector2(-560, 297)
 
 [node name="player2" parent="players" instance=ExtResource("1_ysaun")]
-position = Vector2(-517, 270)
+position = Vector2(-517, 297)
 playerNumber = 1
 
 [node name="player3" parent="players" instance=ExtResource("1_ysaun")]
-position = Vector2(-479, 270)
+position = Vector2(-479, 297)
 playerNumber = 2
 
 [node name="player4" parent="players" instance=ExtResource("1_ysaun")]
-position = Vector2(-436, 269)
+position = Vector2(-436, 296)
 playerNumber = 3
 
-[node name="Label2" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "player1Speed"
+[node name="player1Stats" type="Label" parent="."]
+offset_left = -572.0
+offset_top = -310.0
+offset_right = -467.0
+offset_bottom = -287.0
+script = ExtResource("3_ffwt0")
 
-[node name="Label3" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "player2Speed"
+[node name="player2Stats" type="Label" parent="."]
+offset_left = -239.0
+offset_top = -310.0
+offset_right = -134.0
+offset_bottom = -287.0
+script = ExtResource("4_g0whi")
+
+[node name="player3Stats" type="Label" parent="."]
+offset_left = 46.0
+offset_top = -310.0
+offset_right = 160.0
+offset_bottom = -287.0
+script = ExtResource("5_14tli")
+
+[node name="player4Stats" type="Label" parent="."]
+offset_left = 379.0
+offset_top = -310.0
+offset_right = 514.0
+offset_bottom = -287.0
+script = ExtResource("6_mlgim")
+
+[node name="tiles" type="Node" parent="."]
+
+[node name="tile_2_darkGrey" parent="tiles" instance=ExtResource("8_amrgq")]
+position = Vector2(-382, 248)
+
+[node name="tile_2_darkGrey2" parent="tiles" instance=ExtResource("8_amrgq")]
+position = Vector2(-322, 210)
+
+[node name="tile_2_darkGrey3" parent="tiles" instance=ExtResource("8_amrgq")]
+position = Vector2(-259, 168)
+
+[node name="tile_2_darkGrey4" parent="tiles" instance=ExtResource("8_amrgq")]
+position = Vector2(-178, 130)
+
+[node name="tile_2_darkGrey5" parent="tiles" instance=ExtResource("8_amrgq")]
+position = Vector2(-100, 87)
+
+[node name="tile_2_darkGrey6" parent="tiles" instance=ExtResource("8_amrgq")]
+position = Vector2(-176, 35)
+
+[node name="tile_2_darkGrey7" parent="tiles" instance=ExtResource("8_amrgq")]
+position = Vector2(-256, -14)
+
+[node name="tile_2_darkGrey8" parent="tiles" instance=ExtResource("8_amrgq")]
+position = Vector2(-322, -57)
+
+[node name="tile_2_darkGrey9" parent="tiles" instance=ExtResource("8_amrgq")]
+position = Vector2(-367, -103)
+
+[node name="tile_2_darkGrey10" parent="tiles" instance=ExtResource("8_amrgq")]
+position = Vector2(-272, -142)
+
+[node name="tile_4_darkGrey" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(60, 248)
+
+[node name="tile_4_darkGrey2" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(159, 173)
+
+[node name="tile_4_darkGrey3" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(233, 108)
+
+[node name="tile_4_darkGrey4" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(327, 49)
+rotation = -0.785398
+
+[node name="tile_4_darkGrey5" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(462, -21)
+rotation = -0.785398
+
+[node name="tile_4_darkGrey6" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(311, -90)
+rotation = 0.785398
+
+[node name="tile_4_darkGrey7" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(135, -129)
+rotation = 0.785398
+
+[node name="tile_4_darkGrey9" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(-552, 226)
+
+[node name="tile_4_darkGrey10" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(-498, 226)
+
+[node name="tile_4_darkGrey11" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(-256, 228)
+
+[node name="tile_4_darkGrey12" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(-201, 227)
+
+[node name="tile_4_darkGrey13" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(196, 223)
+
+[node name="tile_4_darkGrey14" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(247, 224)
+
+[node name="tile_4_darkGrey15" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(495, 229)
+
+[node name="tile_4_darkGrey16" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(546, 228)
+
+[node name="tile_4_darkGrey17" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(-371, 74)
+
+[node name="tile_4_darkGrey18" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(-478, 49)
+rotation = 0.785397
+
+[node name="tile_4_darkGrey19" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(-518, 8)
+rotation = 0.785397
+
+[node name="tile_4_darkGrey20" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(-546, -47)
+rotation = 1.57079
+
+[node name="tile_4_darkGrey21" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(-546, -47)
+rotation = 1.57079
+
+[node name="tile_4_darkGrey22" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(387, 83)
+rotation = 3.14159
+
+[node name="tile_4_darkGrey23" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(473, 54)
+rotation = 2.35619
+
+[node name="tile_4_darkGrey24" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(516, 18)
+rotation = 2.35619
+
+[node name="tile_4_darkGrey25" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(542, -49)
+rotation = 1.57079
+
+[node name="tile_4_darkGrey26" parent="tiles" instance=ExtResource("9_dlptc")]
+position = Vector2(-2, -10)
 
 [connection signal="body_entered" from="Label/addSpeed/addSpeedArea" to="." method="_on_add_speed_area_body_entered"]
 [connection signal="body_entered" from="Label/addDamage/addDamageArea" to="." method="_on_add_damage_area_body_entered"]
 [connection signal="body_entered" from="Label/nextLevel/nextLevel" to="." method="_on_next_level_body_entered"]
+[connection signal="body_entered" from="Label/subtractSpeed/subtractSpeedArea" to="." method="_on_subtract_speed_area_body_entered"]
+[connection signal="body_entered" from="Label/subtractDamage/subtractDamageArea" to="." method="_on_subtract_damage_area_body_entered"]

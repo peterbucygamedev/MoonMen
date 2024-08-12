@@ -1,5 +1,5 @@
 extends Control
-const MOON_LEVEL = preload("res://Scenes/moon_level.tscn")
+const MOON_STATION = preload("res://Scenes/moon_station.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,11 +10,8 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_play_game_pressed():
-	get_tree().change_scene_to_file("res://Scenes/moon_level.tscn")
-
 
 func _on_area_2d_body_entered(body):
-	if GameManager.nextLevel:
-		get_tree().change_scene_to_file("res://Scenes/moon_level.tscn")
+	if body.is_in_group("players"):
+		get_tree().change_scene_to_file("res://Scenes/moon_station.tscn")
 

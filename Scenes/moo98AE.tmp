@@ -1,0 +1,177 @@
+[gd_scene load_steps=10 format=3 uid="uid://cit8phcg1ivkb"]
+
+[ext_resource type="Script" path="res://Scripts/moon_station.gd" id="1_30wtf"]
+[ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="1_ysaun"]
+[ext_resource type="Script" path="res://Scenes/Label2.gd" id="3_cpx57"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dcjre"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6sjl"]
+size = Vector2(100, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gv8hw"]
+size = Vector2(104, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4a3u"]
+size = Vector2(85, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwrvp"]
+size = Vector2(131, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dy5sy"]
+size = Vector2(142, 22)
+
+[node name="moon_station" type="Node2D"]
+script = ExtResource("1_30wtf")
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Wall" type="StaticBody2D" parent="Walls" groups=["ground"]]
+position = Vector2(0, 325)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall"]
+shape = SubResource("WorldBoundaryShape2D_dcjre")
+
+[node name="Wall2" type="StaticBody2D" parent="Walls" groups=["ground"]]
+position = Vector2(-575, 0)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2"]
+shape = SubResource("WorldBoundaryShape2D_dcjre")
+
+[node name="Wall3" type="StaticBody2D" parent="Walls" groups=["ground"]]
+position = Vector2(575, 0)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall3"]
+shape = SubResource("WorldBoundaryShape2D_dcjre")
+
+[node name="Wall4" type="StaticBody2D" parent="Walls" groups=["ground"]]
+position = Vector2(0, -325)
+rotation = -3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall4"]
+shape = SubResource("WorldBoundaryShape2D_dcjre")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -25)
+scale = Vector2(1.5, 1.5)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+bus = &"Music"
+
+[node name="Label" type="Label" parent="."]
+offset_top = -137.0
+offset_right = 40.0
+offset_bottom = -114.0
+
+[node name="addSpeed" type="MenuButton" parent="Label"]
+layout_mode = 0
+offset_left = -327.0
+offset_top = 416.0
+offset_right = -239.0
+offset_bottom = 447.0
+text = "add speed"
+
+[node name="addSpeedArea" type="Area2D" parent="Label/addSpeed"]
+
+[node name="addSpeedCollider" type="CollisionShape2D" parent="Label/addSpeed/addSpeedArea"]
+position = Vector2(42, 18)
+shape = SubResource("RectangleShape2D_v6sjl")
+
+[node name="addDamage" type="MenuButton" parent="Label"]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 414.0
+offset_right = 290.0
+offset_bottom = 445.0
+text = "add damage"
+
+[node name="addDamageArea" type="Area2D" parent="Label/addDamage"]
+
+[node name="addDamageCollider" type="CollisionShape2D" parent="Label/addDamage/addDamageArea"]
+position = Vector2(52, 16)
+shape = SubResource("RectangleShape2D_gv8hw")
+
+[node name="nextLevel" type="MenuButton" parent="Label"]
+layout_mode = 0
+offset_left = -37.0
+offset_top = 181.0
+offset_right = 46.0
+offset_bottom = 212.0
+text = "next level"
+
+[node name="nextLevel" type="Area2D" parent="Label/nextLevel"]
+
+[node name="nextLevelCollider" type="CollisionShape2D" parent="Label/nextLevel/nextLevel"]
+position = Vector2(45, 18)
+shape = SubResource("RectangleShape2D_y4a3u")
+
+[node name="subtractSpeed" type="MenuButton" parent="Label"]
+layout_mode = 0
+offset_left = -189.0
+offset_top = 412.0
+offset_right = -66.0
+offset_bottom = 452.0
+text = "subtract speed"
+
+[node name="subtractSpeedArea" type="Area2D" parent="Label/subtractSpeed"]
+
+[node name="subtractSpeedCollider" type="CollisionShape2D" parent="Label/subtractSpeed/subtractSpeedArea"]
+position = Vector2(61.5, 19)
+shape = SubResource("RectangleShape2D_uwrvp")
+
+[node name="subtractDamage" type="MenuButton" parent="Label"]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 420.0
+offset_right = 501.0
+offset_bottom = 460.0
+text = "subtract damage"
+
+[node name="subtractDamageArea" type="Area2D" parent="Label/subtractDamage"]
+
+[node name="subtractDamageCollider" type="CollisionShape2D" parent="Label/subtractDamage/subtractDamageArea"]
+position = Vector2(69, 22)
+shape = SubResource("RectangleShape2D_dy5sy")
+
+[node name="players" type="Node" parent="."]
+
+[node name="player" parent="players" instance=ExtResource("1_ysaun")]
+position = Vector2(-560, 270)
+
+[node name="player2" parent="players" instance=ExtResource("1_ysaun")]
+position = Vector2(-517, 270)
+playerNumber = 1
+
+[node name="player3" parent="players" instance=ExtResource("1_ysaun")]
+position = Vector2(-479, 270)
+playerNumber = 2
+
+[node name="player4" parent="players" instance=ExtResource("1_ysaun")]
+position = Vector2(-436, 269)
+playerNumber = 3
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -551.0
+offset_top = -307.0
+offset_right = -446.0
+offset_bottom = -284.0
+text = "player1Speed"
+script = ExtResource("3_cpx57")
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -237.0
+offset_top = -310.0
+offset_right = -132.0
+offset_bottom = -287.0
+text = "player2Speed"
+
+[connection signal="body_entered" from="Label/addSpeed/addSpeedArea" to="." method="_on_add_speed_area_body_entered"]
+[connection signal="body_entered" from="Label/addDamage/addDamageArea" to="." method="_on_add_damage_area_body_entered"]
+[connection signal="body_entered" from="Label/nextLevel/nextLevel" to="." method="_on_next_level_body_entered"]
+[connection signal="body_entered" from="Label/subtractSpeed/subtractSpeedArea" to="." method="_on_subtract_speed_area_body_entered"]
+[connection signal="body_entered" from="Label/subtractDamage/subtractDamageArea" to="." method="_on_subtract_damage_area_body_entered"]

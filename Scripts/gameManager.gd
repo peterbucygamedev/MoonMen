@@ -1,18 +1,18 @@
 extends Node
 
-var player1Speed = 100
+var player1Speed = 500
 var player1Damage = 10
 var player1Health = 100
 var player1Ammo = 100
-var player2Speed = 100
+var player2Speed = 500
 var player2Damage = 10
 var player2Health = 100
 var player2Ammo = 100
-var player3Speed = 100
+var player3Speed = 500
 var player3Damage = 10
 var player3Health = 100
 var player3Ammo = 100
-var player4Speed = 100
+var player4Speed = 500
 var player4Damage = 10
 var player4Health = 100
 var player4Ammo = 100

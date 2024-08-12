@@ -19,6 +19,7 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("ground"):
 		queue_free()
 	if body.is_in_group("players"):
+		
 		#print("hit player")
 		body.health -= damage
 		queue_free()

@@ -13,6 +13,7 @@ var lastHealth = health
 @onready var bullet_spawn = $weapon/bulletSpawn
 @export var playerNumber = 0
 var select = false
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -24,6 +25,7 @@ func _ready():
 	
 func shoot():
 	var b = bullet.instantiate()
+	audio_stream_player_2d.play()
 	if playerNumber == 0:
 		b.speed = GameManager.player1Speed
 		print("current bulletSpeed for player", playerNumber, " is ", b.speed)

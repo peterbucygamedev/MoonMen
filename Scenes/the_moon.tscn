@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://33ltwejnfnxf"]
+[gd_scene load_steps=13 format=3 uid="uid://33ltwejnfnxf"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_mea7v"]
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="1_yn0hc"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://df4ps4u5emquy" path="res://Scenes/game_manager.tscn" id="6_d644k"]
 [ext_resource type="PackedScene" uid="uid://cokl2xvomrq4j" path="res://Scenes/tile_3_teal.tscn" id="6_t7fgv"]
 [ext_resource type="PackedScene" uid="uid://dfi58u4bvn580" path="res://Scenes/tile_4_teal.tscn" id="7_j2ho3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x577d"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vnrvs"]
 
@@ -38,11 +40,16 @@ offset_top = -38.0
 offset_right = -2.0
 offset_bottom = -15.0
 
-[node name="PlayGame" type="MenuButton" parent="Label"]
+[node name="NextLevel" type="MenuButton" parent="Label"]
 layout_mode = 0
 offset_right = 90.0
 offset_bottom = 31.0
-text = "Play Game"
+text = "Next Level"
+
+[node name="Area2D" type="Area2D" parent="Label/NextLevel"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Label/NextLevel/Area2D"]
+shape = SubResource("RectangleShape2D_x577d")
 
 [node name="Exit" type="MenuButton" parent="Label"]
 visible = false
@@ -117,6 +124,48 @@ position = Vector2(463, 14)
 [node name="tile_4_teal3" parent="tiles" instance=ExtResource("7_j2ho3")]
 position = Vector2(463, 14)
 
+[node name="tile_4_teal9" parent="tiles" instance=ExtResource("7_j2ho3")]
+position = Vector2(541, 54)
+rotation = -1.0472
+
+[node name="tile_4_teal10" parent="tiles" instance=ExtResource("7_j2ho3")]
+position = Vector2(519, 96)
+rotation = -1.0472
+
+[node name="tile_4_teal11" parent="tiles" instance=ExtResource("7_j2ho3")]
+position = Vector2(497, 140)
+rotation = -1.0472
+
+[node name="tile_4_teal12" parent="tiles" instance=ExtResource("7_j2ho3")]
+position = Vector2(475, 182)
+rotation = -1.0472
+
+[node name="tile_4_teal4" parent="tiles" instance=ExtResource("7_j2ho3")]
+position = Vector2(-475, 102)
+rotation = 0.523598
+
+[node name="tile_4_teal5" parent="tiles" instance=ExtResource("7_j2ho3")]
+position = Vector2(-539, 66)
+rotation = 1.57079
+
+[node name="tile_4_teal6" parent="tiles" instance=ExtResource("7_j2ho3")]
+position = Vector2(-441, 0)
+
+[node name="tile_4_teal7" parent="tiles" instance=ExtResource("7_j2ho3")]
+position = Vector2(-335, -28)
+
+[node name="tile_4_teal8" parent="tiles" instance=ExtResource("7_j2ho3")]
+position = Vector2(-217, -52)
+
+[node name="tile_4_teal13" parent="tiles" instance=ExtResource("7_j2ho3")]
+position = Vector2(-141, 210)
+
+[node name="tile_4_teal14" parent="tiles" instance=ExtResource("7_j2ho3")]
+position = Vector2(13, 206)
+
+[node name="tile_4_teal15" parent="tiles" instance=ExtResource("7_j2ho3")]
+position = Vector2(183, 206)
+
 [node name="Walls" type="Node" parent="."]
 
 [node name="Wall" type="StaticBody2D" parent="Walls" groups=["ground"]]
@@ -177,5 +226,5 @@ playerNumber = 2
 position = Vector2(326, 304)
 playerNumber = 3
 
-[connection signal="pressed" from="Label/PlayGame" to="." method="_on_play_game_pressed"]
+[connection signal="body_entered" from="Label/NextLevel/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
