@@ -2,6 +2,7 @@ extends RigidBody2D
 var speed = 750
 var damage = 10
 var bulletNumber = 0
+@onready var timer = $Timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,6 +11,7 @@ func _ready():
 	gravity_scale = 1
 	center_of_mass_mode = 1
 	center_of_mass = Vector2(0, 0.1)
+	timer.start()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#print(bulletNumber)
@@ -23,3 +25,7 @@ func _on_area_2d_body_entered(body):
 		#print("hit player")
 		body.health -= damage
 		queue_free()
+
+
+func _on_timer_timeout():
+	queue_free()

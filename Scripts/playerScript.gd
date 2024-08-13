@@ -14,6 +14,8 @@ var lastHealth = health
 @export var playerNumber = 0
 var select = false
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
+var crouching = false
+@onready var player_collision = $playerCollision
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -27,6 +29,8 @@ func shoot():
 	var b = bullet.instantiate()
 	audio_stream_player_2d.play()
 	if playerNumber == 0:
+		GameManager.player1Ammo -= 1
+		print(GameManager.player1Ammo)
 		b.speed = GameManager.player1Speed
 		print("current bulletSpeed for player", playerNumber, " is ", b.speed)
 		b.damage = GameManager.player1Damage
@@ -63,9 +67,9 @@ func shoot():
 		b.center_of_mass = Vector2(0, 0.1)
 		
 		
-	player.owner.add_child(b)
-	b.transform = bullet_spawn.global_transform
-	b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
+	#player.owner.add_child(b)
+	#b.transform = bullet_spawn.global_transform
+	#b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
 	
 	#add_collision_exception_with(b)
 	#$weapon.add_collision_exception_with(b)
@@ -126,9 +130,13 @@ func _physics_process(delta):
 		healthBar.play("100")
 			
 	
-	
-	
-	
+	if Input.is_joy_button_pressed(playerNumber, 9):
+		if Input.is_action_just_pressed("slide"):
+			animated_sprite_2d.play("slide")
+			crouching = true
+	else:
+		crouching = false
+		
 	if Input.get_joy_axis(playerNumber, 5):
 		
 		if Input.is_action_just_pressed("shoot"):
@@ -137,8 +145,10 @@ func _physics_process(delta):
 			
 		if Input.is_action_just_released("shoot"):
 			select = false
+			
+
 		
-	print(select)
+	#print(select)
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -147,7 +157,7 @@ func _physics_process(delta):
 	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 	#	velocity.y = JUMP_VELOCITY
 		
-	if Input.is_joy_button_pressed(playerNumber, 0) and is_on_floor():
+	if Input.get_joy_axis(playerNumber, 4) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		#print("button pressed")
 
@@ -158,19 +168,19 @@ func _physics_process(delta):
 	#	velocity.x = direction * SPEED
 		#print("go")
 	
-	if direction > 0.05:
+	if direction > 0.05 and crouching == false:
 		animated_sprite_2d.flip_h = false
 		sprite_2d.flip_v = false
 		velocity.x = direction * SPEED
 		animated_sprite_2d.play("moving")
 		
-	elif direction < -0.05:
+	elif direction < -0.05 and crouching == false:
 		animated_sprite_2d.flip_h = true
 		sprite_2d.flip_v = true
 		velocity.x = direction * SPEED
 		animated_sprite_2d.play("moving")
 		
-	else:
+	elif crouching == false:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		#print("stop")
 		animated_sprite_2d.play("idle")

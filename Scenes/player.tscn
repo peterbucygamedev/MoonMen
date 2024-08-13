@@ -13,22 +13,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6b1r"]
 size = Vector2(27, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ncjpy"]
-atlas = ExtResource("1_gv3uw")
-region = Rect2(50, 0, 25, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tiboa"]
-atlas = ExtResource("1_gv3uw")
-region = Rect2(75, 0, 25, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hhaq4"]
-atlas = ExtResource("1_gv3uw")
-region = Rect2(0, 33, 25, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_388a8"]
-atlas = ExtResource("1_gv3uw")
-region = Rect2(25, 33, 25, 33)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6req"]
 atlas = ExtResource("2_1g58m")
 region = Rect2(0, 0, 25, 33)
@@ -61,25 +45,24 @@ region = Rect2(50, 66, 25, 33)
 atlas = ExtResource("3_a2hm7")
 region = Rect2(75, 66, 25, 33)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncjpy"]
+atlas = ExtResource("1_gv3uw")
+region = Rect2(50, 0, 25, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiboa"]
+atlas = ExtResource("1_gv3uw")
+region = Rect2(75, 0, 25, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhaq4"]
+atlas = ExtResource("1_gv3uw")
+region = Rect2(0, 33, 25, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_388a8"]
+atlas = ExtResource("1_gv3uw")
+region = Rect2(25, 33, 25, 33)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_phkmh"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ncjpy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tiboa")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_hhaq4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_388a8")
-}],
-"loop": false,
-"name": &"crouch",
-"speed": 10.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l6req")
@@ -113,6 +96,23 @@ animations = [{
 "loop": true,
 "name": &"moving",
 "speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncjpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tiboa")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_hhaq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_388a8")
+}],
+"loop": false,
+"name": &"slide",
+"speed": 30.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xmi7"]
@@ -415,7 +415,8 @@ shape = SubResource("RectangleShape2D_l6b1r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_phkmh")
-animation = &"idle"
+animation = &"slide"
+autoplay = "idle"
 
 [node name="weapon" type="StaticBody2D" parent="."]
 position = Vector2(0, 2)

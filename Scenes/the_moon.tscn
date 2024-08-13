@@ -26,11 +26,18 @@ script = ExtResource("1_mea7v")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="moon" type="Sprite2D" parent="."]
+position = Vector2(-1, 322)
+scale = Vector2(1.44, 1.2)
+texture = ExtResource("2_clw3q")
+region_enabled = true
+region_rect = Rect2(0, 991, 1000, 9)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
 z_as_relative = false
-position = Vector2(-4.49999, -49.5)
-scale = Vector2(1.197, 0.775)
+position = Vector2(-5, 71)
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_clw3q")
 
 [node name="Label" type="Label" parent="."]
@@ -169,7 +176,7 @@ position = Vector2(183, 206)
 [node name="Walls" type="Node" parent="."]
 
 [node name="Wall" type="StaticBody2D" parent="Walls" groups=["ground"]]
-position = Vector2(0, 325)
+position = Vector2(0, 318)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall"]
 shape = SubResource("WorldBoundaryShape2D_vnrvs")
@@ -213,6 +220,7 @@ bus = &"Music"
 
 [node name="player" parent="players" instance=ExtResource("1_yn0hc")]
 position = Vector2(-493, 273)
+playerNumber = 0
 
 [node name="player2" parent="players" instance=ExtResource("1_yn0hc")]
 position = Vector2(-410, 268)
