@@ -16,6 +16,11 @@ var select = false
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
 var crouching = false
 @onready var player_collision = $playerCollision
+@onready var player_1_timer = $player1Timer
+@onready var player_2_timer = $player2Timer
+@onready var player_3_timer = $player3Timer
+@onready var player_4_timer = $player4Timer
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -26,9 +31,10 @@ func _ready():
 
 	
 func shoot():
-	var b = bullet.instantiate()
-	audio_stream_player_2d.play()
-	if playerNumber == 0:
+	#var b = bullet.instantiate()
+	if playerNumber == 0 and GameManager.player1Ammo > 0:
+		audio_stream_player_2d.play()
+		var b = bullet.instantiate()
 		GameManager.player1Ammo -= 1
 		print(GameManager.player1Ammo)
 		b.speed = GameManager.player1Speed
@@ -38,8 +44,17 @@ func shoot():
 		b.gravity_scale = 1
 		b.center_of_mass_mode = 1
 		b.center_of_mass = Vector2(0, 0.1)
+		player.owner.add_child(b)
+		b.transform = bullet_spawn.global_transform
+		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
+	
+	elif GameManager.player1Ammo <= 0:
+		player_1_timer.start()
 		
-	if playerNumber == 1:
+	if playerNumber == 1 and GameManager.player2Ammo > 0:
+		audio_stream_player_2d.play()
+		var b = bullet.instantiate()
+		GameManager.player2Ammo -= 1
 		b.speed = GameManager.player2Speed
 		print("current bulletSpeed for player", playerNumber, " is ", b.speed)
 		b.damage = GameManager.player2Damage
@@ -47,8 +62,17 @@ func shoot():
 		b.gravity_scale = 1
 		b.center_of_mass_mode = 1
 		b.center_of_mass = Vector2(0, 0.1)
+		player.owner.add_child(b)
+		b.transform = bullet_spawn.global_transform
+		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
 		
-	if playerNumber == 2:
+	elif GameManager.player2Ammo <= 0:
+		player_2_timer.start()
+		
+	if playerNumber == 2 and GameManager.player3Ammo > 0:
+		audio_stream_player_2d.play()
+		var b = bullet.instantiate()
+		GameManager.player3Ammo -= 1
 		b.speed = GameManager.player3Speed
 		print("current bulletSpeed for player", playerNumber, " is ", b.speed)
 		b.damage = GameManager.player3Damage
@@ -56,8 +80,17 @@ func shoot():
 		b.gravity_scale = 1
 		b.center_of_mass_mode = 1
 		b.center_of_mass = Vector2(0, 0.1)
+		player.owner.add_child(b)
+		b.transform = bullet_spawn.global_transform
+		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
+	
+	elif GameManager.player3Ammo <= 0:
+		player_3_timer.start()
 		
-	if playerNumber == 3:
+	if playerNumber == 3 and GameManager.player4Ammo > 0:
+		audio_stream_player_2d.play()
+		var b = bullet.instantiate()
+		GameManager.player4Ammo -= 1
 		b.speed = GameManager.player4Speed
 		print("current bulletSpeed for player", playerNumber, " is ", b.speed)
 		b.damage = GameManager.player4Damage
@@ -65,11 +98,17 @@ func shoot():
 		b.gravity_scale = 1
 		b.center_of_mass_mode = 1
 		b.center_of_mass = Vector2(0, 0.1)
+		player.owner.add_child(b)
+		b.transform = bullet_spawn.global_transform
+		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
+		
+	elif GameManager.player3Ammo <= 0:
+		player_4_timer.start()
 		
 		
-	#player.owner.add_child(b)
-	#b.transform = bullet_spawn.global_transform
-	#b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
+	"""player.owner.add_child(b)
+	b.transform = bullet_spawn.global_transform
+	b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))"""
 	
 	#add_collision_exception_with(b)
 	#$weapon.add_collision_exception_with(b)
@@ -157,7 +196,7 @@ func _physics_process(delta):
 	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 	#	velocity.y = JUMP_VELOCITY
 		
-	if Input.get_joy_axis(playerNumber, 4) and is_on_floor():
+	if Input.is_joy_button_pressed(playerNumber, 0) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		#print("button pressed")
 
@@ -200,7 +239,7 @@ func _physics_process(delta):
 
 
 
-		
 
 
-
+func _on_player_1_timer_timeout():
+	pass # Replace with function body.

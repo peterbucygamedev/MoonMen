@@ -452,11 +452,7 @@ animation = &"scan"
 stream = ExtResource("9_0iqki")
 bus = &"Sound FX"
 
-[node name="player1Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="player2Timer" type="Timer" parent="."]
-
-[node name="player3Timer" type="Timer" parent="."]
-
-[node name="player4Timer" type="Timer" parent="."]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
