@@ -1,10 +1,12 @@
-[gd_scene load_steps=38 format=3 uid="uid://jb2kjgt1osww"]
+[gd_scene load_steps=61 format=3 uid="uid://jb2kjgt1osww"]
 
 [ext_resource type="Texture2D" uid="uid://b6se1338dhyv0" path="res://Assets/pixil-frame-0 - 2024-08-03T161208.173.png" id="1_gv3uw"]
 [ext_resource type="Script" path="res://Scripts/playerScript.gd" id="1_h1kp2"]
 [ext_resource type="Texture2D" uid="uid://n3i63b24goij" path="res://Assets/pixil-frame-0 - 2024-08-03T192824.383.png" id="2_1g58m"]
 [ext_resource type="Texture2D" uid="uid://docaxey80f3nh" path="res://Assets/pixil-frame-0 - 2024-08-03T162605.042.png" id="3_a2hm7"]
 [ext_resource type="Texture2D" uid="uid://pdsvhbod1g46" path="res://Assets/pixil-frame-0 - 2024-08-05T151743.236.png" id="5_4somu"]
+[ext_resource type="Texture2D" uid="uid://d03nxuf2kcj01" path="res://Assets/pixil-frame-0 - 2024-06-30T203151.892.png" id="6_glway"]
+[ext_resource type="Texture2D" uid="uid://dn37m8u2rsr44" path="res://Assets/pixil-frame-0 - 2024-08-06T223254.305.png" id="7_aqhe7"]
 [ext_resource type="Texture2D" uid="uid://q1k11q75u03i" path="res://Assets/pixil-frame-0 - 2024-08-12T223407.756.png" id="8_4cnnq"]
 [ext_resource type="AudioStream" uid="uid://dsnfw3ueiaiua" path="res://Assets/gunshot.mp3" id="9_0iqki"]
 [ext_resource type="Texture2D" uid="uid://bkuday3vkp6wr" path="res://Assets/pixil-frame-0 - 2024-08-13T085034.932.png" id="10_n4ppo"]
@@ -118,6 +120,199 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xmi7"]
 size = Vector2(7, 3)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2oau"]
+atlas = ExtResource("6_glway")
+region = Rect2(0, 0, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnaej"]
+atlas = ExtResource("7_aqhe7")
+region = Rect2(0, 0, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hr6wf"]
+atlas = ExtResource("6_glway")
+region = Rect2(0, 90, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nfvm"]
+atlas = ExtResource("7_aqhe7")
+region = Rect2(0, 90, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ymbk"]
+atlas = ExtResource("6_glway")
+region = Rect2(0, 10, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cx6u"]
+atlas = ExtResource("7_aqhe7")
+region = Rect2(0, 10, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfjn3"]
+atlas = ExtResource("6_glway")
+region = Rect2(0, 20, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upo4r"]
+atlas = ExtResource("7_aqhe7")
+region = Rect2(0, 20, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex48a"]
+atlas = ExtResource("6_glway")
+region = Rect2(0, 30, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4uc2"]
+atlas = ExtResource("7_aqhe7")
+region = Rect2(0, 30, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6tdv"]
+atlas = ExtResource("6_glway")
+region = Rect2(0, 40, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kre5"]
+atlas = ExtResource("7_aqhe7")
+region = Rect2(0, 40, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ucnb"]
+atlas = ExtResource("6_glway")
+region = Rect2(0, 50, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ljda"]
+atlas = ExtResource("7_aqhe7")
+region = Rect2(0, 50, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjh7o"]
+atlas = ExtResource("6_glway")
+region = Rect2(0, 70, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs7hr"]
+atlas = ExtResource("7_aqhe7")
+region = Rect2(0, 60, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jsix"]
+atlas = ExtResource("6_glway")
+region = Rect2(0, 70, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o524p"]
+atlas = ExtResource("7_aqhe7")
+region = Rect2(0, 70, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdeud"]
+atlas = ExtResource("6_glway")
+region = Rect2(0, 80, 100, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tieb6"]
+atlas = ExtResource("7_aqhe7")
+region = Rect2(0, 80, 100, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wb7q8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2oau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnaej")
+}],
+"loop": false,
+"name": &"10",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hr6wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nfvm")
+}],
+"loop": false,
+"name": &"100",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ymbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cx6u")
+}],
+"loop": false,
+"name": &"20",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfjn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upo4r")
+}],
+"loop": false,
+"name": &"30",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex48a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4uc2")
+}],
+"loop": false,
+"name": &"40",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6tdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kre5")
+}],
+"loop": false,
+"name": &"50",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ucnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ljda")
+}],
+"loop": true,
+"name": &"60",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjh7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs7hr")
+}],
+"loop": false,
+"name": &"70",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jsix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o524p")
+}],
+"loop": false,
+"name": &"80",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdeud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tieb6")
+}],
+"loop": false,
+"name": &"90",
+"speed": 1.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6rtkb"]
 atlas = ExtResource("8_4cnnq")
 region = Rect2(0, 0, 100, 10)
@@ -214,6 +409,7 @@ animations = [{
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_h1kp2")
+playerNumber = null
 
 [node name="playerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0.25, 4.5)
@@ -242,16 +438,20 @@ region_enabled = true
 region_rect = Rect2(0, 0, 43, 22)
 
 [node name="bulletSpawn" type="Marker2D" parent="weapon"]
-position = Vector2(20, 0)
+position = Vector2(14, 0)
+
+[node name="health" type="AnimatedSprite2D" parent="."]
+position = Vector2(48, -7)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_wb7q8")
+animation = &"20"
 
 [node name="reload" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -13)
+position = Vector2(0, -14)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_apwj7")
 animation = &"scan"
-autoplay = "scan"
-frame = 1
-frame_progress = 0.809197
+frame_progress = 0.0387655
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_0iqki")
@@ -273,37 +473,16 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
-[node name="healthBar" type="TextureProgressBar" parent="."]
-z_index = 1
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
 offset_left = -12.0
-offset_top = -12.0
+offset_top = -10.0
 offset_right = 28.0
-offset_bottom = 28.0
-max_value = 10.0
+offset_bottom = 30.0
 texture_under = ExtResource("10_n4ppo")
 texture_progress = ExtResource("11_g1fxi")
-
-[node name="healthBar2" type="TextureProgressBar" parent="."]
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 28.0
-offset_bottom = 28.0
-max_value = 10.0
-texture_under = ExtResource("10_n4ppo")
-texture_progress = ExtResource("11_g1fxi")
-tint_under = Color(1, 1, 1, 0.376471)
-tint_progress = Color(1, 1, 1, 0.317647)
-
-[node name="healthBarTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="burstTimer" type="Timer" parent="."]
-wait_time = 10.0
 
 [connection signal="timeout" from="player1Timer" to="." method="_on_player_1_timer_timeout"]
 [connection signal="timeout" from="player2Timer" to="." method="_on_player_2_timer_timeout"]
 [connection signal="timeout" from="player3Timer" to="." method="_on_player_3_timer_timeout"]
 [connection signal="timeout" from="player4Timer" to="." method="_on_player_4_timer_timeout"]
-[connection signal="timeout" from="healthBarTimer" to="." method="_on_health_bar_timer_timeout"]
-[connection signal="timeout" from="burstTimer" to="." method="_on_burst_timer_timeout"]

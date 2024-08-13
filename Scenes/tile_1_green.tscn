@@ -10,7 +10,7 @@ size = Vector2(8.5, 5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ck70l")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["tiles"]]
 texture = ExtResource("1_huy1e")
 region_enabled = true
 region_rect = Rect2(0, 4, 9, 6)

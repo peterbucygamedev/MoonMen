@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ck70l"]
 size = Vector2(8.5, 5)
 
-[node name="tile_1_blue" type="StaticBody2D"]
+[node name="tile_1_blue" type="StaticBody2D" groups=["tiles"]]
 scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

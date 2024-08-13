@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cit8phcg1ivkb"]
+[gd_scene load_steps=19 format=3 uid="uid://cit8phcg1ivkb"]
 
 [ext_resource type="Script" path="res://Scripts/moon_station.gd" id="1_30wtf"]
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="1_ysaun"]
@@ -6,10 +6,12 @@
 [ext_resource type="Script" path="res://Scripts/player1Stats.gd" id="3_ffwt0"]
 [ext_resource type="AudioStream" uid="uid://7xgbaaojh4u7" path="res://Assets/atoning.mp3" id="3_oootw"]
 [ext_resource type="Script" path="res://Scripts/player2Stats.gd" id="4_g0whi"]
-[ext_resource type="Script" path="res://Scenes/player3Stats.gd" id="5_14tli"]
-[ext_resource type="Script" path="res://Scenes/player4Stats.gd" id="6_mlgim"]
+[ext_resource type="Script" path="res://Scripts/player3Stats.gd" id="7_4aksx"]
 [ext_resource type="PackedScene" uid="uid://qnodxhgnflbx" path="res://Scenes/tile_2_dark_grey.tscn" id="8_amrgq"]
+[ext_resource type="Script" path="res://Scripts/player4Stats.gd" id="8_tsbog"]
 [ext_resource type="PackedScene" uid="uid://dd4nvipurgdsu" path="res://Scenes/tile_4_dark_grey.tscn" id="9_dlptc"]
+[ext_resource type="PackedScene" uid="uid://bfcpucjxkqhkh" path="res://Scenes/burst_crate.tscn" id="11_w8fse"]
+[ext_resource type="PackedScene" uid="uid://cvogeqmlxoi7g" path="res://Scenes/health_crate.tscn" id="12_g0y0u"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dcjre"]
 
@@ -193,14 +195,14 @@ offset_left = 46.0
 offset_top = -310.0
 offset_right = 160.0
 offset_bottom = -287.0
-script = ExtResource("5_14tli")
+script = ExtResource("7_4aksx")
 
 [node name="player4Stats" type="Label" parent="."]
 offset_left = 379.0
 offset_top = -310.0
 offset_right = 514.0
 offset_bottom = -287.0
-script = ExtResource("6_mlgim")
+script = ExtResource("8_tsbog")
 
 [node name="tiles" type="Node" parent="."]
 
@@ -320,6 +322,12 @@ rotation = 1.57079
 
 [node name="tile_4_darkGrey26" parent="tiles" instance=ExtResource("9_dlptc")]
 position = Vector2(-2, -10)
+
+[node name="burstCrate" parent="." instance=ExtResource("11_w8fse")]
+position = Vector2(-104, 298)
+
+[node name="healthCrate" parent="." instance=ExtResource("12_g0y0u")]
+position = Vector2(-54, 299)
 
 [connection signal="body_entered" from="Label/addSpeed/addSpeedArea" to="." method="_on_add_speed_area_body_entered"]
 [connection signal="body_entered" from="Label/addDamage/addDamageArea" to="." method="_on_add_damage_area_body_entered"]

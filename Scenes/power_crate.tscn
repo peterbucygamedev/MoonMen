@@ -1,0 +1,151 @@
+[gd_scene load_steps=16 format=3 uid="uid://jas1sb5s4nr4"]
+
+[ext_resource type="Texture2D" uid="uid://c0gr8nqijl5lw" path="res://Assets/pixil-frame-0 - 2024-08-13T130858.509.png" id="1_eupu7"]
+[ext_resource type="Script" path="res://Scenes/power_crate.gd" id="1_xtw4b"]
+[ext_resource type="PackedScene" uid="uid://c64cpar7nrcf6" path="res://Scenes/power_crate_detonation.tscn" id="3_w2css"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ievo"]
+size = Vector2(30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpghm"]
+atlas = ExtResource("1_eupu7")
+region = Rect2(0, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhkpf"]
+atlas = ExtResource("1_eupu7")
+region = Rect2(30, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtr0g"]
+atlas = ExtResource("1_eupu7")
+region = Rect2(60, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7bu5"]
+atlas = ExtResource("1_eupu7")
+region = Rect2(0, 30, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qv6gq"]
+atlas = ExtResource("1_eupu7")
+region = Rect2(30, 30, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avu6u"]
+atlas = ExtResource("1_eupu7")
+region = Rect2(60, 30, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoths"]
+atlas = ExtResource("1_eupu7")
+region = Rect2(0, 60, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k3fg"]
+atlas = ExtResource("1_eupu7")
+region = Rect2(30, 60, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmoi0"]
+atlas = ExtResource("1_eupu7")
+region = Rect2(60, 60, 30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_omfta"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpghm")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhkpf")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtr0g")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7bu5")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qv6gq")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avu6u")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoths")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k3fg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmoi0")
+}],
+"loop": true,
+"name": &"detonate",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsxes"]
+size = Vector2(32, 32)
+
+[node name="powerCrate" type="RigidBody2D" groups=["power_crate"]]
+collision_layer = 3
+mass = 0.1
+gravity_scale = 0.1
+script = ExtResource("1_xtw4b")
+
+[node name="powerCrateCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8ievo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_omfta")
+animation = &"detonate"
+autoplay = "0"
+frame_progress = 0.132639
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="areaCollider" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_wsxes")
+
+[node name="detontateTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="powerCrateDetonation" parent="." instance=ExtResource("3_w2css")]
+
+[node name="destroyTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="detontateTimer" to="." method="_on_detontate_timer_timeout"]
+[connection signal="timeout" from="destroyTimer" to="." method="_on_destroy_timer_timeout"]

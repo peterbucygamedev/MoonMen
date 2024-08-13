@@ -5,11 +5,10 @@ const JUMP_VELOCITY = -400.0
 @onready var weapon = $weapon
 @onready var sprite_2d = $weapon/Sprite2D
 var bullet = preload("res://Scenes/bullet.tscn")
+var saw_blade = preload("res://Scenes/saw_blade.tscn")
 @onready var player = $"."
-var health = 100
+var health = 10
 var lastHealth = health
-@onready var healthBar = $health
-@onready var health_outline = $health/healthOutline
 @onready var bullet_spawn = $weapon/bulletSpawn
 @export var playerNumber = 0
 var select = false
@@ -20,6 +19,14 @@ var crouching = false
 @onready var player_2_timer = $player2Timer
 @onready var player_3_timer = $player3Timer
 @onready var player_4_timer = $player4Timer
+@onready var reload = $reload
+@onready var health_bar = $healthBar
+@onready var health_bar_timer = $healthBarTimer
+@onready var health_bar_2 = $healthBar2
+var secondary = false
+var burst = false
+@onready var burst_timer = $burstTimer
+
 
 
 
@@ -27,9 +34,9 @@ var crouching = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	healthBar.play("100")
-	health_outline.hide()
 	pass
+	reload.hide()
+	health_bar.hide()
 
 	
 func shoot():
@@ -38,9 +45,9 @@ func shoot():
 		audio_stream_player_2d.play()
 		var b = bullet.instantiate()
 		GameManager.player1Ammo -= 1
-		print(GameManager.player1Ammo)
+		#print(GameManager.player1Ammo)
 		b.speed = GameManager.player1Speed
-		print("current bulletSpeed for player", playerNumber, " is ", b.speed)
+		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
 		b.damage = GameManager.player1Damage
 		b.set_inertia(1000)
 		b.gravity_scale = 1
@@ -52,14 +59,14 @@ func shoot():
 	
 	elif GameManager.player1Ammo <= 0 and player_1_timer.is_stopped():
 		player_1_timer.start()
-		health_outline.show()
+		reload.show()
 		
 	if playerNumber == 1 and GameManager.player2Ammo > 0:
 		audio_stream_player_2d.play()
 		var b = bullet.instantiate()
 		GameManager.player2Ammo -= 1
 		b.speed = GameManager.player2Speed
-		print("current bulletSpeed for player", playerNumber, " is ", b.speed)
+		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
 		b.damage = GameManager.player2Damage
 		b.set_inertia(1000)
 		b.gravity_scale = 1
@@ -77,7 +84,7 @@ func shoot():
 		var b = bullet.instantiate()
 		GameManager.player3Ammo -= 1
 		b.speed = GameManager.player3Speed
-		print("current bulletSpeed for player", playerNumber, " is ", b.speed)
+		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
 		b.damage = GameManager.player3Damage
 		b.set_inertia(1000)
 		b.gravity_scale = 1
@@ -95,7 +102,7 @@ func shoot():
 		var b = bullet.instantiate()
 		GameManager.player4Ammo -= 1
 		b.speed = GameManager.player4Speed
-		print("current bulletSpeed for player", playerNumber, " is ", b.speed)
+		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
 		b.damage = GameManager.player4Damage
 		b.set_inertia(1000)
 		b.gravity_scale = 1
@@ -115,13 +122,89 @@ func shoot():
 	
 	#add_collision_exception_with(b)
 	#$weapon.add_collision_exception_with(b)
-
+func shootSecondary():
+	#var b = bullet.instantiate()
+	if playerNumber == 0 and GameManager.player1Ammo > 0:
+		audio_stream_player_2d.play()
+		var b = saw_blade.instantiate()
+		GameManager.player1Ammo -= 1
+		#print(GameManager.player1Ammo)
+		b.speed = GameManager.player1Speed
+		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
+		b.damage = GameManager.player1Damage
+		b.set_inertia(1000)
+		b.gravity_scale = 1
+		b.center_of_mass_mode = 1
+		b.center_of_mass = Vector2(0, 0.1)
+		player.owner.add_child(b)
+		b.transform = bullet_spawn.global_transform
+		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
+	
+	elif GameManager.player1Ammo <= 0 and player_1_timer.is_stopped():
+		player_1_timer.start()
+		reload.show()
+		
+	if playerNumber == 1 and GameManager.player2Ammo > 0:
+		audio_stream_player_2d.play()
+		var b = saw_blade.instantiate()
+		GameManager.player2Ammo -= 1
+		b.speed = GameManager.player2Speed
+		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
+		b.damage = GameManager.player2Damage
+		b.set_inertia(1000)
+		b.gravity_scale = 1
+		b.center_of_mass_mode = 1
+		b.center_of_mass = Vector2(0, 0.1)
+		player.owner.add_child(b)
+		b.transform = bullet_spawn.global_transform
+		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
+		
+	elif GameManager.player2Ammo <= 0 and player_2_timer.is_stopped():
+		player_2_timer.start()
+		
+	if playerNumber == 2 and GameManager.player3Ammo > 0:
+		audio_stream_player_2d.play()
+		var b = saw_blade.instantiate()
+		GameManager.player3Ammo -= 1
+		b.speed = GameManager.player3Speed
+		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
+		b.damage = GameManager.player3Damage
+		b.set_inertia(1000)
+		b.gravity_scale = 1
+		b.center_of_mass_mode = 1
+		b.center_of_mass = Vector2(0, 0.1)
+		player.owner.add_child(b)
+		b.transform = bullet_spawn.global_transform
+		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
+	
+	elif GameManager.player3Ammo <= 0 and player_3_timer.is_stopped():
+		player_3_timer.start()
+		
+	if playerNumber == 3 and GameManager.player4Ammo > 0:
+		audio_stream_player_2d.play()
+		var b = saw_blade.instantiate()
+		GameManager.player4Ammo -= 1
+		b.speed = GameManager.player4Speed
+		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
+		b.damage = GameManager.player4Damage
+		b.set_inertia(1000)
+		b.gravity_scale = 1
+		b.center_of_mass_mode = 1
+		b.center_of_mass = Vector2(0, 0.1)
+		player.owner.add_child(b)
+		b.transform = bullet_spawn.global_transform
+		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
+		
+	elif GameManager.player4Ammo <= 0 and player_4_timer.is_stopped():
+		player_4_timer.start()
 	
 func _physics_process(delta):
 	
+	health_bar.value = health
+	health_bar_2.value = health
+	#reload.play()
 	#print(playerDamage)
 	#print(health)
-	health_outline.play("scan")
 
 			
 	if health <= 0:
@@ -129,47 +212,6 @@ func _physics_process(delta):
 		#print("you died")
 		process_mode = Node.PROCESS_MODE_DISABLED
 		hide()
-		
-		
-	if health <= 10 and health < lastHealth:
-		healthBar.play("10")
-		lastHealth = health
-
-	if health > 10 and health <= 20 and health < lastHealth:
-		healthBar.play("20")
-		health_outline.play("scan")
-		lastHealth = health
-
-	if health > 20 and health <= 30 and health < lastHealth:
-		healthBar.play("30")
-		lastHealth = health
-
-	if health > 30 and health <= 40 and health < lastHealth:
-		healthBar.play("40")
-		lastHealth = health
-
-	if health > 40 and health <= 50 and health < lastHealth:
-		healthBar.play("50")
-		lastHealth = health
-
-	if health > 50 and health <= 60 and health < lastHealth:
-		healthBar.play("60")
-		lastHealth = health
-
-	if health > 60 and health <= 70 and health < lastHealth:
-		healthBar.play("70")
-		lastHealth = health
-
-	if health > 70 and health <= 80 and health < lastHealth:
-		healthBar.play("80")
-		lastHealth = health
-
-	if health > 80 and health <= 90 and health < lastHealth:
-		healthBar.play("90")
-		lastHealth = health
-
-	if health > 90 and health <= 100 and health < lastHealth:
-		healthBar.play("100")
 			
 	
 	if Input.is_joy_button_pressed(playerNumber, 9):
@@ -180,14 +222,30 @@ func _physics_process(delta):
 		crouching = false
 		
 	if Input.get_joy_axis(playerNumber, 5):
-		
-		if Input.is_action_just_pressed("shoot"):
-			shoot()
+		if burst:
+			if !secondary:
+				shoot()
+			if secondary:
+				shootSecondary()
+			if burst_timer.is_stopped():
+				burst_timer.start()
+				
+		elif !burst and Input.is_action_just_pressed("shoot"):
+			if !secondary:
+				shoot()
+			if secondary:
+				shootSecondary()
 			select = true
 			
 		if Input.is_action_just_released("shoot"):
 			select = false
 			
+	if Input.is_joy_button_pressed(playerNumber, 10):
+		if Input.is_action_just_pressed("shoot_secondary"):
+			secondary = !secondary
+			#shootSecondary()
+	
+	
 
 		
 	#print(select)
@@ -239,32 +297,31 @@ func _physics_process(delta):
 	var joystick_vertical = Input.get_joy_axis(playerNumber, 3)
 	$weapon.rotation = atan2(joystick_vertical, joystick_horizontal)
 	#print(direction)
-	
 
-	
-	
 	move_and_slide()
 	
-
-
-
-
 func _on_player_1_timer_timeout():
 	print("player1Reloaded")
 	GameManager.player1Ammo = 10
-	health_outline.hide()
-
-
+	reload.hide()
 
 func _on_player_2_timer_timeout():
 	GameManager.player2Ammo = 10
-
+	reload.hide()
 
 func _on_player_3_timer_timeout():
 	GameManager.player3Ammo = 10
-
-
+	reload.hide()
 
 func _on_player_4_timer_timeout():
 	GameManager.player4Ammo = 10
+	reload.hide()
 
+
+func _on_health_bar_timer_timeout():
+	#print("hide health")
+	health_bar.hide()
+
+
+func _on_burst_timer_timeout():
+	burst = false

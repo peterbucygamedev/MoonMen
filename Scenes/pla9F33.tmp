@@ -214,6 +214,7 @@ animations = [{
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_h1kp2")
+playerNumber = null
 
 [node name="playerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0.25, 4.5)
@@ -242,10 +243,10 @@ region_enabled = true
 region_rect = Rect2(0, 0, 43, 22)
 
 [node name="bulletSpawn" type="Marker2D" parent="weapon"]
-position = Vector2(20, 0)
+position = Vector2(14, 0)
 
 [node name="reload" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -13)
+position = Vector2(0, -14)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_apwj7")
 animation = &"scan"
@@ -273,37 +274,13 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
-[node name="healthBar" type="TextureProgressBar" parent="."]
-z_index = 1
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 28.0
-offset_bottom = 28.0
-max_value = 10.0
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 texture_under = ExtResource("10_n4ppo")
 texture_progress = ExtResource("11_g1fxi")
-
-[node name="healthBar2" type="TextureProgressBar" parent="."]
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 28.0
-offset_bottom = 28.0
-max_value = 10.0
-texture_under = ExtResource("10_n4ppo")
-texture_progress = ExtResource("11_g1fxi")
-tint_under = Color(1, 1, 1, 0.376471)
-tint_progress = Color(1, 1, 1, 0.317647)
-
-[node name="healthBarTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="burstTimer" type="Timer" parent="."]
-wait_time = 10.0
 
 [connection signal="timeout" from="player1Timer" to="." method="_on_player_1_timer_timeout"]
 [connection signal="timeout" from="player2Timer" to="." method="_on_player_2_timer_timeout"]
 [connection signal="timeout" from="player3Timer" to="." method="_on_player_3_timer_timeout"]
 [connection signal="timeout" from="player4Timer" to="." method="_on_player_4_timer_timeout"]
-[connection signal="timeout" from="healthBarTimer" to="." method="_on_health_bar_timer_timeout"]
-[connection signal="timeout" from="burstTimer" to="." method="_on_burst_timer_timeout"]

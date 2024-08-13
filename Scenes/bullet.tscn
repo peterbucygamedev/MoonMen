@@ -10,8 +10,7 @@ size = Vector2(4, 2.1)
 size = Vector2(4.5, 3)
 
 [node name="bullet" type="RigidBody2D" groups=["bullets"]]
-collision_layer = 3
-collision_mask = 3
+collision_mask = 2
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 0.1)
 inertia = 30.0
