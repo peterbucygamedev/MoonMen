@@ -1,5 +1,5 @@
 extends CharacterBody2D
-const SPEED = 300.0
+var SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var weapon = $weapon
@@ -22,11 +22,13 @@ var crouching = false
 @onready var player_4_timer = $player4Timer
 
 
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	healthBar.play("100")
+	health_outline.hide()
 	pass
 
 	
@@ -48,8 +50,9 @@ func shoot():
 		b.transform = bullet_spawn.global_transform
 		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
 	
-	elif GameManager.player1Ammo <= 0:
+	elif GameManager.player1Ammo <= 0 and player_1_timer.is_stopped():
 		player_1_timer.start()
+		health_outline.show()
 		
 	if playerNumber == 1 and GameManager.player2Ammo > 0:
 		audio_stream_player_2d.play()
@@ -66,7 +69,7 @@ func shoot():
 		b.transform = bullet_spawn.global_transform
 		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
 		
-	elif GameManager.player2Ammo <= 0:
+	elif GameManager.player2Ammo <= 0 and player_2_timer.is_stopped():
 		player_2_timer.start()
 		
 	if playerNumber == 2 and GameManager.player3Ammo > 0:
@@ -84,7 +87,7 @@ func shoot():
 		b.transform = bullet_spawn.global_transform
 		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
 	
-	elif GameManager.player3Ammo <= 0:
+	elif GameManager.player3Ammo <= 0 and player_3_timer.is_stopped():
 		player_3_timer.start()
 		
 	if playerNumber == 3 and GameManager.player4Ammo > 0:
@@ -102,7 +105,7 @@ func shoot():
 		b.transform = bullet_spawn.global_transform
 		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
 		
-	elif GameManager.player3Ammo <= 0:
+	elif GameManager.player4Ammo <= 0 and player_4_timer.is_stopped():
 		player_4_timer.start()
 		
 		
@@ -202,19 +205,22 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_joy_axis(playerNumber, 0)
+	#var direction = Input.get_joy_axis(playerNumber, 0)
 	#if direction > 0.05 or direction < -0.05:
 	#	velocity.x = direction * SPEED
 		#print("go")
+	var direction = Input.get_joy_axis(playerNumber, 0)
 	
 	if direction > 0.05 and crouching == false:
 		animated_sprite_2d.flip_h = false
+		#health_outline.flip_h = false
 		sprite_2d.flip_v = false
 		velocity.x = direction * SPEED
 		animated_sprite_2d.play("moving")
 		
 	elif direction < -0.05 and crouching == false:
 		animated_sprite_2d.flip_h = true
+		#health_outline.flip_h = true
 		sprite_2d.flip_v = true
 		velocity.x = direction * SPEED
 		animated_sprite_2d.play("moving")
@@ -223,6 +229,9 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		#print("stop")
 		animated_sprite_2d.play("idle")
+		
+	#elif crouching == true:
+	#	velocity.x = direction * (SPEED + 100)
 		
 	
 	
@@ -240,6 +249,22 @@ func _physics_process(delta):
 
 
 
-
 func _on_player_1_timer_timeout():
-	pass # Replace with function body.
+	print("player1Reloaded")
+	GameManager.player1Ammo = 10
+	health_outline.hide()
+
+
+
+func _on_player_2_timer_timeout():
+	GameManager.player2Ammo = 10
+
+
+func _on_player_3_timer_timeout():
+	GameManager.player3Ammo = 10
+
+
+
+func _on_player_4_timer_timeout():
+	GameManager.player4Ammo = 10
+

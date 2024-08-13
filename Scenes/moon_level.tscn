@@ -75,7 +75,6 @@ bus = &"Music"
 
 [node name="player" parent="players" instance=ExtResource("3_t8bgn")]
 position = Vector2(-493, 273)
-playerNumber = 0
 
 [node name="player2" parent="players" instance=ExtResource("3_t8bgn")]
 position = Vector2(-410, 268)

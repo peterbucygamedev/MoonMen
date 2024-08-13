@@ -25,6 +25,7 @@ offset_bottom = 40.0
 script = ExtResource("1_mea7v")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.005, 1)
 
 [node name="moon" type="Sprite2D" parent="."]
 position = Vector2(-1, 322)
@@ -220,7 +221,6 @@ bus = &"Music"
 
 [node name="player" parent="players" instance=ExtResource("1_yn0hc")]
 position = Vector2(-493, 273)
-playerNumber = 0
 
 [node name="player2" parent="players" instance=ExtResource("1_yn0hc")]
 position = Vector2(-410, 268)
