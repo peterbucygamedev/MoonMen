@@ -9,4 +9,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	text = "player3 speed = " + str(GameManager.player3Speed) + "\nplayer3 damage= " + str(GameManager.player3Damage) + "\nplayer3 points = " + str(moon_station.player3Points)
+	text = "p3Speed = " + str(GameManager.player3Speed) + "\np3Damage= " + str(GameManager.player3Damage) + "\np3Points = " + str(moon_station.player3Points)

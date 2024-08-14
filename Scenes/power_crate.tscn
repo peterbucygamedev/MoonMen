@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://jas1sb5s4nr4"]
 
 [ext_resource type="Texture2D" uid="uid://c0gr8nqijl5lw" path="res://Assets/pixil-frame-0 - 2024-08-13T130858.509.png" id="1_eupu7"]
-[ext_resource type="Script" path="res://Scenes/power_crate.gd" id="1_xtw4b"]
+[ext_resource type="Script" path="res://Scripts/power_crate.gd" id="1_wpobk"]
 [ext_resource type="PackedScene" uid="uid://c64cpar7nrcf6" path="res://Scenes/power_crate_detonation.tscn" id="3_w2css"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ievo"]
@@ -120,7 +120,7 @@ size = Vector2(32, 32)
 collision_layer = 3
 mass = 0.1
 gravity_scale = 0.1
-script = ExtResource("1_xtw4b")
+script = ExtResource("1_wpobk")
 
 [node name="powerCrateCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8ievo")

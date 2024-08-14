@@ -14,6 +14,7 @@ var player4StartingDamage
 @onready var next_level = $Label/nextLevel
 var statsUpdated = false
 const MOON_LEVEL = preload("res://Scenes/moon_level.tscn")
+var numberOfPlayers = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +27,8 @@ func _ready():
 	player3StartingDamage = GameManager.player3Damage
 	player4StartingDamage = GameManager.player4Damage
 
+func _process(delta):
+	print(numberOfPlayers)
 
 
 func _on_add_speed_area_body_entered(body):
@@ -115,4 +118,12 @@ func _on_subtract_damage_area_body_entered(body):
 
 func _on_next_level_body_entered(body):
 	if body.is_in_group("players"):
+		"""if numberOfPlayers >= 0:
+			numberOfPlayers += 1
+		if numberOfPlayers >= 4:"""
 		get_tree().change_scene_to_file("res://Scenes/moon_level.tscn")
+
+
+func _on_next_level_body_exited(body):
+	if body.is_in_group("players"):
+		numberOfPlayers -= 1

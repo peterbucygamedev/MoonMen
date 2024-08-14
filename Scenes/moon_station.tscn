@@ -1,17 +1,21 @@
-[gd_scene load_steps=19 format=3 uid="uid://cit8phcg1ivkb"]
+[gd_scene load_steps=24 format=3 uid="uid://cit8phcg1ivkb"]
 
 [ext_resource type="Script" path="res://Scripts/moon_station.gd" id="1_30wtf"]
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="1_ysaun"]
-[ext_resource type="Texture2D" uid="uid://v2f8xwliq5d2" path="res://Assets/pixil-frame-0 - 2024-08-11T215328.916.png" id="2_npiqs"]
+[ext_resource type="Texture2D" uid="uid://c0du68amxvgp" path="res://Assets/pixil-frame-0 - 2024-08-13T174415.559.png" id="2_p1ycq"]
 [ext_resource type="Script" path="res://Scripts/player1Stats.gd" id="3_ffwt0"]
 [ext_resource type="AudioStream" uid="uid://7xgbaaojh4u7" path="res://Assets/atoning.mp3" id="3_oootw"]
 [ext_resource type="Script" path="res://Scripts/player2Stats.gd" id="4_g0whi"]
 [ext_resource type="Script" path="res://Scripts/player3Stats.gd" id="7_4aksx"]
-[ext_resource type="PackedScene" uid="uid://qnodxhgnflbx" path="res://Scenes/tile_2_dark_grey.tscn" id="8_amrgq"]
 [ext_resource type="Script" path="res://Scripts/player4Stats.gd" id="8_tsbog"]
 [ext_resource type="PackedScene" uid="uid://dd4nvipurgdsu" path="res://Scenes/tile_4_dark_grey.tscn" id="9_dlptc"]
 [ext_resource type="PackedScene" uid="uid://bfcpucjxkqhkh" path="res://Scenes/burst_crate.tscn" id="11_w8fse"]
 [ext_resource type="PackedScene" uid="uid://cvogeqmlxoi7g" path="res://Scenes/health_crate.tscn" id="12_g0y0u"]
+[ext_resource type="Texture2D" uid="uid://cl5j26pwoucwy" path="res://Assets/pixil-frame-0 - 2024-08-13T150018.994.png" id="13_65x5q"]
+[ext_resource type="Texture2D" uid="uid://nsuk3024wcks" path="res://Assets/pixil-frame-0 - 2024-08-12T223306.278.png" id="13_t53du"]
+[ext_resource type="Texture2D" uid="uid://c2l57frgphdkv" path="res://Assets/pixil-frame-0 - 2024-08-12T221743.832.png" id="14_42xk4"]
+[ext_resource type="Texture2D" uid="uid://dg3a7i2d6r28q" path="res://Assets/pixil-frame-0 - 2024-08-04T120644.000.png" id="14_kg16o"]
+[ext_resource type="Texture2D" uid="uid://d1k72lofm3qqn" path="res://Assets/pixil-frame-0 - 2024-08-13T164316.224.png" id="16_50dx8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dcjre"]
 
@@ -22,7 +26,7 @@ size = Vector2(100, 20)
 size = Vector2(104, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4a3u"]
-size = Vector2(85, 20)
+size = Vector2(171, 102)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwrvp"]
 size = Vector2(97, 20)
@@ -30,49 +34,45 @@ size = Vector2(97, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy5sy"]
 size = Vector2(106, 22)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a847p"]
+size = Vector2(20, 8)
+
 [node name="moon_station" type="Node2D"]
 script = ExtResource("1_30wtf")
 
-[node name="Walls" type="Node" parent="."]
+[node name="boundries" type="Node" parent="."]
 
-[node name="Wall" type="StaticBody2D" parent="Walls" groups=["ground"]]
+[node name="Wall" type="StaticBody2D" parent="boundries" groups=["ground"]]
 position = Vector2(0, 325)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundries/Wall"]
 shape = SubResource("WorldBoundaryShape2D_dcjre")
 
-[node name="Wall2" type="StaticBody2D" parent="Walls" groups=["ground"]]
+[node name="Wall2" type="StaticBody2D" parent="boundries" groups=["ground"]]
 position = Vector2(-575, 0)
 rotation = 1.5708
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundries/Wall2"]
 shape = SubResource("WorldBoundaryShape2D_dcjre")
 
-[node name="Wall3" type="StaticBody2D" parent="Walls" groups=["ground"]]
+[node name="Wall3" type="StaticBody2D" parent="boundries" groups=["ground"]]
 position = Vector2(575, 0)
 rotation = -1.5708
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundries/Wall3"]
 shape = SubResource("WorldBoundaryShape2D_dcjre")
 
-[node name="Wall4" type="StaticBody2D" parent="Walls" groups=["ground"]]
+[node name="Wall4" type="StaticBody2D" parent="boundries" groups=["ground"]]
 position = Vector2(0, -325)
 rotation = -3.14159
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundries/Wall4"]
 shape = SubResource("WorldBoundaryShape2D_dcjre")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -25)
+position = Vector2(0, -106)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_npiqs")
-region_enabled = true
-region_rect = Rect2(69, -1, 778, 457)
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(0, -25)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_npiqs")
+texture = ExtResource("2_p1ycq")
 region_enabled = true
 region_rect = Rect2(69, -1, 778, 457)
 
@@ -89,6 +89,7 @@ offset_right = 40.0
 offset_bottom = -114.0
 
 [node name="addSpeed" type="MenuButton" parent="Label"]
+z_index = 1
 layout_mode = 0
 offset_left = -572.0
 offset_top = 333.0
@@ -103,6 +104,7 @@ position = Vector2(49, 57)
 shape = SubResource("RectangleShape2D_v6sjl")
 
 [node name="addDamage" type="MenuButton" parent="Label"]
+z_index = 1
 layout_mode = 0
 offset_left = 173.0
 offset_top = 333.0
@@ -117,21 +119,23 @@ position = Vector2(52, 54)
 shape = SubResource("RectangleShape2D_gv8hw")
 
 [node name="nextLevel" type="MenuButton" parent="Label"]
+z_index = 1
 layout_mode = 0
 offset_left = -45.0
-offset_top = 47.0
+offset_top = 329.0
 offset_right = 38.0
-offset_bottom = 78.0
-theme_override_colors/font_color = Color(4.33177e-06, 0, 0.881772, 1)
-text = "next level"
+offset_bottom = 360.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "level 1"
 
 [node name="nextLevel" type="Area2D" parent="Label/nextLevel"]
 
 [node name="nextLevelCollider" type="CollisionShape2D" parent="Label/nextLevel/nextLevel"]
-position = Vector2(45, 18)
+position = Vector2(46.5, -23)
 shape = SubResource("RectangleShape2D_y4a3u")
 
 [node name="subtractSpeed" type="MenuButton" parent="Label"]
+z_index = 1
 layout_mode = 0
 offset_left = -287.0
 offset_top = 333.0
@@ -146,6 +150,7 @@ position = Vector2(60.5, 58)
 shape = SubResource("RectangleShape2D_uwrvp")
 
 [node name="subtractDamage" type="MenuButton" parent="Label"]
+z_index = 1
 layout_mode = 0
 offset_left = 435.0
 offset_top = 333.0
@@ -162,175 +167,455 @@ shape = SubResource("RectangleShape2D_dy5sy")
 [node name="players" type="Node" parent="."]
 
 [node name="player" parent="players" instance=ExtResource("1_ysaun")]
-position = Vector2(-560, 297)
+position = Vector2(-451, 199)
 
 [node name="player2" parent="players" instance=ExtResource("1_ysaun")]
-position = Vector2(-517, 297)
+position = Vector2(-408, 199)
 playerNumber = 1
 
 [node name="player3" parent="players" instance=ExtResource("1_ysaun")]
-position = Vector2(-479, 297)
+position = Vector2(-370, 199)
 playerNumber = 2
 
 [node name="player4" parent="players" instance=ExtResource("1_ysaun")]
-position = Vector2(-436, 296)
+position = Vector2(-327, 198)
 playerNumber = 3
 
 [node name="player1Stats" type="Label" parent="."]
-offset_left = -572.0
-offset_top = -310.0
-offset_right = -467.0
-offset_bottom = -287.0
+z_index = 1
+offset_left = -463.0
+offset_top = 245.0
+offset_right = -340.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0.0171833, 0.0981106, 0.017014, 1)
+theme_override_font_sizes/font_size = 0
+text = "p#Speed = ##
+p#Damage = ##
+p#Points = ##"
 script = ExtResource("3_ffwt0")
 
 [node name="player2Stats" type="Label" parent="."]
-offset_left = -239.0
-offset_top = -310.0
-offset_right = -134.0
-offset_bottom = -287.0
+z_index = 1
+offset_left = -156.0
+offset_top = 243.0
+offset_right = -33.0
+offset_bottom = 318.0
+theme_override_colors/font_color = Color(0.0171833, 0.0981106, 0.017014, 1)
+theme_override_font_sizes/font_size = 0
+text = "p#Speed = ##
+p#Damage = ##
+p#Points = ##"
 script = ExtResource("4_g0whi")
 
 [node name="player3Stats" type="Label" parent="."]
-offset_left = 46.0
-offset_top = -310.0
-offset_right = 160.0
-offset_bottom = -287.0
+z_index = 1
+offset_left = 39.0
+offset_top = 237.0
+offset_right = 162.0
+offset_bottom = 312.0
+theme_override_colors/font_color = Color(0.0171833, 0.0981106, 0.017014, 1)
+theme_override_font_sizes/font_size = 0
+text = "p#Speed = ##
+p#Damage = ##
+p#Points = ##"
 script = ExtResource("7_4aksx")
 
 [node name="player4Stats" type="Label" parent="."]
-offset_left = 379.0
-offset_top = -310.0
-offset_right = 514.0
-offset_bottom = -287.0
+z_index = 1
+offset_left = 329.0
+offset_top = 242.0
+offset_right = 464.0
+offset_bottom = 317.0
+theme_override_colors/font_color = Color(0.0171833, 0.0981106, 0.017014, 1)
+theme_override_font_sizes/font_size = 0
+text = "p#Speed = ##
+p#Damage = ##
+p#Points = ##"
 script = ExtResource("8_tsbog")
 
 [node name="tiles" type="Node" parent="."]
 
-[node name="tile_2_darkGrey" parent="tiles" instance=ExtResource("8_amrgq")]
-position = Vector2(-382, 248)
-
-[node name="tile_2_darkGrey2" parent="tiles" instance=ExtResource("8_amrgq")]
-position = Vector2(-322, 210)
-
-[node name="tile_2_darkGrey3" parent="tiles" instance=ExtResource("8_amrgq")]
-position = Vector2(-259, 168)
-
-[node name="tile_2_darkGrey4" parent="tiles" instance=ExtResource("8_amrgq")]
-position = Vector2(-178, 130)
-
-[node name="tile_2_darkGrey5" parent="tiles" instance=ExtResource("8_amrgq")]
-position = Vector2(-100, 87)
-
-[node name="tile_2_darkGrey6" parent="tiles" instance=ExtResource("8_amrgq")]
-position = Vector2(-176, 35)
-
-[node name="tile_2_darkGrey7" parent="tiles" instance=ExtResource("8_amrgq")]
-position = Vector2(-256, -14)
-
-[node name="tile_2_darkGrey8" parent="tiles" instance=ExtResource("8_amrgq")]
-position = Vector2(-322, -57)
-
-[node name="tile_2_darkGrey9" parent="tiles" instance=ExtResource("8_amrgq")]
-position = Vector2(-367, -103)
-
-[node name="tile_2_darkGrey10" parent="tiles" instance=ExtResource("8_amrgq")]
-position = Vector2(-272, -142)
-
-[node name="tile_4_darkGrey" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(60, 248)
-
-[node name="tile_4_darkGrey2" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(159, 173)
-
-[node name="tile_4_darkGrey3" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(233, 108)
-
-[node name="tile_4_darkGrey4" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(327, 49)
-rotation = -0.785398
-
-[node name="tile_4_darkGrey5" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(462, -21)
-rotation = -0.785398
-
-[node name="tile_4_darkGrey6" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(311, -90)
-rotation = 0.785398
-
-[node name="tile_4_darkGrey7" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(135, -129)
-rotation = 0.785398
-
-[node name="tile_4_darkGrey9" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(-552, 226)
-
-[node name="tile_4_darkGrey10" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(-498, 226)
-
-[node name="tile_4_darkGrey11" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(-256, 228)
-
-[node name="tile_4_darkGrey12" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(-201, 227)
-
-[node name="tile_4_darkGrey13" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(196, 223)
-
-[node name="tile_4_darkGrey14" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(247, 224)
-
-[node name="tile_4_darkGrey15" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(495, 229)
-
-[node name="tile_4_darkGrey16" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(546, 228)
-
-[node name="tile_4_darkGrey17" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(-371, 74)
-
-[node name="tile_4_darkGrey18" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(-478, 49)
-rotation = 0.785397
-
-[node name="tile_4_darkGrey19" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(-518, 8)
-rotation = 0.785397
-
-[node name="tile_4_darkGrey20" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(-546, -47)
-rotation = 1.57079
-
-[node name="tile_4_darkGrey21" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(-546, -47)
-rotation = 1.57079
-
-[node name="tile_4_darkGrey22" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(387, 83)
-rotation = 3.14159
-
-[node name="tile_4_darkGrey23" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(473, 54)
-rotation = 2.35619
-
-[node name="tile_4_darkGrey24" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(516, 18)
-rotation = 2.35619
-
-[node name="tile_4_darkGrey25" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(542, -49)
-rotation = 1.57079
-
-[node name="tile_4_darkGrey26" parent="tiles" instance=ExtResource("9_dlptc")]
-position = Vector2(-2, -10)
-
 [node name="burstCrate" parent="." instance=ExtResource("11_w8fse")]
-position = Vector2(-104, 298)
+position = Vector2(-106, 205)
 
 [node name="healthCrate" parent="." instance=ExtResource("12_g0y0u")]
-position = Vector2(-54, 299)
+position = Vector2(101, 195)
+
+[node name="walls" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="walls"]
+position = Vector2(-371, 6.00004)
+scale = Vector2(0.496016, 0.866848)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/StaticBody2D"]
+scale = Vector2(16.36, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="walls"]
+position = Vector2(374, 4.00004)
+scale = Vector2(0.496016, 0.866848)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/StaticBody2D2"]
+scale = Vector2(16.36, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="walls"]
+position = Vector2(507, -48)
+rotation = -0.785397
+scale = Vector2(0.496016, 0.866848)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/StaticBody2D3"]
+scale = Vector2(16.36, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="walls"]
+position = Vector2(-509, -49.9999)
+rotation = 0.785397
+scale = Vector2(0.496016, 0.866848)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/StaticBody2D10"]
+scale = Vector2(16.36, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="walls"]
+position = Vector2(-559, -185)
+rotation = 1.57079
+scale = Vector2(0.494022, 0.84954)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/StaticBody2D11"]
+scale = Vector2(16.36, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="walls"]
+position = Vector2(-416, -338)
+rotation = 2.61799
+scale = Vector2(1.02243, 1.78681)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/StaticBody2D12"]
+scale = Vector2(15.6132, 0.954353)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="walls"]
+position = Vector2(559, -180)
+rotation = -1.57079
+scale = Vector2(0.496016, 0.866848)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/StaticBody2D4"]
+scale = Vector2(16.36, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="walls"]
+position = Vector2(436, -334)
+rotation = -2.61799
+scale = Vector2(0.859546, 1.50216)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/StaticBody2D5"]
+scale = Vector2(16.36, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="walls"]
+position = Vector2(374, 4.00004)
+scale = Vector2(0.496016, 0.866848)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/StaticBody2D6"]
+scale = Vector2(16.36, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls/StaticBody2D6"]
+position = Vector2(-1808.41, 168.426)
+scale = Vector2(10.8217, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="walls/StaticBody2D6"]
+position = Vector2(-1207.62, 171.887)
+scale = Vector2(10.8217, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="walls/StaticBody2D6"]
+position = Vector2(-298.377, 166.119)
+scale = Vector2(10.8217, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="walls/StaticBody2D6"]
+position = Vector2(300.394, 166.119)
+scale = Vector2(10.8217, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="walls/StaticBody2D6"]
+position = Vector2(-1907.2, 200.727)
+rotation = 1.57079
+scale = Vector2(3.08006, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="walls/StaticBody2D6"]
+position = Vector2(-1701.56, 193.806)
+rotation = 1.57079
+scale = Vector2(1.87042, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="walls/StaticBody2D6"]
+position = Vector2(-1318.51, 190.345)
+rotation = 1.57079
+scale = Vector2(1.87042, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="walls/StaticBody2D6"]
+position = Vector2(-1102.79, 193.806)
+rotation = 1.57079
+scale = Vector2(1.87042, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="walls/StaticBody2D6"]
+position = Vector2(-409.261, 183.423)
+rotation = 1.57079
+scale = Vector2(1.87042, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="walls/StaticBody2D6"]
+position = Vector2(-187.494, 184.577)
+rotation = 1.57079
+scale = Vector2(1.87042, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="walls/StaticBody2D6"]
+position = Vector2(189.51, 183.423)
+rotation = 1.57079
+scale = Vector2(1.87042, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="walls"]
+position = Vector2(507, -48)
+rotation = -0.785397
+scale = Vector2(0.496016, 0.866848)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/StaticBody2D7"]
+scale = Vector2(16.36, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="walls"]
+position = Vector2(559, -180)
+rotation = -1.57079
+scale = Vector2(0.496016, 0.866848)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/StaticBody2D8"]
+scale = Vector2(16.36, 1)
+shape = SubResource("RectangleShape2D_a847p")
+
+[node name="tile_4_darkGrey" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(-224, 52)
+rotation = 0.785397
+scale = Vector2(3.9799, 2)
+
+[node name="tile_4_darkGrey6" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(-166, 276)
+rotation = 1.57079
+scale = Vector2(3.9799, 2)
+
+[node name="tile_4_darkGrey7" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(173, 272)
+rotation = 1.57079
+scale = Vector2(3.9799, 2)
+
+[node name="tile_4_darkGrey5" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(0, 226)
+scale = Vector2(13.1799, 2)
+
+[node name="tile_4_darkGrey3" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(-376, 233)
+scale = Vector2(7.89616, 2)
+
+[node name="tile_4_darkGrey8" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(-527, 272)
+scale = Vector2(4.77616, 2)
+
+[node name="tile_4_darkGrey9" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(-226, 271)
+scale = Vector2(4.77616, 2)
+
+[node name="tile_4_darkGrey10" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(226, 271)
+scale = Vector2(4.77616, 2)
+
+[node name="tile_4_darkGrey11" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(525, 271)
+scale = Vector2(4.77616, 2)
+
+[node name="tile_4_darkGrey12" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(-577, 234)
+rotation = 1.57079
+scale = Vector2(2.73616, 2)
+
+[node name="tile_4_darkGrey13" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(-470, 265)
+rotation = 1.57079
+scale = Vector2(2.73616, 2)
+
+[node name="tile_4_darkGrey14" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(-282, 265)
+rotation = 1.57079
+scale = Vector2(2.73616, 2)
+
+[node name="tile_4_darkGrey15" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(285, 265)
+rotation = 1.57079
+scale = Vector2(2.73616, 2)
+
+[node name="tile_4_darkGrey16" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(575, 230)
+rotation = 1.57079
+scale = Vector2(2.73616, 2)
+
+[node name="tile_4_darkGrey4" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(377, 233)
+scale = Vector2(7.89616, 2)
+
+[node name="tile_4_darkGrey2" parent="walls" instance=ExtResource("9_dlptc")]
+position = Vector2(242, 52)
+rotation = -0.785397
+scale = Vector2(3.78891, 2)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 400)
+rotation = -3.14159
+scale = Vector2(11.8389, 3.27843)
+texture = ExtResource("14_kg16o")
+
+[node name="lights" type="Node" parent="."]
+
+[node name="PointLight2D5" type="PointLight2D" parent="lights"]
+position = Vector2(-524, 255)
+scale = Vector2(1, 0.19)
+texture = ExtResource("13_65x5q")
+
+[node name="PointLight2D6" type="PointLight2D" parent="lights"]
+position = Vector2(-225, 257)
+scale = Vector2(1, 0.19)
+texture = ExtResource("13_65x5q")
+
+[node name="PointLight2D7" type="PointLight2D" parent="lights"]
+position = Vector2(228, 251)
+scale = Vector2(1, 0.19)
+texture = ExtResource("13_65x5q")
+
+[node name="PointLight2D8" type="PointLight2D" parent="lights"]
+position = Vector2(525, 253)
+scale = Vector2(1, 0.19)
+texture = ExtResource("13_65x5q")
+
+[node name="PointLight2D9" type="PointLight2D" parent="lights"]
+position = Vector2(-378, 289)
+scale = Vector2(1.72, 1.03)
+texture = ExtResource("13_65x5q")
+
+[node name="PointLight2D10" type="PointLight2D" parent="lights"]
+position = Vector2(-81, 288)
+scale = Vector2(1.72, 1.03)
+texture = ExtResource("13_65x5q")
+
+[node name="PointLight2D11" type="PointLight2D" parent="lights"]
+position = Vector2(85, 288)
+scale = Vector2(1.72, 1.03)
+texture = ExtResource("13_65x5q")
+
+[node name="PointLight2D12" type="PointLight2D" parent="lights"]
+position = Vector2(377, 288)
+scale = Vector2(1.72, 1.03)
+texture = ExtResource("13_65x5q")
+
+[node name="PointLight2D13" type="PointLight2D" parent="lights"]
+position = Vector2(0, 165)
+scale = Vector2(1.72, 1.03)
+texture = ExtResource("13_65x5q")
+
+[node name="PointLight2D14" type="PointLight2D" parent="lights"]
+position = Vector2(-370, 6)
+scale = Vector2(8.4, 0.39)
+texture = ExtResource("14_42xk4")
+
+[node name="PointLight2D15" type="PointLight2D" parent="lights"]
+position = Vector2(372, 5)
+scale = Vector2(8.4, 0.39)
+texture = ExtResource("14_42xk4")
+
+[node name="PointLight2D16" type="PointLight2D" parent="lights"]
+position = Vector2(-506, -48)
+rotation = 0.785397
+scale = Vector2(8.4, 0.39)
+texture = ExtResource("14_42xk4")
+
+[node name="PointLight2D17" type="PointLight2D" parent="lights"]
+position = Vector2(510, -47)
+rotation = -0.785397
+scale = Vector2(8.4, 0.39)
+texture = ExtResource("14_42xk4")
+
+[node name="PointLight2D18" type="PointLight2D" parent="lights"]
+position = Vector2(-560, -184)
+rotation = -1.57079
+scale = Vector2(8.4, 0.39)
+texture = ExtResource("14_42xk4")
+
+[node name="PointLight2D19" type="PointLight2D" parent="lights"]
+position = Vector2(559, -180)
+rotation = -1.57079
+scale = Vector2(8.4, 0.39)
+texture = ExtResource("14_42xk4")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="lights"]
+energy = 0.1
+blend_mode = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="lights"]
+position = Vector2(0, -328)
+scale = Vector2(5.47211, 5.47211)
+energy = 0.5
+blend_mode = 1
+texture = ExtResource("13_t53du")
+
+[node name="PointLight2D2" type="PointLight2D" parent="lights"]
+position = Vector2(0, -525)
+scale = Vector2(9.09396, 9.09396)
+energy = 0.5
+texture = ExtResource("13_t53du")
+
+[node name="PointLight2D3" type="PointLight2D" parent="lights"]
+position = Vector2(0, 165)
+scale = Vector2(5.41717, -2.76806)
+energy = 0.5
+blend_mode = 1
+texture = ExtResource("13_t53du")
+
+[node name="PointLight2D4" type="PointLight2D" parent="lights"]
+position = Vector2(1, 173)
+scale = Vector2(9.07011, -2.35811)
+energy = 0.5
+texture = ExtResource("13_t53du")
+
+[node name="PointLight2D20" type="PointLight2D" parent="lights"]
+position = Vector2(0, -198)
+scale = Vector2(1, 7.4)
+energy = 0.5
+texture = ExtResource("13_t53du")
+
+[node name="PointLight2D21" type="PointLight2D" parent="lights"]
+position = Vector2(-2, 312)
+scale = Vector2(58.1939, 1.6301)
+energy = 0.5
+blend_mode = 1
+texture = ExtResource("16_50dx8")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -59.0
+offset_top = -176.0
+offset_right = 3.0
+offset_bottom = -153.0
+scale = Vector2(1.80809, 1.80809)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Spec Up"
 
 [connection signal="body_entered" from="Label/addSpeed/addSpeedArea" to="." method="_on_add_speed_area_body_entered"]
 [connection signal="body_entered" from="Label/addDamage/addDamageArea" to="." method="_on_add_damage_area_body_entered"]
 [connection signal="body_entered" from="Label/nextLevel/nextLevel" to="." method="_on_next_level_body_entered"]
+[connection signal="body_exited" from="Label/nextLevel/nextLevel" to="." method="_on_next_level_body_exited"]
 [connection signal="body_entered" from="Label/subtractSpeed/subtractSpeedArea" to="." method="_on_subtract_speed_area_body_entered"]
 [connection signal="body_entered" from="Label/subtractDamage/subtractDamageArea" to="." method="_on_subtract_damage_area_body_entered"]
