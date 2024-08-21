@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bfcpucjxkqhkh"]
 
-[ext_resource type="Texture2D" uid="uid://g1i323e4e7m1" path="res://Assets/pixil-frame-0 - 2024-08-13T122810.394.png" id="1_f07es"]
+[ext_resource type="Texture2D" uid="uid://g1i323e4e7m1" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-13T122810.394.png" id="1_f07es"]
 [ext_resource type="Script" path="res://Scripts/burst_crate.gd" id="1_uxe4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58qee"]

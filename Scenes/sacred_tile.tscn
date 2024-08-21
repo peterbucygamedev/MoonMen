@@ -1,12 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://6sbx3g7lc6h2"]
 
-[ext_resource type="Texture2D" uid="uid://jfwya1xvun6v" path="res://Assets/pixil-frame-0 - 2024-08-18T195145.513.png" id="1_yvcug"]
-[ext_resource type="Texture2D" uid="uid://c5ubxtmdmtksf" path="res://Assets/pixil-frame-0 - 2024-08-18T195234.346.png" id="2_p8qwe"]
+[ext_resource type="Texture2D" uid="uid://jfwya1xvun6v" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-18T195145.513.png" id="1_gfuvm"]
+[ext_resource type="Texture2D" uid="uid://c5ubxtmdmtksf" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195234.346.png" id="2_p8qwe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bdrxq"]
 size = Vector2(247.832, 10)
 
 [node name="sacredTile" type="StaticBody2D"]
+z_index = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -15,25 +16,23 @@ scale = Vector2(1.02489, 1.03222)
 shape = SubResource("RectangleShape2D_bdrxq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_yvcug")
+texture = ExtResource("1_gfuvm")
 region_enabled = true
-region_rect = Rect2(746, 965, 255, 11)
+region_rect = Rect2(746, 967, 255, 9)
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
-position = Vector2(-82, -4)
-scale = Vector2(12, 0.3)
-energy = 2.0
+position = Vector2(-68, -3)
+scale = Vector2(10, 0.2)
+energy = 3.0
 texture = ExtResource("2_p8qwe")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Sprite2D"]
-position = Vector2(-15, 1)
-rotation = 0.523599
-scale = Vector2(2.381, 0.3)
-energy = 2.0
+scale = Vector2(2, 0.7)
+energy = 3.0
 texture = ExtResource("2_p8qwe")
 
 [node name="PointLight2D3" type="PointLight2D" parent="Sprite2D"]
-position = Vector2(60, 5)
-scale = Vector2(14, 0.3)
-energy = 2.0
+position = Vector2(68, 3)
+scale = Vector2(10, 0.2)
+energy = 3.0
 texture = ExtResource("2_p8qwe")

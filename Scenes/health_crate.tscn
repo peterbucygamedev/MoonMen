@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cvogeqmlxoi7g"]
 
 [ext_resource type="Script" path="res://Scripts/health_crate.gd" id="1_gm5n7"]
-[ext_resource type="Texture2D" uid="uid://g1i323e4e7m1" path="res://Assets/pixil-frame-0 - 2024-08-13T122810.394.png" id="1_k7ps5"]
+[ext_resource type="Texture2D" uid="uid://g1i323e4e7m1" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-13T122810.394.png" id="1_k7ps5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vxre"]
 size = Vector2(22, 8)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://jas1sb5s4nr4"]
 
-[ext_resource type="Texture2D" uid="uid://c0gr8nqijl5lw" path="res://Assets/pixil-frame-0 - 2024-08-13T130858.509.png" id="1_eupu7"]
+[ext_resource type="Texture2D" uid="uid://c0gr8nqijl5lw" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-13T130858.509.png" id="1_eupu7"]
 [ext_resource type="Script" path="res://Scripts/power_crate.gd" id="1_wpobk"]
 [ext_resource type="PackedScene" uid="uid://c64cpar7nrcf6" path="res://Scenes/power_crate_detonation.tscn" id="3_w2css"]
 [ext_resource type="Script" path="res://Scripts/explosionArea.gd" id="4_wgwxt"]

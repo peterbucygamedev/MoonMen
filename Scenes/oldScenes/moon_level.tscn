@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://hfn2jcrm06p8"]
 
 [ext_resource type="Script" path="res://Scripts/moon_level.gd" id="1_ilsri"]
-[ext_resource type="Texture2D" uid="uid://bkiv3hjq5bc8o" path="res://Assets/pixil-frame-0 - 2024-08-09T111005.085.png" id="2_j70da"]
+[ext_resource type="Texture2D" uid="uid://bkiv3hjq5bc8o" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-09T111005.085.png" id="2_j70da"]
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="3_8xlvn"]
 [ext_resource type="PackedScene" uid="uid://17as6hkt0je" path="res://Scenes/oldScenes/tile_4_red.tscn" id="4_ogeo5"]
-[ext_resource type="Texture2D" uid="uid://nsuk3024wcks" path="res://Assets/pixil-frame-0 - 2024-08-12T223306.278.png" id="5_bk06u"]
+[ext_resource type="Texture2D" uid="uid://nsuk3024wcks" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-12T223306.278.png" id="5_bk06u"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mvwim"]
 

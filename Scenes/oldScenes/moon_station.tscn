@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://cit8phcg1ivkb"]
 
 [ext_resource type="Script" path="res://Scripts/moon_station.gd" id="1_v5qmt"]
-[ext_resource type="AudioStream" uid="uid://7xgbaaojh4u7" path="res://Assets/atoning.mp3" id="2_0u6il"]
+[ext_resource type="AudioStream" uid="uid://7xgbaaojh4u7" path="res://Assets/music/atoning.mp3" id="2_0u6il"]
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="3_efhyx"]
 [ext_resource type="Script" path="res://Scripts/player1Stats.gd" id="4_dou1n"]
 [ext_resource type="Script" path="res://Scripts/player2Stats.gd" id="5_s0hr2"]
@@ -10,10 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://bfcpucjxkqhkh" path="res://Scenes/burst_crate.tscn" id="8_7gh3m"]
 [ext_resource type="PackedScene" uid="uid://cvogeqmlxoi7g" path="res://Scenes/health_crate.tscn" id="9_sllnc"]
 [ext_resource type="PackedScene" uid="uid://dd4nvipurgdsu" path="res://Scenes/oldScenes/tile_4_dark_grey.tscn" id="10_jlrb8"]
-[ext_resource type="Texture2D" uid="uid://cl5j26pwoucwy" path="res://Assets/pixil-frame-0 - 2024-08-13T150018.994.png" id="11_kr36u"]
-[ext_resource type="Texture2D" uid="uid://nsuk3024wcks" path="res://Assets/pixil-frame-0 - 2024-08-12T223306.278.png" id="12_4ru4r"]
-[ext_resource type="Texture2D" uid="uid://d1k72lofm3qqn" path="res://Assets/pixil-frame-0 - 2024-08-13T164316.224.png" id="13_1wd37"]
-[ext_resource type="Texture2D" uid="uid://byn8c1sxbnpx8" path="res://Assets/pixil-frame-0 - 2024-08-13T175036.685.png" id="14_00i5b"]
+[ext_resource type="Texture2D" uid="uid://cl5j26pwoucwy" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-13T150018.994.png" id="11_kr36u"]
+[ext_resource type="Texture2D" uid="uid://nsuk3024wcks" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-12T223306.278.png" id="12_4ru4r"]
+[ext_resource type="Texture2D" uid="uid://d1k72lofm3qqn" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-13T164316.224.png" id="13_1wd37"]
+[ext_resource type="Texture2D" uid="uid://byn8c1sxbnpx8" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-13T175036.685.png" id="14_00i5b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6sjl"]
 size = Vector2(100, 20)

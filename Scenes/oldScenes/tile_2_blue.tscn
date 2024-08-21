@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2u08dqmr7hvc"]
 
-[ext_resource type="Texture2D" uid="uid://crlvo7p7mwqh" path="res://Assets/pixil-frame-0 - 2024-08-04T114601.451.png" id="1_7ieyp"]
+[ext_resource type="Texture2D" uid="uid://crlvo7p7mwqh" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-04T114601.451.png" id="1_7ieyp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhhhm"]
 size = Vector2(14, 5)

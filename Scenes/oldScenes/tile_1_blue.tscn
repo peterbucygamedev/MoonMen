@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwg2lklxhdn3f"]
 
-[ext_resource type="Texture2D" uid="uid://crlvo7p7mwqh" path="res://Assets/pixil-frame-0 - 2024-08-04T114601.451.png" id="1_dcb5y"]
-[ext_resource type="Texture2D" uid="uid://d1k72lofm3qqn" path="res://Assets/pixil-frame-0 - 2024-08-13T164316.224.png" id="2_vjo6c"]
+[ext_resource type="Texture2D" uid="uid://crlvo7p7mwqh" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-04T114601.451.png" id="1_dcb5y"]
+[ext_resource type="Texture2D" uid="uid://d1k72lofm3qqn" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-13T164316.224.png" id="2_vjo6c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ck70l"]
 size = Vector2(8.5, 5)

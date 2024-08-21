@@ -1,16 +1,16 @@
 [gd_scene load_steps=14 format=3 uid="uid://33ltwejnfnxf"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_axe66"]
-[ext_resource type="Texture2D" uid="uid://dns4qa0r2klh6" path="res://Assets/pixil-frame-0 - 2024-08-09T194236.261.png" id="2_cusk3"]
+[ext_resource type="Texture2D" uid="uid://dns4qa0r2klh6" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-09T194236.261.png" id="2_cusk3"]
 [ext_resource type="PackedScene" uid="uid://cvogeqmlxoi7g" path="res://Scenes/health_crate.tscn" id="4_l8c8p"]
 [ext_resource type="PackedScene" uid="uid://df4ps4u5emquy" path="res://Scenes/game_manager.tscn" id="8_yfgf2"]
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="9_q1ndp"]
 [ext_resource type="PackedScene" uid="uid://jas1sb5s4nr4" path="res://Scenes/power_crate.tscn" id="10_nx2s4"]
 [ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/sacred_tile_3.tscn" id="11_kskmq"]
-[ext_resource type="Texture2D" uid="uid://cl5j26pwoucwy" path="res://Assets/pixil-frame-0 - 2024-08-13T150018.994.png" id="11_n72xm"]
+[ext_resource type="Texture2D" uid="uid://cl5j26pwoucwy" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-13T150018.994.png" id="11_n72xm"]
 [ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/sacred_tile_4.tscn" id="11_u2hka"]
 [ext_resource type="PackedScene" uid="uid://bfcpucjxkqhkh" path="res://Scenes/burst_crate.tscn" id="11_w5rpq"]
-[ext_resource type="Texture2D" uid="uid://d1k72lofm3qqn" path="res://Assets/pixil-frame-0 - 2024-08-13T164316.224.png" id="13_hdiy4"]
+[ext_resource type="Texture2D" uid="uid://d1k72lofm3qqn" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-13T164316.224.png" id="13_hdiy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x577d"]
 size = Vector2(106, 95)

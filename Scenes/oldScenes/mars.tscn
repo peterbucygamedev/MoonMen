@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://beny07vkcgcvr"]
 
-[ext_resource type="Texture2D" uid="uid://4ioqdwbc6qgx" path="res://Assets/pixil-frame-0 - 2024-08-13T195337.895.png" id="1_ub2jd"]
+[ext_resource type="Texture2D" uid="uid://4ioqdwbc6qgx" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-13T195337.895.png" id="1_ub2jd"]
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="2_522ud"]
 [ext_resource type="PackedScene" uid="uid://cewn5u0ew3cxt" path="res://Scenes/oldScenes/tile_4_green.tscn" id="3_l04b2"]
 [ext_resource type="PackedScene" uid="uid://cvogeqmlxoi7g" path="res://Scenes/health_crate.tscn" id="4_di562"]

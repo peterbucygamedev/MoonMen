@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://csm0e0a381u4"]
 
-[ext_resource type="Texture2D" uid="uid://bkk0jf5onnfch" path="res://Assets/pixil-frame-0 - 2024-08-13T102206.355.png" id="1_lsor8"]
+[ext_resource type="Texture2D" uid="uid://bkk0jf5onnfch" path="res://Assets/sprites/pixil-frame-0 - 2024-08-13T102206.355.png" id="1_lsor8"]
 [ext_resource type="Script" path="res://Scripts/saw_blade.gd" id="1_lxi2l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qplom"]
