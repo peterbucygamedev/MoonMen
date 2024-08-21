@@ -3,12 +3,15 @@ var speed = 750
 var damage = 1
 var bulletNumber = 0
 @onready var timer = $Timer
+@onready var teleport_timer = $teleportTimer
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_continuous_collision_detection_mode(1)
-	set_inertia(30)
-	gravity_scale = 1
+	set_inertia(10000)
+	gravity_scale = 0.1
 	center_of_mass_mode = 1
 	center_of_mass = Vector2(0, 0.1)
 	timer.start()
@@ -29,3 +32,16 @@ func _on_area_2d_body_entered(body):
 
 func _on_timer_timeout():
 	queue_free()
+	
+func _process(delta):
+	print(linear_velocity)
+	pass
+
+
+
+
+
+
+
+	
+

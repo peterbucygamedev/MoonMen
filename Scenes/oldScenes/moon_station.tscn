@@ -1,0 +1,458 @@
+[gd_scene load_steps=21 format=3 uid="uid://cit8phcg1ivkb"]
+
+[ext_resource type="Script" path="res://Scripts/moon_station.gd" id="1_v5qmt"]
+[ext_resource type="AudioStream" uid="uid://7xgbaaojh4u7" path="res://Assets/atoning.mp3" id="2_0u6il"]
+[ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="3_efhyx"]
+[ext_resource type="Script" path="res://Scripts/player1Stats.gd" id="4_dou1n"]
+[ext_resource type="Script" path="res://Scripts/player2Stats.gd" id="5_s0hr2"]
+[ext_resource type="Script" path="res://Scripts/player3Stats.gd" id="6_ekdw2"]
+[ext_resource type="Script" path="res://Scripts/player4Stats.gd" id="7_jdkwk"]
+[ext_resource type="PackedScene" uid="uid://bfcpucjxkqhkh" path="res://Scenes/burst_crate.tscn" id="8_7gh3m"]
+[ext_resource type="PackedScene" uid="uid://cvogeqmlxoi7g" path="res://Scenes/health_crate.tscn" id="9_sllnc"]
+[ext_resource type="PackedScene" uid="uid://dd4nvipurgdsu" path="res://Scenes/oldScenes/tile_4_dark_grey.tscn" id="10_jlrb8"]
+[ext_resource type="Texture2D" uid="uid://cl5j26pwoucwy" path="res://Assets/pixil-frame-0 - 2024-08-13T150018.994.png" id="11_kr36u"]
+[ext_resource type="Texture2D" uid="uid://nsuk3024wcks" path="res://Assets/pixil-frame-0 - 2024-08-12T223306.278.png" id="12_4ru4r"]
+[ext_resource type="Texture2D" uid="uid://d1k72lofm3qqn" path="res://Assets/pixil-frame-0 - 2024-08-13T164316.224.png" id="13_1wd37"]
+[ext_resource type="Texture2D" uid="uid://byn8c1sxbnpx8" path="res://Assets/pixil-frame-0 - 2024-08-13T175036.685.png" id="14_00i5b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6sjl"]
+size = Vector2(100, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gv8hw"]
+size = Vector2(104, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4a3u"]
+size = Vector2(171, 102)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwrvp"]
+size = Vector2(97, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dy5sy"]
+size = Vector2(106, 22)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jc5a6"]
+
+[node name="moon_station" type="Node2D"]
+position = Vector2(1, 0)
+script = ExtResource("1_v5qmt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_0u6il")
+autoplay = true
+bus = &"Music"
+
+[node name="Label" type="Label" parent="."]
+offset_top = -137.0
+offset_right = 40.0
+offset_bottom = -114.0
+metadata/_edit_use_anchors_ = true
+
+[node name="addSpeed" type="MenuButton" parent="Label"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.35
+anchor_top = 22.8696
+anchor_right = -0.35
+anchor_bottom = 22.8696
+offset_left = -572.0
+offset_top = 333.0
+offset_right = -484.0
+offset_bottom = 364.0
+text = "add speed"
+metadata/_edit_use_anchors_ = true
+
+[node name="addSpeedArea" type="Area2D" parent="Label/addSpeed"]
+
+[node name="addSpeedCollider" type="CollisionShape2D" parent="Label/addSpeed/addSpeedArea"]
+position = Vector2(49, 57)
+shape = SubResource("RectangleShape2D_v6sjl")
+
+[node name="addDamage" type="MenuButton" parent="Label"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.35
+anchor_top = 22.8696
+anchor_right = -0.35
+anchor_bottom = 22.8696
+offset_left = 173.0
+offset_top = 333.0
+offset_right = 277.0
+offset_bottom = 364.0
+text = "add damage"
+metadata/_edit_use_anchors_ = true
+
+[node name="addDamageArea" type="Area2D" parent="Label/addDamage"]
+
+[node name="addDamageCollider" type="CollisionShape2D" parent="Label/addDamage/addDamageArea"]
+position = Vector2(52, 54)
+shape = SubResource("RectangleShape2D_gv8hw")
+
+[node name="nextLevel" type="MenuButton" parent="Label"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.025
+anchor_top = 4.47826
+anchor_right = -0.025
+anchor_bottom = 4.47826
+offset_left = -45.0
+offset_top = 329.0
+offset_right = 38.0
+offset_bottom = 360.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "level 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="nextLevel" type="Area2D" parent="Label/nextLevel"]
+
+[node name="nextLevelCollider" type="CollisionShape2D" parent="Label/nextLevel/nextLevel"]
+position = Vector2(46.5, -23)
+shape = SubResource("RectangleShape2D_y4a3u")
+
+[node name="subtractSpeed" type="MenuButton" parent="Label"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.35
+anchor_top = 22.8696
+anchor_right = -0.35
+anchor_bottom = 22.8696
+offset_left = -287.0
+offset_top = 333.0
+offset_right = -164.0
+offset_bottom = 373.0
+text = "subtract speed"
+metadata/_edit_use_anchors_ = true
+
+[node name="subtractSpeedArea" type="Area2D" parent="Label/subtractSpeed"]
+
+[node name="subtractSpeedCollider" type="CollisionShape2D" parent="Label/subtractSpeed/subtractSpeedArea"]
+position = Vector2(60.5, 58)
+shape = SubResource("RectangleShape2D_uwrvp")
+
+[node name="subtractDamage" type="MenuButton" parent="Label"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.35
+anchor_top = 22.8696
+anchor_right = -0.35
+anchor_bottom = 22.8696
+offset_left = 435.0
+offset_top = 333.0
+offset_right = 574.0
+offset_bottom = 373.0
+text = "subtract damage"
+metadata/_edit_use_anchors_ = true
+
+[node name="subtractDamageArea" type="Area2D" parent="Label/subtractDamage"]
+
+[node name="subtractDamageCollider" type="CollisionShape2D" parent="Label/subtractDamage/subtractDamageArea"]
+position = Vector2(89, 58)
+shape = SubResource("RectangleShape2D_dy5sy")
+
+[node name="players" type="Node" parent="."]
+
+[node name="player" parent="players" instance=ExtResource("3_efhyx")]
+position = Vector2(-458, -213)
+
+[node name="player2" parent="players" instance=ExtResource("3_efhyx")]
+position = Vector2(-415, -213)
+playerNumber = 1
+
+[node name="player3" parent="players" instance=ExtResource("3_efhyx")]
+position = Vector2(-377, -213)
+playerNumber = 2
+
+[node name="player4" parent="players" instance=ExtResource("3_efhyx")]
+position = Vector2(-334, -214)
+playerNumber = 3
+
+[node name="player1Stats" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -555.0
+offset_top = 507.0
+offset_right = -432.0
+offset_bottom = 582.0
+theme_override_colors/font_color = Color(0.0171833, 0.0981106, 0.017014, 1)
+theme_override_font_sizes/font_size = 0
+text = "p#Speed = ##
+p#Damage = ##
+p#Points = ##"
+script = ExtResource("4_dou1n")
+
+[node name="player2Stats" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -248.0
+offset_top = 505.0
+offset_right = -125.0
+offset_bottom = 580.0
+theme_override_colors/font_color = Color(0.0171833, 0.0981106, 0.017014, 1)
+theme_override_font_sizes/font_size = 0
+text = "p#Speed = ##
+p#Damage = ##
+p#Points = ##"
+script = ExtResource("5_s0hr2")
+
+[node name="player3Stats" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -53.0
+offset_top = 499.0
+offset_right = 70.0
+offset_bottom = 574.0
+theme_override_colors/font_color = Color(0.0171833, 0.0981106, 0.017014, 1)
+theme_override_font_sizes/font_size = 0
+text = "p#Speed = ##
+p#Damage = ##
+p#Points = ##"
+script = ExtResource("6_ekdw2")
+
+[node name="player4Stats" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = 237.0
+offset_top = 504.0
+offset_right = 372.0
+offset_bottom = 579.0
+theme_override_colors/font_color = Color(0.0171833, 0.0981106, 0.017014, 1)
+theme_override_font_sizes/font_size = 0
+text = "p#Speed = ##
+p#Damage = ##
+p#Points = ##"
+script = ExtResource("7_jdkwk")
+
+[node name="tiles" type="Node" parent="."]
+
+[node name="burstCrate" parent="." instance=ExtResource("8_7gh3m")]
+position = Vector2(-124, -126.5)
+
+[node name="healthCrate" parent="." instance=ExtResource("9_sllnc")]
+position = Vector2(83, -136.5)
+
+[node name="walls" type="Node" parent="."]
+
+[node name="tile_4_darkGrey" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(-243, 31.5)
+rotation = 0.785397
+scale = Vector2(3.9799, 2)
+
+[node name="tile_4_darkGrey6" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(-173, -136)
+rotation = 1.57079
+scale = Vector2(3.9799, 2)
+
+[node name="tile_4_darkGrey7" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(166, -140)
+rotation = 1.57079
+scale = Vector2(3.9799, 2)
+
+[node name="tile_4_darkGrey5" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(1, 738)
+scale = Vector2(13.1799, 2)
+
+[node name="tile_4_darkGrey3" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(-383, -179)
+scale = Vector2(7.89616, 2)
+
+[node name="tile_4_darkGrey8" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(-518, -5.5)
+scale = Vector2(4.77616, 2)
+
+[node name="tile_4_darkGrey9" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(-233, -141)
+scale = Vector2(4.77616, 2)
+
+[node name="tile_4_darkGrey10" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(219, -141)
+scale = Vector2(4.77616, 2)
+
+[node name="tile_4_darkGrey11" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(539, -7.5)
+scale = Vector2(4.77616, 2)
+
+[node name="tile_4_darkGrey12" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(-568, -43.4999)
+rotation = 1.57079
+scale = Vector2(2.73616, 2)
+
+[node name="tile_4_darkGrey14" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(-289, -147)
+rotation = 1.57079
+scale = Vector2(2.73616, 2)
+
+[node name="tile_4_darkGrey15" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(278, -147)
+rotation = 1.57079
+scale = Vector2(2.73616, 2)
+
+[node name="tile_4_darkGrey16" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(589, -48.4999)
+rotation = 1.57079
+scale = Vector2(2.73616, 2)
+
+[node name="tile_4_darkGrey4" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(370, -179)
+scale = Vector2(7.89616, 2)
+
+[node name="tile_4_darkGrey2" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(223, 31.5)
+rotation = -0.785397
+scale = Vector2(3.78891, 2)
+
+[node name="tile_4_darkGrey13" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(-449, 240)
+scale = Vector2(3.78891, 2)
+
+[node name="tile_4_darkGrey17" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(-192, 245)
+scale = Vector2(3.78891, 2)
+
+[node name="tile_4_darkGrey18" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(197, 241)
+scale = Vector2(3.78891, 2)
+
+[node name="tile_4_darkGrey19" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(449, 244)
+scale = Vector2(3.78891, 2)
+
+[node name="tile_4_darkGrey20" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(328, 171)
+scale = Vector2(3.78891, 2)
+
+[node name="tile_4_darkGrey21" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(-321, 176)
+scale = Vector2(3.78891, 2)
+
+[node name="tile_4_darkGrey22" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(-428, 107)
+scale = Vector2(3.78891, 2)
+
+[node name="tile_4_darkGrey23" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(438, 107)
+scale = Vector2(3.78891, 2)
+
+[node name="tile_4_darkGrey24" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(315, 32)
+rotation = 0.785397
+scale = Vector2(3.78891, 2)
+
+[node name="tile_4_darkGrey25" parent="walls" instance=ExtResource("10_jlrb8")]
+position = Vector2(-335, 32)
+rotation = -0.785397
+scale = Vector2(3.78891, 2)
+
+[node name="lights" type="Node" parent="."]
+
+[node name="PointLight2D5" type="PointLight2D" parent="lights"]
+position = Vector2(-515, -18)
+scale = Vector2(1, 0.19)
+texture = ExtResource("11_kr36u")
+
+[node name="PointLight2D6" type="PointLight2D" parent="lights"]
+position = Vector2(-231, -153)
+scale = Vector2(1.09217, 0.188426)
+texture = ExtResource("11_kr36u")
+
+[node name="PointLight2D7" type="PointLight2D" parent="lights"]
+position = Vector2(222, -154)
+scale = Vector2(1.06848, 0.191969)
+texture = ExtResource("11_kr36u")
+
+[node name="PointLight2D8" type="PointLight2D" parent="lights"]
+position = Vector2(538, -20)
+scale = Vector2(0.980262, 0.179621)
+texture = ExtResource("11_kr36u")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="lights"]
+position = Vector2(1, 0)
+energy = 0.1
+blend_mode = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="lights"]
+position = Vector2(-3, -269)
+scale = Vector2(5.47211, 5.47211)
+energy = 0.5
+blend_mode = 1
+texture = ExtResource("12_4ru4r")
+
+[node name="PointLight2D2" type="PointLight2D" parent="lights"]
+position = Vector2(0, -488)
+scale = Vector2(9.09396, 9.09396)
+energy = 0.5
+texture = ExtResource("12_4ru4r")
+
+[node name="PointLight2D3" type="PointLight2D" parent="lights"]
+position = Vector2(-1, 229)
+scale = Vector2(5.41717, -2.76806)
+energy = 0.5
+blend_mode = 1
+texture = ExtResource("12_4ru4r")
+
+[node name="PointLight2D4" type="PointLight2D" parent="lights"]
+position = Vector2(3, 194)
+scale = Vector2(9.07011, -2.35811)
+energy = 0.5
+texture = ExtResource("12_4ru4r")
+
+[node name="PointLight2D20" type="PointLight2D" parent="lights"]
+position = Vector2(1, -124)
+scale = Vector2(1, 7.4)
+energy = 0.5
+texture = ExtResource("12_4ru4r")
+
+[node name="PointLight2D21" type="PointLight2D" parent="lights"]
+position = Vector2(-2, 718)
+scale = Vector2(58.1939, 1.6301)
+energy = 0.5
+blend_mode = 1
+texture = ExtResource("13_1wd37")
+
+[node name="boundaries" type="Node" parent="."]
+
+[node name="Wall" type="StaticBody2D" parent="boundaries" groups=["ground"]]
+position = Vector2(0, 325)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundaries/Wall"]
+shape = SubResource("WorldBoundaryShape2D_jc5a6")
+
+[node name="Wall2" type="StaticBody2D" parent="boundaries" groups=["ground"]]
+position = Vector2(-575, 0)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundaries/Wall2"]
+shape = SubResource("WorldBoundaryShape2D_jc5a6")
+
+[node name="Wall3" type="StaticBody2D" parent="boundaries" groups=["ground"]]
+position = Vector2(575, 0)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundaries/Wall3"]
+shape = SubResource("WorldBoundaryShape2D_jc5a6")
+
+[node name="Wall4" type="StaticBody2D" parent="boundaries" groups=["ground"]]
+position = Vector2(0, -325)
+rotation = -3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundaries/Wall4"]
+shape = SubResource("WorldBoundaryShape2D_jc5a6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -2.38419e-07)
+scale = Vector2(1.29091, 1.30606)
+texture = ExtResource("14_00i5b")
+region_enabled = true
+region_rect = Rect2(0, 0, 913, 495)
+
+[connection signal="body_entered" from="Label/addSpeed/addSpeedArea" to="." method="_on_add_speed_area_body_entered"]
+[connection signal="body_entered" from="Label/addDamage/addDamageArea" to="." method="_on_add_damage_area_body_entered"]
+[connection signal="body_entered" from="Label/nextLevel/nextLevel" to="." method="_on_next_level_body_entered"]
+[connection signal="body_exited" from="Label/nextLevel/nextLevel" to="." method="_on_next_level_body_exited"]
+[connection signal="body_entered" from="Label/subtractSpeed/subtractSpeedArea" to="." method="_on_subtract_speed_area_body_entered"]
+[connection signal="body_entered" from="Label/subtractDamage/subtractDamageArea" to="." method="_on_subtract_damage_area_body_entered"]

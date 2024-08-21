@@ -5,6 +5,7 @@ var counter = 0
 @onready var power_crate_detonation = $powerCrateDetonation
 @onready var destroy_timer = $destroyTimer
 @onready var power_crate_collider = $powerCrateCollider
+@onready var explosion_area = $explosionArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,10 +42,12 @@ func _on_detontate_timer_timeout():
 	animated_sprite_2d.hide()
 	power_crate_detonation.restart()
 	power_crate_detonation.emitting = true
+	explosion_area.explode()
+	#cause physics explosion
 	#process_mode = Node.PROCESS_MODE_DISABLED
 	
 func _on_destroy_timer_timeout():
-	print("destroy")
+	#print("destroy")
 	queue_free()
 	
 

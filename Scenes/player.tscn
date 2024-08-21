@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://docaxey80f3nh" path="res://Assets/pixil-frame-0 - 2024-08-03T162605.042.png" id="3_a2hm7"]
 [ext_resource type="Texture2D" uid="uid://pdsvhbod1g46" path="res://Assets/pixil-frame-0 - 2024-08-05T151743.236.png" id="5_4somu"]
 [ext_resource type="Texture2D" uid="uid://q1k11q75u03i" path="res://Assets/pixil-frame-0 - 2024-08-12T223407.756.png" id="8_4cnnq"]
-[ext_resource type="AudioStream" uid="uid://dsnfw3ueiaiua" path="res://Assets/gunshot.mp3" id="9_0iqki"]
 [ext_resource type="Texture2D" uid="uid://bkuday3vkp6wr" path="res://Assets/pixil-frame-0 - 2024-08-13T085034.932.png" id="10_n4ppo"]
 [ext_resource type="Texture2D" uid="uid://cqmvmnglw2t4m" path="res://Assets/pixil-frame-0 - 2024-08-13T085146.548.png" id="11_g1fxi"]
 
@@ -104,7 +103,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tiboa")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_hhaq4")
 }, {
 "duration": 1.0,
@@ -112,7 +111,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slide",
-"speed": 30.0
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xmi7"]
@@ -210,9 +209,11 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ww0t"]
+
 [node name="player" type="CharacterBody2D" groups=["players"]]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 11
+collision_mask = 11
 script = ExtResource("1_h1kp2")
 
 [node name="playerCollision" type="CollisionShape2D" parent="."]
@@ -254,24 +255,7 @@ frame = 1
 frame_progress = 0.809197
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_0iqki")
 bus = &"Sound FX"
-
-[node name="player1Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="player2Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="player3Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="player4Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
 
 [node name="healthBar" type="TextureProgressBar" parent="."]
 z_index = 1
@@ -294,6 +278,22 @@ texture_progress = ExtResource("11_g1fxi")
 tint_under = Color(1, 1, 1, 0.376471)
 tint_progress = Color(1, 1, 1, 0.317647)
 
+[node name="player1Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="player2Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="player3Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="player4Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="healthBarTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
@@ -301,9 +301,16 @@ one_shot = true
 [node name="burstTimer" type="Timer" parent="."]
 wait_time = 10.0
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2ww0t")
+
 [connection signal="timeout" from="player1Timer" to="." method="_on_player_1_timer_timeout"]
 [connection signal="timeout" from="player2Timer" to="." method="_on_player_2_timer_timeout"]
 [connection signal="timeout" from="player3Timer" to="." method="_on_player_3_timer_timeout"]
 [connection signal="timeout" from="player4Timer" to="." method="_on_player_4_timer_timeout"]
 [connection signal="timeout" from="healthBarTimer" to="." method="_on_health_bar_timer_timeout"]
 [connection signal="timeout" from="burstTimer" to="." method="_on_burst_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

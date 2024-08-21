@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_axe66"]
 [ext_resource type="Texture2D" uid="uid://dns4qa0r2klh6" path="res://Assets/pixil-frame-0 - 2024-08-09T194236.261.png" id="2_cusk3"]
 [ext_resource type="PackedScene" uid="uid://cvogeqmlxoi7g" path="res://Scenes/health_crate.tscn" id="4_l8c8p"]
-[ext_resource type="PackedScene" uid="uid://dfi58u4bvn580" path="res://Scenes/tile_4_teal.tscn" id="6_4osok"]
-[ext_resource type="AudioStream" uid="uid://dsuvkgw0kopig" path="res://Assets/Sacred.mp3" id="7_5r7yr"]
 [ext_resource type="PackedScene" uid="uid://df4ps4u5emquy" path="res://Scenes/game_manager.tscn" id="8_yfgf2"]
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="9_q1ndp"]
 [ext_resource type="PackedScene" uid="uid://jas1sb5s4nr4" path="res://Scenes/power_crate.tscn" id="10_nx2s4"]
+[ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/sacred_tile_3.tscn" id="11_kskmq"]
 [ext_resource type="Texture2D" uid="uid://cl5j26pwoucwy" path="res://Assets/pixil-frame-0 - 2024-08-13T150018.994.png" id="11_n72xm"]
+[ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/sacred_tile_4.tscn" id="11_u2hka"]
 [ext_resource type="PackedScene" uid="uid://bfcpucjxkqhkh" path="res://Scenes/burst_crate.tscn" id="11_w5rpq"]
 [ext_resource type="Texture2D" uid="uid://d1k72lofm3qqn" path="res://Assets/pixil-frame-0 - 2024-08-13T164316.224.png" id="13_hdiy4"]
 
@@ -25,7 +25,6 @@ offset_bottom = 40.0
 script = ExtResource("1_axe66")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.005, 1)
 
 [node name="moon" type="Sprite2D" parent="."]
 position = Vector2(-1, 322)
@@ -37,7 +36,7 @@ region_rect = Rect2(0, 991, 1000, 9)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
 z_as_relative = false
-position = Vector2(-5, 71)
+position = Vector2(-4, 66)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_cusk3")
 
@@ -102,7 +101,6 @@ collision_mask = 3
 shape = SubResource("WorldBoundaryShape2D_vnrvs")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_5r7yr")
 autoplay = true
 bus = &"Music"
 
@@ -111,72 +109,48 @@ bus = &"Music"
 [node name="players" type="Node" parent="."]
 
 [node name="player" parent="players" instance=ExtResource("9_q1ndp")]
-position = Vector2(-493, 273)
+position = Vector2(-474, 286)
 
 [node name="player2" parent="players" instance=ExtResource("9_q1ndp")]
-position = Vector2(-410, 268)
+position = Vector2(-256, 295)
 playerNumber = 1
 
 [node name="player3" parent="players" instance=ExtResource("9_q1ndp")]
-position = Vector2(143, 282)
+position = Vector2(-550, 288)
 playerNumber = 2
 
 [node name="player4" parent="players" instance=ExtResource("9_q1ndp")]
-position = Vector2(326, 304)
+position = Vector2(-203, 293)
 playerNumber = 3
 
 [node name="powerCrates" type="Node" parent="."]
 
 [node name="powerCrate" parent="powerCrates" instance=ExtResource("10_nx2s4")]
-position = Vector2(-242, 266)
+position = Vector2(-119, 194)
 
 [node name="powerCrate2" parent="powerCrates" instance=ExtResource("10_nx2s4")]
 position = Vector2(-66, 270)
 
 [node name="powerCrate3" parent="powerCrates" instance=ExtResource("10_nx2s4")]
-position = Vector2(287, 269)
+position = Vector2(-128, 150)
 
 [node name="powerCrate4" parent="powerCrates" instance=ExtResource("10_nx2s4")]
-position = Vector2(336, 198)
+position = Vector2(-34, 139)
 
 [node name="powerCrate5" parent="powerCrates" instance=ExtResource("10_nx2s4")]
-position = Vector2(11, 144)
+position = Vector2(-73, 155)
 
 [node name="powerCrate6" parent="powerCrates" instance=ExtResource("10_nx2s4")]
-position = Vector2(-414, 116)
+position = Vector2(-84, 220)
 
 [node name="powerCrate7" parent="powerCrates" instance=ExtResource("10_nx2s4")]
-position = Vector2(-414, 116)
+position = Vector2(-31, 204)
 
 [node name="burstCrate" parent="." instance=ExtResource("11_w5rpq")]
 position = Vector2(-134, 296)
 
 [node name="healthCrate" parent="." instance=ExtResource("4_l8c8p")]
 position = Vector2(-20, 298)
-
-[node name="tile_4_teal" parent="." instance=ExtResource("6_4osok")]
-position = Vector2(-465, 198)
-rotation = 0.523598
-scale = Vector2(12.8046, 2)
-
-[node name="tile_4_teal2" parent="." instance=ExtResource("6_4osok")]
-position = Vector2(461, 194)
-rotation = -0.523598
-scale = Vector2(12.8046, 2)
-
-[node name="tile_4_teal3" parent="." instance=ExtResource("6_4osok")]
-position = Vector2(-2, 66)
-scale = Vector2(12.8046, 2)
-
-[node name="tile_4_teal4" parent="." instance=ExtResource("6_4osok")]
-position = Vector2(-311, 117)
-rotation = -0.523598
-scale = Vector2(5.11127, 2)
-
-[node name="tile_4_teal5" parent="." instance=ExtResource("6_4osok")]
-position = Vector2(333, 117)
-rotation = 0.523598
-scale = Vector2(5.11127, 2)
 
 [node name="lights" type="Node" parent="."]
 
@@ -233,6 +207,11 @@ position = Vector2(289, 13)
 scale = Vector2(0.253188, 0.253188)
 texture = ExtResource("13_hdiy4")
 
+[node name="PointLight2D14" type="PointLight2D" parent="lights"]
+position = Vector2(-9, -18)
+scale = Vector2(0.253188, 0.253188)
+texture = ExtResource("13_hdiy4")
+
 [node name="PointLight2D9" type="PointLight2D" parent="lights"]
 position = Vector2(546, -139)
 scale = Vector2(0.253188, 0.253188)
@@ -251,6 +230,18 @@ texture = ExtResource("13_hdiy4")
 [node name="PointLight2D13" type="PointLight2D" parent="lights"]
 position = Vector2(0, 11)
 texture = ExtResource("11_n72xm")
+
+[node name="sacredTile4" parent="." instance=ExtResource("11_u2hka")]
+position = Vector2(-373, 164)
+
+[node name="sacredTile5" parent="." instance=ExtResource("11_u2hka")]
+position = Vector2(351, 152)
+
+[node name="sacredTile3" parent="." instance=ExtResource("11_kskmq")]
+position = Vector2(-172, 82)
+
+[node name="sacredTile6" parent="." instance=ExtResource("11_kskmq")]
+position = Vector2(142, 80)
 
 [connection signal="body_entered" from="Label/Start/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Label/Start/Area2D" to="." method="_on_area_2d_body_exited"]

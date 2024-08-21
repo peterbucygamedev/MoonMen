@@ -1,0 +1,259 @@
+[gd_scene load_steps=8 format=3 uid="uid://hfn2jcrm06p8"]
+
+[ext_resource type="Script" path="res://Scripts/moon_level.gd" id="1_ilsri"]
+[ext_resource type="Texture2D" uid="uid://bkiv3hjq5bc8o" path="res://Assets/pixil-frame-0 - 2024-08-09T111005.085.png" id="2_j70da"]
+[ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="3_8xlvn"]
+[ext_resource type="PackedScene" uid="uid://17as6hkt0je" path="res://Scenes/oldScenes/tile_4_red.tscn" id="4_ogeo5"]
+[ext_resource type="Texture2D" uid="uid://nsuk3024wcks" path="res://Assets/pixil-frame-0 - 2024-08-12T223306.278.png" id="5_bk06u"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mvwim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afr4u"]
+size = Vector2(88, 20)
+
+[node name="MoonLevel" type="Node"]
+script = ExtResource("1_ilsri")
+
+[node name="boundaries" type="Node" parent="."]
+
+[node name="Wall" type="StaticBody2D" parent="boundaries" groups=["ground"]]
+position = Vector2(0, 325)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundaries/Wall"]
+shape = SubResource("WorldBoundaryShape2D_mvwim")
+
+[node name="Wall2" type="StaticBody2D" parent="boundaries" groups=["ground"]]
+position = Vector2(-575, 0)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundaries/Wall2"]
+shape = SubResource("WorldBoundaryShape2D_mvwim")
+
+[node name="Wall3" type="StaticBody2D" parent="boundaries" groups=["ground"]]
+position = Vector2(575, 0)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundaries/Wall3"]
+shape = SubResource("WorldBoundaryShape2D_mvwim")
+
+[node name="Wall4" type="StaticBody2D" parent="boundaries" groups=["ground"]]
+position = Vector2(0, -325)
+rotation = -3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundaries/Wall4"]
+shape = SubResource("WorldBoundaryShape2D_mvwim")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -25)
+scale = Vector2(2, 2)
+texture = ExtResource("2_j70da")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="level 2" type="Label" parent="."]
+offset_left = -38.0
+offset_top = 219.0
+offset_right = 2.0
+offset_bottom = 242.0
+
+[node name="Mars" type="MenuButton" parent="level 2"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "level 2"
+
+[node name="nextLevelArea" type="Area2D" parent="level 2/Mars"]
+position = Vector2(42, 17)
+
+[node name="nextLevelCollider" type="CollisionShape2D" parent="level 2/Mars/nextLevelArea"]
+shape = SubResource("RectangleShape2D_afr4u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+bus = &"Music"
+
+[node name="players" type="Node" parent="."]
+
+[node name="player" parent="players" instance=ExtResource("3_8xlvn")]
+position = Vector2(-493, 273)
+
+[node name="player2" parent="players" instance=ExtResource("3_8xlvn")]
+position = Vector2(-410, 268)
+playerNumber = 1
+
+[node name="player3" parent="players" instance=ExtResource("3_8xlvn")]
+position = Vector2(143, 282)
+playerNumber = 2
+
+[node name="player4" parent="players" instance=ExtResource("3_8xlvn")]
+position = Vector2(326, 304)
+playerNumber = 3
+
+[node name="tiles" type="Node" parent="."]
+
+[node name="tile_4_red4" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(-222, 181)
+rotation = 0.523598
+scale = Vector2(6.79195, 2)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red14" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(-476, 39)
+rotation = 0.523598
+scale = Vector2(6.79195, 2)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red6" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(-384, 144)
+scale = Vector2(7.24, 2.02616)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red8" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(-444, 223)
+scale = Vector2(7.24, 2.02616)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red9" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(431, 223)
+scale = Vector2(7.24, 2.02616)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red5" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(-224, 2.00001)
+scale = Vector2(6.79195, 2)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red7" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(-387, -89)
+scale = Vector2(7.24, 2.02616)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red10" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(-224, -174)
+scale = Vector2(7.33595, -2.32151)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red11" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(224, -174)
+scale = Vector2(7.33595, -2.32151)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red12" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(-3.05176e-05, 137)
+scale = Vector2(7.33595, -2.32151)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red13" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(-3.05176e-05, -62)
+scale = Vector2(7.33595, -2.32151)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red20" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(250, 183)
+rotation = -0.523598
+scale = Vector2(6.88, 2)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red22" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(477, 41)
+rotation = -0.523598
+scale = Vector2(6.88, 2)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red24" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(402, 144)
+scale = Vector2(6.72, 2)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red21" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(246, 5.00001)
+scale = Vector2(6.88, 2)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red25" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(396, -89)
+scale = Vector2(6.72, 2)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red26" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(4.76837e-07, 321)
+rotation = 3.14159
+scale = Vector2(48.4057, 1.50306)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red27" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(2, -314)
+scale = Vector2(48.4057, 1.50306)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red28" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(-579, -7.62939e-06)
+rotation = -1.57079
+scale = Vector2(26.3493, 1.45103)
+collision_layer = 3
+collision_mask = 3
+
+[node name="tile_4_red29" parent="tiles" instance=ExtResource("4_ogeo5")]
+position = Vector2(583, 2.32944e-10)
+rotation = -4.71238
+scale = Vector2(26.3493, 1.45103)
+collision_layer = 3
+collision_mask = 3
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.1
+blend_mode = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(5.4805, 5.4805)
+energy = 0.5
+texture = ExtResource("5_bk06u")
+
+[node name="tile_4_red" parent="." instance=ExtResource("4_ogeo5")]
+position = Vector2(-273, 263)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red2" parent="." instance=ExtResource("4_ogeo5")]
+position = Vector2(274, 263)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red3" parent="." instance=ExtResource("4_ogeo5")]
+position = Vector2(0, 59)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red4" parent="." instance=ExtResource("4_ogeo5")]
+position = Vector2(249, 87)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red5" parent="." instance=ExtResource("4_ogeo5")]
+position = Vector2(-249, 82)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red6" parent="." instance=ExtResource("4_ogeo5")]
+position = Vector2(-207, -62)
+scale = Vector2(2, 2)
+
+[node name="tile_4_red7" parent="." instance=ExtResource("4_ogeo5")]
+position = Vector2(207, -62)
+scale = Vector2(2, 2)
+
+[connection signal="pressed" from="level 2/Mars" to="." method="_on_next_level_pressed"]
+[connection signal="body_entered" from="level 2/Mars/nextLevelArea" to="." method="_on_next_level_area_body_entered"]

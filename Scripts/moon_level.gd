@@ -3,7 +3,6 @@ extends Node
 @onready var player = $player
 @onready var player_2 = $player2
 var GAME_MANAGER = preload("res://Scenes/game_manager.tscn")
-const MARS = preload("res://Scenes/mars.tscn")
 @onready var level_2 = $"level 2"
 
 # Called when the node enters the scene tree for the first time.

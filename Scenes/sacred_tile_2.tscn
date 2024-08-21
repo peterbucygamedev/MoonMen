@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcxybwwp6pdbc"]
+
+[ext_resource type="Texture2D" uid="uid://jfwya1xvun6v" path="res://Assets/pixil-frame-0 - 2024-08-18T195145.513.png" id="1_m1cp8"]
+[ext_resource type="Texture2D" uid="uid://c5ubxtmdmtksf" path="res://Assets/pixil-frame-0 - 2024-08-18T195234.346.png" id="2_emip6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tq22b"]
+size = Vector2(10, 234)
+
+[node name="sacredTile2" type="StaticBody2D" groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_tq22b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_m1cp8")
+region_enabled = true
+region_rect = Rect2(195, 658, 10, 235)
+
+[node name="light" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(-4, -68)
+scale = Vector2(0.3, 10)
+energy = 2.0
+texture = ExtResource("2_emip6")
+
+[node name="light3" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(4, -68)
+scale = Vector2(0.3, 10)
+energy = 2.0
+texture = ExtResource("2_emip6")
+
+[node name="light5" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(-4, 68)
+scale = Vector2(0.3, 10)
+energy = 2.0
+texture = ExtResource("2_emip6")
+
+[node name="light6" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(4, 68)
+scale = Vector2(0.3, 10)
+energy = 2.0
+texture = ExtResource("2_emip6")
+
+[node name="light2" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(-2, -15)
+rotation = -0.523599
+scale = Vector2(0.3, 1.3)
+energy = 2.0
+texture = ExtResource("2_emip6")
+
+[node name="light4" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(2, -15)
+rotation = 0.523599
+scale = Vector2(0.3, 1.3)
+energy = 2.0
+texture = ExtResource("2_emip6")
+
+[node name="light7" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(-2, 15.3792)
+rotation = 0.523599
+scale = Vector2(0.3, 1.3)
+energy = 2.0
+texture = ExtResource("2_emip6")
+
+[node name="light8" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(2, 15.3792)
+rotation = -0.523599
+scale = Vector2(0.3, 1.3)
+energy = 2.0
+texture = ExtResource("2_emip6")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+scale = Vector2(0.5, 2.2)
+energy = 2.0
+texture = ExtResource("2_emip6")

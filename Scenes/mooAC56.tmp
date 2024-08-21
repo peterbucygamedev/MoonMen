@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://dl547gbap4kyp"]
+
+[ext_resource type="PackedScene" uid="uid://cwg2lklxhdn3f" path="res://Scenes/tile_1_blue.tscn" id="1_fbb7k"]
+[ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="2_6q5sv"]
+[ext_resource type="Script" path="res://Scripts/Area2D.gd" id="3_iqb83"]
+[ext_resource type="Script" path="res://Scripts/topArea.gd" id="4_v1jyk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjn8o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxy2b"]
+
+[node name="MoonSlayer" type="Node"]
+
+[node name="tile_1_blue" parent="." instance=ExtResource("1_fbb7k")]
+position = Vector2(-273, 74)
+
+[node name="tile_1_blue2" parent="." instance=ExtResource("1_fbb7k")]
+position = Vector2(-173, 74)
+
+[node name="tile_1_blue3" parent="." instance=ExtResource("1_fbb7k")]
+position = Vector2(-222, 31)
+
+[node name="tile_1_blue4" parent="." instance=ExtResource("1_fbb7k")]
+position = Vector2(-117, 30)
+
+[node name="tile_1_blue5" parent="." instance=ExtResource("1_fbb7k")]
+position = Vector2(-56, -14)
+
+[node name="tile_1_blue6" parent="." instance=ExtResource("1_fbb7k")]
+position = Vector2(-2, -53)
+
+[node name="tile_1_blue7" parent="." instance=ExtResource("1_fbb7k")]
+position = Vector2(61, -94)
+
+[node name="tile_1_blue8" parent="." instance=ExtResource("1_fbb7k")]
+position = Vector2(-209, -241)
+scale = Vector2(-129.146, 2.12005)
+
+[node name="tile_1_blue10" parent="." instance=ExtResource("1_fbb7k")]
+position = Vector2(271, -293)
+
+[node name="tile_1_blue11" parent="." instance=ExtResource("1_fbb7k")]
+position = Vector2(342, -318)
+
+[node name="tile_1_blue9" parent="." instance=ExtResource("1_fbb7k")]
+position = Vector2(230, 248)
+scale = Vector2(30.6041, 1.35125)
+
+[node name="player" parent="." instance=ExtResource("2_6q5sv")]
+position = Vector2(-289, -288)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.525, 0.525)
+
+[node name="bottomArea" type="Area2D" parent="."]
+position = Vector2(0, 326)
+scale = Vector2(-124.261, 1.71895)
+script = ExtResource("3_iqb83")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottomArea"]
+shape = SubResource("RectangleShape2D_jjn8o")
+
+[node name="topArea" type="Area2D" parent="."]
+position = Vector2(0, -321)
+rotation = 3.14159
+scale = Vector2(-124.236, 1.65209)
+script = ExtResource("4_v1jyk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="topArea"]
+shape = SubResource("RectangleShape2D_vxy2b")
+
+[connection signal="body_entered" from="bottomArea" to="bottomArea" method="_on_body_entered"]
+[connection signal="body_entered" from="topArea" to="topArea" method="_on_body_entered"]
+[connection signal="body_exited" from="topArea" to="topArea" method="_on_body_exited"]

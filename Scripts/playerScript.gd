@@ -1,6 +1,6 @@
 extends CharacterBody2D
 var SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var JUMP_VELOCITY = -750
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var weapon = $weapon
 @onready var sprite_2d = $weapon/Sprite2D
@@ -26,7 +26,9 @@ var crouching = false
 var secondary = false
 var burst = false
 @onready var burst_timer = $burstTimer
-
+var explosion = false
+var is_touching_wall = false
+var jumpCounter = 0
 
 
 
@@ -44,15 +46,8 @@ func shoot():
 	if playerNumber == 0 and GameManager.player1Ammo > 0:
 		audio_stream_player_2d.play()
 		var b = bullet.instantiate()
-		GameManager.player1Ammo -= 1
-		#print(GameManager.player1Ammo)
-		b.speed = GameManager.player1Speed
-		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
+		#b.speed = GameManager.player1Speed
 		b.damage = GameManager.player1Damage
-		b.set_inertia(1000)
-		b.gravity_scale = 1
-		b.center_of_mass_mode = 1
-		b.center_of_mass = Vector2(0, 0.1)
 		player.owner.add_child(b)
 		b.transform = bullet_spawn.global_transform
 		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
@@ -66,54 +61,42 @@ func shoot():
 		var b = bullet.instantiate()
 		GameManager.player2Ammo -= 1
 		b.speed = GameManager.player2Speed
-		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
 		b.damage = GameManager.player2Damage
-		b.set_inertia(1000)
-		b.gravity_scale = 1
-		b.center_of_mass_mode = 1
-		b.center_of_mass = Vector2(0, 0.1)
 		player.owner.add_child(b)
 		b.transform = bullet_spawn.global_transform
 		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
 		
 	elif GameManager.player2Ammo <= 0 and player_2_timer.is_stopped():
 		player_2_timer.start()
+		reload.show()
 		
 	if playerNumber == 2 and GameManager.player3Ammo > 0:
 		audio_stream_player_2d.play()
 		var b = bullet.instantiate()
 		GameManager.player3Ammo -= 1
 		b.speed = GameManager.player3Speed
-		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
 		b.damage = GameManager.player3Damage
-		b.set_inertia(1000)
-		b.gravity_scale = 1
-		b.center_of_mass_mode = 1
-		b.center_of_mass = Vector2(0, 0.1)
 		player.owner.add_child(b)
 		b.transform = bullet_spawn.global_transform
 		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
 	
 	elif GameManager.player3Ammo <= 0 and player_3_timer.is_stopped():
 		player_3_timer.start()
+		reload.show()
 		
 	if playerNumber == 3 and GameManager.player4Ammo > 0:
 		audio_stream_player_2d.play()
 		var b = bullet.instantiate()
 		GameManager.player4Ammo -= 1
 		b.speed = GameManager.player4Speed
-		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
 		b.damage = GameManager.player4Damage
-		b.set_inertia(1000)
-		b.gravity_scale = 1
-		b.center_of_mass_mode = 1
-		b.center_of_mass = Vector2(0, 0.1)
 		player.owner.add_child(b)
 		b.transform = bullet_spawn.global_transform
 		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
 		
 	elif GameManager.player4Ammo <= 0 and player_4_timer.is_stopped():
 		player_4_timer.start()
+		reload.show()
 		
 		
 	"""player.owner.add_child(b)
@@ -128,14 +111,8 @@ func shootSecondary():
 		audio_stream_player_2d.play()
 		var b = saw_blade.instantiate()
 		GameManager.player1Ammo -= 1
-		#print(GameManager.player1Ammo)
 		b.speed = GameManager.player1Speed
-		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
 		b.damage = GameManager.player1Damage
-		b.set_inertia(1000)
-		b.gravity_scale = 1
-		b.center_of_mass_mode = 1
-		b.center_of_mass = Vector2(0, 0.1)
 		player.owner.add_child(b)
 		b.transform = bullet_spawn.global_transform
 		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
@@ -149,12 +126,7 @@ func shootSecondary():
 		var b = saw_blade.instantiate()
 		GameManager.player2Ammo -= 1
 		b.speed = GameManager.player2Speed
-		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
 		b.damage = GameManager.player2Damage
-		b.set_inertia(1000)
-		b.gravity_scale = 1
-		b.center_of_mass_mode = 1
-		b.center_of_mass = Vector2(0, 0.1)
 		player.owner.add_child(b)
 		b.transform = bullet_spawn.global_transform
 		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
@@ -167,12 +139,7 @@ func shootSecondary():
 		var b = saw_blade.instantiate()
 		GameManager.player3Ammo -= 1
 		b.speed = GameManager.player3Speed
-		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
 		b.damage = GameManager.player3Damage
-		b.set_inertia(1000)
-		b.gravity_scale = 1
-		b.center_of_mass_mode = 1
-		b.center_of_mass = Vector2(0, 0.1)
 		player.owner.add_child(b)
 		b.transform = bullet_spawn.global_transform
 		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
@@ -185,12 +152,7 @@ func shootSecondary():
 		var b = saw_blade.instantiate()
 		GameManager.player4Ammo -= 1
 		b.speed = GameManager.player4Speed
-		#print("current bulletSpeed for player", playerNumber, " is ", b.speed)
 		b.damage = GameManager.player4Damage
-		b.set_inertia(1000)
-		b.gravity_scale = 1
-		b.center_of_mass_mode = 1
-		b.center_of_mass = Vector2(0, 0.1)
 		player.owner.add_child(b)
 		b.transform = bullet_spawn.global_transform
 		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
@@ -200,13 +162,14 @@ func shootSecondary():
 	
 func _physics_process(delta):
 	
+	print(is_touching_wall)
 	health_bar.value = health
 	health_bar_2.value = health
 	#reload.play()
 	#print(playerDamage)
 	#print(health)
-
-			
+	#print(position)
+	#print(velocity)	
 	if health <= 0:
 		GameManager.deaths += 1
 		#print("you died")
@@ -253,12 +216,17 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		
+	if not is_on_floor() and not is_touching_wall:
+		jumpCounter = 0
+		
 	# Handle jump.
 	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 	#	velocity.y = JUMP_VELOCITY
 		
-	if Input.is_joy_button_pressed(playerNumber, 0) and is_on_floor():
+	if Input.is_joy_button_pressed(playerNumber, 0) and (is_on_floor() or is_touching_wall) and jumpCounter < 1:
 		velocity.y = JUMP_VELOCITY
+		jumpCounter += 1
 		#print("button pressed")
 
 	# Get the input direction and handle the movement/deceleration.
@@ -268,6 +236,8 @@ func _physics_process(delta):
 	#	velocity.x = direction * SPEED
 		#print("go")
 	var direction = Input.get_joy_axis(playerNumber, 0)
+	
+	
 	
 	if direction > 0.05 and crouching == false:
 		animated_sprite_2d.flip_h = false
@@ -288,8 +258,8 @@ func _physics_process(delta):
 		#print("stop")
 		animated_sprite_2d.play("idle")
 		
-	#elif crouching == true:
-	#	velocity.x = direction * (SPEED + 100)
+	if explosion == true:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	
 	
@@ -301,7 +271,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _on_player_1_timer_timeout():
-	print("player1Reloaded")
+	#print("player1Reloaded")
 	GameManager.player1Ammo = 10
 	reload.hide()
 
@@ -325,3 +295,14 @@ func _on_health_bar_timer_timeout():
 
 func _on_burst_timer_timeout():
 	burst = false
+
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("wall"):
+		is_touching_wall = true
+
+
+func _on_area_2d_body_exited(body):
+	if body.is_in_group("wall"):
+		is_touching_wall = false
+		jumpCounter = 0

@@ -1,0 +1,191 @@
+[gd_scene load_steps=15 format=3 uid="uid://dl547gbap4kyp"]
+
+[ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="2_6q5sv"]
+[ext_resource type="Script" path="res://Scripts/Area2D.gd" id="3_iqb83"]
+[ext_resource type="Script" path="res://Scripts/leftArea.gd" id="4_cc42s"]
+[ext_resource type="Script" path="res://Scripts/topArea.gd" id="4_v1jyk"]
+[ext_resource type="Script" path="res://Scripts/rightArea.gd" id="5_j1ytj"]
+[ext_resource type="PackedScene" uid="uid://6sbx3g7lc6h2" path="res://Scenes/sacred_tile.tscn" id="6_sl5jj"]
+[ext_resource type="PackedScene" uid="uid://dcxybwwp6pdbc" path="res://Scenes/sacred_tile_2.tscn" id="7_k7jj2"]
+[ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/sacred_tile_4.tscn" id="8_2viqt"]
+[ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/sacred_tile_3.tscn" id="9_bde65"]
+[ext_resource type="Texture2D" uid="uid://jfwya1xvun6v" path="res://Assets/pixil-frame-0 - 2024-08-18T195145.513.png" id="10_sp2ks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjn8o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxy2b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egrbd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xxvh"]
+
+[node name="MoonSlayer" type="Node"]
+
+[node name="player" parent="." instance=ExtResource("2_6q5sv")]
+z_index = 1
+position = Vector2(-273, 253)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.59, 0.59)
+
+[node name="bottomArea" type="Area2D" parent="."]
+position = Vector2(0, 426)
+scale = Vector2(80, 10)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("3_iqb83")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottomArea"]
+shape = SubResource("RectangleShape2D_jjn8o")
+
+[node name="topArea" type="Area2D" parent="."]
+position = Vector2(2.36469e-11, -425)
+rotation = 3.14159
+scale = Vector2(80, 10)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_v1jyk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="topArea"]
+shape = SubResource("RectangleShape2D_vxy2b")
+
+[node name="leftArea" type="Area2D" parent="."]
+position = Vector2(-679, 0)
+scale = Vector2(10, 60)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_cc42s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftArea"]
+shape = SubResource("RectangleShape2D_egrbd")
+
+[node name="rightArea" type="Area2D" parent="."]
+position = Vector2(679, 0)
+scale = Vector2(10, 60)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("5_j1ytj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightArea"]
+shape = SubResource("RectangleShape2D_1xxvh")
+
+[node name="tiles" type="Node" parent="."]
+
+[node name="sacredTile" parent="tiles" instance=ExtResource("6_sl5jj")]
+position = Vector2(-350, 300)
+
+[node name="sacredTile11" parent="tiles" instance=ExtResource("6_sl5jj")]
+position = Vector2(350, 300)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="sacredTile2" parent="tiles" instance=ExtResource("7_k7jj2")]
+position = Vector2(-300, 120)
+
+[node name="sacredTile3" parent="tiles" instance=ExtResource("7_k7jj2")]
+position = Vector2(-240, 120)
+
+[node name="sacredTile12" parent="tiles" instance=ExtResource("7_k7jj2")]
+position = Vector2(300, 120)
+
+[node name="sacredTile13" parent="tiles" instance=ExtResource("7_k7jj2")]
+position = Vector2(240, 120)
+
+[node name="sacredTile10" parent="tiles" instance=ExtResource("8_2viqt")]
+position = Vector2(-270, -210)
+
+[node name="sacredTile14" parent="tiles" instance=ExtResource("8_2viqt")]
+position = Vector2(270, -210)
+
+[node name="sacredTile15" parent="tiles" instance=ExtResource("8_2viqt")]
+position = Vector2(-1, -136)
+scale = Vector2(5.85032, 0.91442)
+
+[node name="smallTiles" type="Node2D" parent="tiles"]
+
+[node name="sacredTile4" parent="tiles/smallTiles" instance=ExtResource("9_bde65")]
+position = Vector2(-516, -13)
+
+[node name="sacredTile5" parent="tiles/smallTiles" instance=ExtResource("9_bde65")]
+position = Vector2(-433, -45)
+
+[node name="sacredTile6" parent="tiles/smallTiles" instance=ExtResource("9_bde65")]
+position = Vector2(-346, -75)
+
+[node name="sacredTile7" parent="tiles/smallTiles" instance=ExtResource("9_bde65")]
+position = Vector2(-250, -101)
+
+[node name="sacredTile8" parent="tiles/smallTiles" instance=ExtResource("9_bde65")]
+position = Vector2(-152, -71)
+
+[node name="sacredTile9" parent="tiles/smallTiles" instance=ExtResource("9_bde65")]
+position = Vector2(-152, 61)
+
+[node name="sacredTile14" parent="tiles/smallTiles" instance=ExtResource("9_bde65")]
+position = Vector2(-469, 193)
+
+[node name="smallTiles2" type="Node2D" parent="tiles"]
+position = Vector2(0, 2)
+scale = Vector2(-1, 1)
+
+[node name="sacredTile4" parent="tiles/smallTiles2" instance=ExtResource("9_bde65")]
+position = Vector2(-516, -13)
+
+[node name="sacredTile5" parent="tiles/smallTiles2" instance=ExtResource("9_bde65")]
+position = Vector2(-433, -45)
+
+[node name="sacredTile6" parent="tiles/smallTiles2" instance=ExtResource("9_bde65")]
+position = Vector2(-346, -75)
+
+[node name="sacredTile7" parent="tiles/smallTiles2" instance=ExtResource("9_bde65")]
+position = Vector2(-250, -101)
+
+[node name="sacredTile8" parent="tiles/smallTiles2" instance=ExtResource("9_bde65")]
+position = Vector2(-152, -71)
+
+[node name="sacredTile9" parent="tiles/smallTiles2" instance=ExtResource("9_bde65")]
+position = Vector2(-152, 61)
+
+[node name="sacredTile14" parent="tiles/smallTiles2" instance=ExtResource("9_bde65")]
+position = Vector2(-469, 193)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node"]
+position = Vector2(0, 325)
+scale = Vector2(5.01692, 1)
+texture = ExtResource("10_sp2ks")
+region_enabled = true
+region_rect = Rect2(682, 171, 234, 10)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node"]
+position = Vector2(0, -321)
+scale = Vector2(5.01692, 1)
+texture = ExtResource("10_sp2ks")
+region_enabled = true
+region_rect = Rect2(682, 171, 234, 10)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node"]
+position = Vector2(-574, -7)
+rotation = -1.57079
+scale = Vector2(5.01692, 1)
+texture = ExtResource("10_sp2ks")
+region_enabled = true
+region_rect = Rect2(682, 171, 234, 10)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node"]
+position = Vector2(568, -7)
+rotation = -1.57079
+scale = Vector2(5.01692, 1)
+texture = ExtResource("10_sp2ks")
+region_enabled = true
+region_rect = Rect2(682, 171, 234, 10)
+
+[connection signal="body_entered" from="bottomArea" to="bottomArea" method="_on_body_entered"]
+[connection signal="body_exited" from="bottomArea" to="bottomArea" method="_on_body_exited"]
+[connection signal="body_entered" from="topArea" to="topArea" method="_on_body_entered"]
+[connection signal="body_exited" from="topArea" to="topArea" method="_on_body_exited"]
+[connection signal="body_entered" from="leftArea" to="leftArea" method="_on_body_entered"]
+[connection signal="body_entered" from="rightArea" to="rightArea" method="_on_body_entered"]

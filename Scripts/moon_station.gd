@@ -13,7 +13,6 @@ var player3StartingDamage
 var player4StartingDamage
 @onready var next_level = $Label/nextLevel
 var statsUpdated = false
-const MOON_LEVEL = preload("res://Scenes/moon_level.tscn")
 var numberOfPlayers = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -28,7 +27,8 @@ func _ready():
 	player4StartingDamage = GameManager.player4Damage
 
 func _process(delta):
-	print(numberOfPlayers)
+	#0print(numberOfPlayers)
+	pass
 
 
 func _on_add_speed_area_body_entered(body):
@@ -94,10 +94,11 @@ func _on_subtract_speed_area_body_entered(body):
 
 func _on_subtract_damage_area_body_entered(body):
 	if body.is_in_group("players"):
-		if body.playerNumber == 0 and player1Points < 4:
-			if GameManager.player1Damage > player1StartingDamage:
-				GameManager.player1Damage -= 1
-				player1Points += 1
+		if body.Input.is_joy_button_pressed(body.playerNumber, 0):
+			if body.playerNumber == 0 and player1Points < 4:
+				if GameManager.player1Damage > player1StartingDamage:
+					GameManager.player1Damage -= 1
+					player1Points += 1
 
 		
 		if body.playerNumber == 1 and player2Points < 4:

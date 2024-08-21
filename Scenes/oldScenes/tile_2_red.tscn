@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b18dquo7yfa57"]
+
+[ext_resource type="Texture2D" uid="uid://crlvo7p7mwqh" path="res://Assets/pixil-frame-0 - 2024-08-04T114601.451.png" id="1_ku3rm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhhhm"]
+size = Vector2(14, 5)
+
+[node name="tile_2_red" type="StaticBody2D" groups=["tiles"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qhhhm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ku3rm")
+region_enabled = true
+region_rect = Rect2(25, 10, 14, 5)
