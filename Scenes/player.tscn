@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://jb2kjgt1osww"]
+[gd_scene load_steps=41 format=3 uid="uid://jb2kjgt1osww"]
 
 [ext_resource type="Script" path="res://Scripts/playerScript.gd" id="1_h1kp2"]
 [ext_resource type="Texture2D" uid="uid://n3i63b24goij" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-03T192824.383.png" id="2_68s70"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://vc5uglrdna0c" path="res://Scenes/laser.tscn" id="7_0p3aw"]
 [ext_resource type="Texture2D" uid="uid://q1k11q75u03i" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-12T223407.756.png" id="7_5so1f"]
 [ext_resource type="Texture2D" uid="uid://bkuday3vkp6wr" path="res://Assets/sprites/pixil-frame-0 - 2024-08-13T085034.932.png" id="8_cf43o"]
+[ext_resource type="AudioStream" uid="uid://dsnfw3ueiaiua" path="res://Assets/sounds/gunshot.mp3" id="8_nx8cp"]
 [ext_resource type="Texture2D" uid="uid://cqmvmnglw2t4m" path="res://Assets/sprites/pixil-frame-0 - 2024-08-13T085146.548.png" id="9_gfqqa"]
 [ext_resource type="PackedScene" uid="uid://dyqlfqxfag3qx" path="res://Scenes/energy_shield.tscn" id="10_ojd3y"]
 
@@ -258,7 +259,8 @@ autoplay = "scan"
 frame = 1
 frame_progress = 0.809197
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="gunshot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_nx8cp")
 bus = &"Sound FX"
 
 [node name="healthBar" type="TextureProgressBar" parent="."]

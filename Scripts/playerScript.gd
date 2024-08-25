@@ -12,7 +12,8 @@ var lastHealth := health
 @onready var bullet_spawn = $weapon/bulletSpawn
 @export var playerNumber = 0
 var select := false
-@onready var audio_stream_player_2d = $AudioStreamPlayer2D
+@onready var gunshot = $gunshot
+
 var crouching := false
 @onready var player_collision = $playerCollision
 @onready var player_1_timer = $player1Timer
@@ -44,6 +45,7 @@ var startingTransform = transform
 
 
 
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -58,7 +60,7 @@ func _ready():
 func shoot():
 	#var b = bullet.instantiate()
 	if playerNumber == 0 and GameManager.player1Ammo > 0:
-		audio_stream_player_2d.play()
+		gunshot.play()
 		var b = bullet.instantiate()
 		GameManager.player1Ammo -= 1
 		#b.speed = GameManager.player1Speed
@@ -72,7 +74,7 @@ func shoot():
 		reload.show()
 		
 	if playerNumber == 1 and GameManager.player2Ammo > 0:
-		audio_stream_player_2d.play()
+		gunshot.play()
 		var b = bullet.instantiate()
 		GameManager.player2Ammo -= 1
 		b.speed = GameManager.player2Speed
@@ -86,7 +88,7 @@ func shoot():
 		reload.show()
 		
 	if playerNumber == 2 and GameManager.player3Ammo > 0:
-		audio_stream_player_2d.play()
+		gunshot.play()
 		var b = bullet.instantiate()
 		GameManager.player3Ammo -= 1
 		b.speed = GameManager.player3Speed
@@ -100,7 +102,7 @@ func shoot():
 		reload.show()
 		
 	if playerNumber == 3 and GameManager.player4Ammo > 0:
-		audio_stream_player_2d.play()
+		gunshot.play()
 		var b = bullet.instantiate()
 		GameManager.player4Ammo -= 1
 		b.speed = GameManager.player4Speed

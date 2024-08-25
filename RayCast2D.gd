@@ -4,6 +4,7 @@ extends RayCast2D
 @onready var collision_particles = $collisionParticles
 @onready var beam_particle = $beamParticle
 @onready var sprite_2d = $Line2D/Sprite2D
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
 
 var counter := 0
 var moveForward := true
@@ -19,9 +20,12 @@ var is_casting: bool = false:
 		
 		if is_casting:
 			appear()
+			if audio_stream_player_2d.is_playing() == false:
+				audio_stream_player_2d.play()
 		else:
 			collision_particles.emitting = false
 			disappear()
+			audio_stream_player_2d.stop()
 		set_physics_process(is_casting)
 		
 		
@@ -30,6 +34,7 @@ func _ready():
 	
 	is_casting = false
 	set_collide_with_areas(true)
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	#if event is InputEventMouseButton:
@@ -46,11 +51,11 @@ func _process(delta):
 	#if collding is true, the emit the collision particles
 	if is_casting:
 		collision_particles.emitting = is_colliding()
-
+		
 		
 	else:
 		collision_particles.emitting = false
-
+		
 	
 	if is_colliding():
 		#find the collisoin point and set cast point to it
