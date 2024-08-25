@@ -37,7 +37,9 @@ var mouseAim := false
 var shieldDamage = true
 @onready var power_crate_timer = $powerCrateTimer
 var powerCrateDamage = true
-
+var dead := false
+var lives := 3
+var startingTransform = transform
 
 
 
@@ -134,6 +136,16 @@ func _process(delta):
 	#print(velocity)	
 	if health <= 0:
 		GameManager.deaths += 1
+		dead = true
+		if dead:
+			lives -= 1
+			transform = startingTransform
+		if lives > 0:
+			dead = false
+			health = 10
+		if lives <= 0:
+			queue_free()
+		
 		#print("you died")
 		
 			
@@ -144,36 +156,43 @@ func _process(delta):
 		energy_shield.hide()
 		energy_shield.get_node("energyShieldCollider").disabled = true
 		
-	if Input.is_action_just_pressed("slide2"):
+	if energy_shield.shieldEnabled == true and crouching == true:
+		energy_shield.show()
+		energy_shield.get_node("energyShieldCollider").disabled = false
+		
+	"""if Input.is_action_just_pressed("slide2"):
+		crouching = true
 		#print("action pressed")
 		animated_sprite_2d.play("slide")
 		if energy_shield.shieldEnabled:
 			energy_shield.get_node("energyShieldCollider").disabled = false
 			energy_shield.show()
-		crouching = true
+		
 			
 	elif Input.is_action_just_released("slide2"):
 		crouching = false
 		energy_shield.get_node("energyShieldCollider").disabled = true
-		energy_shield.hide()
+		energy_shield.hide()"""
 
 	
-	elif Input.is_joy_button_pressed(playerNumber, 9):
+	if Input.is_joy_button_pressed(playerNumber, 9):
 		if Input.is_action_just_pressed("slide"):
-			animated_sprite_2d.play("slide")
-			if energy_shield.shieldEnabled:
-				energy_shield.get_node("energyShieldCollider").disabled = false
-				energy_shield.show()
 			crouching = true
+			animated_sprite_2d.play("slide")
+			#if energy_shield.shieldEnabled:
+			#	energy_shield.get_node("energyShieldCollider").disabled = false
+			#	energy_shield.show()
+			
 			
 	elif Input.is_action_just_released("slide"):
+		crouching = false
 		energy_shield.get_node("energyShieldCollider").disabled = true
 		energy_shield.hide()
-		crouching = false
+		
 		
 	if Input.is_joy_button_pressed(playerNumber, 10) or Input.is_action_pressed("shootLaser"):
 		laser.is_casting = true
-		if laser.is_colliding():
+		if laser.is_colliding() and laser.get_collider() != null:
 			if laser.get_collider().is_in_group("players"):
 				#print("hit player")
 				if health_timer.is_stopped():
@@ -236,7 +255,7 @@ func _process(delta):
 	#	velocity.x = direction * SPEED
 		#print("go")
 	var direction = Input.get_joy_axis(playerNumber, 0)
-	var direction2 = Input.get_axis("ui_left", "ui_right")
+	var direction2 = Input.get_axis("keyboardLeft", "keyboardRight")
 	
 	
 	if (direction > 0.05 or direction2 > 0.05) and crouching == false:
@@ -246,7 +265,7 @@ func _process(delta):
 		velocity.x = direction * SPEED
 		animated_sprite_2d.play("moving")
 		
-	elif (direction < -0.05 or direction2) and crouching == false:
+	elif (direction < -0.05 or direction2 < -0.05) and crouching == false:
 		animated_sprite_2d.flip_h = true
 		#health_outline.flip_h = true
 		sprite_2d.flip_v = true
@@ -325,15 +344,12 @@ func _on_area_2d_body_exited(body):
 
 func _on_health_timer_timeout():
 	if laser.get_collider() != null and laser.get_collider().is_in_group("players"):
-		laser.get_collider().health -= 1
+		laser.get_collider().health -= 0.1
 		laser.get_collider().health_bar.show()
 		print("hit player")
 		health_bar_timer.start()
 		
 	
-
-
-
 func _on_shield_timer_timeout():
 	shieldDamage = true
 

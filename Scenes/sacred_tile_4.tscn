@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7kabh"]
 size = Vector2(234, 10)
 
-[node name="sacredTile4" type="StaticBody2D"]
+[node name="sacredTile4" type="StaticBody2D" groups=["ground"]]
 z_index = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -65,7 +65,7 @@ glow_blend_mode = 0
 
 [node name="laser" type="RayCast2D" groups=["lasers"]]
 z_index = 2
-target_position = Vector2(1000, 1)
+target_position = Vector2(1200, 0)
 script = ExtResource("1_pdgc4")
 
 [node name="Line2D" type="Line2D" parent="."]

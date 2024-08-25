@@ -23,16 +23,10 @@ func _on_body_entered(body):
 		var b = bullet.instantiate()
 		moon_slayer.add_child(b)
 		b.transform = Transform2D(body.rotation, body.scale, body.skew, Vector2(body.position.x, top_area.position.y + 120))
-		b.apply_impulse(body.linear_velocity, body.position)
+		#b.apply_impulse(body.linear_velocity, body.position)
+		b.apply_impulse(body.transform.x * body.speed, Vector2(0,0))
+		b.timer.set_wait_time(1)
 		
-	if body.is_in_group("lasers"):
-		#print("laser hit")
-		"""if body.is_casting:
-			var s = laser.instantiate()
-			moon_slayer.add_child(s)
-			s.is_casting
-			s.transform = Transform2D(body.rotation, body.scale, body.skew, Vector2(body.position.x, top_area.position.y + 120))"""
-
 #safety
 """func _on_body_exited(body):
 	if body.is_in_group("players") and body.position.y >= 350:

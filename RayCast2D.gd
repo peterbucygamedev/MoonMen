@@ -8,6 +8,7 @@ extends RayCast2D
 var counter := 0
 var moveForward := true
 var speed := 20
+var teleportLaser := false
 
 var is_casting: bool = false:
 	set(value):
@@ -28,7 +29,7 @@ var is_casting: bool = false:
 func _ready():
 	
 	is_casting = false
-
+	set_collide_with_areas(true)
 
 func _unhandled_input(event: InputEvent) -> void:
 	#if event is InputEventMouseButton:
@@ -59,8 +60,15 @@ func _process(delta):
 		#adding collision particles position
 		collision_particles.position = cast_point
 		
+		if get_collider().is_in_group("teleport"):
+			teleportLaser = true
+	
+		if !get_collider().is_in_group("teleport"):
+			teleportLaser = false
 		
 		
+
+	print(teleportLaser)
 		
 	if not is_colliding():
 		pass

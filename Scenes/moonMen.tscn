@@ -1,13 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://33ltwejnfnxf"]
+[gd_scene load_steps=11 format=3 uid="uid://33ltwejnfnxf"]
 
 [ext_resource type="Script" path="res://Scripts/moonMen.gd" id="1_axe66"]
 [ext_resource type="AudioStream" uid="uid://dsuvkgw0kopig" path="res://Assets/music/Sacred.mp3" id="3_7jg6t"]
 [ext_resource type="PackedScene" uid="uid://cvogeqmlxoi7g" path="res://Scenes/health_crate.tscn" id="4_l8c8p"]
 [ext_resource type="PackedScene" uid="uid://df4ps4u5emquy" path="res://Scenes/game_manager.tscn" id="8_yfgf2"]
-[ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="9_q1ndp"]
 [ext_resource type="Texture2D" uid="uid://d2tap08rr5mnv" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-22T120948.107.png" id="9_y2a8p"]
-[ext_resource type="PackedScene" uid="uid://wlxv4kgbfubg" path="res://Scenes/star.tscn" id="10_hoa05"]
-[ext_resource type="PackedScene" uid="uid://jas1sb5s4nr4" path="res://Scenes/power_crate.tscn" id="11_5wh02"]
+[ext_resource type="PackedScene" uid="uid://cl0yf6cukdaim" path="res://Scenes/walls.tscn" id="10_cmiwi"]
 [ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/sacred_tile_3.tscn" id="11_kskmq"]
 [ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/sacred_tile_4.tscn" id="11_u2hka"]
 [ext_resource type="PackedScene" uid="uid://bfcpucjxkqhkh" path="res://Scenes/burst_crate.tscn" id="11_w5rpq"]
@@ -15,9 +13,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x577d"]
 size = Vector2(106, 95)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vnrvs"]
-
-[node name="MainMenu" type="Control"]
+[node name="moonMen" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -50,60 +46,12 @@ position = Vector2(45, -18)
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_x577d")
 
-[node name="tiles" type="Node" parent="."]
-
-[node name="Walls" type="Node" parent="."]
-
-[node name="Wall" type="StaticBody2D" parent="Walls" groups=["ground"]]
-position = Vector2(0, 318)
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall"]
-shape = SubResource("WorldBoundaryShape2D_vnrvs")
-
-[node name="Wall2" type="StaticBody2D" parent="Walls" groups=["ground"]]
-position = Vector2(-575, 0)
-rotation = 1.5708
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2"]
-shape = SubResource("WorldBoundaryShape2D_vnrvs")
-
-[node name="Wall3" type="StaticBody2D" parent="Walls" groups=["ground"]]
-position = Vector2(575, 0)
-rotation = -1.5708
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall3"]
-shape = SubResource("WorldBoundaryShape2D_vnrvs")
-
-[node name="Wall4" type="StaticBody2D" parent="Walls" groups=["ground"]]
-position = Vector2(0, -325)
-rotation = -3.14159
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall4"]
-shape = SubResource("WorldBoundaryShape2D_vnrvs")
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_7jg6t")
 autoplay = true
 bus = &"Music"
 
 [node name="gameManager" parent="." instance=ExtResource("8_yfgf2")]
-
-[node name="players" type="Node" parent="."]
-
-[node name="player" parent="players" instance=ExtResource("9_q1ndp")]
-position = Vector2(-372, 112)
-
-[node name="player2" parent="players" instance=ExtResource("9_q1ndp")]
-position = Vector2(294, 113)
-playerNumber = 1
 
 [node name="burstCrate" parent="." instance=ExtResource("11_w5rpq")]
 position = Vector2(-134, 296)
@@ -127,62 +75,22 @@ position = Vector2(142, 80)
 scale = Vector2(2, 2)
 texture = ExtResource("9_y2a8p")
 
-[node name="star" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(-342, -77)
+[node name="walls" parent="." instance=ExtResource("10_cmiwi")]
 
-[node name="star2" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(250, -100)
+[node name="spawn" type="Marker2D" parent="."]
+position = Vector2(-431, 72)
 
-[node name="star3" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(-187, -27)
+[node name="spawn2" type="Marker2D" parent="."]
+position = Vector2(-337, 70)
 
-[node name="star4" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(-201, -171)
+[node name="spawn3" type="Marker2D" parent="."]
+position = Vector2(278, 79)
 
-[node name="star5" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(82, -185)
+[node name="spawn4" type="Marker2D" parent="."]
+position = Vector2(418, 74)
 
-[node name="star6" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(321, 17)
-
-[node name="star7" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(166, 106)
-
-[node name="star8" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(61, 152)
-
-[node name="star9" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(-402, 38)
-
-[node name="star10" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(-134, -67)
-
-[node name="star11" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(234, -195)
-
-[node name="star12" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(97, -106)
-
-[node name="star13" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(-119, -211)
-
-[node name="star14" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(-288, -225)
-
-[node name="star15" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(-229, 354)
-
-[node name="star16" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(208, 342)
-
-[node name="star17" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(299, 297)
-
-[node name="star18" parent="." instance=ExtResource("10_hoa05")]
-position = Vector2(164, 272)
-
-[node name="powerCrate" parent="." instance=ExtResource("11_5wh02")]
-position = Vector2(-452, 132)
+[node name="respawnTimer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="Label/Start/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Label/Start/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="respawnTimer" to="." method="_on_respawn_timer_timeout"]

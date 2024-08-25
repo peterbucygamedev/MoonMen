@@ -311,7 +311,7 @@ wait_time = 10.0
 shape = SubResource("RectangleShape2D_2ww0t")
 
 [node name="healthTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 2.0
 
 [node name="energyShield" parent="." instance=ExtResource("10_ojd3y")]
 position = Vector2(0, 4)

@@ -17,7 +17,7 @@ func _ready():
 	timer.start()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
-func _physics_process(delta):
+func _process(delta):
 	if stick:
 		freeze = true
 		#print("sticking")
