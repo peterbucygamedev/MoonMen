@@ -1,17 +1,17 @@
-[gd_scene load_steps=39 format=3 uid="uid://jb2kjgt1osww"]
+[gd_scene load_steps=40 format=3 uid="uid://jb2kjgt1osww"]
 
 [ext_resource type="Script" path="res://Scripts/playerScript.gd" id="1_h1kp2"]
 [ext_resource type="Texture2D" uid="uid://n3i63b24goij" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-03T192824.383.png" id="2_68s70"]
 [ext_resource type="Texture2D" uid="uid://docaxey80f3nh" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-03T162605.042.png" id="3_c4flc"]
 [ext_resource type="Texture2D" uid="uid://b6se1338dhyv0" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-03T161208.173.png" id="4_ewcb2"]
 [ext_resource type="Texture2D" uid="uid://pdsvhbod1g46" path="res://Assets/sprites/pixil-frame-0 - 2024-08-05T151743.236.png" id="5_4somu"]
-[ext_resource type="Texture2D" uid="uid://nsuk3024wcks" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-12T223306.278.png" id="6_5lwar"]
+[ext_resource type="PackedScene" uid="uid://vc5uglrdna0c" path="res://Scenes/laser.tscn" id="7_0p3aw"]
 [ext_resource type="Texture2D" uid="uid://q1k11q75u03i" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-12T223407.756.png" id="7_5so1f"]
 [ext_resource type="Texture2D" uid="uid://bkuday3vkp6wr" path="res://Assets/sprites/pixil-frame-0 - 2024-08-13T085034.932.png" id="8_cf43o"]
 [ext_resource type="Texture2D" uid="uid://cqmvmnglw2t4m" path="res://Assets/sprites/pixil-frame-0 - 2024-08-13T085146.548.png" id="9_gfqqa"]
+[ext_resource type="PackedScene" uid="uid://dyqlfqxfag3qx" path="res://Scenes/energy_shield.tscn" id="10_ojd3y"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6b1r"]
-size = Vector2(27, 25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tjik"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6req"]
 atlas = ExtResource("2_68s70")
@@ -220,7 +220,7 @@ script = ExtResource("1_h1kp2")
 [node name="playerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0.25, 4.5)
 scale = Vector2(0.5, 1)
-shape = SubResource("RectangleShape2D_l6b1r")
+shape = SubResource("RectangleShape2D_7tjik")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_phkmh")
@@ -244,14 +244,10 @@ region_enabled = true
 region_rect = Rect2(0, 0, 43, 22)
 
 [node name="bulletSpawn" type="Marker2D" parent="weapon"]
-position = Vector2(20, 0)
+position = Vector2(19, 0)
 
-[node name="PointLight2D" type="PointLight2D" parent="weapon"]
-visible = false
-position = Vector2(191, -7.10543e-15)
-rotation = -1.57079
-scale = Vector2(0.225065, 2.92887)
-texture = ExtResource("6_5lwar")
+[node name="laser" parent="weapon" instance=ExtResource("7_0p3aw")]
+position = Vector2(12, 0)
 
 [node name="reload" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -13)
@@ -314,6 +310,18 @@ wait_time = 10.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_2ww0t")
 
+[node name="healthTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="energyShield" parent="." instance=ExtResource("10_ojd3y")]
+position = Vector2(0, 4)
+
+[node name="shieldTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="powerCrateTimer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="timeout" from="player1Timer" to="." method="_on_player_1_timer_timeout"]
 [connection signal="timeout" from="player2Timer" to="." method="_on_player_2_timer_timeout"]
 [connection signal="timeout" from="player3Timer" to="." method="_on_player_3_timer_timeout"]
@@ -322,3 +330,6 @@ shape = SubResource("RectangleShape2D_2ww0t")
 [connection signal="timeout" from="burstTimer" to="." method="_on_burst_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="healthTimer" to="." method="_on_health_timer_timeout"]
+[connection signal="timeout" from="shieldTimer" to="." method="_on_shield_timer_timeout"]
+[connection signal="timeout" from="powerCrateTimer" to="." method="_on_power_crate_timer_timeout"]

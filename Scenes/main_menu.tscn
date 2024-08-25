@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://k6srokgers7x"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ob5as"]
+[ext_resource type="PackedScene" uid="uid://c1wdgt70wcxxc" path="res://Scenes/teleport_areas.tscn" id="2_vxycg"]
+[ext_resource type="PackedScene" uid="uid://6sbx3g7lc6h2" path="res://Scenes/sacred_tile.tscn" id="3_lrpat"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ob5as")
+
+[node name="teleportAreas" parent="." instance=ExtResource("2_vxycg")]
+position = Vector2(575, 320)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.299999, 0.276472, 0.259663, 1)
+theme_override_colors/font_shadow_color = Color(0.0418184, 0.0383034, 0.0296447, 1)
+text = "MoonMen"
+
+[node name="start" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.621643, 0.628146, 0.618449, 0.929412)
+theme_override_colors/font_pressed_color = Color(5.48691e-06, 0.937975, 0, 1)
+theme_override_colors/font_hover_color = Color(0.219501, 0.219501, 0.219501, 1)
+theme_override_font_sizes/font_size = 20
+action_mode = 0
+text = "start"
+
+[node name="options" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.621643, 0.628146, 0.618449, 0.929412)
+theme_override_colors/font_pressed_color = Color(5.48691e-06, 0.937975, 0, 1)
+theme_override_colors/font_hover_color = Color(0.219501, 0.219501, 0.219501, 1)
+theme_override_font_sizes/font_size = 20
+text = "options"
+
+[node name="quit" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.621643, 0.628146, 0.618449, 0.929412)
+theme_override_colors/font_pressed_color = Color(5.48691e-06, 0.937975, 0, 1)
+theme_override_colors/font_hover_color = Color(0.219501, 0.219501, 0.219501, 1)
+theme_override_font_sizes/font_size = 20
+text = "quit"
+
+[node name="sacredTile" parent="." instance=ExtResource("3_lrpat")]
+position = Vector2(200, 450)
+
+[node name="sacredTile2" parent="." instance=ExtResource("3_lrpat")]
+position = Vector2(950, 450)
+scale = Vector2(-1, 1)
+
+[connection signal="button_up" from="MarginContainer/VBoxContainer/start" to="." method="_on_start_button_up"]

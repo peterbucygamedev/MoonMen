@@ -21,20 +21,23 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("ground"):
 		queue_free()
 	if body.is_in_group("players"):
-		
-		#print("hit player")
+		print("hit player")
 		body.health -= damage
 		body.health_bar.show()
 		if body.health_bar_timer.is_stopped():
 			body.health_bar_timer.start()
 		queue_free()
+	if body.is_in_group("shield"):
+		print("hit shield")
+		body.health -= damage
+
 
 
 func _on_timer_timeout():
 	queue_free()
 	
 func _process(delta):
-	print(linear_velocity)
+	#print(linear_velocity)
 	pass
 
 

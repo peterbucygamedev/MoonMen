@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyqlfqxfag3qx"]
+
+[ext_resource type="Script" path="res://Scripts/energy_shield.gd" id="1_qei3m"]
+[ext_resource type="Texture2D" uid="uid://duqbm72clexf4" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-24T163624.515.png" id="2_p8onf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tqfmr"]
+radius = 18.1108
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chabv"]
+atlas = ExtResource("2_p8onf")
+region = Rect2(0, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsf1t"]
+atlas = ExtResource("2_p8onf")
+region = Rect2(33, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5igly"]
+atlas = ExtResource("2_p8onf")
+region = Rect2(66, 0, 33, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r5cag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chabv")
+}],
+"loop": true,
+"name": &"shield",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsf1t")
+}],
+"loop": true,
+"name": &"shield2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5igly")
+}],
+"loop": true,
+"name": &"shield3",
+"speed": 5.0
+}]
+
+[node name="energyShield" type="StaticBody2D" groups=["shield"]]
+script = ExtResource("1_qei3m")
+
+[node name="energyShieldCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tqfmr")
+one_way_collision = true
+
+[node name="energySprite" type="AnimatedSprite2D" parent="energyShieldCollider"]
+modulate = Color(1, 1, 1, 0.317647)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r5cag")
+animation = &"shield"
+
+[node name="shieldTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="shieldTimer" to="." method="_on_shield_timer_timeout"]

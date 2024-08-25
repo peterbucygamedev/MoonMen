@@ -1,23 +1,24 @@
 extends Node
 
-var player1Speed = 750
-var player1Damage = 1
-var player1Health = 10
-var player1Ammo = 10
-var player2Speed = 750
-var player2Damage = 1
-var player2Health = 10
-var player2Ammo = 10
-var player3Speed = 750
-var player3Damage = 1
-var player3Health = 10
-var player3Ammo = 10
-var player4Speed = 750
-var player4Damage = 1
-var player4Health = 10
-var player4Ammo = 10
-var deaths = 0
-var nextLevel = false
+var numberOfPLayers := 0
+var player1Speed := 450
+var player1Damage := 1
+var player1Health := 10
+var player1Ammo := 10
+var player2Speed := 750
+var player2Damage := 1
+var player2Health := 10
+var player2Ammo := 10
+var player3Speed := 750
+var player3Damage := 1
+var player3Health := 10
+var player3Ammo := 10
+var player4Speed := 750
+var player4Damage := 1
+var player4Health := 10
+var player4Ammo := 10
+var deaths := 0
+var nextLevel := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,7 +32,6 @@ func _process(delta):
 		
 		if deaths >= devices.size() -1:
 			nextLevel = true
-			#print("yay")
 			
 		#print(deaths)
 		#print(devices.size())

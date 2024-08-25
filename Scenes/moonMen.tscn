@@ -1,16 +1,16 @@
 [gd_scene load_steps=14 format=3 uid="uid://33ltwejnfnxf"]
 
-[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_axe66"]
-[ext_resource type="Texture2D" uid="uid://dns4qa0r2klh6" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-09T194236.261.png" id="2_cusk3"]
+[ext_resource type="Script" path="res://Scripts/moonMen.gd" id="1_axe66"]
+[ext_resource type="AudioStream" uid="uid://dsuvkgw0kopig" path="res://Assets/music/Sacred.mp3" id="3_7jg6t"]
 [ext_resource type="PackedScene" uid="uid://cvogeqmlxoi7g" path="res://Scenes/health_crate.tscn" id="4_l8c8p"]
 [ext_resource type="PackedScene" uid="uid://df4ps4u5emquy" path="res://Scenes/game_manager.tscn" id="8_yfgf2"]
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="9_q1ndp"]
-[ext_resource type="PackedScene" uid="uid://jas1sb5s4nr4" path="res://Scenes/power_crate.tscn" id="10_nx2s4"]
+[ext_resource type="Texture2D" uid="uid://d2tap08rr5mnv" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-22T120948.107.png" id="9_y2a8p"]
+[ext_resource type="PackedScene" uid="uid://wlxv4kgbfubg" path="res://Scenes/star.tscn" id="10_hoa05"]
+[ext_resource type="PackedScene" uid="uid://jas1sb5s4nr4" path="res://Scenes/power_crate.tscn" id="11_5wh02"]
 [ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/sacred_tile_3.tscn" id="11_kskmq"]
-[ext_resource type="Texture2D" uid="uid://cl5j26pwoucwy" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-13T150018.994.png" id="11_n72xm"]
 [ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/sacred_tile_4.tscn" id="11_u2hka"]
 [ext_resource type="PackedScene" uid="uid://bfcpucjxkqhkh" path="res://Scenes/burst_crate.tscn" id="11_w5rpq"]
-[ext_resource type="Texture2D" uid="uid://d1k72lofm3qqn" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-13T164316.224.png" id="13_hdiy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x577d"]
 size = Vector2(106, 95)
@@ -25,27 +25,15 @@ offset_bottom = 40.0
 script = ExtResource("1_axe66")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="moon" type="Sprite2D" parent="."]
-position = Vector2(-1, 322)
-scale = Vector2(1.44, 1.2)
-texture = ExtResource("2_cusk3")
-region_enabled = true
-region_rect = Rect2(0, 991, 1000, 9)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
-z_as_relative = false
-position = Vector2(-4, 66)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("2_cusk3")
+light_mask = 1023
+visibility_layer = 1023
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -47.0
-offset_top = 33.0
-offset_right = -7.0
-offset_bottom = 56.0
+offset_left = 238.0
+offset_top = 256.0
+offset_right = 278.0
+offset_bottom = 279.0
 
 [node name="Start" type="MenuButton" parent="Label"]
 layout_mode = 0
@@ -59,6 +47,7 @@ text = "Start!"
 position = Vector2(45, -18)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Label/Start/Area2D"]
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_x577d")
 
 [node name="tiles" type="Node" parent="."]
@@ -101,6 +90,7 @@ collision_mask = 3
 shape = SubResource("WorldBoundaryShape2D_vnrvs")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_7jg6t")
 autoplay = true
 bus = &"Music"
 
@@ -109,127 +99,17 @@ bus = &"Music"
 [node name="players" type="Node" parent="."]
 
 [node name="player" parent="players" instance=ExtResource("9_q1ndp")]
-position = Vector2(-474, 286)
+position = Vector2(-372, 112)
 
 [node name="player2" parent="players" instance=ExtResource("9_q1ndp")]
-position = Vector2(-256, 295)
+position = Vector2(294, 113)
 playerNumber = 1
-
-[node name="player3" parent="players" instance=ExtResource("9_q1ndp")]
-position = Vector2(-550, 288)
-playerNumber = 2
-
-[node name="player4" parent="players" instance=ExtResource("9_q1ndp")]
-position = Vector2(-203, 293)
-playerNumber = 3
-
-[node name="powerCrates" type="Node" parent="."]
-
-[node name="powerCrate" parent="powerCrates" instance=ExtResource("10_nx2s4")]
-position = Vector2(-119, 194)
-
-[node name="powerCrate2" parent="powerCrates" instance=ExtResource("10_nx2s4")]
-position = Vector2(-66, 270)
-
-[node name="powerCrate3" parent="powerCrates" instance=ExtResource("10_nx2s4")]
-position = Vector2(-128, 150)
-
-[node name="powerCrate4" parent="powerCrates" instance=ExtResource("10_nx2s4")]
-position = Vector2(-34, 139)
-
-[node name="powerCrate5" parent="powerCrates" instance=ExtResource("10_nx2s4")]
-position = Vector2(-73, 155)
-
-[node name="powerCrate6" parent="powerCrates" instance=ExtResource("10_nx2s4")]
-position = Vector2(-84, 220)
-
-[node name="powerCrate7" parent="powerCrates" instance=ExtResource("10_nx2s4")]
-position = Vector2(-31, 204)
 
 [node name="burstCrate" parent="." instance=ExtResource("11_w5rpq")]
 position = Vector2(-134, 296)
 
 [node name="healthCrate" parent="." instance=ExtResource("4_l8c8p")]
 position = Vector2(-20, 298)
-
-[node name="lights" type="Node" parent="."]
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="lights"]
-energy = 0.1
-blend_mode = 1
-
-[node name="PointLight2D" type="PointLight2D" parent="lights"]
-position = Vector2(-267, 282)
-scale = Vector2(1.90531, 1.90531)
-energy = 0.5
-texture = ExtResource("13_hdiy4")
-
-[node name="PointLight2D2" type="PointLight2D" parent="lights"]
-position = Vector2(-8, 342)
-scale = Vector2(27.5853, 0.465314)
-energy = 0.5
-texture = ExtResource("13_hdiy4")
-
-[node name="PointLight2D12" type="PointLight2D" parent="lights"]
-position = Vector2(-2, -281)
-scale = Vector2(13.9453, 0.619438)
-energy = 0.2
-texture = ExtResource("13_hdiy4")
-
-[node name="PointLight2D3" type="PointLight2D" parent="lights"]
-position = Vector2(-174, -195)
-scale = Vector2(0.253188, 0.253188)
-energy = 0.5
-texture = ExtResource("13_hdiy4")
-
-[node name="PointLight2D4" type="PointLight2D" parent="lights"]
-position = Vector2(-292, -92)
-scale = Vector2(0.253188, 0.253188)
-texture = ExtResource("13_hdiy4")
-
-[node name="PointLight2D5" type="PointLight2D" parent="lights"]
-position = Vector2(-522, -171)
-scale = Vector2(0.253188, 0.253188)
-texture = ExtResource("13_hdiy4")
-
-[node name="PointLight2D6" type="PointLight2D" parent="lights"]
-position = Vector2(9, 161)
-scale = Vector2(0.253188, 0.253188)
-texture = ExtResource("13_hdiy4")
-
-[node name="PointLight2D7" type="PointLight2D" parent="lights"]
-position = Vector2(-432, 114)
-scale = Vector2(0.253188, 0.253188)
-texture = ExtResource("13_hdiy4")
-
-[node name="PointLight2D8" type="PointLight2D" parent="lights"]
-position = Vector2(289, 13)
-scale = Vector2(0.253188, 0.253188)
-texture = ExtResource("13_hdiy4")
-
-[node name="PointLight2D14" type="PointLight2D" parent="lights"]
-position = Vector2(-9, -18)
-scale = Vector2(0.253188, 0.253188)
-texture = ExtResource("13_hdiy4")
-
-[node name="PointLight2D9" type="PointLight2D" parent="lights"]
-position = Vector2(546, -139)
-scale = Vector2(0.253188, 0.253188)
-texture = ExtResource("13_hdiy4")
-
-[node name="PointLight2D10" type="PointLight2D" parent="lights"]
-position = Vector2(364, 159)
-scale = Vector2(0.253188, 0.253188)
-texture = ExtResource("13_hdiy4")
-
-[node name="PointLight2D11" type="PointLight2D" parent="lights"]
-position = Vector2(119, 269)
-scale = Vector2(0.253188, 0.253188)
-texture = ExtResource("13_hdiy4")
-
-[node name="PointLight2D13" type="PointLight2D" parent="lights"]
-position = Vector2(0, 11)
-texture = ExtResource("11_n72xm")
 
 [node name="sacredTile4" parent="." instance=ExtResource("11_u2hka")]
 position = Vector2(-373, 164)
@@ -242,6 +122,67 @@ position = Vector2(-172, 82)
 
 [node name="sacredTile6" parent="." instance=ExtResource("11_kskmq")]
 position = Vector2(142, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("9_y2a8p")
+
+[node name="star" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(-342, -77)
+
+[node name="star2" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(250, -100)
+
+[node name="star3" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(-187, -27)
+
+[node name="star4" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(-201, -171)
+
+[node name="star5" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(82, -185)
+
+[node name="star6" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(321, 17)
+
+[node name="star7" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(166, 106)
+
+[node name="star8" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(61, 152)
+
+[node name="star9" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(-402, 38)
+
+[node name="star10" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(-134, -67)
+
+[node name="star11" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(234, -195)
+
+[node name="star12" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(97, -106)
+
+[node name="star13" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(-119, -211)
+
+[node name="star14" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(-288, -225)
+
+[node name="star15" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(-229, 354)
+
+[node name="star16" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(208, 342)
+
+[node name="star17" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(299, 297)
+
+[node name="star18" parent="." instance=ExtResource("10_hoa05")]
+position = Vector2(164, 272)
+
+[node name="powerCrate" parent="." instance=ExtResource("11_5wh02")]
+position = Vector2(-452, 132)
 
 [connection signal="body_entered" from="Label/Start/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Label/Start/Area2D" to="." method="_on_area_2d_body_exited"]

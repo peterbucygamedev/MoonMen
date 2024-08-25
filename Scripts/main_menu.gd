@@ -1,6 +1,7 @@
 extends Control
-var numberOfPlayers = 0
-const MOON_SLAYER = preload("res://Scenes/moon_slayer.tscn")
+var MOON_MEN = preload("res://Scenes/moonMen.tscn")
+var BOUNCING_LASER = preload("res://Scenes/bouncing_laser.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -8,15 +9,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(numberOfPlayers)
+	pass
 
 
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("players"):
-		"""if numberOfPlayers >= 0:
-			numberOfPlayers += 1
-		if numberOfPlayers >= 4:"""
-		get_tree().change_scene_to_file("res://Scenes/moon_slayer.tscn")
-
-func _on_area_2d_body_exited(body):
-	numberOfPlayers -= 1
+func _on_start_button_up():
+	get_tree().change_scene_to_file("res://Scenes/moonMen.tscn")

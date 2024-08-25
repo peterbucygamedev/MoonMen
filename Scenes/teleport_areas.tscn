@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1wdgt70wcxxc"]
+
+[ext_resource type="Script" path="res://Scripts/Area2D.gd" id="1_5obow"]
+[ext_resource type="Script" path="res://Scripts/topArea.gd" id="2_52hsh"]
+[ext_resource type="Script" path="res://Scripts/leftArea.gd" id="3_1apo6"]
+[ext_resource type="Script" path="res://Scripts/rightArea.gd" id="4_weyos"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjn8o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxy2b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egrbd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xxvh"]
+
+[node name="teleportAreas" type="Node2D"]
+
+[node name="bottomArea" type="Area2D" parent="." groups=["teleport"]]
+position = Vector2(0, 426)
+scale = Vector2(80, 10)
+collision_layer = 515
+collision_mask = 515
+script = ExtResource("1_5obow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottomArea"]
+shape = SubResource("RectangleShape2D_jjn8o")
+
+[node name="topArea" type="Area2D" parent="." groups=["teleport"]]
+position = Vector2(2.36469e-11, -425)
+rotation = 3.14159
+scale = Vector2(80, 10)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("2_52hsh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="topArea"]
+shape = SubResource("RectangleShape2D_vxy2b")
+
+[node name="leftArea" type="Area2D" parent="." groups=["teleport"]]
+position = Vector2(-679, 0)
+scale = Vector2(10, 60)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("3_1apo6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftArea"]
+shape = SubResource("RectangleShape2D_egrbd")
+
+[node name="rightArea" type="Area2D" parent="." groups=["teleport"]]
+position = Vector2(679, 0)
+scale = Vector2(10, 60)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_weyos")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightArea"]
+shape = SubResource("RectangleShape2D_1xxvh")
+
+[connection signal="body_entered" from="bottomArea" to="bottomArea" method="_on_body_entered"]
+[connection signal="body_exited" from="bottomArea" to="bottomArea" method="_on_body_exited"]
+[connection signal="body_entered" from="topArea" to="topArea" method="_on_body_entered"]
+[connection signal="body_exited" from="topArea" to="topArea" method="_on_body_exited"]
+[connection signal="body_entered" from="leftArea" to="leftArea" method="_on_body_entered"]
+[connection signal="body_entered" from="rightArea" to="rightArea" method="_on_body_entered"]

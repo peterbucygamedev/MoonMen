@@ -1,12 +1,10 @@
 extends Area2D
 @onready var top_area = $"../topArea"
 @onready var collision_shape_2d = $"../topArea/CollisionShape2D"
-@onready var teleport_timer = $"../teleportTimer"
-@onready var physics_timer = $"../physicsTimer"
 var bullet = preload("res://Scenes/bullet.tscn")
 @onready var moon_slayer = $".."
 var WEAPON = preload("res://Scenes/weapon.tscn")
-
+var laser = preload("res://Scenes/laser.tscn")
 var teleportComplete = false
 var restartPhysics = false
 
@@ -27,7 +25,13 @@ func _on_body_entered(body):
 		b.transform = Transform2D(body.rotation, body.scale, body.skew, Vector2(body.position.x, top_area.position.y + 120))
 		b.apply_impulse(body.linear_velocity, body.position)
 		
-
+	if body.is_in_group("lasers"):
+		#print("laser hit")
+		"""if body.is_casting:
+			var s = laser.instantiate()
+			moon_slayer.add_child(s)
+			s.is_casting
+			s.transform = Transform2D(body.rotation, body.scale, body.skew, Vector2(body.position.x, top_area.position.y + 120))"""
 
 #safety
 """func _on_body_exited(body):
