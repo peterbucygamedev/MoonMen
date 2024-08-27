@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://wlxv4kgbfubg"]
+
+[ext_resource type="Texture2D" uid="uid://c1l0a5lv0inkf" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-27T151227.630.png" id="1_sw5s8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82of3"]
+
+[node name="latern" type="Sprite2D"]
+texture = ExtResource("1_sw5s8")
+region_enabled = true
+region_rect = Rect2(21, 55, 13, 18)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+
+[node name="chainLink" type="RigidBody2D" parent="."]
+position = Vector2(0, -13)
+
+[node name="Sprite2D" type="Sprite2D" parent="chainLink"]
+texture = ExtResource("1_sw5s8")
+region_enabled = true
+region_rect = Rect2(64, 13, 3, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chainLink"]
+scale = Vector2(0.2, 0.2)
+shape = SubResource("CapsuleShape2D_82of3")
+
+[node name="chainLink2" type="RigidBody2D" parent="."]
+position = Vector2(0, -19)
+
+[node name="Sprite2D" type="Sprite2D" parent="chainLink2"]
+texture = ExtResource("1_sw5s8")
+region_enabled = true
+region_rect = Rect2(69, 13, 3, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chainLink2"]
+scale = Vector2(0.2, 0.2)
+shape = SubResource("CapsuleShape2D_82of3")

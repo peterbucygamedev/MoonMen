@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbrf0f7h3x02m"]
+
+[ext_resource type="Script" path="res://Line2D.gd" id="1_hsssc"]
+
+[node name="Line2D" type="Line2D"]
+script = ExtResource("1_hsssc")
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://vc5uglrdna0c"]
 
-[ext_resource type="Script" path="res://RayCast2D.gd" id="1_4hbs2"]
+[ext_resource type="Script" path="res://Scripts/RayCast2D.gd" id="1_wxbts"]
 [ext_resource type="Texture2D" uid="uid://c5ubxtmdmtksf" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195234.346.png" id="2_u0i40"]
 
 [sub_resource type="Gradient" id="Gradient_ctdy7"]
@@ -66,7 +66,7 @@ glow_blend_mode = 0
 [node name="laser" type="RayCast2D" groups=["lasers"]]
 z_index = 2
 target_position = Vector2(1200, 0)
-script = ExtResource("1_4hbs2")
+script = ExtResource("1_wxbts")
 
 [node name="Line2D" type="Line2D" parent="."]
 scale = Vector2(1.003, 0.571585)
