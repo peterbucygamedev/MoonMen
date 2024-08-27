@@ -2,6 +2,7 @@ extends StaticBody2D
 @onready var energy_sprite = $energyShieldCollider/energySprite
 @onready var shield_timer = $shieldTimer
 var shieldEnabled = true
+var shieldNumber = 0
 
 var health := 3
 # Called when the node enters the scene tree for the first time.

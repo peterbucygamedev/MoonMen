@@ -63,6 +63,7 @@ func _ready():
 		weapon_sprite.play("weaponGreen")
 	if playerNumber == 3:
 		weapon_sprite.play("weaponBlue")
+	energy_shield.shieldNumber = playerNumber
 
 	
 func shoot():
@@ -273,6 +274,8 @@ func _process(delta):
 	
 	if (direction > 0.05 or direction2 > 0.05) and crouching == false:
 		animated_sprite_2d.flip_h = false
+		energy_shield.position.x = 12
+		energy_shield.energy_sprite.flip_h = false
 		#health_outline.flip_h = false
 		sprite_2d.flip_v = false
 		weapon_sprite.flip_v = false
@@ -288,6 +291,8 @@ func _process(delta):
 		
 	elif (direction < -0.05 or direction2 < -0.05) and crouching == false:
 		animated_sprite_2d.flip_h = true
+		energy_shield.position.x = -12
+		energy_shield.energy_sprite.flip_h = true
 		#health_outline.flip_h = true
 		sprite_2d.flip_v = true
 		weapon_sprite.flip_v = true
@@ -326,11 +331,12 @@ func _process(delta):
 	
 	if laser.is_casting:
 		if laser.get_collider() != null and laser.get_collider().is_in_group("shield"):
-			laser.get_collider().health -= 1
-			shieldDamage = false
-			if shield_timer.is_stopped():
-				shield_timer.start()
-			print("hit shield")
+			if laser.get_collider().shieldNumber != playerNumber:
+				laser.get_collider().health -= 1
+				shieldDamage = false
+				if shield_timer.is_stopped():
+					shield_timer.start()
+				print("hit shield")
 		
 	if laser.is_casting:
 		if laser.get_collider() != null and laser.get_collider().is_in_group("power_crate"):

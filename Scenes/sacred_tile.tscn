@@ -14,6 +14,7 @@ visible = false
 position = Vector2(3.69549e-06, 0)
 scale = Vector2(1.02489, 1.03222)
 shape = SubResource("RectangleShape2D_bdrxq")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_gfuvm")

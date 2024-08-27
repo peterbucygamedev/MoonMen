@@ -4,7 +4,7 @@ extends Area2D
 var bullet = preload("res://Scenes/bullet.tscn")
 @onready var moon_slayer = $".."
 var WEAPON = preload("res://Scenes/weapon.tscn")
-var laser = preload("res://Scenes/laser.tscn")
+#var laser = preload("res://Scenes/laser.tscn")
 var teleportComplete = false
 var restartPhysics = false
 

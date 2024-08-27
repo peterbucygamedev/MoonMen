@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=3 uid="uid://bvkat36vnmays"]
+
+[ext_resource type="Script" path="res://Scripts/Area2D.gd" id="1_53yf4"]
+[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="1_hjdea"]
+[ext_resource type="Script" path="res://Scripts/topArea.gd" id="2_37415"]
+[ext_resource type="Script" path="res://Scripts/leftArea.gd" id="3_hgdt4"]
+[ext_resource type="Script" path="res://Scripts/rightArea.gd" id="4_i8kn8"]
+[ext_resource type="PackedScene" uid="uid://dcxybwwp6pdbc" path="res://Scenes/sacred_tile_v.tscn" id="5_oa0k7"]
+[ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/sacred_tile_h.tscn" id="6_gs4mf"]
+[ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="7_3ag51"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2eiyb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1h1h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhct6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tuf4"]
+
+[node name="Mamooned" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
+z_index = -2
+scale = Vector2(2, 2)
+texture = ExtResource("1_hjdea")
+
+[node name="bottomArea" type="Area2D" parent="." groups=["teleport"]]
+position = Vector2(0, 426)
+scale = Vector2(80, 10)
+collision_layer = 515
+collision_mask = 515
+script = ExtResource("1_53yf4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottomArea"]
+shape = SubResource("RectangleShape2D_2eiyb")
+
+[node name="topArea" type="Area2D" parent="." groups=["teleport"]]
+position = Vector2(2.36469e-11, -425)
+rotation = 3.14159
+scale = Vector2(80, 10)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("2_37415")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="topArea"]
+shape = SubResource("RectangleShape2D_n1h1h")
+
+[node name="leftArea" type="Area2D" parent="." groups=["teleport"]]
+position = Vector2(-679, 0)
+scale = Vector2(10, 60)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("3_hgdt4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftArea"]
+shape = SubResource("RectangleShape2D_yhct6")
+
+[node name="rightArea" type="Area2D" parent="." groups=["teleport"]]
+position = Vector2(679, 0)
+scale = Vector2(10, 60)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_i8kn8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightArea"]
+shape = SubResource("RectangleShape2D_2tuf4")
+
+[node name="sacredTilev" parent="." instance=ExtResource("5_oa0k7")]
+position = Vector2(-499, 151)
+
+[node name="sacredTilev2" parent="." instance=ExtResource("5_oa0k7")]
+position = Vector2(-424, 9)
+
+[node name="sacredTilev3" parent="." instance=ExtResource("5_oa0k7")]
+position = Vector2(-352, -140)
+
+[node name="sacredTileh" parent="." instance=ExtResource("6_gs4mf")]
+position = Vector2(-238, 283)
+
+[node name="sacredTileh2" parent="." instance=ExtResource("6_gs4mf")]
+position = Vector2(242, 286)
+
+[node name="sacredTilev4" parent="." instance=ExtResource("5_oa0k7")]
+position = Vector2(505, 154)
+
+[node name="sacredTilev5" parent="." instance=ExtResource("5_oa0k7")]
+position = Vector2(438, -1)
+
+[node name="sacredTilev6" parent="." instance=ExtResource("5_oa0k7")]
+position = Vector2(371, -151)
+
+[node name="sacredTileh3" parent="." instance=ExtResource("6_gs4mf")]
+position = Vector2(-5, -212)
+
+[node name="player" parent="." instance=ExtResource("7_3ag51")]
+position = Vector2(-283, 236)
+playerNumber = 1
+
+[node name="player2" parent="." instance=ExtResource("7_3ag51")]
+position = Vector2(189, 196)
+
+[connection signal="body_entered" from="bottomArea" to="bottomArea" method="_on_body_entered"]
+[connection signal="body_exited" from="bottomArea" to="bottomArea" method="_on_body_exited"]
+[connection signal="body_entered" from="topArea" to="topArea" method="_on_body_entered"]
+[connection signal="body_exited" from="topArea" to="topArea" method="_on_body_exited"]
+[connection signal="body_entered" from="leftArea" to="leftArea" method="_on_body_entered"]
+[connection signal="body_entered" from="rightArea" to="rightArea" method="_on_body_entered"]

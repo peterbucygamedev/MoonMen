@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/sacred_tile_s.tscn" id="5_c3rr3"]
 [ext_resource type="PackedScene" uid="uid://6sbx3g7lc6h2" path="res://Scenes/sacred_tile.tscn" id="6_sl5jj"]
 [ext_resource type="PackedScene" uid="uid://c1wdgt70wcxxc" path="res://Scenes/teleport_areas.tscn" id="9_4m8yp"]
+[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="9_qcia5"]
 [ext_resource type="Texture2D" uid="uid://jfwya1xvun6v" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-18T195145.513.png" id="10_r3h2h"]
-[ext_resource type="Texture2D" uid="uid://d2tap08rr5mnv" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-22T120948.107.png" id="12_t3jfb"]
 [ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="26_glsgy"]
 
 [node name="MoonSlayer" type="Node"]
@@ -31,69 +31,19 @@ scale = Vector2(1, -1)
 position = Vector2(-300, 120)
 
 [node name="sacredTile3" parent="tiles" instance=ExtResource("3_2nl85")]
-position = Vector2(-240, 120)
+position = Vector2(-240, 30)
 
 [node name="sacredTile12" parent="tiles" instance=ExtResource("3_2nl85")]
 position = Vector2(300, 120)
 
 [node name="sacredTile13" parent="tiles" instance=ExtResource("3_2nl85")]
-position = Vector2(240, 120)
+position = Vector2(240, 30)
 
 [node name="sacredTile10" parent="tiles" instance=ExtResource("4_ktq83")]
-position = Vector2(-270, -210)
+position = Vector2(-270, -255)
 
 [node name="sacredTile14" parent="tiles" instance=ExtResource("4_ktq83")]
-position = Vector2(270, -210)
-
-[node name="smallTiles" type="Node2D" parent="tiles"]
-
-[node name="sacredTile4" parent="tiles/smallTiles" instance=ExtResource("5_c3rr3")]
-position = Vector2(-516, -13)
-
-[node name="sacredTile5" parent="tiles/smallTiles" instance=ExtResource("5_c3rr3")]
-position = Vector2(-433, -45)
-
-[node name="sacredTile6" parent="tiles/smallTiles" instance=ExtResource("5_c3rr3")]
-position = Vector2(-346, -75)
-
-[node name="sacredTile7" parent="tiles/smallTiles" instance=ExtResource("5_c3rr3")]
-position = Vector2(-250, -101)
-
-[node name="sacredTile8" parent="tiles/smallTiles" instance=ExtResource("5_c3rr3")]
-position = Vector2(-152, -71)
-
-[node name="sacredTile9" parent="tiles/smallTiles" instance=ExtResource("5_c3rr3")]
-position = Vector2(-152, 61)
-
-[node name="sacredTile14" parent="tiles/smallTiles" instance=ExtResource("5_c3rr3")]
-position = Vector2(-469, 193)
-
-[node name="smallTiles2" type="Node2D" parent="tiles"]
-position = Vector2(0, 2)
-scale = Vector2(-1, 1)
-
-[node name="sacredTile4" parent="tiles/smallTiles2" instance=ExtResource("5_c3rr3")]
-position = Vector2(-516, -13)
-
-[node name="sacredTile5" parent="tiles/smallTiles2" instance=ExtResource("5_c3rr3")]
-position = Vector2(-433, -45)
-
-[node name="sacredTile6" parent="tiles/smallTiles2" instance=ExtResource("5_c3rr3")]
-position = Vector2(-346, -75)
-
-[node name="sacredTile7" parent="tiles/smallTiles2" instance=ExtResource("5_c3rr3")]
-position = Vector2(-250, -101)
-
-[node name="sacredTile8" parent="tiles/smallTiles2" instance=ExtResource("5_c3rr3")]
-position = Vector2(-152, -71)
-
-[node name="sacredTile9" parent="tiles/smallTiles2" instance=ExtResource("5_c3rr3")]
-position = Vector2(-152, 61)
-
-[node name="sacredTile14" parent="tiles/smallTiles2" instance=ExtResource("5_c3rr3")]
-position = Vector2(-469, 193)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(270, -255)
 
 [node name="Node" type="Node" parent="."]
 
@@ -143,8 +93,34 @@ stream = ExtResource("26_glsgy")
 autoplay = true
 bus = &"Music"
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("12_t3jfb")
-
 [node name="teleportAreas" parent="." instance=ExtResource("9_4m8yp")]
+
+[node name="sacredTileh" parent="." instance=ExtResource("4_ktq83")]
+position = Vector2(0, 92)
+
+[node name="sacredTileh6" parent="." instance=ExtResource("4_ktq83")]
+position = Vector2(0, 180)
+
+[node name="sacredTileh3" parent="." instance=ExtResource("4_ktq83")]
+position = Vector2(-330, -126)
+
+[node name="sacredTileh4" parent="." instance=ExtResource("4_ktq83")]
+position = Vector2(330, -126)
+
+[node name="sacredTileSmall" parent="." instance=ExtResource("5_c3rr3")]
+position = Vector2(-493, 218)
+
+[node name="sacredTileSmall2" parent="." instance=ExtResource("5_c3rr3")]
+position = Vector2(498, 218)
+
+[node name="sacredTileSmall3" parent="." instance=ExtResource("5_c3rr3")]
+position = Vector2(-493, -201)
+
+[node name="sacredTileSmall4" parent="." instance=ExtResource("5_c3rr3")]
+position = Vector2(498, -201)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+z_as_relative = false
+scale = Vector2(2, 2)
+texture = ExtResource("9_qcia5")

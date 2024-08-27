@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dyqlfqxfag3qx" path="res://Scenes/energy_shield.tscn" id="10_ojd3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tjik"]
+size = Vector2(20, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_libcu"]
 atlas = ExtResource("2_ofmls")
@@ -415,7 +416,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xmi7"]
-size = Vector2(7, 3)
+size = Vector2(9.5, 1.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqo48"]
 atlas = ExtResource("6_q4jvq")
@@ -569,17 +570,14 @@ collision_mask = 11
 script = ExtResource("1_h1kp2")
 
 [node name="playerCollision" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0.25, 4.5)
+position = Vector2(1, 5)
 scale = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_7tjik")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_phkmh")
-animation = &"slideGrey"
+animation = &"movingGrey"
 autoplay = "idleGrey"
-frame = 3
-frame_progress = 1.0
 
 [node name="weapon" type="StaticBody2D" parent="."]
 position = Vector2(0, 2)
@@ -587,12 +585,12 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="weaponCollision" type="CollisionShape2D" parent="weapon"]
-position = Vector2(8, 0)
+position = Vector2(9.25, -0.75)
 shape = SubResource("RectangleShape2D_8xmi7")
 
 [node name="weaponSprite" type="AnimatedSprite2D" parent="weapon"]
 sprite_frames = SubResource("SpriteFrames_q2741")
-animation = &"weaponBlue"
+animation = &"weaponGrey"
 offset = Vector2(7.5, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="weapon"]
@@ -604,10 +602,10 @@ region_enabled = true
 region_rect = Rect2(0, 0, 43, 22)
 
 [node name="bulletSpawn" type="Marker2D" parent="weapon"]
-position = Vector2(28, -1)
+position = Vector2(16, -1)
 
 [node name="laser" parent="weapon" instance=ExtResource("8_bg2jn")]
-position = Vector2(13, -1)
+position = Vector2(12, 0)
 
 [node name="reload" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -676,7 +674,7 @@ shape = SubResource("RectangleShape2D_2ww0t")
 wait_time = 2.0
 
 [node name="energyShield" parent="." instance=ExtResource("10_ojd3y")]
-position = Vector2(0, 4)
+position = Vector2(12, 6)
 
 [node name="shieldTimer" type="Timer" parent="."]
 wait_time = 0.5
