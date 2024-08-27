@@ -12,7 +12,6 @@ var lastHealth := health
 @onready var bullet_spawn = $weapon/bulletSpawn
 @export var playerNumber = 0
 var select := false
-@onready var gunshot = $gunshot
 
 var crouching := false
 @onready var player_collision = $playerCollision
@@ -41,6 +40,7 @@ var powerCrateDamage = true
 var dead := false
 var lives := 3
 var startingTransform = transform
+@onready var weapon_sprite = $weapon/weaponSprite
 
 
 
@@ -54,13 +54,20 @@ func _ready():
 	reload.hide()
 	health_bar.hide()
 	energy_shield.hide()
-	energy_shield.get_node("energyShieldCollider").disabled = false
+	energy_shield.get_node("energyShieldCollider").disabled = true
+	if playerNumber == 0:
+		weapon_sprite.play("weaponGrey")
+	if playerNumber == 1:
+		weapon_sprite.play("weaponPink")
+	if playerNumber == 2:
+		weapon_sprite.play("weaponGreen")
+	if playerNumber == 3:
+		weapon_sprite.play("weaponBlue")
 
 	
 func shoot():
 	#var b = bullet.instantiate()
 	if playerNumber == 0 and GameManager.player1Ammo > 0:
-		gunshot.play()
 		var b = bullet.instantiate()
 		GameManager.player1Ammo -= 1
 		#b.speed = GameManager.player1Speed
@@ -74,7 +81,6 @@ func shoot():
 		reload.show()
 		
 	if playerNumber == 1 and GameManager.player2Ammo > 0:
-		gunshot.play()
 		var b = bullet.instantiate()
 		GameManager.player2Ammo -= 1
 		b.speed = GameManager.player2Speed
@@ -88,7 +94,6 @@ func shoot():
 		reload.show()
 		
 	if playerNumber == 2 and GameManager.player3Ammo > 0:
-		gunshot.play()
 		var b = bullet.instantiate()
 		GameManager.player3Ammo -= 1
 		b.speed = GameManager.player3Speed
@@ -102,7 +107,6 @@ func shoot():
 		reload.show()
 		
 	if playerNumber == 3 and GameManager.player4Ammo > 0:
-		gunshot.play()
 		var b = bullet.instantiate()
 		GameManager.player4Ammo -= 1
 		b.speed = GameManager.player4Speed
@@ -127,7 +131,6 @@ func shoot():
 func _process(delta):
 	
 		
-		
 	#print(is_touching_wall)
 	health_bar.value = health
 	health_bar_2.value = health
@@ -146,6 +149,7 @@ func _process(delta):
 			dead = false
 			health = 10
 		if lives <= 0:
+			GameManager.numberOfPlayers -= 1
 			queue_free()
 		
 		#print("you died")
@@ -180,7 +184,14 @@ func _process(delta):
 	if Input.is_joy_button_pressed(playerNumber, 9):
 		if Input.is_action_just_pressed("slide"):
 			crouching = true
-			animated_sprite_2d.play("slide")
+			if playerNumber == 0:
+				animated_sprite_2d.play("slideGrey")
+			if playerNumber == 1:
+				animated_sprite_2d.play("slidePink")
+			if playerNumber == 2:
+				animated_sprite_2d.play("slideGreen")
+			if playerNumber == 3:
+				animated_sprite_2d.play("slideBlue")
 			#if energy_shield.shieldEnabled:
 			#	energy_shield.get_node("energyShieldCollider").disabled = false
 			#	energy_shield.show()
@@ -264,20 +275,43 @@ func _process(delta):
 		animated_sprite_2d.flip_h = false
 		#health_outline.flip_h = false
 		sprite_2d.flip_v = false
+		weapon_sprite.flip_v = false
 		velocity.x = direction * SPEED
-		animated_sprite_2d.play("moving")
+		if playerNumber == 0:
+			animated_sprite_2d.play("movingGrey")
+		if playerNumber == 1:
+			animated_sprite_2d.play("movingPink")
+		if playerNumber == 2:
+			animated_sprite_2d.play("movingGreen")
+		if playerNumber == 3:
+			animated_sprite_2d.play("movingBlue")
 		
 	elif (direction < -0.05 or direction2 < -0.05) and crouching == false:
 		animated_sprite_2d.flip_h = true
 		#health_outline.flip_h = true
 		sprite_2d.flip_v = true
+		weapon_sprite.flip_v = true
 		velocity.x = direction * SPEED
-		animated_sprite_2d.play("moving")
+		if playerNumber == 0:
+			animated_sprite_2d.play("movingGrey")
+		if playerNumber == 1:
+			animated_sprite_2d.play("movingPink")
+		if playerNumber == 2:
+			animated_sprite_2d.play("movingGreen")
+		if playerNumber == 3:
+			animated_sprite_2d.play("movingBlue")
 		
 	elif crouching == false:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		#print("stop")
-		animated_sprite_2d.play("idle")
+		if playerNumber == 0:
+			animated_sprite_2d.play("idleGrey")
+		if playerNumber == 1:
+			animated_sprite_2d.play("idlePink")
+		if playerNumber == 2:
+			animated_sprite_2d.play("idleGreen")
+		if playerNumber == 3:
+			animated_sprite_2d.play("idleBlue")
 		
 	#if explosion == true:
 	#	velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -289,20 +323,22 @@ func _process(delta):
 		$weapon.rotation = atan2(joystick_vertical, joystick_horizontal)
 	elif mouseAim:
 		$weapon.look_at(get_global_mouse_position())
+	
+	if laser.is_casting:
+		if laser.get_collider() != null and laser.get_collider().is_in_group("shield"):
+			laser.get_collider().health -= 1
+			shieldDamage = false
+			if shield_timer.is_stopped():
+				shield_timer.start()
+			print("hit shield")
 		
-	if laser.get_collider() != null and laser.get_collider().is_in_group("shield"):
-		laser.get_collider().health -= 1
-		shieldDamage = false
-		if shield_timer.is_stopped():
-			shield_timer.start()
-		print("hit shield")
-		
-	if laser.get_collider() != null and laser.get_collider().is_in_group("power_crate"):
-		laser.get_collider().counter += 1
-		powerCrateDamage = false
-		if power_crate_timer.is_stopped():
-			power_crate_timer.start()
-		print("hit power crate")
+	if laser.is_casting:
+		if laser.get_collider() != null and laser.get_collider().is_in_group("power_crate"):
+			laser.get_collider().counter += 1
+			powerCrateDamage = false
+			if power_crate_timer.is_stopped():
+				power_crate_timer.start()
+			print("hit power crate")
 
 	move_and_slide()
 	
@@ -345,11 +381,12 @@ func _on_area_2d_body_exited(body):
 
 
 func _on_health_timer_timeout():
-	if laser.get_collider() != null and laser.get_collider().is_in_group("players"):
-		laser.get_collider().health -= 0.1
-		laser.get_collider().health_bar.show()
-		print("hit player")
-		health_bar_timer.start()
+	if laser.is_casting:
+		if laser.get_collider() != null and laser.get_collider().is_in_group("players"):
+			laser.get_collider().health -= 0.1
+			laser.get_collider().health_bar.show()
+			print("hit player")
+			health_bar_timer.start()
 		
 	
 func _on_shield_timer_timeout():

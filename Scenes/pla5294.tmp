@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://jb2kjgt1osww"]
+[gd_scene load_steps=86 format=3 uid="uid://jb2kjgt1osww"]
 
 [ext_resource type="Script" path="res://Scripts/playerScript.gd" id="1_h1kp2"]
 [ext_resource type="Texture2D" uid="uid://ctobpsdl8l6gm" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-25T151827.251.png" id="2_ofmls"]
@@ -6,10 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://bh0au1srxel55" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-25T151949.446.png" id="4_we8g5"]
 [ext_resource type="Texture2D" uid="uid://pdsvhbod1g46" path="res://Assets/sprites/pixil-frame-0 - 2024-08-05T151743.236.png" id="5_4somu"]
 [ext_resource type="Texture2D" uid="uid://chogtqvtj2jje" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-25T150733.883.png" id="5_dvqed"]
-[ext_resource type="Texture2D" uid="uid://b002h2010jkbv" path="res://Assets/sprites/pixil-frame-0 - 2024-08-26T115650.948.png" id="6_q4jvq"]
+[ext_resource type="Texture2D" uid="uid://cs4enps3qnubm" path="res://Assets/sprites/pixil-frame-0 - 2024-08-25T153340.212.png" id="6_jjx5l"]
+[ext_resource type="Texture2D" uid="uid://lafxktdqcm4h" path="res://Assets/sprites/pixil-frame-0 - 2024-08-25T154105.292.png" id="6_x0osg"]
+[ext_resource type="PackedScene" uid="uid://vc5uglrdna0c" path="res://Scenes/laser.tscn" id="7_0p3aw"]
 [ext_resource type="Texture2D" uid="uid://q1k11q75u03i" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-12T223407.756.png" id="7_5so1f"]
-[ext_resource type="PackedScene" uid="uid://vc5uglrdna0c" path="res://laser.tscn" id="8_bg2jn"]
+[ext_resource type="Texture2D" uid="uid://cyvm6jex5u4tw" path="res://Assets/sprites/pixil-frame-0 - 2024-08-25T153911.409.png" id="7_yi7jp"]
 [ext_resource type="Texture2D" uid="uid://bkuday3vkp6wr" path="res://Assets/sprites/pixil-frame-0 - 2024-08-13T085034.932.png" id="8_cf43o"]
+[ext_resource type="Texture2D" uid="uid://c1ypnasx2wl3t" path="res://Assets/sprites/pixil-frame-0 - 2024-08-25T153556.846.png" id="9_22124"]
 [ext_resource type="Texture2D" uid="uid://cqmvmnglw2t4m" path="res://Assets/sprites/pixil-frame-0 - 2024-08-13T085146.548.png" id="9_gfqqa"]
 [ext_resource type="PackedScene" uid="uid://dyqlfqxfag3qx" path="res://Scenes/energy_shield.tscn" id="10_ojd3y"]
 
@@ -417,27 +420,27 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xmi7"]
 size = Vector2(7, 3)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qqo48"]
-atlas = ExtResource("6_q4jvq")
-region = Rect2(75, 0, 25, 8)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iugy"]
+atlas = ExtResource("6_x0osg")
+region = Rect2(0, 0, 50, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_un1ll"]
-atlas = ExtResource("6_q4jvq")
-region = Rect2(50, 0, 25, 8)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xexue"]
+atlas = ExtResource("7_yi7jp")
+region = Rect2(0, 0, 50, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u17e3"]
-atlas = ExtResource("6_q4jvq")
-region = Rect2(0, 0, 25, 8)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sp63q"]
+atlas = ExtResource("6_jjx5l")
+region = Rect2(0, 0, 50, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rc2rq"]
-atlas = ExtResource("6_q4jvq")
-region = Rect2(25, 0, 25, 8)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tirvq"]
+atlas = ExtResource("9_22124")
+region = Rect2(0, 0, 50, 25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q2741"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qqo48")
+"texture": SubResource("AtlasTexture_0iugy")
 }],
 "loop": true,
 "name": &"weaponBlue",
@@ -445,7 +448,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_un1ll")
+"texture": SubResource("AtlasTexture_xexue")
 }],
 "loop": true,
 "name": &"weaponGreen",
@@ -453,7 +456,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u17e3")
+"texture": SubResource("AtlasTexture_sp63q")
 }],
 "loop": true,
 "name": &"weaponGrey",
@@ -461,7 +464,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rc2rq")
+"texture": SubResource("AtlasTexture_tirvq")
 }],
 "loop": true,
 "name": &"weaponPink",
@@ -561,7 +564,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ww0t"]
-size = Vector2(17, 22)
+size = Vector2(10, 22)
 
 [node name="player" type="CharacterBody2D" groups=["players"]]
 collision_layer = 11
@@ -576,10 +579,8 @@ shape = SubResource("RectangleShape2D_7tjik")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_phkmh")
-animation = &"slideGrey"
+animation = &"movingGrey"
 autoplay = "idleGrey"
-frame = 3
-frame_progress = 1.0
 
 [node name="weapon" type="StaticBody2D" parent="."]
 position = Vector2(0, 2)
@@ -591,9 +592,11 @@ position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_8xmi7")
 
 [node name="weaponSprite" type="AnimatedSprite2D" parent="weapon"]
+position = Vector2(4.76837e-07, -5.68434e-14)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_q2741")
 animation = &"weaponBlue"
-offset = Vector2(7.5, 0)
+offset = Vector2(17.5, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="weapon"]
 visible = false
@@ -604,13 +607,12 @@ region_enabled = true
 region_rect = Rect2(0, 0, 43, 22)
 
 [node name="bulletSpawn" type="Marker2D" parent="weapon"]
-position = Vector2(28, -1)
+position = Vector2(19, -1)
 
-[node name="laser" parent="weapon" instance=ExtResource("8_bg2jn")]
-position = Vector2(13, -1)
+[node name="laser" parent="weapon" instance=ExtResource("7_0p3aw")]
+position = Vector2(12, 0)
 
 [node name="reload" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(0, -13)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_apwj7")
@@ -620,7 +622,6 @@ frame = 1
 frame_progress = 0.809197
 
 [node name="healthBar" type="TextureProgressBar" parent="."]
-visible = false
 z_index = 1
 offset_left = -12.0
 offset_top = -12.0
@@ -631,7 +632,6 @@ texture_under = ExtResource("8_cf43o")
 texture_progress = ExtResource("9_gfqqa")
 
 [node name="healthBar2" type="TextureProgressBar" parent="."]
-visible = false
 offset_left = -12.0
 offset_top = -12.0
 offset_right = 28.0
@@ -669,13 +669,14 @@ wait_time = 10.0
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.5, 5)
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_2ww0t")
 
 [node name="healthTimer" type="Timer" parent="."]
 wait_time = 2.0
 
 [node name="energyShield" parent="." instance=ExtResource("10_ojd3y")]
+visible = false
 position = Vector2(0, 4)
 
 [node name="shieldTimer" type="Timer" parent="."]

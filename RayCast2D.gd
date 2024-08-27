@@ -4,7 +4,7 @@ extends RayCast2D
 @onready var collision_particles = $collisionParticles
 @onready var beam_particle = $beamParticle
 @onready var sprite_2d = $Line2D/Sprite2D
-@onready var audio_stream_player_2d = $AudioStreamPlayer2D
+
 
 var counter := 0
 var moveForward := true
@@ -20,20 +20,15 @@ var is_casting: bool = false:
 		
 		if is_casting:
 			appear()
-			if audio_stream_player_2d.is_playing() == false:
-				audio_stream_player_2d.play()
 		else:
 			collision_particles.emitting = false
 			disappear()
-			audio_stream_player_2d.stop()
 		set_physics_process(is_casting)
 		
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	is_casting = false
-	set_collide_with_areas(true)
 	
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -90,7 +85,7 @@ func appear() -> void:
 	#idk
 	var tween = create_tween()
 	#i think this is the shape of the line
-	tween.tween_property(line_2d, "width", 7, 0.1)
+	tween.tween_property(line_2d, "width", 4, 0.1)
 	
 func disappear() -> void:
 	var tween = create_tween()

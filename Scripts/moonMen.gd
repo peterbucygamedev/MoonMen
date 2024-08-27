@@ -3,6 +3,7 @@ const MOON_SLAYER = preload("res://Scenes/moon_slayer.tscn")
 var player = preload("res://Scenes/player.tscn")
 var getPlayerNumber = 0
 @onready var respawn_timer = $respawnTimer
+@onready var area_2d = $Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,15 +45,22 @@ func _ready():
 		GameManager.allowDevice3 = false
 		p3.set_owner($".")
 		p3.startingTransform = $spawn4.transform
+		
+	area_2d.get_node("CollisionShape2D").disabled = true
+	area_2d.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	if GameManager.numberOfPlayers <= 1:
+		area_2d.get_node("CollisionShape2D").disabled = false
+		area_2d.show()
 	print(GameManager.numberOfPlayers)
-	print(GameManager.allowDevice0)
-	print(GameManager.allowDevice1)
-	print(GameManager.allowDevice2)
-	print(GameManager.allowDevice3)
+	#print(GameManager.allowDevice0)
+	#print(GameManager.allowDevice1)
+	#print(GameManager.allowDevice2)
+	#print(GameManager.allowDevice3)
 	
 	
 func _on_area_2d_body_entered(body):

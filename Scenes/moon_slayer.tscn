@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://dl547gbap4kyp"]
 
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="2_6q5sv"]
+[ext_resource type="PackedScene" uid="uid://dcxybwwp6pdbc" path="res://Scenes/sacred_tile_v.tscn" id="3_2nl85"]
+[ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/sacred_tile_h.tscn" id="4_ktq83"]
+[ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/sacred_tile_s.tscn" id="5_c3rr3"]
 [ext_resource type="PackedScene" uid="uid://6sbx3g7lc6h2" path="res://Scenes/sacred_tile.tscn" id="6_sl5jj"]
-[ext_resource type="PackedScene" uid="uid://dcxybwwp6pdbc" path="res://Scenes/sacred_tile_2.tscn" id="7_k7jj2"]
-[ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/sacred_tile_4.tscn" id="8_2viqt"]
 [ext_resource type="PackedScene" uid="uid://c1wdgt70wcxxc" path="res://Scenes/teleport_areas.tscn" id="9_4m8yp"]
-[ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/sacred_tile_3.tscn" id="9_bde65"]
 [ext_resource type="Texture2D" uid="uid://jfwya1xvun6v" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-18T195145.513.png" id="10_r3h2h"]
 [ext_resource type="Texture2D" uid="uid://d2tap08rr5mnv" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-22T120948.107.png" id="12_t3jfb"]
 [ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="26_glsgy"]
@@ -27,70 +27,70 @@ position = Vector2(350, 300)
 rotation = -3.14159
 scale = Vector2(1, -1)
 
-[node name="sacredTile2" parent="tiles" instance=ExtResource("7_k7jj2")]
+[node name="sacredTile2" parent="tiles" instance=ExtResource("3_2nl85")]
 position = Vector2(-300, 120)
 
-[node name="sacredTile3" parent="tiles" instance=ExtResource("7_k7jj2")]
+[node name="sacredTile3" parent="tiles" instance=ExtResource("3_2nl85")]
 position = Vector2(-240, 120)
 
-[node name="sacredTile12" parent="tiles" instance=ExtResource("7_k7jj2")]
+[node name="sacredTile12" parent="tiles" instance=ExtResource("3_2nl85")]
 position = Vector2(300, 120)
 
-[node name="sacredTile13" parent="tiles" instance=ExtResource("7_k7jj2")]
+[node name="sacredTile13" parent="tiles" instance=ExtResource("3_2nl85")]
 position = Vector2(240, 120)
 
-[node name="sacredTile10" parent="tiles" instance=ExtResource("8_2viqt")]
+[node name="sacredTile10" parent="tiles" instance=ExtResource("4_ktq83")]
 position = Vector2(-270, -210)
 
-[node name="sacredTile14" parent="tiles" instance=ExtResource("8_2viqt")]
+[node name="sacredTile14" parent="tiles" instance=ExtResource("4_ktq83")]
 position = Vector2(270, -210)
 
 [node name="smallTiles" type="Node2D" parent="tiles"]
 
-[node name="sacredTile4" parent="tiles/smallTiles" instance=ExtResource("9_bde65")]
+[node name="sacredTile4" parent="tiles/smallTiles" instance=ExtResource("5_c3rr3")]
 position = Vector2(-516, -13)
 
-[node name="sacredTile5" parent="tiles/smallTiles" instance=ExtResource("9_bde65")]
+[node name="sacredTile5" parent="tiles/smallTiles" instance=ExtResource("5_c3rr3")]
 position = Vector2(-433, -45)
 
-[node name="sacredTile6" parent="tiles/smallTiles" instance=ExtResource("9_bde65")]
+[node name="sacredTile6" parent="tiles/smallTiles" instance=ExtResource("5_c3rr3")]
 position = Vector2(-346, -75)
 
-[node name="sacredTile7" parent="tiles/smallTiles" instance=ExtResource("9_bde65")]
+[node name="sacredTile7" parent="tiles/smallTiles" instance=ExtResource("5_c3rr3")]
 position = Vector2(-250, -101)
 
-[node name="sacredTile8" parent="tiles/smallTiles" instance=ExtResource("9_bde65")]
+[node name="sacredTile8" parent="tiles/smallTiles" instance=ExtResource("5_c3rr3")]
 position = Vector2(-152, -71)
 
-[node name="sacredTile9" parent="tiles/smallTiles" instance=ExtResource("9_bde65")]
+[node name="sacredTile9" parent="tiles/smallTiles" instance=ExtResource("5_c3rr3")]
 position = Vector2(-152, 61)
 
-[node name="sacredTile14" parent="tiles/smallTiles" instance=ExtResource("9_bde65")]
+[node name="sacredTile14" parent="tiles/smallTiles" instance=ExtResource("5_c3rr3")]
 position = Vector2(-469, 193)
 
 [node name="smallTiles2" type="Node2D" parent="tiles"]
 position = Vector2(0, 2)
 scale = Vector2(-1, 1)
 
-[node name="sacredTile4" parent="tiles/smallTiles2" instance=ExtResource("9_bde65")]
+[node name="sacredTile4" parent="tiles/smallTiles2" instance=ExtResource("5_c3rr3")]
 position = Vector2(-516, -13)
 
-[node name="sacredTile5" parent="tiles/smallTiles2" instance=ExtResource("9_bde65")]
+[node name="sacredTile5" parent="tiles/smallTiles2" instance=ExtResource("5_c3rr3")]
 position = Vector2(-433, -45)
 
-[node name="sacredTile6" parent="tiles/smallTiles2" instance=ExtResource("9_bde65")]
+[node name="sacredTile6" parent="tiles/smallTiles2" instance=ExtResource("5_c3rr3")]
 position = Vector2(-346, -75)
 
-[node name="sacredTile7" parent="tiles/smallTiles2" instance=ExtResource("9_bde65")]
+[node name="sacredTile7" parent="tiles/smallTiles2" instance=ExtResource("5_c3rr3")]
 position = Vector2(-250, -101)
 
-[node name="sacredTile8" parent="tiles/smallTiles2" instance=ExtResource("9_bde65")]
+[node name="sacredTile8" parent="tiles/smallTiles2" instance=ExtResource("5_c3rr3")]
 position = Vector2(-152, -71)
 
-[node name="sacredTile9" parent="tiles/smallTiles2" instance=ExtResource("9_bde65")]
+[node name="sacredTile9" parent="tiles/smallTiles2" instance=ExtResource("5_c3rr3")]
 position = Vector2(-152, 61)
 
-[node name="sacredTile14" parent="tiles/smallTiles2" instance=ExtResource("9_bde65")]
+[node name="sacredTile14" parent="tiles/smallTiles2" instance=ExtResource("5_c3rr3")]
 position = Vector2(-469, 193)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

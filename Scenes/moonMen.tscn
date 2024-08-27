@@ -1,17 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://33ltwejnfnxf"]
+[gd_scene load_steps=12 format=3 uid="uid://33ltwejnfnxf"]
 
 [ext_resource type="Script" path="res://Scripts/moonMen.gd" id="1_axe66"]
+[ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="2_agpfu"]
 [ext_resource type="AudioStream" uid="uid://dsuvkgw0kopig" path="res://Assets/music/Sacred.mp3" id="3_7jg6t"]
 [ext_resource type="PackedScene" uid="uid://cvogeqmlxoi7g" path="res://Scenes/health_crate.tscn" id="4_l8c8p"]
+[ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/sacred_tile_h.tscn" id="7_ptk42"]
+[ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/sacred_tile_s.tscn" id="8_5in2a"]
 [ext_resource type="PackedScene" uid="uid://df4ps4u5emquy" path="res://Scenes/game_manager.tscn" id="8_yfgf2"]
 [ext_resource type="Texture2D" uid="uid://d2tap08rr5mnv" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-22T120948.107.png" id="9_y2a8p"]
 [ext_resource type="PackedScene" uid="uid://cl0yf6cukdaim" path="res://Scenes/walls.tscn" id="10_cmiwi"]
-[ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/sacred_tile_3.tscn" id="11_kskmq"]
-[ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/sacred_tile_4.tscn" id="11_u2hka"]
 [ext_resource type="PackedScene" uid="uid://bfcpucjxkqhkh" path="res://Scenes/burst_crate.tscn" id="11_w5rpq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x577d"]
-size = Vector2(106, 95)
+size = Vector2(102, 97.5)
 
 [node name="moonMen" type="Control"]
 layout_mode = 3
@@ -24,26 +25,17 @@ script = ExtResource("1_axe66")
 light_mask = 1023
 visibility_layer = 1023
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 238.0
-offset_top = 256.0
-offset_right = 278.0
-offset_bottom = 279.0
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 269)
 
-[node name="Start" type="MenuButton" parent="Label"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = -4.0
-offset_right = 92.0
-offset_bottom = 27.0
-text = "Start!"
+[node name="PointLight2D" type="PointLight2D" parent="Area2D"]
+position = Vector2(0, -1.23978e-05)
+scale = Vector2(10.1021, 9.88947)
+color = Color(0.133333, 1, 0.101961, 1)
+texture = ExtResource("2_agpfu")
 
-[node name="Area2D" type="Area2D" parent="Label/Start"]
-position = Vector2(45, -18)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Label/Start/Area2D"]
-position = Vector2(0, -2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1.25)
 shape = SubResource("RectangleShape2D_x577d")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -59,19 +51,20 @@ position = Vector2(-134, 296)
 [node name="healthCrate" parent="." instance=ExtResource("4_l8c8p")]
 position = Vector2(-20, 298)
 
-[node name="sacredTile4" parent="." instance=ExtResource("11_u2hka")]
-position = Vector2(-373, 164)
+[node name="sacredTile4" parent="." instance=ExtResource("7_ptk42")]
+position = Vector2(-337, 152)
 
-[node name="sacredTile5" parent="." instance=ExtResource("11_u2hka")]
+[node name="sacredTile5" parent="." instance=ExtResource("7_ptk42")]
 position = Vector2(351, 152)
 
-[node name="sacredTile3" parent="." instance=ExtResource("11_kskmq")]
-position = Vector2(-172, 82)
+[node name="sacredTile3" parent="." instance=ExtResource("8_5in2a")]
+position = Vector2(-157, 82)
 
-[node name="sacredTile6" parent="." instance=ExtResource("11_kskmq")]
+[node name="sacredTile6" parent="." instance=ExtResource("8_5in2a")]
 position = Vector2(142, 80)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -4)
 scale = Vector2(2, 2)
 texture = ExtResource("9_y2a8p")
 
@@ -91,6 +84,6 @@ position = Vector2(418, 74)
 
 [node name="respawnTimer" type="Timer" parent="."]
 
-[connection signal="body_entered" from="Label/Start/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Label/Start/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="respawnTimer" to="." method="_on_respawn_timer_timeout"]
