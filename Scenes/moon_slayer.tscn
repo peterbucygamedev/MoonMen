@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dl547gbap4kyp"]
+[gd_scene load_steps=11 format=3 uid="uid://dl547gbap4kyp"]
 
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="2_6q5sv"]
 [ext_resource type="PackedScene" uid="uid://dcxybwwp6pdbc" path="res://Scenes/sacred_tile_v.tscn" id="3_2nl85"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://6sbx3g7lc6h2" path="res://Scenes/sacred_tile.tscn" id="6_sl5jj"]
 [ext_resource type="PackedScene" uid="uid://c1wdgt70wcxxc" path="res://Scenes/teleport_areas.tscn" id="9_4m8yp"]
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="9_qcia5"]
+[ext_resource type="PackedScene" uid="uid://b3oa32o0x0rou" path="res://Scenes/chain.tscn" id="10_evg40"]
 [ext_resource type="Texture2D" uid="uid://jfwya1xvun6v" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-18T195145.513.png" id="10_r3h2h"]
 [ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="26_glsgy"]
 
@@ -124,3 +125,6 @@ z_index = -2
 z_as_relative = false
 scale = Vector2(2, 2)
 texture = ExtResource("9_qcia5")
+
+[node name="chain" parent="." instance=ExtResource("10_evg40")]
+position = Vector2(-403, 257)
