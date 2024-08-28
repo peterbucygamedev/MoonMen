@@ -1,46 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://wlxv4kgbfubg"]
+[gd_scene load_steps=5 format=3 uid="uid://banl8qy6x15el"]
 
 [ext_resource type="Texture2D" uid="uid://cl1yjyf43be42" path="res://Assets/sprites/pixil-frame-0 - 2024-08-27T152148.340.png" id="1_bbwne"]
-[ext_resource type="Texture2D" uid="uid://byljbtsfxwvej" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-22T121642.281.png" id="2_k87yd"]
-[ext_resource type="PackedScene" uid="uid://b3oa32o0x0rou" path="res://Scenes/chain.tscn" id="3_a1abp"]
-[ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="4_6oq35"]
-[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="5_lr3l1"]
+[ext_resource type="Texture2D" uid="uid://byljbtsfxwvej" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-22T121642.281.png" id="2_q26i3"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ol8pj"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_rhamf"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_eisw7"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a13up"]
 
-[node name="latern" type="RigidBody2D"]
+[node name="latern" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="latern" type="RigidBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 26)
-shape = SubResource("WorldBoundaryShape2D_ol8pj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="latern"]
+shape = SubResource("CircleShape2D_rhamf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_eisw7")
-disabled = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, -1)
+[node name="Sprite2D" type="Sprite2D" parent="latern"]
 texture = ExtResource("1_bbwne")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.735, 2.735)
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
+[node name="PointLight2D" type="PointLight2D" parent="latern/Sprite2D"]
 position = Vector2(0, 1)
-rotation = -3.14159
-texture = ExtResource("2_k87yd")
+energy = 14.8
+shadow_enabled = true
+texture = ExtResource("2_q26i3")
 
-[node name="chain" parent="." instance=ExtResource("3_a1abp")]
-
-[node name="player" parent="." instance=ExtResource("4_6oq35")]
-position = Vector2(-89, 0)
-
-[node name="background" type="Sprite2D" parent="."]
-z_index = -2
-texture = ExtResource("5_lr3l1")
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(0, 4)
+occluder = SubResource("OccluderPolygon2D_a13up")

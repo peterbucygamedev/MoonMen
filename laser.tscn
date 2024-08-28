@@ -59,7 +59,7 @@ color_ramp = SubResource("GradientTexture1D_0woy3")
 background_mode = 3
 glow_enabled = true
 glow_normalized = true
-glow_intensity = 0.5
+glow_intensity = 2.0
 glow_strength = 2.0
 glow_blend_mode = 0
 

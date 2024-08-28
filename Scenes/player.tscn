@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://jb2kjgt1osww"]
+[gd_scene load_steps=85 format=3 uid="uid://jb2kjgt1osww"]
 
 [ext_resource type="Script" path="res://Scripts/playerScript.gd" id="1_h1kp2"]
 [ext_resource type="Texture2D" uid="uid://ctobpsdl8l6gm" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-25T151827.251.png" id="2_ofmls"]
@@ -415,6 +415,9 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1y48s"]
+polygon = PackedVector2Array(-14, 16, -14, -8, -7, -8, -7, 16)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xmi7"]
 size = Vector2(9.5, 1.5)
 
@@ -564,6 +567,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ww0t"]
 size = Vector2(17, 22)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3joq"]
+size = Vector2(19, 28)
+
 [node name="player" type="CharacterBody2D" groups=["players"]]
 collision_layer = 11
 collision_mask = 11
@@ -576,8 +582,12 @@ shape = SubResource("RectangleShape2D_7tjik")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_phkmh")
-animation = &"movingGrey"
+animation = &"idleGrey"
 autoplay = "idleGrey"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]
+position = Vector2(11, 1)
+occluder = SubResource("OccluderPolygon2D_1y48s")
 
 [node name="weapon" type="StaticBody2D" parent="."]
 position = Vector2(0, 2)
@@ -608,7 +618,6 @@ position = Vector2(16, -1)
 position = Vector2(12, 0)
 
 [node name="reload" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(0, -13)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_apwj7")
@@ -618,7 +627,6 @@ frame = 1
 frame_progress = 0.809197
 
 [node name="healthBar" type="TextureProgressBar" parent="."]
-visible = false
 z_index = 1
 offset_left = -12.0
 offset_top = -12.0
@@ -629,7 +637,6 @@ texture_under = ExtResource("8_cf43o")
 texture_progress = ExtResource("9_gfqqa")
 
 [node name="healthBar2" type="TextureProgressBar" parent="."]
-visible = false
 offset_left = -12.0
 offset_top = -12.0
 offset_right = 28.0
@@ -664,7 +671,6 @@ one_shot = true
 wait_time = 10.0
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.5, 5)
@@ -682,6 +688,14 @@ one_shot = true
 
 [node name="powerCrateTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="StaticBody2D" type="RigidBody2D" parent="."]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, 4)
+shape = SubResource("RectangleShape2D_v3joq")
 
 [connection signal="timeout" from="player1Timer" to="." method="_on_player_1_timer_timeout"]
 [connection signal="timeout" from="player2Timer" to="." method="_on_player_2_timer_timeout"]

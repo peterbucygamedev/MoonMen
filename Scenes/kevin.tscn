@@ -1,10 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://b4pwywyvmwvih"]
+[gd_scene load_steps=35 format=3 uid="uid://b4pwywyvmwvih"]
 
 [ext_resource type="Script" path="res://Scripts/playerScript.gd" id="1_axk48"]
 [ext_resource type="Texture2D" uid="uid://mk4cpr020jie" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-14T100152.277.png" id="2_tor1u"]
 [ext_resource type="Texture2D" uid="uid://pdsvhbod1g46" path="res://Assets/sprites/pixil-frame-0 - 2024-08-05T151743.236.png" id="5_dbvjp"]
 [ext_resource type="Texture2D" uid="uid://q1k11q75u03i" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-12T223407.756.png" id="6_nu14f"]
-[ext_resource type="AudioStream" uid="uid://dsnfw3ueiaiua" path="res://Assets/sounds/gunshot.mp3" id="7_vilo4"]
 [ext_resource type="Texture2D" uid="uid://bkuday3vkp6wr" path="res://Assets/sprites/pixil-frame-0 - 2024-08-13T085034.932.png" id="8_nr2uo"]
 [ext_resource type="Texture2D" uid="uid://cqmvmnglw2t4m" path="res://Assets/sprites/pixil-frame-0 - 2024-08-13T085146.548.png" id="9_ww8lu"]
 
@@ -252,10 +251,6 @@ animation = &"scan"
 autoplay = "scan"
 frame = 1
 frame_progress = 0.809197
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_vilo4")
-bus = &"Sound FX"
 
 [node name="player1Timer" type="Timer" parent="."]
 wait_time = 2.0

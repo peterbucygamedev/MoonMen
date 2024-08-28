@@ -7,7 +7,7 @@ var WEAPON = preload("res://Scenes/weapon.tscn")
 #var laser = preload("res://Scenes/laser.tscn")
 var teleportComplete = false
 var restartPhysics = false
-
+const power_crate = preload("res://Scenes/power_crate.tscn")
 #var teleportPosition = Vector2(0,0)
 
 func _on_body_entered(body):
@@ -26,6 +26,13 @@ func _on_body_entered(body):
 		#b.apply_impulse(body.linear_velocity, body.position)
 		b.apply_impulse(body.transform.x * body.speed, Vector2(0,0))
 		b.timer.set_wait_time(1)
+		
+	if body.is_in_group("power_crate"):
+		body.queue_free()
+		var c = power_crate.instantiate()
+		moon_slayer.add_child(c)
+		c.transform = Transform2D(body.rotation, body.scale, body.skew, Vector2(body.position.x, top_area.position.y + 120))
+		c.counter = body.counter
 		
 #safety
 """func _on_body_exited(body):

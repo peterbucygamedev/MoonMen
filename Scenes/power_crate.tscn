@@ -121,8 +121,8 @@ size = Vector2(32, 32)
 radius = 35.0143
 
 [node name="powerCrate" type="RigidBody2D" groups=["power_crate"]]
-collision_layer = 15
-collision_mask = 13
+collision_layer = 527
+collision_mask = 527
 mass = 0.1
 gravity_scale = 0.1
 script = ExtResource("1_wpobk")

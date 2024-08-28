@@ -10,7 +10,6 @@ func explode():
 			
 		if body.is_in_group("players"):
 		#print("hit player")
-		
 			body.health -= damage
 			body.health_bar.show()
 			if body.health_bar_timer.is_stopped():

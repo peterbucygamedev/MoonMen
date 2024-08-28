@@ -1,6 +1,8 @@
 extends CharacterBody2D
-var SPEED := 300.0
-var JUMP_VELOCITY := -450
+var SPEED := 100
+#750
+var JUMP_VELOCITY := -400
+#-450
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var weapon = $weapon
 @onready var sprite_2d = $weapon/Sprite2D
@@ -347,6 +349,7 @@ func _process(delta):
 			print("hit power crate")
 
 	move_and_slide()
+	move_and_collide(velocity * delta)
 	
 func _on_player_1_timer_timeout():
 	#print("player1Reloaded")

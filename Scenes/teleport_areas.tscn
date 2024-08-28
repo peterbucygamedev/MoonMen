@@ -47,6 +47,7 @@ script = ExtResource("3_1apo6")
 shape = SubResource("RectangleShape2D_egrbd")
 
 [node name="rightArea" type="Area2D" parent="." groups=["teleport"]]
+visible = false
 position = Vector2(679, 0)
 scale = Vector2(10, 60)
 collision_layer = 3

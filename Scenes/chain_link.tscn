@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://qpnseyx0hkr7"]
+
+[ext_resource type="Texture2D" uid="uid://cew7e5aigcx1e" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-27T152706.868.png" id="1_g5mg5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8aisc"]
+
+[node name="chainLink" type="RigidBody2D"]
+position = Vector2(0, -13)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_g5mg5")
+region_enabled = true
+region_rect = Rect2(64, 13, 3, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.2, 0.2)
+shape = SubResource("CapsuleShape2D_8aisc")

@@ -6,6 +6,7 @@ var counter = 0
 @onready var destroy_timer = $destroyTimer
 @onready var power_crate_collider = $powerCrateCollider
 @onready var explosion_area = $explosionArea
+var speed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
