@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://cr2n1gfa6b6e0"]
 
-[ext_resource type="Texture2D" uid="uid://jfwya1xvun6v" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-18T195145.513.png" id="1_qxd30"]
-[ext_resource type="Texture2D" uid="uid://c5ubxtmdmtksf" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195234.346.png" id="2_25dr8"]
+[ext_resource type="Texture2D" uid="uid://jfwya1xvun6v" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-18T195145.513.png" id="1_y2pia"]
+[ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="2_44o8m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7kabh"]
 size = Vector2(234, 10)
 
-[node name="sacredTileh" type="StaticBody2D" groups=["ground"]]
+[node name="sacredTileHGrey" type="StaticBody2D" groups=["ground"]]
 z_index = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -14,7 +14,7 @@ shape = SubResource("RectangleShape2D_7kabh")
 one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_qxd30")
+texture = ExtResource("1_y2pia")
 region_enabled = true
 region_rect = Rect2(682, 171, 234, 10)
 
@@ -22,16 +22,16 @@ region_rect = Rect2(682, 171, 234, 10)
 position = Vector2(1.73472e-18, 3)
 scale = Vector2(20, 0.2)
 energy = 3.0
-texture = ExtResource("2_25dr8")
+texture = ExtResource("2_44o8m")
 
 [node name="light2" type="PointLight2D" parent="Sprite2D"]
 position = Vector2(-108, 0)
 scale = Vector2(0.2, 1)
 energy = 3.0
-texture = ExtResource("2_25dr8")
+texture = ExtResource("2_44o8m")
 
 [node name="light3" type="PointLight2D" parent="Sprite2D"]
 position = Vector2(107, 0)
 scale = Vector2(0.2, 1)
 energy = 3.0
-texture = ExtResource("2_25dr8")
+texture = ExtResource("2_44o8m")

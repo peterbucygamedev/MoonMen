@@ -1,12 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://k6srokgers7x"]
+[gd_scene load_steps=15 format=3 uid="uid://k6srokgers7x"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ob5as"]
 [ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="2_spett"]
-[ext_resource type="Texture2D" uid="uid://d2tap08rr5mnv" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-22T120948.107.png" id="4_xo1ea"]
-[ext_resource type="PackedScene" uid="uid://dcxybwwp6pdbc" path="res://Scenes/sacred_tile_v.tscn" id="5_vp2ik"]
-[ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/sacred_tile_s.tscn" id="6_5fjfb"]
+[ext_resource type="PackedScene" uid="uid://dcxybwwp6pdbc" path="res://Scenes/tiles/sacred_tile_v_grey.tscn" id="5_vp2ik"]
+[ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/tiles/sacred_tile_s_grey.tscn" id="6_5fjfb"]
 [ext_resource type="Script" path="res://Scripts/Area2D.gd" id="7_8uyl4"]
-[ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/sacred_tile_h.tscn" id="7_ycl7o"]
+[ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/tiles/sacred_tile_h_grey.tscn" id="7_ycl7o"]
 [ext_resource type="Script" path="res://Scripts/topArea.gd" id="8_c2ilf"]
 [ext_resource type="Script" path="res://Scripts/leftArea.gd" id="9_3w5js"]
 [ext_resource type="Script" path="res://Scripts/rightArea.gd" id="10_8ilc0"]
@@ -146,11 +145,6 @@ position = Vector2(575, 450)
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 2
 position = Vector2(574, 324)
-
-[node name="background" type="Sprite2D" parent="."]
-position = Vector2(506, 327)
-scale = Vector2(2.50703, 2.50703)
-texture = ExtResource("4_xo1ea")
 
 [node name="sacredTilev" parent="." instance=ExtResource("5_vp2ik")]
 position = Vector2(285, 370)

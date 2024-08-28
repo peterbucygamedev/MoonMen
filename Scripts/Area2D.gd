@@ -23,17 +23,18 @@ func _on_body_entered(body):
 		var b = bullet.instantiate()
 		moon_slayer.add_child(b)
 		b.transform = Transform2D(body.rotation, body.scale, body.skew, Vector2(body.position.x, top_area.position.y + 120))
-		#b.apply_impulse(body.linear_velocity, body.position)
-		b.apply_impulse(body.transform.x * body.speed, Vector2(0,0))
+		b.apply_impulse(body.linear_velocity, Vector2(0,0))
+		#b.apply_impulse(body.transform.x * body.speed, Vector2(0,0))
 		b.timer.set_wait_time(1)
 		
 	if body.is_in_group("power_crate"):
 		body.queue_free()
 		var c = power_crate.instantiate()
 		moon_slayer.add_child(c)
-		c.transform = Transform2D(body.rotation, body.scale, body.skew, Vector2(body.position.x, top_area.position.y + 120))
+		c.transform = Transform2D(body.rotation, body.scale, body.skew, Vector2(body.position.x, top_area.position.y + 140))
 		c.counter = body.counter
-		
+		#c.apply_impulse(body.transform.x * body.speed, Vector2(0,0))
+		c.apply_impulse(body.linear_velocity, body.position)
 #safety
 """func _on_body_exited(body):
 	if body.is_in_group("players") and body.position.y >= 350:

@@ -1,15 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://dl547gbap4kyp"]
+[gd_scene load_steps=17 format=3 uid="uid://dl547gbap4kyp"]
 
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="2_6q5sv"]
-[ext_resource type="PackedScene" uid="uid://dcxybwwp6pdbc" path="res://Scenes/sacred_tile_v.tscn" id="3_2nl85"]
-[ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/sacred_tile_h.tscn" id="4_ktq83"]
-[ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/sacred_tile_s.tscn" id="5_c3rr3"]
-[ext_resource type="PackedScene" uid="uid://6sbx3g7lc6h2" path="res://Scenes/sacred_tile.tscn" id="6_sl5jj"]
+[ext_resource type="PackedScene" uid="uid://6sbx3g7lc6h2" path="res://Scenes/tiles/sacred_tile_grey.tscn" id="2_jxa22"]
+[ext_resource type="PackedScene" uid="uid://dcxybwwp6pdbc" path="res://Scenes/tiles/sacred_tile_v_grey.tscn" id="3_2nl85"]
+[ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/tiles/sacred_tile_h_grey.tscn" id="4_356cg"]
+[ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/tiles/sacred_tile_s_grey.tscn" id="8_mcw2j"]
 [ext_resource type="PackedScene" uid="uid://c1wdgt70wcxxc" path="res://Scenes/teleport_areas.tscn" id="9_4m8yp"]
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="9_qcia5"]
 [ext_resource type="Texture2D" uid="uid://jfwya1xvun6v" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-18T195145.513.png" id="10_r3h2h"]
-[ext_resource type="PackedScene" uid="uid://e6x05c5lhwb0" path="res://Scenes/chainLatern.tscn" id="11_jh62k"]
+[ext_resource type="PackedScene" uid="uid://c4ndmoowxiyj1" path="res://Scenes/chainLaterns/chain_latern_blue.tscn" id="11_jeg7r"]
+[ext_resource type="PackedScene" uid="uid://bgtbj4kncqs3l" path="res://Scenes/chainLaterns/chain_latern_green.tscn" id="12_jj0la"]
 [ext_resource type="PackedScene" uid="uid://jas1sb5s4nr4" path="res://Scenes/power_crate.tscn" id="12_ldhwg"]
+[ext_resource type="PackedScene" uid="uid://e6x05c5lhwb0" path="res://Scenes/chainLaterns/chain_latern_grey.tscn" id="13_624xe"]
+[ext_resource type="PackedScene" uid="uid://djbf7beg0bp1x" path="res://Scenes/chainLaterns/chain_latern_pink.tscn" id="14_fkeaf"]
+[ext_resource type="PackedScene" uid="uid://c0ps6v5oclunt" path="res://Scenes/chainLaterns/chain_latern_teal.tscn" id="15_ptbdl"]
+[ext_resource type="PackedScene" uid="uid://cysp78r13q20a" path="res://Scenes/chainLaterns/chain_latern_yellow.tscn" id="16_x41iy"]
 [ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="26_glsgy"]
 
 [node name="MoonSlayer" type="Node"]
@@ -21,10 +26,10 @@ z_index = 1
 
 [node name="tiles" type="Node" parent="."]
 
-[node name="sacredTile" parent="tiles" instance=ExtResource("6_sl5jj")]
+[node name="sacredTile" parent="tiles" instance=ExtResource("2_jxa22")]
 position = Vector2(-350, 300)
 
-[node name="sacredTile11" parent="tiles" instance=ExtResource("6_sl5jj")]
+[node name="sacredTile11" parent="tiles" instance=ExtResource("2_jxa22")]
 position = Vector2(350, 300)
 rotation = -3.14159
 scale = Vector2(1, -1)
@@ -41,10 +46,10 @@ position = Vector2(300, 120)
 [node name="sacredTile13" parent="tiles" instance=ExtResource("3_2nl85")]
 position = Vector2(240, 30)
 
-[node name="sacredTile10" parent="tiles" instance=ExtResource("4_ktq83")]
+[node name="sacredTile10" parent="tiles" instance=ExtResource("4_356cg")]
 position = Vector2(-270, -255)
 
-[node name="sacredTile14" parent="tiles" instance=ExtResource("4_ktq83")]
+[node name="sacredTile14" parent="tiles" instance=ExtResource("4_356cg")]
 position = Vector2(270, -255)
 
 [node name="Node" type="Node" parent="."]
@@ -97,28 +102,28 @@ bus = &"Music"
 
 [node name="teleportAreas" parent="." instance=ExtResource("9_4m8yp")]
 
-[node name="sacredTileh" parent="." instance=ExtResource("4_ktq83")]
+[node name="sacredTileh" parent="." instance=ExtResource("4_356cg")]
 position = Vector2(0, 92)
 
-[node name="sacredTileh6" parent="." instance=ExtResource("4_ktq83")]
+[node name="sacredTileh6" parent="." instance=ExtResource("4_356cg")]
 position = Vector2(0, 180)
 
-[node name="sacredTileh3" parent="." instance=ExtResource("4_ktq83")]
+[node name="sacredTileh3" parent="." instance=ExtResource("4_356cg")]
 position = Vector2(-330, -126)
 
-[node name="sacredTileh4" parent="." instance=ExtResource("4_ktq83")]
+[node name="sacredTileh4" parent="." instance=ExtResource("4_356cg")]
 position = Vector2(330, -126)
 
-[node name="sacredTileSmall" parent="." instance=ExtResource("5_c3rr3")]
+[node name="sacredTileSmall" parent="." instance=ExtResource("8_mcw2j")]
 position = Vector2(-493, 218)
 
-[node name="sacredTileSmall2" parent="." instance=ExtResource("5_c3rr3")]
+[node name="sacredTileSmall2" parent="." instance=ExtResource("8_mcw2j")]
 position = Vector2(498, 218)
 
-[node name="sacredTileSmall3" parent="." instance=ExtResource("5_c3rr3")]
+[node name="sacredTileSmall3" parent="." instance=ExtResource("8_mcw2j")]
 position = Vector2(-493, -201)
 
-[node name="sacredTileSmall4" parent="." instance=ExtResource("5_c3rr3")]
+[node name="sacredTileSmall4" parent="." instance=ExtResource("8_mcw2j")]
 position = Vector2(498, -201)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -130,5 +135,20 @@ texture = ExtResource("9_qcia5")
 [node name="powerCrate" parent="." instance=ExtResource("12_ldhwg")]
 position = Vector2(-352, 267)
 
-[node name="chainLatern" parent="." instance=ExtResource("11_jh62k")]
-position = Vector2(-60, 46)
+[node name="chainLaternBlue" parent="." instance=ExtResource("11_jeg7r")]
+position = Vector2(305, -49)
+
+[node name="chainLaternGreen" parent="." instance=ExtResource("12_jj0la")]
+position = Vector2(240, 220)
+
+[node name="chainLaternGrey" parent="." instance=ExtResource("13_624xe")]
+position = Vector2(-357, -176)
+
+[node name="chainLaternPink" parent="." instance=ExtResource("14_fkeaf")]
+position = Vector2(-303, -56)
+
+[node name="chainLaternTeal" parent="." instance=ExtResource("15_ptbdl")]
+position = Vector2(356, -178)
+
+[node name="chainLaternYellow" parent="." instance=ExtResource("16_x41iy")]
+position = Vector2(-241, 225)

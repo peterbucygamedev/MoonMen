@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="2_agpfu"]
 [ext_resource type="AudioStream" uid="uid://dsuvkgw0kopig" path="res://Assets/music/Sacred.mp3" id="3_7jg6t"]
 [ext_resource type="PackedScene" uid="uid://cvogeqmlxoi7g" path="res://Scenes/health_crate.tscn" id="4_l8c8p"]
-[ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/sacred_tile_h.tscn" id="7_ptk42"]
-[ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/sacred_tile_s.tscn" id="8_5in2a"]
+[ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/tiles/sacred_tile_h_grey.tscn" id="7_ptk42"]
+[ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/tiles/sacred_tile_s_grey.tscn" id="8_5in2a"]
 [ext_resource type="PackedScene" uid="uid://df4ps4u5emquy" path="res://Scenes/game_manager.tscn" id="8_yfgf2"]
-[ext_resource type="Texture2D" uid="uid://d2tap08rr5mnv" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-22T120948.107.png" id="9_y2a8p"]
+[ext_resource type="Texture2D" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-22T120948.107.png" id="9_y2a8p"]
 [ext_resource type="PackedScene" uid="uid://cl0yf6cukdaim" path="res://Scenes/walls.tscn" id="10_cmiwi"]
 [ext_resource type="PackedScene" uid="uid://bfcpucjxkqhkh" path="res://Scenes/burst_crate.tscn" id="11_w5rpq"]
 

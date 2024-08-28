@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://dcxybwwp6pdbc"]
 
-[ext_resource type="Texture2D" uid="uid://jfwya1xvun6v" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-18T195145.513.png" id="1_puv2n"]
-[ext_resource type="Texture2D" uid="uid://c5ubxtmdmtksf" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195234.346.png" id="2_emip6"]
+[ext_resource type="Texture2D" uid="uid://jfwya1xvun6v" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-18T195145.513.png" id="1_bu0tc"]
+[ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="2_acqty"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tq22b"]
 size = Vector2(10, 234)
 
-[node name="sacredTilev" type="StaticBody2D" groups=["ground", "wall"]]
+[node name="sacredTileVGrey" type="StaticBody2D" groups=["ground", "wall"]]
 z_index = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -14,7 +14,7 @@ visible = false
 shape = SubResource("RectangleShape2D_tq22b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_puv2n")
+texture = ExtResource("1_bu0tc")
 region_enabled = true
 region_rect = Rect2(195, 658, 10, 235)
 
@@ -22,27 +22,27 @@ region_rect = Rect2(195, 658, 10, 235)
 position = Vector2(-4, -68)
 scale = Vector2(0.2, 10)
 energy = 3.0
-texture = ExtResource("2_emip6")
+texture = ExtResource("2_acqty")
 
 [node name="light3" type="PointLight2D" parent="Sprite2D"]
 position = Vector2(4, -68)
 scale = Vector2(0.2, 10)
 energy = 3.0
-texture = ExtResource("2_emip6")
+texture = ExtResource("2_acqty")
 
 [node name="light5" type="PointLight2D" parent="Sprite2D"]
 position = Vector2(-4, 68)
 scale = Vector2(0.2, 10)
 energy = 3.0
-texture = ExtResource("2_emip6")
+texture = ExtResource("2_acqty")
 
 [node name="light6" type="PointLight2D" parent="Sprite2D"]
 position = Vector2(4, 68)
 scale = Vector2(0.2, 10)
 energy = 3.0
-texture = ExtResource("2_emip6")
+texture = ExtResource("2_acqty")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
 scale = Vector2(0.5, 3)
 energy = 3.0
-texture = ExtResource("2_emip6")
+texture = ExtResource("2_acqty")

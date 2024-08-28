@@ -27,7 +27,7 @@ func _process(delta):
 		animated_sprite_2d.play("5")
 	elif counter == 6:
 		animated_sprite_2d.play("6")
-	elif counter == 7:
+	elif counter >= 7:
 		animated_sprite_2d.play("detonate")
 		if detontate_timer.is_stopped() and destroy_timer.is_stopped():
 			detontate_timer.start()

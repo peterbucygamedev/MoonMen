@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://e6x05c5lhwb0"]
 
-[ext_resource type="Texture2D" uid="uid://dgu4lns33qhto" path="res://Assets/sprites/pixil-frame-0 - 2024-08-27T193850.429.png" id="2_5bcl5"]
-[ext_resource type="Texture2D" uid="uid://cew7e5aigcx1e" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-27T152706.868.png" id="2_fta8m"]
-[ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="3_s4wqm"]
-[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="4_l4ad8"]
+[ext_resource type="Texture2D" uid="uid://cew7e5aigcx1e" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-27T152706.868.png" id="1_jivsg"]
+[ext_resource type="Texture2D" uid="uid://dgu4lns33qhto" path="res://Assets/sprites/pixil-frame-0 - 2024-08-27T193850.429.png" id="2_ogxp7"]
+[ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="3_e4snx"]
+[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="4_hom8a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2j07r"]
 
@@ -14,7 +14,7 @@ height = 20.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_5q6ed"]
 radius = 3.99999
 
-[node name="chainLatern" type="Node2D"]
+[node name="chainLaternGrey" type="Node2D"]
 
 [node name="chainLink" type="RigidBody2D" parent="."]
 position = Vector2(0, -13)
@@ -22,7 +22,7 @@ collision_layer = 513
 collision_mask = 513
 
 [node name="Sprite2D" type="Sprite2D" parent="chainLink"]
-texture = ExtResource("2_fta8m")
+texture = ExtResource("1_jivsg")
 region_enabled = true
 region_rect = Rect2(64, 13, 3, 6)
 
@@ -40,7 +40,7 @@ scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_2j07r")
 
 [node name="Sprite2D" type="Sprite2D" parent="chainLink2"]
-texture = ExtResource("2_fta8m")
+texture = ExtResource("1_jivsg")
 region_enabled = true
 region_rect = Rect2(69, 13, 3, 6)
 
@@ -54,7 +54,7 @@ scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_2j07r")
 
 [node name="Sprite2D" type="Sprite2D" parent="chainLink3"]
-texture = ExtResource("2_fta8m")
+texture = ExtResource("1_jivsg")
 region_enabled = true
 region_rect = Rect2(64, 13, 3, 6)
 
@@ -68,7 +68,7 @@ scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_2j07r")
 
 [node name="Sprite2D" type="Sprite2D" parent="chainLink4"]
-texture = ExtResource("2_fta8m")
+texture = ExtResource("1_jivsg")
 region_enabled = true
 region_rect = Rect2(69, 13, 3, 6)
 
@@ -82,7 +82,7 @@ scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_2j07r")
 
 [node name="Sprite2D" type="Sprite2D" parent="chainLink5"]
-texture = ExtResource("2_fta8m")
+texture = ExtResource("1_jivsg")
 region_enabled = true
 region_rect = Rect2(64, 13, 3, 6)
 
@@ -96,7 +96,7 @@ scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_2j07r")
 
 [node name="Sprite2D" type="Sprite2D" parent="chainLink6"]
-texture = ExtResource("2_fta8m")
+texture = ExtResource("1_jivsg")
 region_enabled = true
 region_rect = Rect2(69, 13, 3, 6)
 
@@ -110,7 +110,7 @@ scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_2j07r")
 
 [node name="Sprite2D" type="Sprite2D" parent="chainLink7"]
-texture = ExtResource("2_fta8m")
+texture = ExtResource("1_jivsg")
 region_enabled = true
 region_rect = Rect2(64, 13, 3, 6)
 
@@ -124,7 +124,7 @@ scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_2j07r")
 
 [node name="Sprite2D" type="Sprite2D" parent="chainLink8"]
-texture = ExtResource("2_fta8m")
+texture = ExtResource("1_jivsg")
 region_enabled = true
 region_rect = Rect2(69, 13, 3, 6)
 
@@ -138,7 +138,7 @@ scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_2j07r")
 
 [node name="Sprite2D" type="Sprite2D" parent="chainLink9"]
-texture = ExtResource("2_fta8m")
+texture = ExtResource("1_jivsg")
 region_enabled = true
 region_rect = Rect2(64, 13, 3, 6)
 
@@ -152,7 +152,7 @@ scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_2j07r")
 
 [node name="Sprite2D" type="Sprite2D" parent="chainLink10"]
-texture = ExtResource("2_fta8m")
+texture = ExtResource("1_jivsg")
 region_enabled = true
 region_rect = Rect2(69, 13, 3, 6)
 
@@ -169,7 +169,7 @@ shape = SubResource("CapsuleShape2D_wx25j")
 
 [node name="Sprite2D" type="Sprite2D" parent="chainHolder"]
 position = Vector2(0, 2)
-texture = ExtResource("2_fta8m")
+texture = ExtResource("1_jivsg")
 region_enabled = true
 region_rect = Rect2(64, 15, 3, 3)
 
@@ -249,22 +249,23 @@ shape = SubResource("CircleShape2D_5q6ed")
 
 [node name="Sprite2D" type="Sprite2D" parent="latern"]
 position = Vector2(0, -6)
-texture = ExtResource("2_5bcl5")
+texture = ExtResource("2_ogxp7")
 region_enabled = true
 region_rect = Rect2(6, 6, 7, 7)
 
 [node name="PointLight2D" type="PointLight2D" parent="latern/Sprite2D"]
 rotation = 3.14159
 scale = Vector2(2, 2)
-color = Color(1, 1, 0.556863, 1)
+energy = 2.0
 shadow_enabled = true
-texture = ExtResource("3_s4wqm")
+texture = ExtResource("3_e4snx")
 
 [node name="PointLight2D2" type="PointLight2D" parent="latern/Sprite2D"]
 scale = Vector2(2, 2)
-color = Color(1, 1, 0.647059, 1)
-texture = ExtResource("3_s4wqm")
+energy = 2.0
+texture = ExtResource("3_e4snx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 z_index = -2
-texture = ExtResource("4_l4ad8")
+texture = ExtResource("4_hom8a")

@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dyqlfqxfag3qx" path="res://Scenes/energy_shield.tscn" id="10_ojd3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tjik"]
-size = Vector2(20, 22)
+size = Vector2(20, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_libcu"]
 atlas = ExtResource("2_ofmls")
@@ -567,8 +567,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ww0t"]
 size = Vector2(17, 22)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3joq"]
-size = Vector2(19, 28)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37sod"]
+size = Vector2(20, 27)
 
 [node name="player" type="CharacterBody2D" groups=["players"]]
 collision_layer = 11
@@ -689,13 +689,14 @@ one_shot = true
 [node name="powerCrateTimer" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="StaticBody2D" type="RigidBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 512
 collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0.5, 4)
-shape = SubResource("RectangleShape2D_v3joq")
+visible = false
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_37sod")
 
 [connection signal="timeout" from="player1Timer" to="." method="_on_player_1_timer_timeout"]
 [connection signal="timeout" from="player2Timer" to="." method="_on_player_2_timer_timeout"]

@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://Scripts/topArea.gd" id="2_37415"]
 [ext_resource type="Script" path="res://Scripts/leftArea.gd" id="3_hgdt4"]
 [ext_resource type="Script" path="res://Scripts/rightArea.gd" id="4_i8kn8"]
-[ext_resource type="PackedScene" uid="uid://dcxybwwp6pdbc" path="res://Scenes/sacred_tile_v.tscn" id="5_oa0k7"]
-[ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/sacred_tile_h.tscn" id="6_gs4mf"]
+[ext_resource type="PackedScene" uid="uid://dcxybwwp6pdbc" path="res://Scenes/tiles/sacred_tile_v_grey.tscn" id="5_oa0k7"]
+[ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/tiles/sacred_tile_h_grey.tscn" id="6_gs4mf"]
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="7_3ag51"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2eiyb"]
