@@ -1,7 +1,7 @@
 extends Node
 
 var numberOfPlayers := 0
-var player1Speed := 750
+var player1Speed := 1000
 var player1Damage := 1
 var player1Health := 10
 var player1Ammo := 10

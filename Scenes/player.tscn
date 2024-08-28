@@ -667,7 +667,7 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
-[node name="burstTimer" type="Timer" parent="."]
+[node name="fullAutoTimer" type="Timer" parent="."]
 wait_time = 10.0
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -703,7 +703,7 @@ shape = SubResource("RectangleShape2D_37sod")
 [connection signal="timeout" from="player3Timer" to="." method="_on_player_3_timer_timeout"]
 [connection signal="timeout" from="player4Timer" to="." method="_on_player_4_timer_timeout"]
 [connection signal="timeout" from="healthBarTimer" to="." method="_on_health_bar_timer_timeout"]
-[connection signal="timeout" from="burstTimer" to="." method="_on_burst_timer_timeout"]
+[connection signal="timeout" from="fullAutoTimer" to="." method="_on_burst_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="healthTimer" to="." method="_on_health_timer_timeout"]

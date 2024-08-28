@@ -1,57 +1,59 @@
 extends CharacterBody2D
-var SPEED := 100
-#750
-var JUMP_VELOCITY := -400
-#-450
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var weapon = $weapon
 @onready var sprite_2d = $weapon/Sprite2D
-var bullet := preload("res://Scenes/bullet.tscn")
-var saw_blade := preload("res://Scenes/saw_blade.tscn")
 @onready var player = $"."
-var health := 10
-var lastHealth := health
 @onready var bullet_spawn = $weapon/bulletSpawn
 @export var playerNumber = 0
-var select := false
-
-var crouching := false
 @onready var player_collision = $playerCollision
+
 @onready var player_1_timer = $player1Timer
 @onready var player_2_timer = $player2Timer
 @onready var player_3_timer = $player3Timer
 @onready var player_4_timer = $player4Timer
-@onready var reload = $reload
-@onready var health_bar = $healthBar
-@onready var health_bar_timer = $healthBarTimer
-@onready var health_bar_2 = $healthBar2
-var secondary := false
-var burst := false
-@onready var burst_timer = $burstTimer
-var explosion := false
-var is_touching_wall := false
-var jumpCounter := 0
-@onready var laser = $weapon/laser
-@onready var health_timer = $healthTimer
-@onready var energy_shield = $energyShield
-var mouseAim := false
-@onready var shield_timer = $shieldTimer
-var shieldDamage = true
+
 @onready var power_crate_timer = $powerCrateTimer
-var powerCrateDamage = true
-var dead := false
-var lives := 3
-var startingTransform = transform
+@onready var full_auto_timer = $fullAutoTimer
+@onready var shield_timer = $shieldTimer
+@onready var health_bar_timer = $healthBarTimer
+@onready var health_timer = $healthTimer
+
+@onready var health_bar = $healthBar
+@onready var health_bar_2 = $healthBar2
+@onready var laser = $weapon/laser
+@onready var energy_shield = $energyShield
 @onready var weapon_sprite = $weapon/weaponSprite
+@onready var reload = $reload
 
+var bullet := preload("res://Scenes/bullet.tscn")
+var saw_blade := preload("res://Scenes/saw_blade.tscn")
 
-
-
+var SPEED := 100
+#750
+var JUMP_VELOCITY := -400
+#-450
+var health := 10
+var jumpCounter := 0
+var lastHealth := health
+var lives := 3
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var startingTransform = transform
 
-func _ready():
+var select := false
+var crouching := false
+var secondary := false
+var fullAuto := false
+var explosion := false
+var is_touching_wall := false
+var mouseAim := false
+var shieldDamage := true
+var powerCrateDamage := true
+var dead := false
+var addBulletSpeed := false
+
+func _ready() -> void:
 	pass
 	reload.hide()
 	health_bar.hide()
@@ -68,12 +70,12 @@ func _ready():
 	energy_shield.shieldNumber = playerNumber
 
 	
-func shoot():
+func shoot() -> void:
 	#var b = bullet.instantiate()
 	if playerNumber == 0 and GameManager.player1Ammo > 0:
 		var b = bullet.instantiate()
 		GameManager.player1Ammo -= 1
-		#b.speed = GameManager.player1Speed
+		b.speed = GameManager.player1Speed
 		b.damage = GameManager.player1Damage
 		player.owner.add_child(b)
 		b.transform = bullet_spawn.global_transform
@@ -131,8 +133,10 @@ func shoot():
 	#$weapon.add_collision_exception_with(b)
 
 	
-func _process(delta):
+func _process(delta) -> void:
 	
+	if addBulletSpeed:
+		GameManager.player1Speed = 4000
 		
 	#print(is_touching_wall)
 	health_bar.value = health
@@ -158,7 +162,7 @@ func _process(delta):
 		#print("you died")
 		
 			
-	if Input.is_action_just_pressed("toggleAim"):
+	if Input.is_action_just_pressed("toggleAim") :
 		mouseAim = !mouseAim
 		
 	if energy_shield.shieldEnabled == false:
@@ -221,11 +225,11 @@ func _process(delta):
 		energy_shield.show()
 		
 	if Input.get_joy_axis(playerNumber, 5):
-		if burst:
+		if fullAuto:
 				shoot()
-		if burst_timer.is_stopped():
-			burst_timer.start()
-		elif !burst and Input.is_action_just_pressed("shoot"):
+		if full_auto_timer.is_stopped():
+			full_auto_timer.start()
+		elif !fullAuto and Input.is_action_just_pressed("shoot"):
 				shoot()
 	
 		if Input.is_action_just_released("shoot"):
@@ -351,45 +355,45 @@ func _process(delta):
 	move_and_slide()
 	move_and_collide(velocity * delta)
 	
-func _on_player_1_timer_timeout():
+func _on_player_1_timer_timeout() -> void:
 	#print("player1Reloaded")
 	GameManager.player1Ammo = 10
 	reload.hide()
 
-func _on_player_2_timer_timeout():
+func _on_player_2_timer_timeout()-> void:
 	GameManager.player2Ammo = 10
 	reload.hide()
 
-func _on_player_3_timer_timeout():
+func _on_player_3_timer_timeout()-> void:
 	GameManager.player3Ammo = 10
 	reload.hide()
 
-func _on_player_4_timer_timeout():
+func _on_player_4_timer_timeout()-> void:
 	GameManager.player4Ammo = 10
 	reload.hide()
 
 
-func _on_health_bar_timer_timeout():
+func _on_health_bar_timer_timeout()-> void:
 	#print("hide health")
 	health_bar.hide()
 
 
-func _on_burst_timer_timeout():
-	burst = false
+func _on_full_auto_timeout()-> void:
+	fullAuto = false
 
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(body)-> void:
 	if body.is_in_group("wall"):
 		is_touching_wall = true
 
 
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(body)-> void:
 	if body.is_in_group("wall"):
 		is_touching_wall = false
 		jumpCounter = 0
 
 
-func _on_health_timer_timeout():
+func _on_health_timer_timeout()-> void:
 	if laser.is_casting:
 		if laser.get_collider() != null and laser.get_collider().is_in_group("players"):
 			laser.get_collider().health -= 0.1
@@ -398,9 +402,9 @@ func _on_health_timer_timeout():
 			health_bar_timer.start()
 		
 	
-func _on_shield_timer_timeout():
+func _on_shield_timer_timeout()-> void:
 	shieldDamage = true
 
 
-func _on_power_crate_timer_timeout():
+func _on_power_crate_timer_timeout()-> void:
 	powerCrateDamage = true

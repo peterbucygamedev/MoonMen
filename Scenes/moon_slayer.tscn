@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dl547gbap4kyp"]
+[gd_scene load_steps=19 format=3 uid="uid://dl547gbap4kyp"]
 
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="2_6q5sv"]
 [ext_resource type="PackedScene" uid="uid://6sbx3g7lc6h2" path="res://Scenes/tiles/sacred_tile_grey.tscn" id="2_jxa22"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c0ps6v5oclunt" path="res://Scenes/chainLaterns/chain_latern_teal.tscn" id="15_ptbdl"]
 [ext_resource type="PackedScene" uid="uid://cysp78r13q20a" path="res://Scenes/chainLaterns/chain_latern_yellow.tscn" id="16_x41iy"]
 [ext_resource type="PackedScene" uid="uid://cl5keqdkt1txa" path="res://Scenes/full_auto.tscn" id="17_piq47"]
+[ext_resource type="PackedScene" uid="uid://djdurr0u8bais" path="res://Scenes/add_bullet_speed.tscn" id="18_dn8ut"]
 [ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="26_glsgy"]
 
 [node name="MoonSlayer" type="Node"]
@@ -156,3 +157,6 @@ position = Vector2(-241, 225)
 
 [node name="fullAuto" parent="." instance=ExtResource("17_piq47")]
 position = Vector2(-76, 73)
+
+[node name="addBulletSpeed" parent="." instance=ExtResource("18_dn8ut")]
+position = Vector2(85, 71)
