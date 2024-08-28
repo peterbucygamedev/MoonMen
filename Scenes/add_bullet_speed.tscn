@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://djdurr0u8bais"]
+
+[ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="1_6gasm"]
+[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="2_rtmyt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38bhf"]
+size = Vector2(20, 6)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yudta"]
+load_path = "res://.godot/imported/pixil-frame-0 - 2024-08-28T103630.637.png-7835fc0c41976d640c5b6df761a0c3ed.ctex"
+
+[node name="addBulletSpeed" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_38bhf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = SubResource("CompressedTexture2D_yudta")
+region_enabled = true
+region_rect = Rect2(28, 19, 9, 2)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("1_6gasm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+texture = ExtResource("2_rtmyt")
