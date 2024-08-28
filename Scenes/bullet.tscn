@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbuby1yacepi4"]
+[gd_scene load_steps=7 format=3 uid="uid://cbuby1yacepi4"]
 
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_3y6mo"]
 [ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="2_sm5m7"]
+[ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="3_kodru"]
+[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="3_rpvot"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58g5x"]
 size = Vector2(6, 2)
@@ -19,13 +21,12 @@ script = ExtResource("1_3y6mo")
 shape = SubResource("RectangleShape2D_58g5x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.499979, 0.855616, 0.964778, 1)
-self_modulate = Color(0.219608, 1, 1, 1)
 texture = ExtResource("2_sm5m7")
 region_enabled = true
 region_rect = Rect2(2, 4, 6, 2)
 
 [node name="Area2D" type="Area2D" parent="." groups=["bullets"]]
+visible = false
 position = Vector2(1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -42,12 +43,16 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -2
+texture = ExtResource("3_rpvot")
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(2.38419e-07, 1.19209e-07)
-scale = Vector2(0.6, 0.2)
-color = Color(4.42803e-06, 0.860874, 0.861786, 1)
-energy = 100.0
-texture = ExtResource("2_sm5m7")
+position = Vector2(-2.98023e-07, -5.96046e-08)
+scale = Vector2(0.14, 0.06)
+energy = 10.0
+shadow_enabled = true
+texture = ExtResource("3_kodru")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

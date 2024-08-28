@@ -2,7 +2,6 @@ extends RayCast2D
 @onready var line_2d = $Line2D
 @onready var casting_particles = $castingParticles
 @onready var collision_particles = $collisionParticles
-@onready var beam_particle = $beamParticle
 @onready var sprite_2d = $Line2D/Sprite2D
 
 
@@ -15,7 +14,6 @@ var is_casting: bool = false:
 	set(value):
 		is_casting = value
 		
-		beam_particle.emitting = is_casting
 		casting_particles.emitting = is_casting
 		
 		if is_casting:

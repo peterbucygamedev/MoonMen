@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0ps6v5oclunt"]
+[gd_scene load_steps=9 format=3 uid="uid://c0ps6v5oclunt"]
 
 [ext_resource type="Texture2D" uid="uid://cew7e5aigcx1e" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-27T152706.868.png" id="1_hikuh"]
-[ext_resource type="Texture2D" uid="uid://dgu4lns33qhto" path="res://Assets/sprites/pixil-frame-0 - 2024-08-27T193850.429.png" id="2_2pvwg"]
+[ext_resource type="Texture2D" uid="uid://blb6u0itbjs4a" path="res://Assets/sprites/pixil-frame-0 - 2024-08-28T082003.311.png" id="2_whx5v"]
 [ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="3_088hp"]
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="4_bn032"]
+[ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="4_ul7nk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0gl3"]
 
@@ -249,7 +250,7 @@ shape = SubResource("CircleShape2D_d3uyh")
 
 [node name="Sprite2D" type="Sprite2D" parent="latern"]
 position = Vector2(0, -6)
-texture = ExtResource("2_2pvwg")
+texture = ExtResource("2_whx5v")
 region_enabled = true
 region_rect = Rect2(6, 6, 7, 7)
 
@@ -266,6 +267,12 @@ scale = Vector2(2, 2)
 color = Color(0, 0.886275, 1, 1)
 energy = 2.0
 texture = ExtResource("3_088hp")
+
+[node name="PointLight2D3" type="PointLight2D" parent="latern/Sprite2D"]
+position = Vector2(-2.98023e-08, -1)
+scale = Vector2(0.4, 0.4)
+color = Color(0, 1, 1, 1)
+texture = ExtResource("4_ul7nk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
