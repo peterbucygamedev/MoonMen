@@ -403,7 +403,7 @@ func _on_area_2d_body_exited(body)-> void:
 func _on_health_timer_timeout()-> void:
 	if laser.is_casting:
 		if laser.get_collider() != null and laser.get_collider().is_in_group("players"):
-			laser.get_collider().health -= 0.1
+			laser.get_collider().health -= 1
 			laser.get_collider().health_bar.show()
 			print("hit player")
 			health_bar_timer.start()

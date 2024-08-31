@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://bvkat36vnmays"]
+[gd_scene load_steps=15 format=3 uid="uid://bvkat36vnmays"]
 
 [ext_resource type="Script" path="res://Scripts/Area2D.gd" id="1_53yf4"]
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="1_hjdea"]
+[ext_resource type="Script" path="res://Scripts/mamooned.gd" id="1_xkjga"]
 [ext_resource type="Script" path="res://Scripts/topArea.gd" id="2_37415"]
 [ext_resource type="Script" path="res://Scripts/leftArea.gd" id="3_hgdt4"]
 [ext_resource type="Script" path="res://Scripts/rightArea.gd" id="4_i8kn8"]
 [ext_resource type="PackedScene" uid="uid://dcxybwwp6pdbc" path="res://Scenes/tiles/sacred_tile_v_grey.tscn" id="5_oa0k7"]
 [ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/tiles/sacred_tile_h_grey.tscn" id="6_gs4mf"]
-[ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="7_3ag51"]
+[ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="9_thri3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2eiyb"]
 
@@ -17,7 +18,11 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tuf4"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ikxi"]
+size = Vector2(234, 92)
+
 [node name="Mamooned" type="Node2D"]
+script = ExtResource("1_xkjga")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -67,39 +72,69 @@ script = ExtResource("4_i8kn8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rightArea"]
 shape = SubResource("RectangleShape2D_2tuf4")
 
-[node name="sacredTilev" parent="." instance=ExtResource("5_oa0k7")]
+[node name="sacredTiles" type="Node2D" parent="."]
+
+[node name="sacredTilev" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
 position = Vector2(-499, 151)
 
-[node name="sacredTilev2" parent="." instance=ExtResource("5_oa0k7")]
+[node name="sacredTilev2" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
 position = Vector2(-424, 9)
 
-[node name="sacredTilev3" parent="." instance=ExtResource("5_oa0k7")]
+[node name="sacredTilev3" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
 position = Vector2(-352, -140)
 
-[node name="sacredTileh" parent="." instance=ExtResource("6_gs4mf")]
+[node name="sacredTileh" parent="sacredTiles" instance=ExtResource("6_gs4mf")]
 position = Vector2(-238, 283)
 
-[node name="sacredTileh2" parent="." instance=ExtResource("6_gs4mf")]
+[node name="sacredTileh2" parent="sacredTiles" instance=ExtResource("6_gs4mf")]
 position = Vector2(242, 286)
 
-[node name="sacredTilev4" parent="." instance=ExtResource("5_oa0k7")]
+[node name="sacredTilev4" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
 position = Vector2(505, 154)
 
-[node name="sacredTilev5" parent="." instance=ExtResource("5_oa0k7")]
+[node name="sacredTilev5" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
 position = Vector2(438, -1)
 
-[node name="sacredTilev6" parent="." instance=ExtResource("5_oa0k7")]
+[node name="sacredTilev6" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
 position = Vector2(371, -151)
 
-[node name="sacredTileh3" parent="." instance=ExtResource("6_gs4mf")]
+[node name="sacredTileh3" parent="sacredTiles" instance=ExtResource("6_gs4mf")]
 position = Vector2(-5, -212)
 
-[node name="player" parent="." instance=ExtResource("7_3ag51")]
-position = Vector2(-283, 236)
-playerNumber = 1
+[node name="spawns" type="Node2D" parent="."]
 
-[node name="player2" parent="." instance=ExtResource("7_3ag51")]
-position = Vector2(189, 196)
+[node name="spawn" type="Marker2D" parent="spawns"]
+z_index = 1
+position = Vector2(-325, 229)
+
+[node name="spawn2" type="Marker2D" parent="spawns"]
+z_index = 1
+position = Vector2(-208, 222)
+
+[node name="spawn3" type="Marker2D" parent="spawns"]
+z_index = 1
+position = Vector2(185, 257)
+
+[node name="spawn4" type="Marker2D" parent="spawns"]
+z_index = 1
+position = Vector2(289, 255)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-2, -228)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -36)
+shape = SubResource("RectangleShape2D_0ikxi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+modulate = Color(1, 1, 1, 0.0627451)
+position = Vector2(3.8147e-06, -36)
+scale = Vector2(23.4, 9.4)
+texture = ExtResource("9_thri3")
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D/Sprite2D"]
+energy = 0.5
+texture = ExtResource("9_thri3")
 
 [connection signal="body_entered" from="bottomArea" to="bottomArea" method="_on_body_entered"]
 [connection signal="body_exited" from="bottomArea" to="bottomArea" method="_on_body_exited"]
@@ -107,3 +142,5 @@ position = Vector2(189, 196)
 [connection signal="body_exited" from="topArea" to="topArea" method="_on_body_exited"]
 [connection signal="body_entered" from="leftArea" to="leftArea" method="_on_body_entered"]
 [connection signal="body_entered" from="rightArea" to="rightArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

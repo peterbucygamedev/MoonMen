@@ -25,6 +25,7 @@ script = ExtResource("1_dpyve")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
 energy = 0.5
 blend_mode = 1
 shadow_color = Color(0, 0, 0, 0.443137)
@@ -41,9 +42,6 @@ z_index = -1
 z_as_relative = false
 scale = Vector2(2, 2)
 texture = ExtResource("9_qcia5")
-
-[node name="spawn" type="Marker2D" parent="."]
-z_index = 1
 
 [node name="chainLaterns" type="Node2D" parent="."]
 
@@ -157,7 +155,7 @@ texture = ExtResource("17_c6ypu")
 [node name="Node2D" type="Node2D" parent="."]
 process_physics_priority = 1
 
-[node name="Label" type="Label" parent="Node2D"]
+[node name="MoonMen" type="Label" parent="Node2D"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -175,7 +173,7 @@ text = "MoonMen"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="Node2D"]
+[node name="pressButton" type="Label" parent="Node2D"]
 offset_left = -295.0
 offset_right = 294.0
 offset_bottom = 165.0
@@ -188,11 +186,29 @@ text = "press start when ready to fight"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="PointLight2D" type="PointLight2D" parent="Node2D/Label2"]
+[node name="PointLight2D" type="PointLight2D" parent="Node2D/pressButton"]
 position = Vector2(297, 16)
 scale = Vector2(4.62, 0.2)
 energy = 2.0
 texture = ExtResource("18_6hsik")
+
+[node name="spawns" type="Node2D" parent="."]
+
+[node name="spawn" type="Marker2D" parent="spawns"]
+z_index = 1
+position = Vector2(-92, -53)
+
+[node name="spawn2" type="Marker2D" parent="spawns"]
+z_index = 1
+position = Vector2(-49, -53)
+
+[node name="spawn3" type="Marker2D" parent="spawns"]
+z_index = 1
+position = Vector2(32, -52)
+
+[node name="spawn4" type="Marker2D" parent="spawns"]
+z_index = 1
+position = Vector2(79, -59)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
