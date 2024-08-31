@@ -565,10 +565,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ww0t"]
-size = Vector2(17, 22)
+size = Vector2(16, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37sod"]
-size = Vector2(20, 27)
+size = Vector2(14, 25)
 
 [node name="player" type="CharacterBody2D" groups=["players"]]
 collision_layer = 11
@@ -673,7 +673,7 @@ wait_time = 10.0
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.5, 5)
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_2ww0t")
 
 [node name="healthTimer" type="Timer" parent="."]
@@ -694,9 +694,11 @@ collision_layer = 512
 collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-visible = false
-position = Vector2(0, 3.5)
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_37sod")
+
+[node name="shootNextTimer" type="Timer" parent="."]
+wait_time = 0.05
 
 [connection signal="timeout" from="player1Timer" to="." method="_on_player_1_timer_timeout"]
 [connection signal="timeout" from="player2Timer" to="." method="_on_player_2_timer_timeout"]
@@ -709,3 +711,4 @@ shape = SubResource("RectangleShape2D_37sod")
 [connection signal="timeout" from="healthTimer" to="." method="_on_health_timer_timeout"]
 [connection signal="timeout" from="shieldTimer" to="." method="_on_shield_timer_timeout"]
 [connection signal="timeout" from="powerCrateTimer" to="." method="_on_power_crate_timer_timeout"]
+[connection signal="timeout" from="shootNextTimer" to="." method="_on_shoot_next_timer_timeout"]

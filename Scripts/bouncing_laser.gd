@@ -33,7 +33,7 @@ func _process(_delta):
 	
 	
 	rot = get_local_mouse_position().angle()
-	line_2d.clear_points()
+	#line_2d.clear_points()
 	
 	line_2d.add_point(global_position)
 	
@@ -58,7 +58,9 @@ func _process(_delta):
 			
 			max_cast_to = max_cast_to.bounce(raycast.get_collision_normal())
 		
+			#if number is less the size opf lasers point array
 			if idx < lasers.size()-1:
+				#enable the laserpoint at index
 				lasers[idx+1].enabled = true
 				lasers[idx+1].global_position = raycastCollision+(1*max_cast_to.normalized())
 			if idx == lasers.size()-1:

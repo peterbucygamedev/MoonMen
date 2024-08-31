@@ -15,6 +15,7 @@ collision_mask = 2
 script = ExtResource("1_lxi2l")
 
 [node name="sawBladeCollider" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_qplom")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -29,6 +30,7 @@ wait_time = 20.0
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("CircleShape2D_72e6k")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

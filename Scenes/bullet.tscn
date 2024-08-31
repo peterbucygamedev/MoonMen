@@ -44,6 +44,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 z_index = -2
 texture = ExtResource("3_rpvot")
 

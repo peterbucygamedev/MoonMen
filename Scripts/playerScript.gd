@@ -17,6 +17,7 @@ extends CharacterBody2D
 @onready var shield_timer = $shieldTimer
 @onready var health_bar_timer = $healthBarTimer
 @onready var health_timer = $healthTimer
+@onready var shoot_next_timer = $shootNextTimer
 
 @onready var health_bar = $healthBar
 @onready var health_bar_2 = $healthBar2
@@ -35,7 +36,7 @@ var JUMP_VELOCITY := -400
 var health := 10
 var jumpCounter := 0
 var lastHealth := health
-var lives := 3
+var lives := 1000
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -52,6 +53,10 @@ var shieldDamage := true
 var powerCrateDamage := true
 var dead := false
 var addBulletSpeed := false
+var burst = false
+var shootNext := true
+var burstNext := true
+var burstCounter := 0
 
 func _ready() -> void:
 	pass
@@ -136,7 +141,7 @@ func shoot() -> void:
 func _process(delta) -> void:
 	
 	if addBulletSpeed:
-		GameManager.player1Speed = 4000
+		GameManager.player1Speed = 2000
 		
 	#print(is_touching_wall)
 	health_bar.value = health
@@ -225,8 +230,12 @@ func _process(delta) -> void:
 		energy_shield.show()
 		
 	if Input.get_joy_axis(playerNumber, 5):
-		if fullAuto:
-				shoot()
+		if fullAuto and shootNext:
+			shoot()
+			shootNext = false
+			if shoot_next_timer.is_stopped():
+				shoot_next_timer.start()
+				
 		if full_auto_timer.is_stopped():
 			full_auto_timer.start()
 		elif !fullAuto and Input.is_action_just_pressed("shoot"):
@@ -247,8 +256,6 @@ func _process(delta) -> void:
 			#shootSecondary()"""
 	
 	
-
-		
 	#print(select)
 	
 	# Add the gravity.
@@ -408,3 +415,10 @@ func _on_shield_timer_timeout()-> void:
 
 func _on_power_crate_timer_timeout()-> void:
 	powerCrateDamage = true
+
+
+func _on_shoot_next_timer_timeout():
+	shootNext = true
+
+
+

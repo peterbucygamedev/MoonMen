@@ -1,6 +1,4 @@
 extends Control
-var MOON_MEN = preload("res://Scenes/moonMen.tscn")
-var BOUNCING_LASER = preload("res://Scenes/bouncing_laser.tscn")
 var player = preload("res://Scenes/player.tscn")
 var bullet = preload("res://Scenes/bullet.tscn")
 var devices := []
@@ -86,4 +84,3 @@ func _on_start_button_up():
 		GameManager.allowDevice3 = false
 		
 		
-	get_tree().change_scene_to_file("res://Scenes/moonMen.tscn")

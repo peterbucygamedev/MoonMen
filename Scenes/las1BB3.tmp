@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://8qj4y81dnrca"]
+
+[ext_resource type="Script" path="res://Node2D.gd" id="1_vkagb"]
+[ext_resource type="PackedScene" uid="uid://ccnhd5mmxx2eu" path="res://Scenes/tiles/sacred_tile_v_green.tscn" id="2_f0w36"]
+
+[node name="laserBounce" type="Node2D"]
+script = ExtResource("1_vkagb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(690, 0)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(1, 0, 8, 0)
+
+[node name="sacredTileVGreen" parent="." instance=ExtResource("2_f0w36")]
+position = Vector2(233, 5)

@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://e6x05c5lhwb0"]
+[gd_scene load_steps=8 format=3 uid="uid://e6x05c5lhwb0"]
 
 [ext_resource type="Texture2D" uid="uid://cew7e5aigcx1e" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-27T152706.868.png" id="1_jivsg"]
 [ext_resource type="Texture2D" uid="uid://blb6u0itbjs4a" path="res://Assets/sprites/pixil-frame-0 - 2024-08-28T082003.311.png" id="2_d3ppx"]
 [ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="3_e4snx"]
 [ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="4_07o0w"]
-[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="4_hom8a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2j07r"]
 
@@ -16,6 +15,7 @@ height = 20.0
 radius = 3.99999
 
 [node name="chainLaternGrey" type="Node2D"]
+z_index = -1
 
 [node name="chainLink" type="RigidBody2D" parent="."]
 position = Vector2(0, -13)
@@ -261,18 +261,9 @@ energy = 2.0
 shadow_enabled = true
 texture = ExtResource("3_e4snx")
 
-[node name="PointLight2D2" type="PointLight2D" parent="latern/Sprite2D"]
-scale = Vector2(2, 2)
-energy = 2.0
-texture = ExtResource("3_e4snx")
-
 [node name="PointLight2D3" type="PointLight2D" parent="latern/Sprite2D"]
 position = Vector2(-2.98023e-08, -1)
 scale = Vector2(0.4, 0.4)
 color = Color(0.695503, 0.695503, 0.695503, 1)
+blend_mode = 2
 texture = ExtResource("4_07o0w")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-z_index = -2
-texture = ExtResource("4_hom8a")

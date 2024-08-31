@@ -1,100 +1,32 @@
-[gd_scene load_steps=19 format=3 uid="uid://dl547gbap4kyp"]
+[gd_scene load_steps=17 format=3 uid="uid://blquhnw8unage"]
 
-[ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="2_6q5sv"]
-[ext_resource type="PackedScene" uid="uid://6sbx3g7lc6h2" path="res://Scenes/tiles/sacred_tile_grey.tscn" id="2_jxa22"]
+[ext_resource type="Script" path="res://Scripts/moon_slayer.gd" id="1_dpyve"]
 [ext_resource type="PackedScene" uid="uid://dcxybwwp6pdbc" path="res://Scenes/tiles/sacred_tile_v_grey.tscn" id="3_2nl85"]
 [ext_resource type="PackedScene" uid="uid://cr2n1gfa6b6e0" path="res://Scenes/tiles/sacred_tile_h_grey.tscn" id="4_356cg"]
 [ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/tiles/sacred_tile_s_grey.tscn" id="8_mcw2j"]
 [ext_resource type="PackedScene" uid="uid://c1wdgt70wcxxc" path="res://Scenes/teleport_areas.tscn" id="9_4m8yp"]
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="9_qcia5"]
-[ext_resource type="Texture2D" uid="uid://jfwya1xvun6v" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-18T195145.513.png" id="10_r3h2h"]
 [ext_resource type="PackedScene" uid="uid://c4ndmoowxiyj1" path="res://Scenes/chainLaterns/chain_latern_blue.tscn" id="11_jeg7r"]
 [ext_resource type="PackedScene" uid="uid://bgtbj4kncqs3l" path="res://Scenes/chainLaterns/chain_latern_green.tscn" id="12_jj0la"]
-[ext_resource type="PackedScene" uid="uid://jas1sb5s4nr4" path="res://Scenes/power_crate.tscn" id="12_ldhwg"]
 [ext_resource type="PackedScene" uid="uid://e6x05c5lhwb0" path="res://Scenes/chainLaterns/chain_latern_grey.tscn" id="13_624xe"]
 [ext_resource type="PackedScene" uid="uid://djbf7beg0bp1x" path="res://Scenes/chainLaterns/chain_latern_pink.tscn" id="14_fkeaf"]
 [ext_resource type="PackedScene" uid="uid://c0ps6v5oclunt" path="res://Scenes/chainLaterns/chain_latern_teal.tscn" id="15_ptbdl"]
 [ext_resource type="PackedScene" uid="uid://cysp78r13q20a" path="res://Scenes/chainLaterns/chain_latern_yellow.tscn" id="16_x41iy"]
-[ext_resource type="PackedScene" uid="uid://cl5keqdkt1txa" path="res://Scenes/full_auto.tscn" id="17_piq47"]
-[ext_resource type="PackedScene" uid="uid://djdurr0u8bais" path="res://Scenes/add_bullet_speed.tscn" id="18_dn8ut"]
+[ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="17_c6ypu"]
+[ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="18_6hsik"]
 [ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="26_glsgy"]
 
-[node name="MoonSlayer" type="Node"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxweo"]
+size = Vector2(234, 92)
+
+[node name="MoonSlayer2" type="Node"]
+script = ExtResource("1_dpyve")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="player" parent="." instance=ExtResource("2_6q5sv")]
-z_index = 1
-
-[node name="tiles" type="Node" parent="."]
-
-[node name="sacredTile" parent="tiles" instance=ExtResource("2_jxa22")]
-position = Vector2(-350, 300)
-
-[node name="sacredTile11" parent="tiles" instance=ExtResource("2_jxa22")]
-position = Vector2(350, 300)
-rotation = -3.14159
-scale = Vector2(1, -1)
-
-[node name="sacredTile2" parent="tiles" instance=ExtResource("3_2nl85")]
-position = Vector2(-300, 120)
-
-[node name="sacredTile3" parent="tiles" instance=ExtResource("3_2nl85")]
-position = Vector2(-240, 30)
-
-[node name="sacredTile12" parent="tiles" instance=ExtResource("3_2nl85")]
-position = Vector2(300, 120)
-
-[node name="sacredTile13" parent="tiles" instance=ExtResource("3_2nl85")]
-position = Vector2(240, 30)
-
-[node name="sacredTile10" parent="tiles" instance=ExtResource("4_356cg")]
-position = Vector2(-270, -255)
-
-[node name="sacredTile14" parent="tiles" instance=ExtResource("4_356cg")]
-position = Vector2(270, -255)
-
-[node name="Node" type="Node" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Node"]
-visible = false
-position = Vector2(0, 365)
-scale = Vector2(5.01692, 1)
-texture = ExtResource("10_r3h2h")
-region_enabled = true
-region_rect = Rect2(682, 171, 234, 10)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Node"]
-visible = false
-position = Vector2(0, -321)
-scale = Vector2(5.01692, 1)
-texture = ExtResource("10_r3h2h")
-region_enabled = true
-region_rect = Rect2(682, 171, 234, 10)
-
-[node name="Sprite2D3" type="Sprite2D" parent="Node"]
-visible = false
-position = Vector2(-574, -7)
-rotation = -1.57079
-scale = Vector2(5.01692, 1)
-texture = ExtResource("10_r3h2h")
-region_enabled = true
-region_rect = Rect2(682, 171, 234, 10)
-
-[node name="Sprite2D4" type="Sprite2D" parent="Node"]
-visible = false
-position = Vector2(568, -7)
-rotation = -1.57079
-scale = Vector2(5.01692, 1)
-texture = ExtResource("10_r3h2h")
-region_enabled = true
-region_rect = Rect2(682, 171, 234, 10)
-
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
 energy = 0.5
 blend_mode = 1
-shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.443137)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -104,59 +36,163 @@ bus = &"Music"
 
 [node name="teleportAreas" parent="." instance=ExtResource("9_4m8yp")]
 
-[node name="sacredTileh" parent="." instance=ExtResource("4_356cg")]
-position = Vector2(0, 92)
-
-[node name="sacredTileh6" parent="." instance=ExtResource("4_356cg")]
-position = Vector2(0, 180)
-
-[node name="sacredTileh3" parent="." instance=ExtResource("4_356cg")]
-position = Vector2(-330, -126)
-
-[node name="sacredTileh4" parent="." instance=ExtResource("4_356cg")]
-position = Vector2(330, -126)
-
-[node name="sacredTileSmall" parent="." instance=ExtResource("8_mcw2j")]
-position = Vector2(-493, 218)
-
-[node name="sacredTileSmall2" parent="." instance=ExtResource("8_mcw2j")]
-position = Vector2(498, 218)
-
-[node name="sacredTileSmall3" parent="." instance=ExtResource("8_mcw2j")]
-position = Vector2(-493, -201)
-
-[node name="sacredTileSmall4" parent="." instance=ExtResource("8_mcw2j")]
-position = Vector2(498, -201)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -2
+z_index = -1
 z_as_relative = false
 scale = Vector2(2, 2)
 texture = ExtResource("9_qcia5")
 
-[node name="powerCrate" parent="." instance=ExtResource("12_ldhwg")]
-position = Vector2(-352, 267)
+[node name="spawn" type="Marker2D" parent="."]
+z_index = 1
 
-[node name="chainLaternBlue" parent="." instance=ExtResource("11_jeg7r")]
-position = Vector2(305, -49)
+[node name="chainLaterns" type="Node2D" parent="."]
 
-[node name="chainLaternGreen" parent="." instance=ExtResource("12_jj0la")]
-position = Vector2(240, 220)
+[node name="chainLaternBlue" parent="chainLaterns" instance=ExtResource("11_jeg7r")]
+position = Vector2(-500, 120)
 
-[node name="chainLaternGrey" parent="." instance=ExtResource("13_624xe")]
-position = Vector2(-357, -176)
+[node name="chainLaternGreen" parent="chainLaterns" instance=ExtResource("12_jj0la")]
+position = Vector2(500, 120)
 
-[node name="chainLaternPink" parent="." instance=ExtResource("14_fkeaf")]
-position = Vector2(-303, -56)
+[node name="chainLaternTeal" parent="chainLaterns" instance=ExtResource("15_ptbdl")]
+position = Vector2(-200, -180)
 
-[node name="chainLaternTeal" parent="." instance=ExtResource("15_ptbdl")]
-position = Vector2(356, -178)
+[node name="chainLaternTeal2" parent="chainLaterns" instance=ExtResource("15_ptbdl")]
+position = Vector2(200, -180)
 
-[node name="chainLaternYellow" parent="." instance=ExtResource("16_x41iy")]
-position = Vector2(-241, 225)
+[node name="chainLaternYellow" parent="chainLaterns" instance=ExtResource("16_x41iy")]
+position = Vector2(-500, -200)
 
-[node name="fullAuto" parent="." instance=ExtResource("17_piq47")]
-position = Vector2(-76, 73)
+[node name="chainLaternPink" parent="chainLaterns" instance=ExtResource("14_fkeaf")]
+position = Vector2(500, -200)
 
-[node name="addBulletSpeed" parent="." instance=ExtResource("18_dn8ut")]
-position = Vector2(85, 71)
+[node name="chainLaternGrey" parent="chainLaterns" instance=ExtResource("13_624xe")]
+position = Vector2(-70, -180)
+
+[node name="chainLaternGrey2" parent="chainLaterns" instance=ExtResource("13_624xe")]
+position = Vector2(70, -180)
+
+[node name="sacredTiles" type="Node2D" parent="."]
+
+[node name="sacredTile2" parent="sacredTiles" instance=ExtResource("3_2nl85")]
+position = Vector2(-300, 160)
+
+[node name="sacredTile3" parent="sacredTiles" instance=ExtResource("3_2nl85")]
+position = Vector2(-240, 70)
+
+[node name="sacredTile12" parent="sacredTiles" instance=ExtResource("3_2nl85")]
+position = Vector2(300, 160)
+
+[node name="sacredTile13" parent="sacredTiles" instance=ExtResource("3_2nl85")]
+position = Vector2(240, 70)
+
+[node name="sacredTile10" parent="sacredTiles" instance=ExtResource("4_356cg")]
+position = Vector2(-270, -255)
+
+[node name="sacredTile14" parent="sacredTiles" instance=ExtResource("4_356cg")]
+position = Vector2(270, -255)
+
+[node name="sacredTileh" parent="sacredTiles" instance=ExtResource("4_356cg")]
+position = Vector2(0, -23)
+
+[node name="sacredTileh6" parent="sacredTiles" instance=ExtResource("4_356cg")]
+position = Vector2(0, 180)
+
+[node name="sacredTileh3" parent="sacredTiles" instance=ExtResource("4_356cg")]
+position = Vector2(-433, -48)
+
+[node name="sacredTileh4" parent="sacredTiles" instance=ExtResource("4_356cg")]
+position = Vector2(425, -48)
+
+[node name="sacredTileSmall" parent="sacredTiles" instance=ExtResource("8_mcw2j")]
+position = Vector2(-500, 200)
+
+[node name="sacredTileSmall2" parent="sacredTiles" instance=ExtResource("8_mcw2j")]
+position = Vector2(500, 200)
+
+[node name="sacredTileSmall9" parent="sacredTiles" instance=ExtResource("8_mcw2j")]
+position = Vector2(-500, 300)
+
+[node name="sacredTileSmall10" parent="sacredTiles" instance=ExtResource("8_mcw2j")]
+position = Vector2(500, 300)
+
+[node name="sacredTileSmall3" parent="sacredTiles" instance=ExtResource("8_mcw2j")]
+position = Vector2(-500, -137)
+
+[node name="sacredTileSmall4" parent="sacredTiles" instance=ExtResource("8_mcw2j")]
+position = Vector2(500, -137)
+
+[node name="sacredTileSmall5" parent="sacredTiles" instance=ExtResource("8_mcw2j")]
+position = Vector2(-500, 50)
+
+[node name="sacredTileSmall6" parent="sacredTiles" instance=ExtResource("8_mcw2j")]
+position = Vector2(500, 50)
+
+[node name="sacredTileSmall7" parent="sacredTiles" instance=ExtResource("8_mcw2j")]
+position = Vector2(-500, -280)
+
+[node name="sacredTileSmall8" parent="sacredTiles" instance=ExtResource("8_mcw2j")]
+position = Vector2(500, -280)
+
+[node name="sacredTileHGrey" parent="sacredTiles" instance=ExtResource("4_356cg")]
+position = Vector2(0, -256)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 164)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(0, -36)
+shape = SubResource("RectangleShape2D_jxweo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+modulate = Color(1, 1, 1, 0.0627451)
+position = Vector2(3.8147e-06, -36)
+scale = Vector2(23.4, 9.4)
+texture = ExtResource("17_c6ypu")
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D/Sprite2D"]
+energy = 0.5
+texture = ExtResource("17_c6ypu")
+
+[node name="Node2D" type="Node2D" parent="."]
+process_physics_priority = 1
+
+[node name="Label" type="Label" parent="Node2D"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -397.0
+offset_top = -262.0
+offset_right = 406.0
+offset_bottom = -70.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.299999, 0.276472, 0.259663, 1)
+theme_override_colors/font_shadow_color = Color(0.0418184, 0.0383034, 0.0296447, 1)
+theme_override_font_sizes/font_size = 100
+text = "MoonMen"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Node2D"]
+offset_left = -295.0
+offset_right = 294.0
+offset_bottom = 165.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.299999, 0.276472, 0.259663, 1)
+theme_override_colors/font_shadow_color = Color(0.0418184, 0.0383034, 0.0296447, 1)
+theme_override_font_sizes/font_size = 20
+text = "press start when ready to fight"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Node2D/Label2"]
+position = Vector2(297, 16)
+scale = Vector2(4.62, 0.2)
+energy = 2.0
+texture = ExtResource("18_6hsik")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
