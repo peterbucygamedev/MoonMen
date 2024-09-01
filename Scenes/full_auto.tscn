@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_io6b5"]
 size = Vector2(20, 6)
 
-[node name="fullAuto" type="Node2D"]
+[node name="addFullAuto" type="Node2D"]
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_5787a")

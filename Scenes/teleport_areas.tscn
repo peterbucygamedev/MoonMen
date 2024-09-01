@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c1wdgt70wcxxc"]
 
-[ext_resource type="Script" path="res://Scripts/Area2D.gd" id="1_5obow"]
+[ext_resource type="Script" path="res://Scripts/bottomArea.gd" id="1_5obow"]
 [ext_resource type="Script" path="res://Scripts/topArea.gd" id="2_52hsh"]
 [ext_resource type="Script" path="res://Scripts/leftArea.gd" id="3_1apo6"]
 [ext_resource type="Script" path="res://Scripts/rightArea.gd" id="4_weyos"]

@@ -4,5 +4,5 @@ extends Area2D
 
 func _on_body_entered(body):
 	if body.is_in_group("players"):
-		body.addBulletSpeed = true
+		body.bulletSpeed += 1000
 	add_bullet_speed.queue_free()
