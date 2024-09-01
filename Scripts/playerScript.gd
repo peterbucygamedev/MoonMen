@@ -52,7 +52,7 @@ var startingTransform = transform
 var select := false
 var crouching := false
 var secondary := false
-var fullAuto := true
+var fullAuto := false
 var explosion := false
 var is_touching_wall := false
 var mouseAim := false
@@ -240,6 +240,13 @@ func _process(delta) -> void:
 	#print(health)
 	#print(position)
 	#print(velocity)	
+	
+	if fullAuto:
+		shoot_next_timer.set_wait_time(0.05)
+		
+	if !fullAuto:
+		shoot_next_timer.set_wait_time(0.5)
+		
 	if health <= 0:
 		GameManager.deaths += 1
 		dead = true
@@ -319,14 +326,14 @@ func _process(delta) -> void:
 		energy_shield.show()
 		
 	if Input.get_joy_axis(playerNumber, 5):
-		if fullAuto and shootNext:
+		if shootNext:
 			shoot()
 			shootNext = false
 			if shoot_next_timer.is_stopped():
 				shoot_next_timer.start()
 				
-		if full_auto_timer.is_stopped():
-			full_auto_timer.start()
+		#if full_auto_timer.is_stopped():
+		#	full_auto_timer.start()
 			
 		#if !fullAuto:
 		#		shoot()
