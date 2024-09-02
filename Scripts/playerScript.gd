@@ -13,7 +13,6 @@ extends CharacterBody2D
 @onready var player_4_timer = $player4Timer
 @onready var reload_timer = $reloadTimer
 
-
 @onready var power_crate_timer = $powerCrateTimer
 @onready var full_auto_timer = $fullAutoTimer
 @onready var shield_timer = $shieldTimer
@@ -29,21 +28,36 @@ extends CharacterBody2D
 @onready var reload = $reload
 
 var bullet := preload("res://Scenes/bullet.tscn")
-var saw_blade := preload("res://Scenes/saw_blade.tscn")
 
-var SPEED := 100
-#750
-var JUMP_VELOCITY := -400
+var SPEED := 200
 #-450
+var JUMP_VELOCITY := -450
+#-750
 var health := 10
 var maxHealth = 10
 var jumpCounter := 0
 var lastHealth := health
 var lives := 1000
-var bulletSpeed = 1000
 var ammo = 10
 var maxAmmo = 10
 var damage = 1
+var p1BulletSpeed = 1000
+var p2BulletSpeed = 1000
+var p3BulletSpeed = 1000
+var p4BulletSpeed = 1000
+var p1Damage = 1
+var p2Damage = 1
+var p3Damage = 1
+var p4Damage = 1
+var p1Ammo = 10
+var p2Ammo = 10
+var p3Ammo = 10
+var p4Ammo = 10
+var p1MaxAmmo = 10
+var p2MaxAmmo = 10
+var p3MaxAmmo = 10
+var p4MaxAmmo = 10
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -63,6 +77,7 @@ var addBulletSpeed := false
 var burst = false
 var shootNext := true
 var burstNext := true
+
 var burstCounter := 0
 
 func _ready() -> void:
@@ -73,28 +88,32 @@ func _ready() -> void:
 	energy_shield.get_node("energyShieldCollider").disabled = true
 	if playerNumber == 0:
 		weapon_sprite.play("weaponGrey")
-		ammo = GameManager.player1Ammo
-		bulletSpeed = GameManager.player1BulletSpeed
 		health = GameManager.player1Health
-		damage = GameManager.player1Damage
+		p1BulletSpeed = GameManager.player1BulletSpeed
+		p1Damage = GameManager.player1Damage
+		p1Ammo = GameManager.player1Ammo
+		p1MaxAmmo = GameManager.player1MaxAmmo
 	if playerNumber == 1:
 		weapon_sprite.play("weaponPink")
-		ammo = GameManager.player2Ammo
-		bulletSpeed = GameManager.player2BulletSpeed
 		health = GameManager.player2Health
-		damage = GameManager.player2Damage
+		p2BulletSpeed = GameManager.player2BulletSpeed
+		p2Damage = GameManager.player2Damage
+		p2Ammo = GameManager.player2Ammo
+		p2MaxAmmo = GameManager.player2MaxAmmo
 	if playerNumber == 2:
 		weapon_sprite.play("weaponGreen")
-		ammo = GameManager.player3Ammo
-		bulletSpeed = GameManager.player3BulletSpeed
 		health = GameManager.player3Health
-		damage = GameManager.player3Damage
+		p3BulletSpeed = GameManager.player3BulletSpeed
+		p3Damage = GameManager.player3Damage
+		p3Ammo = GameManager.player3Ammo
+		p3MaxAmmo = GameManager.player3MaxAmmo
 	if playerNumber == 3:
 		weapon_sprite.play("weaponBlue")
-		ammo = GameManager.playe4Ammo
-		bulletSpeed = GameManager.player4BulletSpeed
 		health = GameManager.player4Health
-		damage = GameManager.player4Damage
+		p4BulletSpeed = GameManager.player4BulletSpeed
+		p4Damage = GameManager.player4Damage
+		p4Ammo = GameManager.player4Ammo
+		p4MaxAmmo = GameManager.player4MaxAmmo
 	energy_shield.shieldNumber = playerNumber
 
 	
@@ -113,121 +132,60 @@ func shoot() -> void:
 		reload_timer.start()
 		reload.show()"""
 	#var b = bullet.instantiate()
-	if playerNumber == 0 and GameManager.player1Ammo > 0:
+	if playerNumber == 0 and p1Ammo> 0:
 		var b1 = bullet.instantiate()
-		GameManager.player1Ammo -= 1
-		b1.speed = GameManager.player1BulletSpeed
-		b1.damage = GameManager.player1Damage
+		p1Ammo -= 1
+		b1.speed = p1BulletSpeed
+		b1.damage = p1Damage
 		player.owner.add_child(b1)
 		b1.transform = bullet_spawn.global_transform
 		b1.apply_impulse(weapon.transform.x * b1.speed, Vector2(0,0))
 	
-	elif GameManager.player1Ammo <= 0 and player_1_timer.is_stopped() and playerNumber == 0:
+	elif p1Ammo <= 0 and player_1_timer.is_stopped() and playerNumber == 0:
 		player_1_timer.start()
 		reload.show()
 		
-	if playerNumber == 1 and GameManager.player2Ammo > 0:
+	if playerNumber == 1 and p2Ammo > 0:
 		var b2 = bullet.instantiate()
-		GameManager.player2Ammo -= 1
-		b2.speed = GameManager.player2BulletSpeed
-		b2.damage = GameManager.player2Damage
+		p2Ammo -= 1
+		b2.speed = p2BulletSpeed
+		b2.damage = p2Damage
 		player.owner.add_child(b2)
 		b2.transform = bullet_spawn.global_transform
 		b2.apply_impulse(weapon.transform.x * b2.speed, Vector2(0,0))
 		
-	elif GameManager.player2Ammo <= 0 and player_2_timer.is_stopped() and playerNumber == 1:
+	elif p2Ammo <= 0 and player_2_timer.is_stopped() and playerNumber == 1:
 		player_2_timer.start()
 		reload.show()
 		
-	if playerNumber == 2 and GameManager.player3Ammo > 0:
+	if playerNumber == 2 and p3Ammo > 0:
 		var b3 = bullet.instantiate()
-		GameManager.player3Ammo -= 1
-		b3.speed = GameManager.player3BulletSpeed
-		b3.damage = GameManager.player3Damage
+		p3Ammo -= 1
+		b3.speed = p3BulletSpeed
+		b3.damage = p3Damage
 		player.owner.add_child(b3)
 		b3.transform = bullet_spawn.global_transform
 		b3.apply_impulse(weapon.transform.x * b3.speed, Vector2(0,0))
 	
-	elif GameManager.player3Ammo <= 0 and player_3_timer.is_stopped() and playerNumber == 2:
+	elif p3Ammo <= 0 and player_3_timer.is_stopped() and playerNumber == 2:
 		player_3_timer.start()
 		reload.show()
 		
-	if playerNumber == 3 and GameManager.player4Ammo > 0:
+	if playerNumber == 3 and p4Ammo > 0:
 		var b4 = bullet.instantiate()
-		GameManager.player4Ammo -= 1
-		b4.speed = GameManager.player4BulletSpeed
-		b4.damage = GameManager.player4Damage
+		p4Ammo -= 1
+		b4.speed = p4BulletSpeed
+		b4.damage = p4Damage
 		player.owner.add_child(b4)
 		b4.transform = bullet_spawn.global_transform
 		b4.apply_impulse(weapon.transform.x * b4.speed, Vector2(0,0))
 		
-	elif GameManager.player4Ammo <= 0 and player_4_timer.is_stopped() and playerNumber == 3:
+	elif p4Ammo <= 0 and player_4_timer.is_stopped() and playerNumber == 3:
 		player_4_timer.start()
 		reload.show()
-		
-"""func shoot1():
-	if playerNumber == 0 and GameManager.player1Ammo > 0:
-		var b1 = bullet.instantiate()
-		GameManager.player1Ammo -= 1
-		b1.speed = GameManager.player1BulletSpeed
-		b1.damage = GameManager.player1Damage
-		player.owner.add_child(b1)
-		b1.transform = bullet_spawn.global_transform
-		b1.apply_impulse(weapon.transform.x * b1.speed, Vector2(0,0))
-	
-	elif GameManager.player1Ammo <= 0 and player_1_timer.is_stopped() and playerNumber == 0:
-		player_1_timer.start()
 
-func shoot2():
-	if playerNumber == 1 and GameManager.player2Ammo > 0:
-		var b2 = bullet.instantiate()
-		GameManager.player2Ammo -= 1
-		b2.speed = GameManager.player2BulletSpeed
-		b2.damage = GameManager.player2Damage
-		player.owner.add_child(b2)
-		b2.transform = bullet_spawn.global_transform
-		b2.apply_impulse(weapon.transform.x * b2.speed, Vector2(0,0))
 		
-	elif GameManager.player2Ammo <= 0 and player_2_timer.is_stopped() and playerNumber == 1:
-		player_2_timer.start()
-		reload.show()
-	
-func shoot3():
-	if playerNumber == 2 and GameManager.player3Ammo > 0:
-		var b3 = bullet.instantiate()
-		GameManager.player3Ammo -= 1
-		b3.speed = GameManager.player3BulletSpeed
-		b3.damage = GameManager.player3Damage
-		player.owner.add_child(b3)
-		b3.transform = bullet_spawn.global_transform
-		b3.apply_impulse(weapon.transform.x * b3.speed, Vector2(0,0))
-	
-	elif GameManager.player3Ammo <= 0 and player_3_timer.is_stopped() and playerNumber == 2:
-		player_3_timer.start()
-		reload.show()
-	
-func shoot4():
-	if playerNumber == 3 and GameManager.player4Ammo > 0:
-		var b4 = bullet.instantiate()
-		GameManager.player4Ammo -= 1
-		b4.speed = GameManager.player4BulletSpeed
-		b4.damage = GameManager.player4Damage
-		player.owner.add_child(b4)
-		b4.transform = bullet_spawn.global_transform
-		b4.apply_impulse(weapon.transform.x * b4.speed, Vector2(0,0))
-		
-	elif GameManager.player4Ammo <= 0 and player_4_timer.is_stopped() and playerNumber == 3:
-		player_4_timer.start()
-		reload.show()"""
-		
-	
-	
-	#player.owner.add_child(b)
-	#b.transform = bullet_spawn.global_transform
-	#b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
-	
-	#add_collision_exception_with(b)
-	#$weapon.add_collision_exception_with(b)
+
 
 	
 func _process(delta) -> void:
@@ -245,7 +203,7 @@ func _process(delta) -> void:
 		shoot_next_timer.set_wait_time(0.05)
 		
 	if !fullAuto:
-		shoot_next_timer.set_wait_time(0.5)
+		shoot_next_timer.set_wait_time(0.2)
 		
 	if health <= 0:
 		GameManager.deaths += 1
@@ -274,20 +232,6 @@ func _process(delta) -> void:
 		energy_shield.show()
 		energy_shield.get_node("energyShieldCollider").disabled = false
 		
-	"""if Input.is_action_just_pressed("slide2"):
-		crouching = true
-		#print("action pressed")
-		animated_sprite_2d.play("slide")
-		if energy_shield.shieldEnabled:
-			energy_shield.get_node("energyShieldCollider").disabled = false
-			energy_shield.show()
-		
-			
-	elif Input.is_action_just_released("slide2"):
-		crouching = false
-		energy_shield.get_node("energyShieldCollider").disabled = true
-		energy_shield.hide()"""
-
 	
 	if Input.is_joy_button_pressed(playerNumber, 9):
 		if Input.is_action_just_pressed("slide"):
@@ -332,48 +276,21 @@ func _process(delta) -> void:
 			if shoot_next_timer.is_stopped():
 				shoot_next_timer.start()
 				
-		#if full_auto_timer.is_stopped():
-		#	full_auto_timer.start()
-			
-		#if !fullAuto:
-		#		shoot()
-	
-	#if Input.is_action_just_pressed("shoot2"):
-	#			shoot()
-				
-
-			
-	"""if Input.is_joy_button_pressed(playerNumber, 10):
-		if Input.is_action_just_pressed("shoot_secondary"):
-			secondary = !secondary
-			#shootSecondary()"""
-	
-	
-	#print(select)
-	
-	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
 	if not is_on_floor() and not is_touching_wall:
 		jumpCounter = 0
 		
-	# Handle jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-	#	velocity.y = JUMP_VELOCITY
+
 		
-	if (Input.is_joy_button_pressed(playerNumber, 0) or Input.is_action_just_pressed("jump")) and (is_on_floor() or is_touching_wall) and jumpCounter < 1:
+	if Input.is_joy_button_pressed(playerNumber, 0) and (is_on_floor() or is_touching_wall) and jumpCounter < 1:
 		velocity.y = JUMP_VELOCITY
 		jumpCounter += 1
 		#print("button pressed")
 		
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	#var direction = Input.get_joy_axis(playerNumber, 0)
-	#if direction > 0.05 or direction < -0.05:
-	#	velocity.x = direction * SPEED
-		#print("go")
+
 	var direction = Input.get_joy_axis(playerNumber, 0)
 	var direction2 = Input.get_axis("keyboardLeft", "keyboardRight")
 	
@@ -453,7 +370,7 @@ func _process(delta) -> void:
 			print("hit power crate")
 
 	move_and_slide()
-	move_and_collide(velocity * delta)
+	#move_and_collide(velocity * delta)
 	
 """func _on_reload_timer_timeout():
 	ammo = maxAmmo
@@ -461,19 +378,19 @@ func _process(delta) -> void:
 
 func _on_player_1_timer_timeout() -> void:
 	#print("player1Reloaded")
-	GameManager.player1Ammo = 10
+	p1Ammo = p1MaxAmmo
 	reload.hide()
 
 func _on_player_2_timer_timeout()-> void:
-	GameManager.player2Ammo = 10
+	p2Ammo = p2MaxAmmo
 	reload.hide()
 
 func _on_player_3_timer_timeout()-> void:
-	GameManager.player3Ammo = 10
+	p3Ammo = p3MaxAmmo
 	reload.hide()
 
 func _on_player_4_timer_timeout()-> void:
-	GameManager.player4Ammo = 10
+	p4Ammo = p4MaxAmmo
 	reload.hide()
 
 
@@ -509,10 +426,8 @@ func _on_health_timer_timeout()-> void:
 func _on_shield_timer_timeout()-> void:
 	shieldDamage = true
 
-
 func _on_power_crate_timer_timeout()-> void:
 	powerCrateDamage = true
-
 
 func _on_shoot_next_timer_timeout():
 	shootNext = true

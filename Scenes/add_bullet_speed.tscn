@@ -17,7 +17,6 @@ load_path = "res://.godot/imported/pixil-frame-0 - 2024-08-28T103630.637.png-783
 script = ExtResource("1_8k48k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 shape = SubResource("RectangleShape2D_38bhf")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]

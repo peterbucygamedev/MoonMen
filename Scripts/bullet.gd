@@ -6,11 +6,14 @@ var bulletNumber = 0
 @onready var teleport_timer = $teleportTimer
 @onready var area_2d = $Area2D
 @onready var area_timer = $areaTimer
+@onready var point_light_2d = $PointLight2D
+
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	set_continuous_collision_detection_mode(1)
 	"""set_inertia(200)
 	gravity_scale = 1
@@ -41,7 +44,8 @@ func _on_timer_timeout():
 	
 func _process(delta):
 	#print(linear_velocity)
+	point_light_2d.color
 	pass
-
+	
 func _on_area_timer_timeout():
 	area_2d.get_node("CollisionShape2D").disabled = false

@@ -1,0 +1,578 @@
+[gd_scene load_steps=19 format=3 uid="uid://bci74y6s7gee1"]
+
+[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="1_y6htf"]
+[ext_resource type="Script" path="res://Scripts/teleporter1.gd" id="2_1034p"]
+[ext_resource type="Texture2D" uid="uid://dxsdfcd7lo10u" path="res://Assets/lightShapes/pixil-frame-0 - 2024-09-02T111026.793.png" id="3_i7py7"]
+[ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="4_x5w6b"]
+[ext_resource type="Script" path="res://Scripts/teleporter2.gd" id="5_6c01p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyu3"]
+size = Vector2(4, 6)
+
+[sub_resource type="Gradient" id="Gradient_rp4yw"]
+offsets = PackedFloat32Array(0.0215054, 0.480287, 0.587814, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.214379, 0.214379, 0.214379, 1, 0.222222, 0.222222, 0.222222, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n83oo"]
+gradient = SubResource("Gradient_rp4yw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rl08o"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 0, 0)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+flatness = 1.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 1, 1, 0.4)
+color_ramp = SubResource("GradientTexture1D_n83oo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n7l4h"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 0, 0)
+direction = Vector3(0, 0, 0)
+spread = 0.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 1, 1, 0.4)
+color_ramp = SubResource("GradientTexture1D_n83oo")
+
+[sub_resource type="GDScript" id="GDScript_os1al"]
+script/source = "extends Area2D
+@onready var t_4_marker_2d = $\"../teleporter4/t4Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_4_marker_2d.global_position.x, t_4_marker_2d.global_position.y)
+"
+
+[sub_resource type="GDScript" id="GDScript_hm4df"]
+script/source = "extends Area2D
+@onready var t_3_marker_2d = $\"../teleporter3/t3Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_3_marker_2d.global_position.x, t_3_marker_2d.global_position.y)
+"
+
+[sub_resource type="GDScript" id="GDScript_i5ndx"]
+script/source = "extends Area2D
+@onready var t_6_marker_2d = $\"../teleporter6/t6Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_6_marker_2d.global_position.x, t_6_marker_2d.global_position.y)
+"
+
+[sub_resource type="GDScript" id="GDScript_2gpjx"]
+script/source = "extends Area2D
+@onready var t_5_marker_2d = $\"../teleporter5/t5Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_5_marker_2d.global_position.x, t_5_marker_2d.global_position.y)
+"
+
+[sub_resource type="GDScript" id="GDScript_5cmar"]
+script/source = "extends Area2D
+@onready var t_8_marker_2d = $\"../teleporter8/t8Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_8_marker_2d.global_position.x, t_8_marker_2d.global_position.y)
+"
+
+[sub_resource type="GDScript" id="GDScript_0wkr8"]
+script/source = "extends Area2D
+@onready var t_7_marker_2d = $\"../teleporter7/t7Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_7_marker_2d.global_position.x, t_7_marker_2d.global_position.y)
+"
+
+[sub_resource type="GDScript" id="GDScript_ylbxo"]
+script/source = "extends Area2D
+@onready var t_10_marker_2d = $\"../teleporter10/t10Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_10_marker_2d.global_position.x, t_10_marker_2d.global_position.y)
+"
+
+[sub_resource type="GDScript" id="GDScript_27s1t"]
+script/source = "extends Area2D
+@onready var t_9_marker_2d = $\"../teleporter9/t9Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_9_marker_2d.global_position.x, t_9_marker_2d.global_position.y)
+"
+
+[node name="teleportPairs" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+texture = ExtResource("1_y6htf")
+
+[node name="teleporter1" type="Area2D" parent="."]
+position = Vector2(-10, -158)
+script = ExtResource("2_1034p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporter1"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_3vyu3")
+
+[node name="t1Marker2D" type="Marker2D" parent="teleporter1"]
+position = Vector2(-20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporter1"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporter1"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporter1"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_rl08o")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporter1"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_n7l4h")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporter1"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+texture = ExtResource("4_x5w6b")
+
+[node name="teleporter2" type="Area2D" parent="."]
+position = Vector2(10, -158)
+script = ExtResource("5_6c01p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporter2"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_3vyu3")
+
+[node name="t2Marker2D" type="Marker2D" parent="teleporter2"]
+position = Vector2(20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporter2"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporter2"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporter2"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_rl08o")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporter2"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_n7l4h")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporter2"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+texture = ExtResource("4_x5w6b")
+
+[node name="teleporter3" type="Area2D" parent="."]
+position = Vector2(-10, -110)
+script = SubResource("GDScript_os1al")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporter3"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_3vyu3")
+
+[node name="t3Marker2D" type="Marker2D" parent="teleporter3"]
+position = Vector2(-20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporter3"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporter3"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporter3"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_rl08o")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporter3"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_n7l4h")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporter3"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+texture = ExtResource("4_x5w6b")
+
+[node name="teleporter4" type="Area2D" parent="."]
+position = Vector2(10, -110)
+script = SubResource("GDScript_hm4df")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporter4"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_3vyu3")
+
+[node name="t4Marker2D" type="Marker2D" parent="teleporter4"]
+position = Vector2(20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporter4"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporter4"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporter4"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_rl08o")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporter4"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_n7l4h")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporter4"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+texture = ExtResource("4_x5w6b")
+
+[node name="teleporter5" type="Area2D" parent="."]
+position = Vector2(-10, -59)
+script = SubResource("GDScript_i5ndx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporter5"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_3vyu3")
+
+[node name="t5Marker2D" type="Marker2D" parent="teleporter5"]
+position = Vector2(-20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporter5"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporter5"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporter5"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_rl08o")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporter5"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_n7l4h")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporter5"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+texture = ExtResource("4_x5w6b")
+
+[node name="teleporter6" type="Area2D" parent="."]
+position = Vector2(10, -59)
+script = SubResource("GDScript_2gpjx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporter6"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_3vyu3")
+
+[node name="t6Marker2D" type="Marker2D" parent="teleporter6"]
+position = Vector2(20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporter6"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporter6"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporter6"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_rl08o")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporter6"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_n7l4h")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporter6"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+texture = ExtResource("4_x5w6b")
+
+[node name="teleporter7" type="Area2D" parent="."]
+position = Vector2(-10, -18)
+script = SubResource("GDScript_5cmar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporter7"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_3vyu3")
+
+[node name="t7Marker2D" type="Marker2D" parent="teleporter7"]
+position = Vector2(-20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporter7"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporter7"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporter7"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_rl08o")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporter7"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_n7l4h")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporter7"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+texture = ExtResource("4_x5w6b")
+
+[node name="teleporter8" type="Area2D" parent="."]
+position = Vector2(10, -18)
+script = SubResource("GDScript_0wkr8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporter8"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_3vyu3")
+
+[node name="t8Marker2D" type="Marker2D" parent="teleporter8"]
+position = Vector2(20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporter8"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporter8"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporter8"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_rl08o")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporter8"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_n7l4h")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporter8"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+texture = ExtResource("4_x5w6b")
+
+[node name="teleporter9" type="Area2D" parent="."]
+position = Vector2(-10, 62)
+script = SubResource("GDScript_ylbxo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporter9"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_3vyu3")
+
+[node name="t9Marker2D" type="Marker2D" parent="teleporter9"]
+position = Vector2(-20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporter9"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporter9"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporter9"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_rl08o")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporter9"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_n7l4h")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporter9"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+texture = ExtResource("4_x5w6b")
+
+[node name="teleporter10" type="Area2D" parent="."]
+position = Vector2(10, 62)
+script = SubResource("GDScript_27s1t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporter10"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_3vyu3")
+
+[node name="t10Marker2D" type="Marker2D" parent="teleporter10"]
+position = Vector2(20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporter10"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporter10"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_i7py7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporter10"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_rl08o")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporter10"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_n7l4h")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporter10"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+texture = ExtResource("4_x5w6b")
+
+[connection signal="body_entered" from="teleporter1" to="teleporter1" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporter2" to="teleporter2" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporter3" to="teleporter3" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporter4" to="teleporter4" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporter5" to="teleporter5" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporter6" to="teleporter6" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporter7" to="teleporter7" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporter8" to="teleporter8" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporter9" to="teleporter9" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporter10" to="teleporter10" method="_on_body_entered"]

@@ -78,73 +78,70 @@ shape = SubResource("RectangleShape2D_2tuf4")
 [node name="sacredTiles" type="Node2D" parent="."]
 
 [node name="sacredTilev" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
-position = Vector2(-499, 151)
+position = Vector2(-500, 150)
 
 [node name="sacredTilev2" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
-position = Vector2(-424, 9)
+position = Vector2(-430, 0)
 
 [node name="sacredTilev3" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
-position = Vector2(-352, -140)
+position = Vector2(-360, -140)
 
 [node name="sacredTileh" parent="sacredTiles" instance=ExtResource("6_gs4mf")]
-position = Vector2(-238, 283)
+position = Vector2(-250, 300)
 
 [node name="sacredTileh2" parent="sacredTiles" instance=ExtResource("6_gs4mf")]
-position = Vector2(242, 286)
+position = Vector2(250, 300)
 
 [node name="sacredTileh3" parent="sacredTiles" instance=ExtResource("6_gs4mf")]
-position = Vector2(-238, 64)
+position = Vector2(-250, 60)
 
 [node name="sacredTileh4" parent="sacredTiles" instance=ExtResource("6_gs4mf")]
-position = Vector2(242, 67)
+position = Vector2(250, 60)
 
 [node name="sacredTilev4" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
-position = Vector2(505, 154)
+position = Vector2(500, 150)
 
 [node name="sacredTilev5" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
-position = Vector2(438, -1)
+position = Vector2(430, 0)
 
 [node name="sacredTilev6" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
-position = Vector2(371, -151)
-
-[node name="sacredTilev7" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
-position = Vector2(371, -151)
+position = Vector2(360, -140)
 
 [node name="sacredTilev8" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
-position = Vector2(-123, -199)
+position = Vector2(-120, -200)
 
 [node name="sacredTilev9" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
-position = Vector2(-123, 37)
+position = Vector2(-120, 35)
 
 [node name="sacredTilev10" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
-position = Vector2(116, -199)
+position = Vector2(120, -200)
 
 [node name="sacredTilev11" parent="sacredTiles" instance=ExtResource("5_oa0k7")]
-position = Vector2(116, 37)
+position = Vector2(120, 35)
 
 [node name="sacredTileSmallGrey" parent="sacredTiles" instance=ExtResource("9_86ouk")]
-position = Vector2(-85, 36)
+position = Vector2(-85, 100)
 
 [node name="sacredTileSmallGrey2" parent="sacredTiles" instance=ExtResource("9_86ouk")]
-position = Vector2(77, -51)
+position = Vector2(85, 0)
 
 [node name="sacredTileSmallGrey3" parent="sacredTiles" instance=ExtResource("9_86ouk")]
-position = Vector2(-94, -117)
+position = Vector2(-85, -100)
 
 [node name="sacredTileSmallGrey4" parent="sacredTiles" instance=ExtResource("9_86ouk")]
-position = Vector2(77, -186)
+position = Vector2(85, -200)
 
 [node name="sacredTileSmallGrey5" parent="sacredTiles" instance=ExtResource("9_86ouk")]
-position = Vector2(-459, 37)
+position = Vector2(-465, 40)
 
 [node name="sacredTileSmallGrey6" parent="sacredTiles" instance=ExtResource("9_86ouk")]
-position = Vector2(469, 37)
+position = Vector2(465, 40)
 
 [node name="sacredTileSmallGrey7" parent="sacredTiles" instance=ExtResource("9_86ouk")]
-position = Vector2(-386, -16)
+position = Vector2(-395, -30)
 
 [node name="sacredTileSmallGrey8" parent="sacredTiles" instance=ExtResource("9_86ouk")]
-position = Vector2(405, -33)
+position = Vector2(395, -30)
 
 [node name="spawns" type="Node2D" parent="."]
 

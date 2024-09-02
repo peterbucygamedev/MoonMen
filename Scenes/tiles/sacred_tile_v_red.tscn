@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aoda4"]
 size = Vector2(10, 234)
 
-[node name="sacredTileVPink" type="StaticBody2D"]
+[node name="sacredTileVRed" type="StaticBody2D" groups=["ground", "wall"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -20,33 +20,33 @@ region_rect = Rect2(195, 658, 10, 235)
 [node name="light" type="PointLight2D" parent="Sprite2D"]
 position = Vector2(-4, -68)
 scale = Vector2(0.2, 10)
-color = Color(1, 0.254902, 1, 1)
-energy = 3.0
+color = Color(0.392157, 0, 0, 0.392157)
+energy = 10.0
 texture = ExtResource("2_7m6bk")
 
 [node name="light3" type="PointLight2D" parent="Sprite2D"]
 position = Vector2(4, -68)
 scale = Vector2(0.2, 10)
-color = Color(1, 0.254902, 1, 1)
-energy = 3.0
+color = Color(0.392157, 0, 0, 0.392157)
+energy = 10.0
 texture = ExtResource("2_7m6bk")
 
 [node name="light5" type="PointLight2D" parent="Sprite2D"]
 position = Vector2(-4, 68)
 scale = Vector2(0.2, 10)
-color = Color(1, 0.254902, 1, 1)
-energy = 3.0
+color = Color(0.392157, 0, 0, 0.392157)
+energy = 10.0
 texture = ExtResource("2_7m6bk")
 
 [node name="light6" type="PointLight2D" parent="Sprite2D"]
 position = Vector2(4, 68)
 scale = Vector2(0.2, 10)
-color = Color(1, 0.254902, 1, 1)
-energy = 3.0
+color = Color(0.392157, 0, 0, 0.392157)
+energy = 10.0
 texture = ExtResource("2_7m6bk")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
 scale = Vector2(0.5, 3)
-color = Color(1, 0.254902, 1, 1)
-energy = 3.0
+color = Color(0.392157, 0, 0, 0.392157)
+energy = 10.0
 texture = ExtResource("2_7m6bk")

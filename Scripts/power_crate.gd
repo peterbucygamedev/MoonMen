@@ -48,7 +48,6 @@ func _on_detontate_timer_timeout():
 	#process_mode = Node.PROCESS_MODE_DISABLED
 	
 func _on_destroy_timer_timeout():
-	#print("destroy")
 	queue_free()
 	
 

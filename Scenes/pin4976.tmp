@@ -1,0 +1,291 @@
+[gd_scene load_steps=23 format=3 uid="uid://cy7ca26u4m077"]
+
+[ext_resource type="PackedScene" uid="uid://cgly5n0yo2owa" path="res://Scenes/tiles/sacred_tile_v_pink.tscn" id="1_wncdo"]
+[ext_resource type="Script" path="res://Scripts/bottomArea.gd" id="2_bg552"]
+[ext_resource type="Script" path="res://Scripts/topArea.gd" id="3_38u82"]
+[ext_resource type="Script" path="res://Scripts/leftArea.gd" id="4_tmc15"]
+[ext_resource type="Script" path="res://Scripts/rightArea.gd" id="5_aa45l"]
+[ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="6_icekw"]
+[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="7_h3vxv"]
+[ext_resource type="PackedScene" uid="uid://dnci37okrkx0y" path="res://Scenes/tiles/sacred_tile_h_pink.tscn" id="8_2a7d1"]
+[ext_resource type="Texture2D" uid="uid://dxsdfcd7lo10u" path="res://Assets/lightShapes/pixil-frame-0 - 2024-09-02T111026.793.png" id="9_3cn08"]
+[ext_resource type="Script" path="res://Scenes/teleporter1.gd" id="9_ewib4"]
+[ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="10_xjkin"]
+[ext_resource type="Script" path="res://Scenes/teleporter2.gd" id="12_fp7cm"]
+[ext_resource type="PackedScene" uid="uid://12xni7geejmh" path="res://Scenes/tiles/sacred_tile_s_pink.tscn" id="13_q2psj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lyo05"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5adf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eo255"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnocv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v43ym"]
+size = Vector2(4, 6)
+
+[sub_resource type="Gradient" id="Gradient_j4i82"]
+offsets = PackedFloat32Array(0.0215054, 0.480287, 0.587814, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.214379, 0.214379, 0.214379, 1, 0.222222, 0.222222, 0.222222, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o5mrg"]
+gradient = SubResource("Gradient_j4i82")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vnfvx"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 0, 0)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+flatness = 1.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 1, 1, 0.4)
+color_ramp = SubResource("GradientTexture1D_o5mrg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ixb6k"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 0, 0)
+direction = Vector3(0, 0, 0)
+spread = 0.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 1, 1, 0.4)
+color_ramp = SubResource("GradientTexture1D_o5mrg")
+
+[node name="pinkMoon" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="tiles" type="Node2D" parent="."]
+
+[node name="sacredTileVPink" parent="tiles" instance=ExtResource("1_wncdo")]
+position = Vector2(-229, -117)
+
+[node name="sacredTileVPink2" parent="tiles" instance=ExtResource("1_wncdo")]
+position = Vector2(229, -117)
+
+[node name="sacredTileVPink13" parent="tiles" instance=ExtResource("1_wncdo")]
+position = Vector2(0, -362)
+
+[node name="sacredTileVPink14" parent="tiles" instance=ExtResource("1_wncdo")]
+position = Vector2(0, -596)
+
+[node name="sacredTileVPink3" parent="tiles" instance=ExtResource("1_wncdo")]
+position = Vector2(229, 117)
+
+[node name="sacredTileVPink4" parent="tiles" instance=ExtResource("1_wncdo")]
+position = Vector2(-229, 117)
+
+[node name="sacredTileVPink5" parent="tiles" instance=ExtResource("1_wncdo")]
+position = Vector2(-117, -240)
+rotation = 1.5708
+
+[node name="sacredTileVPink6" parent="tiles" instance=ExtResource("1_wncdo")]
+position = Vector2(117, -240)
+rotation = 1.5708
+
+[node name="sacredTileVPink7" parent="tiles" instance=ExtResource("1_wncdo")]
+position = Vector2(-117, 240)
+rotation = 1.5708
+
+[node name="sacredTileVPink8" parent="tiles" instance=ExtResource("1_wncdo")]
+position = Vector2(117, 240)
+rotation = 1.5708
+
+[node name="sacredTileVPink9" parent="tiles" instance=ExtResource("1_wncdo")]
+position = Vector2(-584, 0)
+rotation = 1.5708
+
+[node name="sacredTileVPink10" parent="tiles" instance=ExtResource("1_wncdo")]
+position = Vector2(-350, 0)
+rotation = 1.5708
+
+[node name="sacredTileVPink11" parent="tiles" instance=ExtResource("1_wncdo")]
+position = Vector2(350, 0)
+rotation = 1.5708
+
+[node name="sacredTileVPink12" parent="tiles" instance=ExtResource("1_wncdo")]
+position = Vector2(584, 0)
+rotation = 1.5708
+
+[node name="sacredTileHPink" parent="tiles" instance=ExtResource("8_2a7d1")]
+position = Vector2(-400, 200)
+
+[node name="sacredTileHPink4" parent="tiles" instance=ExtResource("8_2a7d1")]
+position = Vector2(400, 200)
+
+[node name="sacredTileHPink2" parent="tiles" instance=ExtResource("8_2a7d1")]
+position = Vector2(-117, 300)
+
+[node name="sacredTileHPink3" parent="tiles" instance=ExtResource("8_2a7d1")]
+position = Vector2(117, 300)
+
+[node name="bottomArea" type="Area2D" parent="." groups=["teleport"]]
+position = Vector2(0, 426)
+scale = Vector2(80, 10)
+collision_layer = 515
+collision_mask = 515
+script = ExtResource("2_bg552")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottomArea"]
+shape = SubResource("RectangleShape2D_lyo05")
+
+[node name="topArea" type="Area2D" parent="." groups=["teleport"]]
+position = Vector2(2.36469e-11, -425)
+rotation = 3.14159
+scale = Vector2(80, 10)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("3_38u82")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="topArea"]
+shape = SubResource("RectangleShape2D_s5adf")
+
+[node name="leftArea" type="Area2D" parent="." groups=["teleport"]]
+position = Vector2(-679, 0)
+scale = Vector2(10, 60)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_tmc15")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftArea"]
+shape = SubResource("RectangleShape2D_eo255")
+
+[node name="rightArea" type="Area2D" parent="." groups=["teleport"]]
+position = Vector2(679, 0)
+scale = Vector2(10, 60)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("5_aa45l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightArea"]
+shape = SubResource("RectangleShape2D_pnocv")
+
+[node name="player" parent="." instance=ExtResource("6_icekw")]
+position = Vector2(-428, -50)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+scale = Vector2(2, 2)
+texture = ExtResource("7_h3vxv")
+
+[node name="teleporter1" type="Area2D" parent="."]
+visible = false
+position = Vector2(-249, -22)
+script = ExtResource("9_ewib4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporter1"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_v43ym")
+
+[node name="t1Marker2D" type="Marker2D" parent="teleporter1"]
+position = Vector2(-20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporter1"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("9_3cn08")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporter1"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("9_3cn08")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporter1"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_vnfvx")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporter1"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_ixb6k")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporter1"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+texture = ExtResource("10_xjkin")
+
+[node name="teleporter2" type="Area2D" parent="."]
+position = Vector2(150, 130)
+script = ExtResource("12_fp7cm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporter2"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_v43ym")
+
+[node name="t2Marker2D" type="Marker2D" parent="teleporter2"]
+position = Vector2(20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporter2"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("9_3cn08")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporter2"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("9_3cn08")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporter2"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_vnfvx")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporter2"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_ixb6k")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporter2"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+texture = ExtResource("10_xjkin")
+
+[node name="sacredTileVPink" parent="." instance=ExtResource("1_wncdo")]
+position = Vector2(0, 1)
+
+[node name="sacredTileVPink2" parent="." instance=ExtResource("1_wncdo")]
+position = Vector2(0, 1)
+rotation = -1.5708
+
+[node name="sacredTileSPink" parent="." instance=ExtResource("13_q2psj")]
+position = Vector2(-150, 150)
+
+[node name="sacredTileSPink2" parent="." instance=ExtResource("13_q2psj")]
+position = Vector2(-150, -150)
+
+[node name="sacredTileSPink3" parent="." instance=ExtResource("13_q2psj")]
+position = Vector2(150, -150)
+
+[node name="sacredTileSPink4" parent="." instance=ExtResource("13_q2psj")]
+position = Vector2(150, 150)
+
+[connection signal="body_entered" from="bottomArea" to="bottomArea" method="_on_body_entered"]
+[connection signal="body_exited" from="bottomArea" to="bottomArea" method="_on_body_exited"]
+[connection signal="body_entered" from="topArea" to="topArea" method="_on_body_entered"]
+[connection signal="body_exited" from="topArea" to="topArea" method="_on_body_exited"]
+[connection signal="body_entered" from="leftArea" to="leftArea" method="_on_body_entered"]
+[connection signal="body_entered" from="rightArea" to="rightArea" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporter1" to="teleporter1" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporter2" to="teleporter2" method="_on_body_entered"]

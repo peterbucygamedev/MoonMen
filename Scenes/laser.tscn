@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvep2lsg4yw17"]
+[gd_scene load_steps=9 format=3 uid="uid://dvep2lsg4yw17"]
 
 [ext_resource type="Script" path="res://Scripts/RayCast2D.gd" id="1_y8v5w"]
 [ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="3_6brnb"]
@@ -38,14 +38,6 @@ scale_curve = SubResource("CurveTexture_hxrtk")
 color = Color(1, 1, 1, 0.184314)
 color_ramp = SubResource("GradientTexture1D_0woy3")
 
-[sub_resource type="Environment" id="Environment_xyovb"]
-background_mode = 3
-glow_enabled = true
-glow_normalized = true
-glow_intensity = 1.0
-glow_strength = 1.5
-glow_blend_mode = 0
-
 [node name="laser" type="RayCast2D" groups=["lasers"]]
 z_index = 2
 target_position = Vector2(1200, 0)
@@ -66,6 +58,3 @@ process_material = SubResource("ParticleProcessMaterial_0cmu5")
 texture = ExtResource("3_6brnb")
 lifetime = 0.2
 trail_lifetime = 0.2
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_xyovb")

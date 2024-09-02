@@ -266,5 +266,6 @@ texture = ExtResource("3_x61yn")
 position = Vector2(-2.98023e-08, -1)
 scale = Vector2(0.4, 0.4)
 color = Color(0, 1, 1, 1)
+energy = 2.0
 blend_mode = 2
 texture = ExtResource("4_n05ct")

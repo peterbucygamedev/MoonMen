@@ -1,7 +1,7 @@
 extends Node
 var player = preload("res://Scenes/player.tscn")
 var bullet = preload("res://Scenes/bullet.tscn")
-const MAMOONED = preload("res://Scenes/mamooned.tscn")
+const MAMOONED = preload("res://Scenes/moon.tscn")
 
 var devices := []
 @onready var point_light_2d = $Area2D/Sprite2D/PointLight2D
@@ -121,7 +121,7 @@ func load_level():
 		GameManager.allowDevice3 = false"""
 	
 	if loadLevel:
-		get_tree().change_scene_to_file("res://Scenes/mamooned.tscn")
+		get_tree().change_scene_to_file("res://Scenes/moon.tscn")
 
 
 func _on_area_2d_body_entered(body):
