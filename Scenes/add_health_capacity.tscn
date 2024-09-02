@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://claacv6i7iql2"]
+[gd_scene load_steps=6 format=3 uid="uid://claacv6i7iql2"]
 
 [ext_resource type="Script" path="res://Scripts/addHealth.gd" id="1_pnh7k"]
 [ext_resource type="Texture2D" uid="uid://nyj5ufkynbvf" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-28T103630.637.png" id="1_v8p5a"]
-[ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="2_lokm5"]
+[ext_resource type="Texture2D" uid="uid://dxsdfcd7lo10u" path="res://Assets/lightShapes/pixil-frame-0 - 2024-09-02T111026.793.png" id="3_4ub8k"]
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="3_oae2t"]
-[ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="3_qpyrf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38bhf"]
 size = Vector2(20, 6)
@@ -23,19 +22,13 @@ region_enabled = true
 region_rect = Rect2(59, 50, 18, 4)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.2, 0.2)
 color = Color(1, 0, 0, 1)
 energy = 2.0
 shadow_enabled = true
-texture = ExtResource("2_lokm5")
-
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-scale = Vector2(2.6, 1)
-color = Color(1, 0, 0, 1)
-energy = 10.0
-texture = ExtResource("3_qpyrf")
+texture = ExtResource("3_4ub8k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 z_index = -2
 texture = ExtResource("3_oae2t")
 
