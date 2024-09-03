@@ -104,9 +104,8 @@ func load_level():
 		GameManager.allowDevice1 = true
 		GameManager.allowDevice2 = true
 		GameManager.allowDevice3 = true
-		get_tree().change_scene_to_file("res://Scenes/blue_moon.tscn")
 		GameManager.numberOfPlayers = 0
-
+		get_tree().change_scene_to_file("res://Scenes/blue_moon.tscn")
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("players"):
