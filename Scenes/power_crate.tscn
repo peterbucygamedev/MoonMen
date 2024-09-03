@@ -118,7 +118,7 @@ animations = [{
 size = Vector2(34, 34)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_267ll"]
-radius = 35.0143
+radius = 94.2603
 
 [node name="powerCrate" type="RigidBody2D" groups=["power_crate"]]
 collision_layer = 527
@@ -148,12 +148,12 @@ one_shot = true
 [node name="powerCrateDetonation" parent="." instance=ExtResource("3_w2css")]
 
 [node name="destroyTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 10.0
 one_shot = true
 
 [node name="explosionArea" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 15
+collision_mask = 15
 script = ExtResource("4_wgwxt")
 
 [node name="explostionCollider" type="CollisionShape2D" parent="explosionArea"]
@@ -163,3 +163,4 @@ disabled = true
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="detontateTimer" to="." method="_on_detontate_timer_timeout"]
 [connection signal="timeout" from="destroyTimer" to="." method="_on_destroy_timer_timeout"]
+[connection signal="body_entered" from="explosionArea" to="." method="_on_explosion_area_body_entered"]

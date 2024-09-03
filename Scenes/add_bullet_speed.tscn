@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://djdurr0u8bais"]
+[gd_scene load_steps=5 format=3 uid="uid://djdurr0u8bais"]
 
 [ext_resource type="Script" path="res://Scripts/add_bullet_speed.gd" id="1_8k48k"]
 [ext_resource type="Texture2D" uid="uid://dxsdfcd7lo10u" path="res://Assets/lightShapes/pixil-frame-0 - 2024-09-02T111026.793.png" id="2_mc72m"]
-[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="2_rtmyt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38bhf"]
 size = Vector2(20, 6)
@@ -29,9 +28,5 @@ color = Color(0, 1, 1, 1)
 energy = 2.0
 shadow_enabled = true
 texture = ExtResource("2_mc72m")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -2
-texture = ExtResource("2_rtmyt")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

@@ -1,5 +1,5 @@
 extends Area2D
-var damage = 1
+var damage = 10
 var knockback_modifier = 10
 func explode():
 	for body in get_overlapping_bodies():

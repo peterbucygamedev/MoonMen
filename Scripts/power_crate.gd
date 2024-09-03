@@ -39,8 +39,8 @@ func _on_area_2d_body_entered(body):
 	
 func _on_detontate_timer_timeout():
 	#Engine.time_scale = 1
-	power_crate_collider.disabled = true
-	animated_sprite_2d.hide()
+	#power_crate_collider.disabled = true
+	#animated_sprite_2d.hide()
 	power_crate_detonation.restart()
 	power_crate_detonation.emitting = true
 	explosion_area.explode()

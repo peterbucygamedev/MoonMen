@@ -24,16 +24,19 @@ region_rect = Rect2(746, 967, 255, 9)
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
 position = Vector2(-68, -3)
 scale = Vector2(10, 0.2)
+color = Color(0.392157, 0.392157, 0.392157, 1)
 energy = 3.0
 texture = ExtResource("2_ss0a3")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Sprite2D"]
 scale = Vector2(2, 0.7)
+color = Color(0.392157, 0.392157, 0.392157, 1)
 energy = 3.0
 texture = ExtResource("2_ss0a3")
 
 [node name="PointLight2D3" type="PointLight2D" parent="Sprite2D"]
 position = Vector2(68, 3)
 scale = Vector2(10, 0.2)
+color = Color(0.392157, 0.392157, 0.392157, 1)
 energy = 3.0
 texture = ExtResource("2_ss0a3")

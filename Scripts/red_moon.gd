@@ -1,44 +1,40 @@
-extends Node2D
+extends Node
+
 var player = preload("res://Scenes/player.tscn")
 var bullet = preload("res://Scenes/bullet.tscn")
-const MOON_TELEPORT = preload("res://Scenes/moon_teleport.tscn")
 
 var devices := []
-@onready var point_light_2d = $Area2D/Sprite2D/PointLight2D
 var loadLevel := false
 var playersInArea := []
 @onready var spawn = $spawns/spawn
 @onready var spawn_2 = $spawns/spawn2
 @onready var spawn_3 = $spawns/spawn3
 @onready var spawn_4 = $spawns/spawn4
-@onready var area_2d = $Area2D
+@onready var area_light = $Area2D/areaLight
+@onready var player_light = $Area2D/areaLight/playerLight
+const BLUE_MOON = preload("res://Scenes/blue_moon.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-	point_light_2d.hide()
-	area_2d.hide()
-
+	area_light.hide()
+	player_light.hide()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if GameManager.numberOfPlayers <= 1:
-		area_2d.show()
+		area_light.show()
 		
 	if GameManager.numberOfPlayers > 1:
-		area_2d.hide()
-	print(GameManager.allowDevice0)
+		area_light.hide()
+		
+	"""print(GameManager.allowDevice0)
 	print(GameManager.allowDevice1)
 	print(GameManager.allowDevice2)
-	print(GameManager.allowDevice3)
+	print(GameManager.allowDevice3)"""
 	devices = Input.get_connected_joypads()
 	#print (devices)
 	
-	if area_2d.has_overlapping_bodies():
-		point_light_2d.show()
-	else:
-		point_light_2d.hide()
 		
-	print(loadLevel)
+	print("loadLevel = ", loadLevel)
 		
 		
 	if Input.is_joy_button_pressed(0, 0) and GameManager.allowDevice0:
@@ -103,24 +99,24 @@ func _process(delta):
 func load_level():
 	print("start button pressed")
 	if loadLevel and GameManager.numberOfPlayers <= 1:
+		print("loadLevel")
 		GameManager.allowDevice0 = true
 		GameManager.allowDevice1 = true
 		GameManager.allowDevice2 = true
 		GameManager.allowDevice3 = true
-		get_tree().change_scene_to_file("res://Scenes/moon_teleport.tscn")
-
-
-
+		get_tree().change_scene_to_file("res://Scenes/blue_moon.tscn")
+		GameManager.numberOfPlayers = 0
 
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("players"):
 		loadLevel = true
 		playersInArea.append(body)
-
+		player_light.show()
 
 func _on_area_2d_body_exited(body):
 	if body.is_in_group("players"):
 		playersInArea.erase(body)
 		if playersInArea.size() <= 0:
 			loadLevel = false
+			player_light.hide()

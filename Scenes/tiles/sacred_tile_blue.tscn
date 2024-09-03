@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://c43qbpqt0dv84"]
+
+[ext_resource type="Texture2D" uid="uid://jfwya1xvun6v" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-18T195145.513.png" id="1_uojhs"]
+[ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="2_mutqy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orixy"]
+size = Vector2(247.832, 10)
+
+[node name="sacred_tile_blue" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(3.69549e-06, 0)
+scale = Vector2(1.02489, 1.03222)
+shape = SubResource("RectangleShape2D_orixy")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uojhs")
+region_enabled = true
+region_rect = Rect2(746, 967, 255, 9)
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(-68, -3)
+scale = Vector2(10, 0.2)
+color = Color(0, 0.25098, 1, 1)
+energy = 3.0
+texture = ExtResource("2_mutqy")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Sprite2D"]
+scale = Vector2(2, 0.7)
+color = Color(0, 0.25098, 1, 1)
+energy = 3.0
+texture = ExtResource("2_mutqy")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(68, 3)
+scale = Vector2(10, 0.2)
+color = Color(0, 0.25098, 1, 1)
+energy = 3.0
+texture = ExtResource("2_mutqy")
