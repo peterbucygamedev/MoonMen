@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ft3kw"]
 size = Vector2(10, 234)
 
-[node name="sacred_tile_v_blue" type="StaticBody2D"]
+[node name="sacred_tile_v_blue" type="StaticBody2D" groups=["ground", "wall"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

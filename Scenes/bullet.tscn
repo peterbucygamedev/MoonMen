@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="3_rpvot"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my6ru"]
-size = Vector2(2, 1)
+size = Vector2(4, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uedis"]
-size = Vector2(4, 2)
+size = Vector2(5, 3)
 
 [node name="bullet" type="RigidBody2D" groups=["bullets"]]
 collision_layer = 3
@@ -20,7 +20,7 @@ script = ExtResource("1_3y6mo")
 shape = SubResource("RectangleShape2D_my6ru")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_sm5m7")
 region_enabled = true
 region_rect = Rect2(0, 3, 10, 5)
@@ -43,8 +43,9 @@ wait_time = 0.1
 one_shot = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, 2.98023e-08)
-scale = Vector2(0.2, 0.1)
+visible = false
+position = Vector2(1.49012e-07, -1.49012e-08)
+scale = Vector2(0.4, 0.2)
 energy = 2.0
 blend_mode = 2
 texture = ExtResource("2_sm5m7")
