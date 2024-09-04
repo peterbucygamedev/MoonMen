@@ -298,7 +298,8 @@ func _process(delta) -> void:
 	if (direction > 0.05 or direction2 > 0.05) and crouching == false:
 		animated_sprite_2d.flip_h = false
 		energy_shield.position.x = 12
-		energy_shield.energy_sprite.flip_h = false
+		energy_shield.scale.x = 1
+		#energy_shield.energy_sprite.flip_h = false
 		#health_outline.flip_h = false
 		sprite_2d.flip_v = false
 		weapon_sprite.flip_v = false
@@ -315,7 +316,8 @@ func _process(delta) -> void:
 	elif (direction < -0.05 or direction2 < -0.05) and crouching == false:
 		animated_sprite_2d.flip_h = true
 		energy_shield.position.x = -12
-		energy_shield.energy_sprite.flip_h = true
+		energy_shield.scale.x = -1
+		#energy_shield.energy_sprite.flip_h = true
 		#health_outline.flip_h = true
 		sprite_2d.flip_v = true
 		weapon_sprite.flip_v = true

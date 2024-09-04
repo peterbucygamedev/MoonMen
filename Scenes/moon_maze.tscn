@@ -4174,7 +4174,7 @@ position = Vector2(401, -200)
 [node name="teleporters" type="Node2D" parent="."]
 
 [node name="teleporter1" type="Area2D" parent="teleporters"]
-position = Vector2(-260, 90)
+position = Vector2(200, -135)
 script = ExtResource("8_76xpj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="teleporters/teleporter1"]
@@ -4352,7 +4352,7 @@ energy = 2.0
 texture = ExtResource("10_g1ufu")
 
 [node name="teleporter5" type="Area2D" parent="teleporters"]
-position = Vector2(550, 90)
+position = Vector2(-264, 290)
 script = SubResource("GDScript_3oj8b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="teleporters/teleporter5"]
@@ -4440,7 +4440,7 @@ energy = 2.0
 texture = ExtResource("10_g1ufu")
 
 [node name="teleporter7" type="Area2D" parent="teleporters"]
-position = Vector2(200, -135)
+position = Vector2(-260, 90)
 script = SubResource("GDScript_11jg4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="teleporters/teleporter7"]
@@ -4572,7 +4572,7 @@ energy = 2.0
 texture = ExtResource("10_g1ufu")
 
 [node name="teleporter10" type="Area2D" parent="teleporters"]
-position = Vector2(-550, 90)
+position = Vector2(260, 290)
 script = SubResource("GDScript_jssp2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="teleporters/teleporter10"]

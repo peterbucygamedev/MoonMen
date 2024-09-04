@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dyqlfqxfag3qx" path="res://Scenes/energy_shield.tscn" id="10_ojd3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tjik"]
-size = Vector2(20, 24)
+size = Vector2(24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_libcu"]
 atlas = ExtResource("2_ofmls")
@@ -576,7 +576,7 @@ collision_mask = 11
 script = ExtResource("1_h1kp2")
 
 [node name="playerCollision" type="CollisionShape2D" parent="."]
-position = Vector2(1, 5)
+position = Vector2(0, 5)
 scale = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_7tjik")
 
