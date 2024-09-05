@@ -19,9 +19,10 @@ func _on_body_entered(body):
 		body.position = Vector2(body.position.x, top_area.position.y + 120)
 		
 	if body.is_in_group("bullets"):
-		body.queue_free()
+		#body.queue_free()
 		var b = bullet.instantiate()
 		moon_slayer.add_child(b)
+		b.audio_stream_player_2d.stop()
 		b.transform = Transform2D(body.rotation, body.scale, body.skew, Vector2(body.position.x, top_area.position.y + 120))
 		b.apply_impulse(body.linear_velocity, Vector2(0,0))
 		#b.apply_impulse(body.transform.x * body.speed, Vector2(0,0))
@@ -41,4 +42,3 @@ func _on_body_entered(body):
 		body.position = Vector2(body.position.x,top_area.position.y + 100)"""
 		
 		
-

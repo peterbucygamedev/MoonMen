@@ -85,6 +85,7 @@ func appear() -> void:
 	#i think this is the shape of the line
 	tween.tween_property(line_2d, "width", 7, 0.1)
 	
+	
 func disappear() -> void:
 	var tween = create_tween()
 	#the line when laser is complete

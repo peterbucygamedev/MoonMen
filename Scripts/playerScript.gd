@@ -22,10 +22,12 @@ extends CharacterBody2D
 
 @onready var health_bar = $healthBar
 @onready var health_bar_2 = $healthBar2
+@onready var ammo_bar = $ammoBar
 @onready var laser = $weapon/laser
 @onready var energy_shield = $energyShield
 @onready var weapon_sprite = $weapon/weaponSprite
 @onready var reload = $reload
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
 
 var bullet := preload("res://Scenes/bullet.tscn")
 
@@ -193,6 +195,18 @@ func _process(delta) -> void:
 	#print(is_touching_wall)
 	health_bar.value = health
 	health_bar_2.value = health
+	
+	if playerNumber == 0:
+		ammo_bar.value = p1Ammo
+		
+	if playerNumber == 1:
+		ammo_bar.value = p2Ammo
+		
+	if playerNumber == 2:
+		ammo_bar.value = p3Ammo
+		
+	if playerNumber == 3:
+		ammo_bar.value = p4Ammo
 	#reload.play()
 	#print(playerDamage)
 	#print(health)
@@ -253,14 +267,18 @@ func _process(delta) -> void:
 		
 	if Input.is_joy_button_pressed(playerNumber, 10) or Input.is_action_pressed("shootLaser"):
 		laser.is_casting = true
+		if !audio_stream_player_2d.playing:
+			audio_stream_player_2d.play()
 		if laser.is_colliding() and laser.get_collider() != null:
 			if laser.get_collider().is_in_group("players"):
 				#print("hit player")
 				if health_timer.is_stopped():
 					health_timer.start()
+					
 			
 	else:
 		laser.is_casting = false
+		audio_stream_player_2d.stop()
 		
 	if crouching == true and energy_shield.shieldEnabled:
 		energy_shield.show()
