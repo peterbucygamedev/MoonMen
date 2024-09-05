@@ -1,67 +1,100 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyqlfqxfag3qx"]
+[gd_scene load_steps=10 format=3 uid="uid://ie6n2e8my4g3"]
 
 [ext_resource type="Script" path="res://Scripts/energy_shield.gd" id="1_qei3m"]
-[ext_resource type="Texture2D" uid="uid://dihij00m8kdxk" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-27T093444.635.png" id="2_ndrwt"]
+[ext_resource type="Texture2D" uid="uid://dxsdfcd7lo10u" path="res://Assets/lightShapes/pixil-frame-0 - 2024-09-02T111026.793.png" id="2_nvx0w"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_po25g"]
+load_path = "res://.godot/imported/pixil-frame-0 - 2024-09-02T111026.793.png-431f0f96e82b9976ac2a7f7c048a92fc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q5luk"]
+load_path = "res://.godot/imported/pixil-frame-0 - 2024-09-02T111026.793.png-431f0f96e82b9976ac2a7f7c048a92fc.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6v0mp"]
-size = Vector2(20, 5)
+size = Vector2(29, 5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jt5ad"]
-atlas = ExtResource("2_ndrwt")
-region = Rect2(0, 0, 25, 33)
+[sub_resource type="Gradient" id="Gradient_dt7p3"]
+offsets = PackedFloat32Array(0.0215054, 0.480287, 0.587814, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.214379, 0.214379, 0.214379, 1, 0.222222, 0.222222, 0.222222, 1, 1, 1, 1, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g2int"]
-atlas = ExtResource("2_ndrwt")
-region = Rect2(25, 0, 25, 33)
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fn6u0"]
+gradient = SubResource("Gradient_dt7p3")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ol5t"]
-atlas = ExtResource("2_ndrwt")
-region = Rect2(50, 0, 25, 33)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n0ia3"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 0, 0)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+flatness = 1.0
+initial_velocity_min = 20.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 1, 1, 0.4)
+color_ramp = SubResource("GradientTexture1D_fn6u0")
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_r5cag"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jt5ad")
-}],
-"loop": true,
-"name": &"shield",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g2int")
-}],
-"loop": true,
-"name": &"shield2",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ol5t")
-}],
-"loop": true,
-"name": &"shield3",
-"speed": 5.0
-}]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o55y7"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 0, 0)
+direction = Vector3(0, 0, 0)
+spread = 0.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 1, 1, 0.4)
+color_ramp = SubResource("GradientTexture1D_fn6u0")
 
 [node name="energyShield" type="StaticBody2D" groups=["shield"]]
 script = ExtResource("1_qei3m")
 
+[node name="shield" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(-7.5, -4)
+rotation = -1.5708
+scale = Vector2(0.286081, 0.15)
+texture = ExtResource("2_nvx0w")
+
+[node name="shield2" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0.423529, 1, 0.623529)
+position = Vector2(-7.50002, -4)
+rotation = -1.5708
+scale = Vector2(0.286081, 0.15)
+texture = SubResource("CompressedTexture2D_po25g")
+
+[node name="shield3" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.619608, 0.572549, 1, 0.623529)
+position = Vector2(-7.50002, -4)
+rotation = -1.5708
+scale = Vector2(0.286081, 0.15)
+texture = SubResource("CompressedTexture2D_q5luk")
+
 [node name="energyShieldCollider" type="CollisionShape2D" parent="."]
+position = Vector2(-2.50003, -4.5)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_6v0mp")
 one_way_collision = true
 one_way_collision_margin = 2.0
 
-[node name="energySprite" type="AnimatedSprite2D" parent="energyShieldCollider"]
-modulate = Color(1, 1, 1, 0.984314)
-rotation = -1.57079
-sprite_frames = SubResource("SpriteFrames_r5cag")
-animation = &"shield"
+[node name="GPUParticles2D" type="GPUParticles2D" parent="energyShieldCollider"]
+visible = false
+position = Vector2(1.25488e-05, -2)
+rotation = -3.14159
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_n0ia3")
+lifetime = 0.1
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="energyShieldCollider"]
+visible = false
+position = Vector2(1.25488e-05, -2)
+rotation = -3.14159
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_o55y7")
+explosiveness = 1.0
 
 [node name="shieldTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 10.0
 one_shot = true
 
 [connection signal="timeout" from="shieldTimer" to="." method="_on_shield_timer_timeout"]

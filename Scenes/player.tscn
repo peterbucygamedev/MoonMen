@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://q1k11q75u03i" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-12T223407.756.png" id="7_5so1f"]
 [ext_resource type="PackedScene" uid="uid://dvep2lsg4yw17" path="res://Scenes/laser.tscn" id="8_bg2jn"]
 [ext_resource type="Texture2D" uid="uid://cqmvmnglw2t4m" path="res://Assets/sprites/pixil-frame-0 - 2024-08-13T085146.548.png" id="9_gfqqa"]
-[ext_resource type="PackedScene" uid="uid://dyqlfqxfag3qx" path="res://Scenes/energy_shield.tscn" id="10_ojd3y"]
+[ext_resource type="PackedScene" uid="uid://ie6n2e8my4g3" path="res://Scenes/energy_shield.tscn" id="10_ojd3y"]
 [ext_resource type="Texture2D" uid="uid://pes8ocjqq5wr" path="res://Assets/sprites/pixil-frame-0 - 2024-09-05T112355.324.png" id="11_x3axw"]
 [ext_resource type="AudioStream" uid="uid://6mphmvmnja16" path="res://Assets/sounds/laser.mp3" id="13_vax3p"]
 
@@ -507,6 +507,12 @@ autoplay = "idleGrey"
 position = Vector2(11, 1)
 occluder = SubResource("OccluderPolygon2D_1y48s")
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="AnimatedSprite2D"]
+offset_left = -20.0
+offset_top = 2.0
+offset_right = 20.0
+offset_bottom = 42.0
+
 [node name="weapon" type="StaticBody2D" parent="."]
 position = Vector2(0, 2)
 collision_layer = 4
@@ -530,6 +536,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 43, 22)
 
 [node name="bulletSpawn" type="Marker2D" parent="weapon"]
+visible = false
 position = Vector2(16, -1)
 
 [node name="laser" parent="weapon" instance=ExtResource("8_bg2jn")]
@@ -606,10 +613,10 @@ shape = SubResource("RectangleShape2D_2ww0t")
 [node name="healthTimer" type="Timer" parent="."]
 
 [node name="energyShield" parent="." instance=ExtResource("10_ojd3y")]
-position = Vector2(12, 6)
+position = Vector2(14, 7)
 
 [node name="shieldTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.2
 one_shot = true
 
 [node name="powerCrateTimer" type="Timer" parent="."]
