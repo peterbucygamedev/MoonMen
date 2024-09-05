@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://jb2kjgt1osww"]
+[gd_scene load_steps=85 format=3 uid="uid://jb2kjgt1osww"]
 
 [ext_resource type="Script" path="res://Scripts/playerScript.gd" id="1_h1kp2"]
 [ext_resource type="Texture2D" uid="uid://ctobpsdl8l6gm" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-25T151827.251.png" id="2_ofmls"]
@@ -144,17 +144,65 @@ region = Rect2(50, 66, 25, 33)
 atlas = ExtResource("5_dvqed")
 region = Rect2(75, 66, 25, 33)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsrjl"]
+atlas = ExtResource("2_ofmls")
+region = Rect2(50, 0, 25, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxynv"]
+atlas = ExtResource("2_ofmls")
+region = Rect2(75, 0, 25, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8h7f"]
+atlas = ExtResource("2_ofmls")
+region = Rect2(0, 33, 25, 33)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3x8v"]
 atlas = ExtResource("2_ofmls")
 region = Rect2(25, 33, 25, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5hon"]
+atlas = ExtResource("3_so3h0")
+region = Rect2(50, 0, 25, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ond7"]
+atlas = ExtResource("3_so3h0")
+region = Rect2(75, 0, 25, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddfr1"]
+atlas = ExtResource("3_so3h0")
+region = Rect2(0, 33, 25, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqfdv"]
 atlas = ExtResource("3_so3h0")
 region = Rect2(25, 33, 25, 33)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nl3j"]
+atlas = ExtResource("4_we8g5")
+region = Rect2(50, 0, 25, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6bx2"]
+atlas = ExtResource("4_we8g5")
+region = Rect2(75, 0, 25, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh7v6"]
+atlas = ExtResource("4_we8g5")
+region = Rect2(0, 33, 25, 33)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajc8v"]
 atlas = ExtResource("4_we8g5")
 region = Rect2(25, 33, 25, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5hpq"]
+atlas = ExtResource("5_dvqed")
+region = Rect2(50, 0, 25, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m34xe"]
+atlas = ExtResource("5_dvqed")
+region = Rect2(75, 0, 25, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lten8"]
+atlas = ExtResource("5_dvqed")
+region = Rect2(0, 33, 25, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_teag4"]
 atlas = ExtResource("5_dvqed")
@@ -300,6 +348,15 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_tsrjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxynv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8h7f")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_i3x8v")
 }],
 "loop": false,
@@ -307,6 +364,15 @@ animations = [{
 "speed": 20.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5hon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ond7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddfr1")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dqfdv")
 }],
@@ -316,6 +382,15 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4nl3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6bx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh7v6")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ajc8v")
 }],
 "loop": false,
@@ -323,6 +398,15 @@ animations = [{
 "speed": 20.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5hpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m34xe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lten8")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_teag4")
 }],
@@ -498,7 +582,7 @@ shape = SubResource("RectangleShape2D_7tjik")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_phkmh")
-animation = &"movingPink"
+animation = &"slideBlue"
 autoplay = "idleGrey"
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]

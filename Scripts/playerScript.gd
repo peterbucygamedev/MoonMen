@@ -234,9 +234,8 @@ func _process(delta) -> void:
 		
 	
 	if Input.is_joy_button_pressed(playerNumber, 9):
-		if Input.is_action_just_pressed("slide"):
 			crouching = true
-			if playerNumber == 0:
+			if playerNumber == 0 and crouching:
 				animated_sprite_2d.play("slideGrey")
 			if playerNumber == 1:
 				animated_sprite_2d.play("slidePink")
@@ -244,12 +243,9 @@ func _process(delta) -> void:
 				animated_sprite_2d.play("slideGreen")
 			if playerNumber == 3:
 				animated_sprite_2d.play("slideBlue")
-			#if energy_shield.shieldEnabled:
-			#	energy_shield.get_node("energyShieldCollider").disabled = false
-			#	energy_shield.show()
+
 			
-			
-	elif Input.is_action_just_released("slide"):
+	elif !Input.is_joy_button_pressed(playerNumber, 9):
 		crouching = false
 		energy_shield.get_node("energyShieldCollider").disabled = true
 		energy_shield.hide()
