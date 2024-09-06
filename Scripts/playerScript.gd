@@ -17,6 +17,8 @@ extends CharacterBody2D
 @onready var shield_timer = $timers/shieldTimer
 @onready var power_crate_timer = $timers/powerCrateTimer
 @onready var shoot_next_timer = $timers/shootNextTimer
+@onready var acid_timer = $timers/acidTimer
+
 @onready var power_up = $timers/powerUp
 @onready var reload_timer = $timers/reloadTimer
 @onready var health_bar = $progressbars/healthBar
@@ -378,7 +380,7 @@ func _process(delta) -> void:
 				shieldDamage = false
 				if shield_timer.is_stopped():
 					shield_timer.start()
-				print("hit shield")
+				#print("hit shield")
 		
 	if laser.is_casting:
 		if laser.get_collider() != null and laser.get_collider().is_in_group("power_crate"):
@@ -386,7 +388,7 @@ func _process(delta) -> void:
 			powerCrateDamage = false
 			if power_crate_timer.is_stopped():
 				power_crate_timer.start()
-			print("hit power crate")
+			#print("hit power crate")
 
 	move_and_slide()
 	#move_and_collide(velocity * delta)
@@ -425,12 +427,19 @@ func _on_full_auto_timeout()-> void:
 func _on_area_2d_body_entered(body)-> void:
 	if body.is_in_group("wall"):
 		is_touching_wall = true
-
-
+		
+	if body.is_in_group("acid"):
+		print("in acid")
+		if acid_timer.is_stopped():
+			acid_timer.start()
+			
 func _on_area_2d_body_exited(body)-> void:
 	if body.is_in_group("wall"):
 		is_touching_wall = false
 		jumpCounter = 0
+	
+	if body.is_in_group("acid"):
+			acid_timer.stop()
 
 
 func _on_health_timer_timeout()-> void:
@@ -438,7 +447,7 @@ func _on_health_timer_timeout()-> void:
 		if laser.get_collider() != null and laser.get_collider().is_in_group("players"):
 			laser.get_collider().health -= 1
 			laser.get_collider().health_bar.show()
-			print("hit player")
+			#print("hit player")
 			health_bar_timer.start()
 		
 	
@@ -459,3 +468,9 @@ func _on_power_up_timeout():
 	power_up_effect.restart()
 	power_up_effect_2.restart()
 	
+
+func _on_acid_timer_timeout():
+	print("acid damage")
+	health -= 2
+	health_bar.show()
+	health_bar_timer.start()
