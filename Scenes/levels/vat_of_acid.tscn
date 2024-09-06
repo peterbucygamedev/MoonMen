@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c54kddm0bohv3"]
+[gd_scene load_steps=19 format=3 uid="uid://c54kddm0bohv3"]
 
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="1_2r468"]
 [ext_resource type="PackedScene" uid="uid://mh5sd6p1r18b" path="res://Scenes/tiles/sacred_tile_s_green.tscn" id="2_1g252"]
@@ -9,7 +9,130 @@
 [ext_resource type="PackedScene" uid="uid://h7yj4ycado6o" path="res://Scenes/tiles/sacred_tile_h_green.tscn" id="7_7gtdr"]
 [ext_resource type="PackedScene" uid="uid://ccnhd5mmxx2eu" path="res://Scenes/tiles/sacred_tile_v_green.tscn" id="8_x1tp5"]
 [ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="9_w0jwv"]
-[ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="10_uct0a"]
+[ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="10_0x3lv"]
+
+[sub_resource type="GDScript" id="GDScript_hbe50"]
+script/source = "extends Node
+var player = preload(\"res://Scenes/player.tscn\")
+var bullet = preload(\"res://Scenes/bullet.tscn\")
+
+var devices := []
+var loadLevel := false
+var playersInArea := []
+@onready var spawn = $spawns/spawn
+@onready var spawn_2 = $spawns/spawn2
+@onready var spawn_3 = $spawns/spawn3
+@onready var spawn_4 = $spawns/spawn4
+@onready var area_light = $Area2D/areaLight
+@onready var player_light = $Area2D/areaLight/playerLight
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	area_light.hide()
+	player_light.hide()
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if GameManager.numberOfPlayers <= 1:
+		area_light.show()
+		
+	if GameManager.numberOfPlayers > 1:
+		area_light.hide()
+		
+	print(GameManager.allowDevice0)
+	print(GameManager.allowDevice1)
+	print(GameManager.allowDevice2)
+	print(GameManager.allowDevice3)
+	devices = Input.get_connected_joypads()
+	#print (devices)
+	
+		
+	print(loadLevel)
+		
+		
+	if Input.is_joy_button_pressed(0, 0) and GameManager.allowDevice0:
+		var p0 = player.instantiate()
+		p0.playerNumber = 0
+		add_child(p0)
+		p0.transform = spawn.transform
+		p0.set_owner($\".\")
+		p0.startingTransform = spawn.transform
+		p0.lives = 3
+		GameManager.allowDevice0 = false
+		GameManager.numberOfPlayers += 1
+		
+	if Input.is_joy_button_pressed(1, 0) and GameManager.allowDevice1:
+		var p1 = player.instantiate()
+		p1.playerNumber = 1
+		add_child(p1)
+		p1.transform = spawn_2.transform
+		p1.set_owner($\".\")
+		p1.startingTransform = spawn_2.transform
+		p1.lives = 3
+		GameManager.allowDevice1 = false
+		GameManager.numberOfPlayers += 1
+		
+	if Input.is_joy_button_pressed(2, 0) and GameManager.allowDevice2:
+		var p2 = player.instantiate()
+		p2.playerNumber = 2
+		add_child(p2)
+		p2.transform = spawn_3.transform
+		p2.set_owner($\".\")
+		p2.startingTransform = spawn_3.transform
+		p2.lives = 3
+		GameManager.allowDevice2 = false
+		GameManager.numberOfPlayers += 1
+		
+	if Input.is_joy_button_pressed(3, 0) and GameManager.allowDevice3:
+		var p3 = player.instantiate()
+		p3.playerNumber = 3
+		add_child(p3)
+		p3.transform = spawn_4.transform
+		p3.set_owner($\".\")
+		p3.startingTransform = spawn_4.transform
+		p3.lives = 3
+		GameManager.allowDevice3 = false
+		GameManager.numberOfPlayers += 1
+		
+	print(GameManager.numberOfPlayers)
+	
+	if Input.is_joy_button_pressed(0, 6):
+		load_level()
+		
+	if Input.is_joy_button_pressed(1, 6):
+		load_level()
+		
+	if Input.is_joy_button_pressed(2, 6):
+		load_level()
+		
+	if Input.is_joy_button_pressed(3, 6):
+		load_level()
+		
+	
+func load_level():
+	print(\"start button pressed\")
+	#if loadLevel and GameManager.numberOfPlayers <= 1:
+	#	GameManager.allowDevice0 = true
+	#	GameManager.allowDevice1 = true
+	#	GameManager.allowDevice2 = true
+	#	GameManager.allowDevice3 = true
+	#	GameManager.numberOfPlayers = 0
+	#	get_tree().change_scene_to_file(\"\")
+
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group(\"players\"):
+		loadLevel = true
+		playersInArea.append(body)
+		player_light.show()
+
+func _on_area_2d_body_exited(body):
+	if body.is_in_group(\"players\"):
+		playersInArea.erase(body)
+		if playersInArea.size() <= 0:
+			loadLevel = false
+			player_light.hide()
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kek2j"]
 texture = ExtResource("1_2r468")
@@ -3905,7 +4028,11 @@ func _process(delta):
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bvexk"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01vc0"]
+size = Vector2(234, 92)
+
 [node name="vatOfAcid" type="Node"]
+script = SubResource("GDScript_hbe50")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -4205,5 +4332,43 @@ rotation = 3.14159
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
 shape = SubResource("WorldBoundaryShape2D_bvexk")
 
-[node name="player" parent="." instance=ExtResource("10_uct0a")]
-position = Vector2(-268, 276)
+[node name="spawns" type="Node2D" parent="."]
+
+[node name="spawn" type="Marker2D" parent="spawns"]
+z_index = 1
+position = Vector2(-137, 85)
+
+[node name="spawn2" type="Marker2D" parent="spawns"]
+z_index = 1
+position = Vector2(-37, 85)
+
+[node name="spawn3" type="Marker2D" parent="spawns"]
+z_index = 1
+position = Vector2(339, -211)
+
+[node name="spawn4" type="Marker2D" parent="spawns"]
+z_index = 1
+position = Vector2(439, -211)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-82, 104)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -36)
+shape = SubResource("RectangleShape2D_01vc0")
+
+[node name="areaLight" type="PointLight2D" parent="Area2D"]
+position = Vector2(3.8147e-06, -36)
+scale = Vector2(23.4, 9.4)
+energy = 0.5
+texture = ExtResource("6_or3rd")
+
+[node name="playerLight" type="PointLight2D" parent="Area2D/areaLight"]
+position = Vector2(0, 5.05319)
+scale = Vector2(1, 0.0957447)
+texture = ExtResource("6_or3rd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_0x3lv")
+autoplay = true
+bus = &"Music"
