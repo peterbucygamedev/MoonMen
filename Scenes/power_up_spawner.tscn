@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds70at1agjq4h"]
+
+[ext_resource type="Script" path="res://spawns.gd" id="1_4c5qg"]
+
+[node name="powerUpSpawner" type="Node2D"]
+
+[node name="spawns" type="Node2D" parent="."]
+script = ExtResource("1_4c5qg")
+
+[node name="ammoSpawn" type="Marker2D" parent="spawns"]
+position = Vector2(-60, 0)
+
+[node name="ammoTimer" type="Timer" parent="spawns/ammoSpawn"]
+one_shot = true
+
+[node name="bulletSpeedSpawn" type="Marker2D" parent="spawns"]
+position = Vector2(-40, 0)
+
+[node name="bulletSpeedTimer" type="Timer" parent="spawns/bulletSpeedSpawn"]
+
+[node name="damageSpawn" type="Marker2D" parent="spawns"]
+position = Vector2(-20, 0)
+
+[node name="damageTimer" type="Timer" parent="spawns/damageSpawn"]
+
+[node name="healthSpawn" type="Marker2D" parent="spawns"]
+position = Vector2(20, 0)
+
+[node name="healthTimer" type="Timer" parent="spawns/healthSpawn"]
+
+[node name="reflectingSpawn" type="Marker2D" parent="spawns"]
+position = Vector2(60, 0)
+
+[node name="reflectingTimer" type="Timer" parent="spawns/reflectingSpawn"]
+
+[node name="fullAutoSpawn" type="Marker2D" parent="spawns"]
+position = Vector2(40, 0)
+
+[node name="fullAutoTimer" type="Timer" parent="spawns/fullAutoSpawn"]
+
+[connection signal="timeout" from="spawns/ammoSpawn/ammoTimer" to="spawns" method="_on_ammo_timer_timeout"]
+[connection signal="timeout" from="spawns/bulletSpeedSpawn/bulletSpeedTimer" to="spawns" method="_on_bullet_speed_timer_timeout"]
+[connection signal="timeout" from="spawns/damageSpawn/damageTimer" to="spawns" method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="spawns/healthSpawn/healthTimer" to="spawns" method="_on_health_timer_timeout"]
+[connection signal="timeout" from="spawns/reflectingSpawn/reflectingTimer" to="spawns" method="_on_reflecting_timer_timeout"]
+[connection signal="timeout" from="spawns/fullAutoSpawn/fullAutoTimer" to="spawns" method="_on_full_auto_timer_timeout"]

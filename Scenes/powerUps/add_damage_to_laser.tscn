@@ -18,7 +18,7 @@ texture = ExtResource("1_go0e6")
 region_enabled = true
 region_rect = Rect2(17, 34, 21, 4)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="Area2D"]
 scale = Vector2(0.2, 0.2)
 energy = 2.0
 shadow_enabled = true

@@ -29,5 +29,6 @@ func _on_body_entered(body):
 		if body.power_up.is_stopped():
 			body.power_up.start()
 		body.power_up_sfx.play()
-			
+		
+		
 		add_ammo.queue_free()

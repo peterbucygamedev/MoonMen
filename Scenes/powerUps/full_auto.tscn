@@ -20,7 +20,7 @@ texture = ExtResource("1_k2ixy")
 region_enabled = true
 region_rect = Rect2(56, 39, 11, 2)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="Area2D"]
 scale = Vector2(0.2, 0.2)
 color = Color(0, 1, 0.254902, 1)
 energy = 2.0

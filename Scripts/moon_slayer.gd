@@ -6,10 +6,10 @@ var devices := []
 @onready var area_2d = $Area2D
 var loadLevel := true
 var playersInArea := []
-@onready var spawn = $spawns/spawn
-@onready var spawn_2 = $spawns/spawn2
-@onready var spawn_3 = $spawns/spawn3
-@onready var spawn_4 = $spawns/spawn4
+@onready var spawn = $playerSpawns/spawn
+@onready var spawn_2 = $playerSpawns/spawn2
+@onready var spawn_3 = $playerSpawns/spawn3
+@onready var spawn_4 = $playerSpawns/spawn4
 @onready var area_light = $Area2D/areaLight
 @onready var player_light = $Area2D/areaLight/playerLight
 
