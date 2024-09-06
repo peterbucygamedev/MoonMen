@@ -3971,6 +3971,8 @@ position = Vector2(-118, -134)
 
 [node name="Node2D" type="Node2D" parent="."]
 process_physics_priority = 1
+z_index = 2
+z_as_relative = false
 position = Vector2(0, 15)
 
 [node name="MoonMen" type="Label" parent="Node2D"]

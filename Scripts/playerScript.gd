@@ -1,4 +1,5 @@
 extends CharacterBody2D
+
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var weapon = $weapon
 @onready var sprite_2d = $weapon/Sprite2D
@@ -6,32 +7,27 @@ extends CharacterBody2D
 @onready var bullet_spawn = $weapon/bulletSpawn
 @export var playerNumber = 0
 @onready var player_collision = $playerCollision
-
-@onready var player_1_timer = $player1Timer
-@onready var player_2_timer = $player2Timer
-@onready var player_3_timer = $player3Timer
-@onready var player_4_timer = $player4Timer
-@onready var reload_timer = $reloadTimer
-
-@onready var power_crate_timer = $powerCrateTimer
-@onready var full_auto_timer = $fullAutoTimer
-@onready var shield_timer = $shieldTimer
-@onready var health_bar_timer = $healthBarTimer
-@onready var health_timer = $healthTimer
-@onready var shoot_next_timer = $shootNextTimer
-@onready var power_up = $powerUp
-
-@onready var health_bar = $healthBar
-@onready var health_bar_2 = $healthBar2
-@onready var ammo_bar = $ammoBar
+@onready var player_1_timer = $timers/player1Timer
+@onready var player_2_timer = $timers/player2Timer
+@onready var player_3_timer = $timers/player3Timer
+@onready var player_4_timer = $timers/player4Timer
+@onready var health_bar_timer = $timers/healthBarTimer
+@onready var full_auto_timer = $timers/fullAutoTimer
+@onready var health_timer = $timers/healthTimer
+@onready var shield_timer = $timers/shieldTimer
+@onready var power_crate_timer = $timers/powerCrateTimer
+@onready var shoot_next_timer = $timers/shootNextTimer
+@onready var power_up = $timers/powerUp
+@onready var reload_timer = $timers/reloadTimer
+@onready var health_bar = $progressbars/healthBar
+@onready var health_bar_2 = $progressbars/healthBar2
+@onready var ammo_bar = $progressbars/ammoBar
 @onready var laser = $weapon/laser
 @onready var energy_shield = $energyShield
 @onready var weapon_sprite = $weapon/weaponSprite
 @onready var reload = $reload
 @onready var laser_beam_sfx = $laserBeamSFX
 @onready var power_up_sfx = $powerUpSFX
-
-
 @onready var power_up_effect = $powerUpEffect
 @onready var power_up_effect_2 = $powerUpEffect2
 @onready var lives_number = $livesNumber

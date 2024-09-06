@@ -565,7 +565,6 @@ visible = false
 position = Vector2(16, -1)
 
 [node name="laser" parent="weapon" instance=ExtResource("8_bg2jn")]
-z_index = 0
 position = Vector2(12, 0)
 
 [node name="reload" type="AnimatedSprite2D" parent="."]

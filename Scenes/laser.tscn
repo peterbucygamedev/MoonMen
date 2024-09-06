@@ -39,7 +39,6 @@ color = Color(1, 1, 1, 0.184314)
 color_ramp = SubResource("GradientTexture1D_0woy3")
 
 [node name="laser" type="RayCast2D" groups=["lasers"]]
-z_index = 2
 target_position = Vector2(1200, 0)
 script = ExtResource("1_y8v5w")
 
