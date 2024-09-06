@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dvep2lsg4yw17"]
 
-[ext_resource type="Script" path="res://Scripts/RayCast2D.gd" id="1_y8v5w"]
-[ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="3_6brnb"]
+[ext_resource type="Script" path="res://Scripts/RayCast2D.gd" id="1_jgowd"]
+[ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="2_kd5lv"]
 
 [sub_resource type="Gradient" id="Gradient_ctdy7"]
 offsets = PackedFloat32Array(0, 0.450425)
@@ -40,7 +40,7 @@ color_ramp = SubResource("GradientTexture1D_0woy3")
 
 [node name="laser" type="RayCast2D" groups=["lasers"]]
 target_position = Vector2(1200, 0)
-script = ExtResource("1_y8v5w")
+script = ExtResource("1_jgowd")
 
 [node name="Line2D" type="Line2D" parent="."]
 scale = Vector2(1.003, 0.571585)
@@ -50,11 +50,11 @@ default_color = Color(0.298039, 1, 1, 0.603922)
 [node name="castingParticles" type="GPUParticles2D" parent="."]
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_gb3pn")
-texture = ExtResource("3_6brnb")
+texture = ExtResource("2_kd5lv")
 
 [node name="collisionParticles" type="GPUParticles2D" parent="."]
 position = Vector2(0, -1)
 process_material = SubResource("ParticleProcessMaterial_0cmu5")
-texture = ExtResource("3_6brnb")
+texture = ExtResource("2_kd5lv")
 lifetime = 0.2
 trail_lifetime = 0.2

@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://chogtqvtj2jje" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-25T150733.883.png" id="5_dvqed"]
 [ext_resource type="Texture2D" uid="uid://b002h2010jkbv" path="res://Assets/sprites/pixil-frame-0 - 2024-08-26T115650.948.png" id="6_q4jvq"]
 [ext_resource type="Texture2D" uid="uid://q1k11q75u03i" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-12T223407.756.png" id="7_5so1f"]
-[ext_resource type="PackedScene" uid="uid://dvep2lsg4yw17" path="res://Scenes/laser.tscn" id="8_bg2jn"]
+[ext_resource type="PackedScene" uid="uid://dvep2lsg4yw17" path="res://Scenes/abilities/laser.tscn" id="8_bg2jn"]
 [ext_resource type="Texture2D" uid="uid://cqmvmnglw2t4m" path="res://Assets/sprites/pixil-frame-0 - 2024-08-13T085146.548.png" id="9_gfqqa"]
-[ext_resource type="PackedScene" uid="uid://ie6n2e8my4g3" path="res://Scenes/energy_shield.tscn" id="10_ojd3y"]
+[ext_resource type="PackedScene" uid="uid://ie6n2e8my4g3" path="res://Scenes/abilities/energy_shield.tscn" id="10_r4uot"]
 [ext_resource type="Texture2D" uid="uid://pes8ocjqq5wr" path="res://Assets/sprites/pixil-frame-0 - 2024-09-05T112355.324.png" id="11_x3axw"]
 [ext_resource type="AudioStream" uid="uid://vf4vymnro68w" path="res://Assets/sounds/laser_beam.mp3" id="13_gfqes"]
 
@@ -576,7 +576,7 @@ autoplay = "scan"
 frame = 1
 frame_progress = 0.809197
 
-[node name="energyShield" parent="." instance=ExtResource("10_ojd3y")]
+[node name="energyShield" parent="." instance=ExtResource("10_r4uot")]
 position = Vector2(14, 7)
 
 [node name="Area2D" type="Area2D" parent="."]
