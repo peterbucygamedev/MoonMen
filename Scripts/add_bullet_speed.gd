@@ -5,16 +5,16 @@ extends Area2D
 func _on_body_entered(body):
 	if body.is_in_group("players"):
 		if body.playerNumber == 0:
-			body.p1BulletSpeed += 1000
+			body.p1BulletSpeed += 250
 			
 		if body.playerNumber == 1:
-			body.p2BulletSpeed += 1000
+			body.p2BulletSpeed += 250
 			
 		if body.playerNumber == 2:
-			body.p3BulletSpeed += 1000
+			body.p3BulletSpeed += 250
 			
 		if body.playerNumber == 3:
-			body.p4BulletSpeed += 1000
+			body.p4BulletSpeed += 250
 		
 		body.power_up_effect.show()
 		body.power_up_effect_2.show()

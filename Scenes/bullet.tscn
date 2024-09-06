@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="3_rpvot"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my6ru"]
-size = Vector2(4, 2)
+size = Vector2(2, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uedis"]
 size = Vector2(5, 3)
@@ -18,7 +18,9 @@ inertia = 100.0
 script = ExtResource("1_3y6mo")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
+rotation = 1.57079
 shape = SubResource("RectangleShape2D_my6ru")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.690196)

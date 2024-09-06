@@ -697,7 +697,7 @@ one_shot = true
 wait_time = 2.0
 
 [node name="shootNextTimer" type="Timer" parent="timers"]
-wait_time = 0.05
+wait_time = 0.2
 
 [node name="powerUp" type="Timer" parent="timers"]
 

@@ -12,7 +12,6 @@ extends CharacterBody2D
 @onready var player_3_timer = $timers/player3Timer
 @onready var player_4_timer = $timers/player4Timer
 @onready var health_bar_timer = $timers/healthBarTimer
-@onready var full_auto_timer = $timers/fullAutoTimer
 @onready var health_timer = $timers/healthTimer
 @onready var shield_timer = $timers/shieldTimer
 @onready var power_crate_timer = $timers/powerCrateTimer
@@ -49,10 +48,10 @@ var lives := 3
 var ammo = 10
 var maxAmmo = 10
 var damage = 1
-var p1BulletSpeed = 1000
-var p2BulletSpeed = 1000
-var p3BulletSpeed = 1000
-var p4BulletSpeed = 1000
+var p1BulletSpeed = 100
+var p2BulletSpeed = 100
+var p3BulletSpeed = 100
+var p4BulletSpeed = 100
 var p1Damage = 1
 var p2Damage = 1
 var p3Damage = 1
@@ -74,7 +73,6 @@ var startingTransform = transform
 var select := false
 var crouching := false
 var secondary := false
-var fullAuto := false
 var explosion := false
 var is_touching_wall := false
 var mouseAim := false
@@ -216,12 +214,6 @@ func _process(delta) -> void:
 	#print(health)
 	#print(position)
 	#print(velocity)	
-	
-	if fullAuto:
-		shoot_next_timer.set_wait_time(0.05)
-		
-	if !fullAuto:
-		shoot_next_timer.set_wait_time(0.2)
 		
 	if health <= 0:
 		GameManager.deaths += 1
@@ -418,9 +410,6 @@ func _on_health_bar_timer_timeout()-> void:
 	#print("hide health")
 	health_bar.hide()
 
-
-func _on_full_auto_timeout()-> void:
-	fullAuto = false
 
 
 func _on_area_2d_body_entered(body)-> void:

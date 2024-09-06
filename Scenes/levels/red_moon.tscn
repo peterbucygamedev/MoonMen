@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cy7ca26u4m077"]
+[gd_scene load_steps=40 format=3 uid="uid://cy7ca26u4m077"]
 
 [ext_resource type="PackedScene" uid="uid://cgly5n0yo2owa" path="res://Scenes/tiles/sacred_tile_v_red.tscn" id="1_mbr82"]
 [ext_resource type="PackedScene" uid="uid://dnci37okrkx0y" path="res://Scenes/tiles/sacred_tile_h_red.tscn" id="2_f0a1u"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dswlsst771n2e" path="res://Scenes/chainLaterns/chain_latern_red.tscn" id="16_taero"]
 [ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="17_h7ho1"]
 [ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="17_ldbgr"]
+[ext_resource type="PackedScene" uid="uid://ds70at1agjq4h" path="res://Scenes/power_up_spawner.tscn" id="18_q4av5"]
 
 [sub_resource type="GDScript" id="GDScript_1b0na"]
 script/source = "extends Node
@@ -4794,6 +4795,9 @@ texture = ExtResource("17_ldbgr")
 stream = ExtResource("17_h7ho1")
 autoplay = true
 bus = &"Music"
+
+[node name="powerUpSpawner" parent="." instance=ExtResource("18_q4av5")]
+position = Vector2(-396, -48)
 
 [connection signal="body_entered" from="bottomArea" to="bottomArea" method="_on_body_entered"]
 [connection signal="body_exited" from="bottomArea" to="bottomArea" method="_on_body_exited"]

@@ -1,6 +1,8 @@
 extends Area2D
 @onready var add_ammo = $".."
 @onready var audio_stream_player_2d = $"../AudioStreamPlayer2D"
+@onready var collision_shape_2d = $CollisionShape2D
+
 
 func _on_body_entered(body):
 	if body.is_in_group("players"):
@@ -29,6 +31,5 @@ func _on_body_entered(body):
 		if body.power_up.is_stopped():
 			body.power_up.start()
 		body.power_up_sfx.play()
-		
-		
+
 		add_ammo.queue_free()

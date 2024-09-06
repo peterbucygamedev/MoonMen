@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds70at1agjq4h"]
+[gd_scene load_steps=8 format=3 uid="uid://ds70at1agjq4h"]
 
 [ext_resource type="Script" path="res://spawns.gd" id="1_4c5qg"]
+[ext_resource type="PackedScene" uid="uid://6bc2cawlcu8j" path="res://Scenes/powerUps/add_ammo_capacity.tscn" id="2_turgd"]
+[ext_resource type="PackedScene" uid="uid://djdurr0u8bais" path="res://Scenes/powerUps/add_bullet_speed.tscn" id="3_4l22e"]
+[ext_resource type="PackedScene" uid="uid://behbrcginvsqp" path="res://Scenes/powerUps/add_damage_to_laser.tscn" id="4_bf8jd"]
+[ext_resource type="PackedScene" uid="uid://claacv6i7iql2" path="res://Scenes/powerUps/add_health_capacity.tscn" id="5_l1t5w"]
+[ext_resource type="PackedScene" uid="uid://dwpptdobbadjr" path="res://Scenes/powerUps/add_reflecting_to_laser.tscn" id="6_jdmfn"]
+[ext_resource type="PackedScene" uid="uid://cl5keqdkt1txa" path="res://Scenes/powerUps/full_auto.tscn" id="7_1xrge"]
 
 [node name="powerUpSpawner" type="Node2D"]
 
@@ -13,30 +19,49 @@ position = Vector2(-60, 0)
 [node name="ammoTimer" type="Timer" parent="spawns/ammoSpawn"]
 one_shot = true
 
+[node name="addAmmo" parent="spawns/ammoSpawn" instance=ExtResource("2_turgd")]
+
 [node name="bulletSpeedSpawn" type="Marker2D" parent="spawns"]
 position = Vector2(-40, 0)
 
 [node name="bulletSpeedTimer" type="Timer" parent="spawns/bulletSpeedSpawn"]
+one_shot = true
+
+[node name="addBulletSpeed" parent="spawns/bulletSpeedSpawn" instance=ExtResource("3_4l22e")]
 
 [node name="damageSpawn" type="Marker2D" parent="spawns"]
+visible = false
 position = Vector2(-20, 0)
 
 [node name="damageTimer" type="Timer" parent="spawns/damageSpawn"]
+one_shot = true
+
+[node name="addDamageToLaser" parent="spawns/damageSpawn" instance=ExtResource("4_bf8jd")]
 
 [node name="healthSpawn" type="Marker2D" parent="spawns"]
 position = Vector2(20, 0)
 
 [node name="healthTimer" type="Timer" parent="spawns/healthSpawn"]
+one_shot = true
+
+[node name="addHealthCapacity" parent="spawns/healthSpawn" instance=ExtResource("5_l1t5w")]
 
 [node name="reflectingSpawn" type="Marker2D" parent="spawns"]
+visible = false
 position = Vector2(60, 0)
 
 [node name="reflectingTimer" type="Timer" parent="spawns/reflectingSpawn"]
+one_shot = true
+
+[node name="addReflectingToLaser" parent="spawns/reflectingSpawn" instance=ExtResource("6_jdmfn")]
 
 [node name="fullAutoSpawn" type="Marker2D" parent="spawns"]
 position = Vector2(40, 0)
 
 [node name="fullAutoTimer" type="Timer" parent="spawns/fullAutoSpawn"]
+one_shot = true
+
+[node name="addFullAuto" parent="spawns/fullAutoSpawn" instance=ExtResource("7_1xrge")]
 
 [connection signal="timeout" from="spawns/ammoSpawn/ammoTimer" to="spawns" method="_on_ammo_timer_timeout"]
 [connection signal="timeout" from="spawns/bulletSpeedSpawn/bulletSpeedTimer" to="spawns" method="_on_bullet_speed_timer_timeout"]
