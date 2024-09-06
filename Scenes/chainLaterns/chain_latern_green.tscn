@@ -265,7 +265,7 @@ texture = ExtResource("3_4yvur")
 [node name="PointLight2D3" type="PointLight2D" parent="latern/Sprite2D"]
 position = Vector2(-2.98023e-08, -1)
 scale = Vector2(0.4, 0.4)
-color = Color(0.682353, 1, 0, 1)
+color = Color(0, 1, 0.254902, 1)
 energy = 2.0
 blend_mode = 2
 texture = ExtResource("4_go8np")

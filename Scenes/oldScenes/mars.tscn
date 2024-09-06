@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://4ioqdwbc6qgx" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-13T195337.895.png" id="1_ub2jd"]
 [ext_resource type="PackedScene" uid="uid://jb2kjgt1osww" path="res://Scenes/player.tscn" id="2_522ud"]
 [ext_resource type="PackedScene" uid="uid://cewn5u0ew3cxt" path="res://Scenes/oldScenes/tile_4_green.tscn" id="3_l04b2"]
-[ext_resource type="PackedScene" uid="uid://cvogeqmlxoi7g" path="res://Scenes/health_crate.tscn" id="4_di562"]
-[ext_resource type="PackedScene" uid="uid://bfcpucjxkqhkh" path="res://Scenes/burst_crate.tscn" id="5_idu0e"]
+[ext_resource type="PackedScene" path="res://Scenes/health_crate.tscn" id="4_di562"]
+[ext_resource type="PackedScene" path="res://Scenes/burst_crate.tscn" id="5_idu0e"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_mu5xi"]
 b = Vector2(-100.884, -9.15527e-05)

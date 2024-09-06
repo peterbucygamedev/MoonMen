@@ -168,6 +168,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporter1"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("4_x5w6b")
 
 [node name="teleporter2" type="Area2D" parent="."]
@@ -212,6 +213,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporter2"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("4_x5w6b")
 
 [node name="teleporter3" type="Area2D" parent="."]
@@ -256,6 +258,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporter3"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("4_x5w6b")
 
 [node name="teleporter4" type="Area2D" parent="."]
@@ -300,6 +303,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporter4"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("4_x5w6b")
 
 [node name="teleporter5" type="Area2D" parent="."]
@@ -344,6 +348,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporter5"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("4_x5w6b")
 
 [node name="teleporter6" type="Area2D" parent="."]
@@ -388,6 +393,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporter6"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("4_x5w6b")
 
 [node name="teleporter7" type="Area2D" parent="."]
@@ -432,6 +438,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporter7"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("4_x5w6b")
 
 [node name="teleporter8" type="Area2D" parent="."]
@@ -476,6 +483,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporter8"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("4_x5w6b")
 
 [node name="teleporter9" type="Area2D" parent="."]
@@ -520,6 +528,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporter9"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("4_x5w6b")
 
 [node name="teleporter10" type="Area2D" parent="."]
@@ -564,6 +573,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporter10"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("4_x5w6b")
 
 [connection signal="body_entered" from="teleporter1" to="teleporter1" method="_on_body_entered"]

@@ -19,6 +19,7 @@ extends CharacterBody2D
 @onready var health_bar_timer = $healthBarTimer
 @onready var health_timer = $healthTimer
 @onready var shoot_next_timer = $shootNextTimer
+@onready var power_up = $powerUp
 
 @onready var health_bar = $healthBar
 @onready var health_bar_2 = $healthBar2
@@ -27,7 +28,15 @@ extends CharacterBody2D
 @onready var energy_shield = $energyShield
 @onready var weapon_sprite = $weapon/weaponSprite
 @onready var reload = $reload
-@onready var audio_stream_player_2d = $AudioStreamPlayer2D
+@onready var laser_beam_sfx = $laserBeamSFX
+@onready var power_up_sfx = $powerUpSFX
+
+
+@onready var power_up_effect = $powerUpEffect
+@onready var power_up_effect_2 = $powerUpEffect2
+@onready var lives_number = $livesNumber
+
+
 
 var bullet := preload("res://Scenes/bullet.tscn")
 
@@ -39,7 +48,7 @@ var health := 10
 var maxHealth = 10
 var jumpCounter := 0
 var lastHealth := health
-var lives := 1000
+var lives := 3
 var ammo = 10
 var maxAmmo = 10
 var damage = 1
@@ -187,11 +196,9 @@ func shoot() -> void:
 		reload.show()
 
 		
-
-
-	
 func _process(delta) -> void:
 	
+	lives_number.text = str(lives)
 	#print(is_touching_wall)
 	health_bar.value = health
 	health_bar_2.value = health
@@ -267,8 +274,8 @@ func _process(delta) -> void:
 		
 	if Input.is_joy_button_pressed(playerNumber, 10) or Input.is_action_pressed("shootLaser"):
 		laser.is_casting = true
-		if !audio_stream_player_2d.playing:
-			audio_stream_player_2d.play()
+		if !laser_beam_sfx.playing:
+			laser_beam_sfx.play()
 		if laser.is_colliding() and laser.get_collider() != null:
 			if laser.get_collider().is_in_group("players"):
 				#print("hit player")
@@ -278,7 +285,7 @@ func _process(delta) -> void:
 			
 	else:
 		laser.is_casting = false
-		audio_stream_player_2d.stop()
+		laser_beam_sfx.stop()
 		
 	if crouching == true and energy_shield.shieldEnabled:
 		energy_shield.show()
@@ -448,3 +455,11 @@ func _on_power_crate_timer_timeout()-> void:
 func _on_shoot_next_timer_timeout():
 	shootNext = true
 
+
+
+func _on_power_up_timeout():
+	power_up_effect.hide()
+	power_up_effect_2.hide()
+	power_up_effect.restart()
+	power_up_effect_2.restart()
+	

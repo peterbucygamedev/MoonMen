@@ -15,4 +15,10 @@ func _on_body_entered(body):
 			
 		if body.playerNumber == 3:
 			body.p4BulletSpeed += 1000
+		
+		body.power_up_effect.show()
+		body.power_up_effect_2.show()
+		if body.power_up.is_stopped():
+			body.power_up.start()
+			
 		add_bullet_speed.queue_free()

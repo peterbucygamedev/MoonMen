@@ -3998,113 +3998,113 @@ script = ExtResource("1_l0sjf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="tiles" type="Node2D" parent="."]
+[node name="sacredTiles" type="Node2D" parent="."]
 
-[node name="sacredTileVRed" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(-229, -117)
 
-[node name="sacredTileVRed2" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed2" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(229, -117)
 
-[node name="sacredTileVRed3" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed3" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(0, -362)
 
-[node name="sacredTileVRed4" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed4" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(0, -596)
 
-[node name="sacredTileVRed5" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed5" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(229, 117)
 
-[node name="sacredTileVRed6" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed6" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(-229, 117)
 
-[node name="sacredTileVRed7" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed7" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(-117, -240)
 rotation = 1.5708
 
-[node name="sacredTileVRed8" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed8" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(117, -240)
 rotation = 1.5708
 
-[node name="sacredTileVRed9" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed9" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(-117, 240)
 rotation = 1.5708
 
-[node name="sacredTileVRed10" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed10" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(117, 240)
 rotation = 1.5708
 
-[node name="sacredTileVRed11" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed11" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(-584, 0)
 rotation = 1.5708
 
-[node name="sacredTileVRed12" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed12" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(-350, 0)
 rotation = 1.5708
 
-[node name="sacredTileVRed13" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed13" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(350, 0)
 rotation = 1.5708
 
-[node name="sacredTileVRed14" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed14" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(584, 0)
 rotation = 1.5708
 
-[node name="sacredTileHRed" parent="tiles" instance=ExtResource("2_f0a1u")]
+[node name="sacredTileHRed" parent="sacredTiles" instance=ExtResource("2_f0a1u")]
 position = Vector2(-400, 200)
 
-[node name="sacredTileHRed2" parent="tiles" instance=ExtResource("2_f0a1u")]
+[node name="sacredTileHRed2" parent="sacredTiles" instance=ExtResource("2_f0a1u")]
 position = Vector2(400, 200)
 
-[node name="sacredTileHRed3" parent="tiles" instance=ExtResource("2_f0a1u")]
+[node name="sacredTileHRed3" parent="sacredTiles" instance=ExtResource("2_f0a1u")]
 position = Vector2(-117, 300)
 
-[node name="sacredTileHRed4" parent="tiles" instance=ExtResource("2_f0a1u")]
+[node name="sacredTileHRed4" parent="sacredTiles" instance=ExtResource("2_f0a1u")]
 position = Vector2(117, 300)
 
-[node name="sacredTileVRed15" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed15" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(0, 1)
 
-[node name="sacredTileVRed16" parent="tiles" instance=ExtResource("1_mbr82")]
+[node name="sacredTileVRed16" parent="sacredTiles" instance=ExtResource("1_mbr82")]
 position = Vector2(0, 1)
 rotation = -1.5708
 
-[node name="sacredTileSRed" parent="tiles" instance=ExtResource("3_jg2am")]
+[node name="sacredTileSRed" parent="sacredTiles" instance=ExtResource("3_jg2am")]
 position = Vector2(-150, 150)
 
-[node name="sacredTileSRed2" parent="tiles" instance=ExtResource("3_jg2am")]
+[node name="sacredTileSRed2" parent="sacredTiles" instance=ExtResource("3_jg2am")]
 position = Vector2(-150, -150)
 
-[node name="sacredTileSRed3" parent="tiles" instance=ExtResource("3_jg2am")]
+[node name="sacredTileSRed3" parent="sacredTiles" instance=ExtResource("3_jg2am")]
 position = Vector2(150, -150)
 
-[node name="sacredTileSRed4" parent="tiles" instance=ExtResource("3_jg2am")]
+[node name="sacredTileSRed4" parent="sacredTiles" instance=ExtResource("3_jg2am")]
 position = Vector2(150, 150)
 
-[node name="sacredTileSRed5" parent="tiles" instance=ExtResource("3_jg2am")]
+[node name="sacredTileSRed5" parent="sacredTiles" instance=ExtResource("3_jg2am")]
 position = Vector2(-115, -185)
 rotation = -1.5708
 
-[node name="sacredTileSRed6" parent="tiles" instance=ExtResource("3_jg2am")]
+[node name="sacredTileSRed6" parent="sacredTiles" instance=ExtResource("3_jg2am")]
 position = Vector2(115, -185)
 rotation = 1.5708
 
-[node name="sacredTileHRed5" parent="tiles" instance=ExtResource("2_f0a1u")]
+[node name="sacredTileHRed5" parent="sacredTiles" instance=ExtResource("2_f0a1u")]
 position = Vector2(-535, -240)
 
-[node name="sacredTileHRed6" parent="tiles" instance=ExtResource("2_f0a1u")]
+[node name="sacredTileHRed6" parent="sacredTiles" instance=ExtResource("2_f0a1u")]
 position = Vector2(-350, -117)
 
-[node name="sacredTileHRed7" parent="tiles" instance=ExtResource("2_f0a1u")]
+[node name="sacredTileHRed7" parent="sacredTiles" instance=ExtResource("2_f0a1u")]
 position = Vector2(535, -240)
 
-[node name="sacredTileHRed8" parent="tiles" instance=ExtResource("2_f0a1u")]
+[node name="sacredTileHRed8" parent="sacredTiles" instance=ExtResource("2_f0a1u")]
 position = Vector2(351, -117)
 
-[node name="sacredTileHRed9" parent="tiles" instance=ExtResource("2_f0a1u")]
+[node name="sacredTileHRed9" parent="sacredTiles" instance=ExtResource("2_f0a1u")]
 position = Vector2(-350, 300)
 
-[node name="sacredTileHRed10" parent="tiles" instance=ExtResource("2_f0a1u")]
+[node name="sacredTileHRed10" parent="sacredTiles" instance=ExtResource("2_f0a1u")]
 position = Vector2(351, 300)
 
 [node name="bottomArea" type="Area2D" parent="." groups=["teleport"]]

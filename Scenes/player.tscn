@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://jb2kjgt1osww"]
+[gd_scene load_steps=78 format=3 uid="uid://jb2kjgt1osww"]
 
 [ext_resource type="Script" path="res://Scripts/playerScript.gd" id="1_h1kp2"]
 [ext_resource type="Texture2D" uid="uid://ctobpsdl8l6gm" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-25T151827.251.png" id="2_ofmls"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cqmvmnglw2t4m" path="res://Assets/sprites/pixil-frame-0 - 2024-08-13T085146.548.png" id="9_gfqqa"]
 [ext_resource type="PackedScene" uid="uid://ie6n2e8my4g3" path="res://Scenes/energy_shield.tscn" id="10_ojd3y"]
 [ext_resource type="Texture2D" uid="uid://pes8ocjqq5wr" path="res://Assets/sprites/pixil-frame-0 - 2024-09-05T112355.324.png" id="11_x3axw"]
-[ext_resource type="AudioStream" uid="uid://6mphmvmnja16" path="res://Assets/sounds/laser.mp3" id="13_vax3p"]
+[ext_resource type="AudioStream" uid="uid://vf4vymnro68w" path="res://Assets/sounds/laser_beam.mp3" id="13_gfqes"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tjik"]
 size = Vector2(24, 24)
@@ -487,6 +487,37 @@ size = Vector2(16, 23)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37sod"]
 size = Vector2(14, 25)
 
+[sub_resource type="Gradient" id="Gradient_84nu6"]
+offsets = PackedFloat32Array(0.0215054, 0.480287, 0.587814, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.214379, 0.214379, 0.214379, 1, 0.222222, 0.222222, 0.222222, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fn6u0"]
+gradient = SubResource("Gradient_84nu6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6qsjc"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 0, 0)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+flatness = 1.0
+initial_velocity_min = 20.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 1, 1, 0.4)
+color_ramp = SubResource("GradientTexture1D_fn6u0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8jinb"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 0, 0)
+direction = Vector3(0, 0, 0)
+spread = 0.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 1, 1, 0.4)
+color_ramp = SubResource("GradientTexture1D_fn6u0")
+
 [node name="player" type="CharacterBody2D" groups=["players"]]
 collision_layer = 11
 collision_mask = 11
@@ -506,12 +537,6 @@ autoplay = "idleGrey"
 [node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]
 position = Vector2(11, 1)
 occluder = SubResource("OccluderPolygon2D_1y48s")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="AnimatedSprite2D"]
-offset_left = -20.0
-offset_top = 2.0
-offset_right = 20.0
-offset_bottom = 42.0
 
 [node name="weapon" type="StaticBody2D" parent="."]
 position = Vector2(0, 2)
@@ -637,9 +662,44 @@ wait_time = 0.05
 wait_time = 2.0
 one_shot = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("13_vax3p")
+[node name="laserBeamSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_gfqes")
 bus = &"Sound FX"
+
+[node name="powerUpEffect" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(1.25488e-05, 17)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_6qsjc")
+lifetime = 0.1
+explosiveness = 1.0
+
+[node name="powerUpEffect2" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(1.25488e-05, 17)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_8jinb")
+explosiveness = 1.0
+
+[node name="powerUp" type="Timer" parent="."]
+
+[node name="powerUpSFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="livesNumber" type="Label" parent="."]
+offset_left = -2.0
+offset_top = -22.0
+offset_right = 38.0
+offset_bottom = 1.0
+scale = Vector2(0.544471, 0.544471)
+theme_override_colors/font_color = Color(0.65098, 0.65098, 0.65098, 1)
+text = "3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.556863)
+position = Vector2(-6, -15)
+texture = ExtResource("4_we8g5")
+region_enabled = true
+region_rect = Rect2(85, 77, 7, 7)
 
 [connection signal="timeout" from="player1Timer" to="." method="_on_player_1_timer_timeout"]
 [connection signal="timeout" from="player2Timer" to="." method="_on_player_2_timer_timeout"]
@@ -654,3 +714,4 @@ bus = &"Sound FX"
 [connection signal="timeout" from="powerCrateTimer" to="." method="_on_power_crate_timer_timeout"]
 [connection signal="timeout" from="shootNextTimer" to="." method="_on_shoot_next_timer_timeout"]
 [connection signal="timeout" from="reloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="powerUp" to="." method="_on_power_up_timeout"]

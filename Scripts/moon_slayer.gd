@@ -32,7 +32,8 @@ func _process(delta):
 		p0.set_owner($".")
 		GameManager.numberOfPlayers += 1
 		p0.startingTransform = spawn.transform
-		p0.lives = 1000
+		p0.lives = 3
+
 		
 	if Input.is_joy_button_pressed(1, 0) and GameManager.allowDevice1:
 		var p1 = player.instantiate()
@@ -43,8 +44,9 @@ func _process(delta):
 		p1.set_owner($".")
 		GameManager.numberOfPlayers += 1
 		p1.startingTransform = spawn_2.transform
-		p1.lives = 1000
-		
+		p1.lives = 3
+
+			
 	if Input.is_joy_button_pressed(2, 0) and GameManager.allowDevice2:
 		var p2 = player.instantiate()
 		p2.playerNumber = 2
@@ -54,8 +56,8 @@ func _process(delta):
 		p2.set_owner($".")
 		GameManager.numberOfPlayers += 1
 		p2.startingTransform = spawn_3.transform
-		p2.lives = 1000
-		
+		p2.lives = 3
+
 	if Input.is_joy_button_pressed(3, 0) and GameManager.allowDevice3:
 		var p3 = player.instantiate()
 		p3.playerNumber = 3
@@ -65,8 +67,8 @@ func _process(delta):
 		p3.set_owner($".")
 		GameManager.numberOfPlayers += 1
 		p3.startingTransform = spawn_4.transform
-		p3.lives = 1000
-		
+		p3.lives = 3
+
 	print(GameManager.numberOfPlayers)
 	
 	if Input.is_joy_button_pressed(0, 6):

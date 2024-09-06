@@ -16,7 +16,7 @@ size = Vector2(29, 5)
 offsets = PackedFloat32Array(0.0215054, 0.480287, 0.587814, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.214379, 0.214379, 0.214379, 1, 0.222222, 0.222222, 0.222222, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_fn6u0"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8awgq"]
 gradient = SubResource("Gradient_dt7p3")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n0ia3"]
@@ -30,7 +30,7 @@ initial_velocity_min = 20.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
 color = Color(0, 1, 1, 0.4)
-color_ramp = SubResource("GradientTexture1D_fn6u0")
+color_ramp = SubResource("GradientTexture1D_8awgq")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o55y7"]
 particle_flag_disable_z = true
@@ -41,7 +41,7 @@ spread = 0.0
 flatness = 1.0
 gravity = Vector3(0, 0, 0)
 color = Color(0, 1, 1, 0.4)
-color_ramp = SubResource("GradientTexture1D_fn6u0")
+color_ramp = SubResource("GradientTexture1D_8awgq")
 
 [node name="energyShield" type="StaticBody2D" groups=["shield"]]
 script = ExtResource("1_qei3m")
