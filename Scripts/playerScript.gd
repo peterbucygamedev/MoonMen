@@ -18,7 +18,6 @@ extends CharacterBody2D
 @onready var power_crate_timer = $timers/powerCrateTimer
 @onready var shoot_next_timer = $timers/shootNextTimer
 @onready var acid_timer = $timers/acidTimer
-
 @onready var power_up = $timers/powerUp
 @onready var reload_timer = $timers/reloadTimer
 @onready var health_bar = $progressbars/healthBar

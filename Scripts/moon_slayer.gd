@@ -1,8 +1,7 @@
 extends Node
 var player = preload("res://Scenes/player.tscn")
 var bullet = preload("res://Scenes/bullet.tscn")
-const GREY_HAVENS = preload("res://Scenes/grey_havens.tscn")
-
+const GREY_HAVENS = preload("res://Scenes/levels/grey_havens.tscn")
 var devices := []
 @onready var area_2d = $Area2D
 var loadLevel := true
@@ -92,8 +91,8 @@ func load_level():
 		GameManager.allowDevice1 = true
 		GameManager.allowDevice2 = true
 		GameManager.allowDevice3 = true
+		get_tree().change_scene_to_file("res://Scenes/levels/grey_havens.tscn")
 		GameManager.numberOfPlayers = 0
-		get_tree().change_scene_to_file("res://Scenes/grey_havens.tscn")
 		
 
 

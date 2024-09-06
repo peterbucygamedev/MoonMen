@@ -12,7 +12,7 @@ var playersInArea := []
 @onready var spawn_4 = $spawns/spawn4
 @onready var area_light = $Area2D/areaLight
 @onready var player_light = $Area2D/areaLight/playerLight
-const MOON_MAZE = preload("res://Scenes/moon_maze.tscn")
+const MOON_MAZE = preload("res://Scenes/levels/moon_maze.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -105,7 +105,7 @@ func load_level():
 		GameManager.allowDevice2 = true
 		GameManager.allowDevice3 = true
 		GameManager.numberOfPlayers = 0
-		get_tree().change_scene_to_file("res://Scenes/moon_maze.tscn")
+		get_tree().change_scene_to_file("res://Scenes/levels/moon_maze.tscn")
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("players"):
