@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://ddr1bha41i2sx"]
+[gd_scene load_steps=54 format=3 uid="uid://ddr1bha41i2sx"]
 
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="1_7c3vw"]
 [ext_resource type="Script" path="res://Scripts/bottomArea.gd" id="2_0eotd"]
@@ -15,7 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://cghq4buv1fica" path="res://Scenes/tiles/sacred_tile_h_blue.tscn" id="13_b8c5b"]
 [ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="15_1up2j"]
 [ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="15_t8q8i"]
-[ext_resource type="PackedScene" uid="uid://ds70at1agjq4h" path="res://Scenes/power_up_spawner.tscn" id="16_41a1p"]
+[ext_resource type="Script" path="res://spawns.gd" id="16_228tq"]
+[ext_resource type="PackedScene" uid="uid://6bc2cawlcu8j" path="res://Scenes/powerUps/add_ammo_capacity.tscn" id="17_w8on0"]
+[ext_resource type="PackedScene" uid="uid://djdurr0u8bais" path="res://Scenes/powerUps/add_bullet_speed.tscn" id="18_4vqq1"]
+[ext_resource type="PackedScene" uid="uid://behbrcginvsqp" path="res://Scenes/powerUps/add_damage_to_laser.tscn" id="19_wxgev"]
+[ext_resource type="PackedScene" uid="uid://claacv6i7iql2" path="res://Scenes/powerUps/add_health_capacity.tscn" id="20_cauqg"]
+[ext_resource type="PackedScene" uid="uid://dwpptdobbadjr" path="res://Scenes/powerUps/add_reflecting_to_laser.tscn" id="21_s26bi"]
+[ext_resource type="PackedScene" uid="uid://cl5keqdkt1txa" path="res://Scenes/powerUps/full_auto.tscn" id="22_bwyy1"]
 
 [sub_resource type="GDScript" id="GDScript_2ocff"]
 script/source = "extends Node
@@ -4820,8 +4826,63 @@ stream = ExtResource("15_1up2j")
 autoplay = true
 bus = &"Music"
 
-[node name="powerUpSpawner" parent="." instance=ExtResource("16_41a1p")]
-position = Vector2(-395, 289)
+[node name="powerUpSpawnPoints" type="Node2D" parent="."]
+position = Vector2(11, 52)
+script = ExtResource("16_228tq")
+
+[node name="ammoSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
+position = Vector2(-155, -276)
+
+[node name="ammoTimer" type="Timer" parent="powerUpSpawnPoints/ammoSpawn"]
+wait_time = 10.0
+one_shot = true
+
+[node name="addAmmo" parent="powerUpSpawnPoints/ammoSpawn" instance=ExtResource("17_w8on0")]
+
+[node name="bulletSpeedSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
+position = Vector2(-40, 0)
+
+[node name="bulletSpeedTimer" type="Timer" parent="powerUpSpawnPoints/bulletSpeedSpawn"]
+wait_time = 10.0
+one_shot = true
+
+[node name="addBulletSpeed" parent="powerUpSpawnPoints/bulletSpeedSpawn" instance=ExtResource("18_4vqq1")]
+
+[node name="damageSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
+visible = false
+position = Vector2(-20, 0)
+
+[node name="damageTimer" type="Timer" parent="powerUpSpawnPoints/damageSpawn"]
+one_shot = true
+
+[node name="addDamageToLaser" parent="powerUpSpawnPoints/damageSpawn" instance=ExtResource("19_wxgev")]
+
+[node name="healthSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
+position = Vector2(-275, -195)
+
+[node name="healthTimer" type="Timer" parent="powerUpSpawnPoints/healthSpawn"]
+wait_time = 10.0
+one_shot = true
+
+[node name="addHealthCapacity" parent="powerUpSpawnPoints/healthSpawn" instance=ExtResource("20_cauqg")]
+
+[node name="reflectingSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
+visible = false
+position = Vector2(60, 0)
+
+[node name="reflectingTimer" type="Timer" parent="powerUpSpawnPoints/reflectingSpawn"]
+one_shot = true
+
+[node name="addReflectingToLaser" parent="powerUpSpawnPoints/reflectingSpawn" instance=ExtResource("21_s26bi")]
+
+[node name="fullAutoSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
+position = Vector2(429, 241)
+
+[node name="fullAutoTimer" type="Timer" parent="powerUpSpawnPoints/fullAutoSpawn"]
+wait_time = 10.0
+one_shot = true
+
+[node name="addFullAuto" parent="powerUpSpawnPoints/fullAutoSpawn" instance=ExtResource("22_bwyy1")]
 
 [connection signal="body_entered" from="bottomArea" to="bottomArea" method="_on_body_entered"]
 [connection signal="body_exited" from="bottomArea" to="bottomArea" method="_on_body_exited"]
@@ -4841,3 +4902,9 @@ position = Vector2(-395, 289)
 [connection signal="body_entered" from="teleporters/teleporter10" to="teleporters/teleporter10" method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="powerUpSpawnPoints/ammoSpawn/ammoTimer" to="powerUpSpawnPoints" method="_on_ammo_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/bulletSpeedSpawn/bulletSpeedTimer" to="powerUpSpawnPoints" method="_on_bullet_speed_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/damageSpawn/damageTimer" to="powerUpSpawnPoints" method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/healthSpawn/healthTimer" to="powerUpSpawnPoints" method="_on_health_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/reflectingSpawn/reflectingTimer" to="powerUpSpawnPoints" method="_on_reflecting_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/fullAutoSpawn/fullAutoTimer" to="powerUpSpawnPoints" method="_on_full_auto_timer_timeout"]

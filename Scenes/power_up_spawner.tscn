@@ -10,62 +10,66 @@
 
 [node name="powerUpSpawner" type="Node2D"]
 
-[node name="spawns" type="Node2D" parent="."]
+[node name="powerUpSpawnPoints" type="Node2D" parent="."]
 script = ExtResource("1_4c5qg")
 
-[node name="ammoSpawn" type="Marker2D" parent="spawns"]
+[node name="ammoSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
 position = Vector2(-60, 0)
 
-[node name="ammoTimer" type="Timer" parent="spawns/ammoSpawn"]
+[node name="ammoTimer" type="Timer" parent="powerUpSpawnPoints/ammoSpawn"]
+wait_time = 10.0
 one_shot = true
 
-[node name="addAmmo" parent="spawns/ammoSpawn" instance=ExtResource("2_turgd")]
+[node name="addAmmo" parent="powerUpSpawnPoints/ammoSpawn" instance=ExtResource("2_turgd")]
 
-[node name="bulletSpeedSpawn" type="Marker2D" parent="spawns"]
+[node name="bulletSpeedSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
 position = Vector2(-40, 0)
 
-[node name="bulletSpeedTimer" type="Timer" parent="spawns/bulletSpeedSpawn"]
+[node name="bulletSpeedTimer" type="Timer" parent="powerUpSpawnPoints/bulletSpeedSpawn"]
+wait_time = 10.0
 one_shot = true
 
-[node name="addBulletSpeed" parent="spawns/bulletSpeedSpawn" instance=ExtResource("3_4l22e")]
+[node name="addBulletSpeed" parent="powerUpSpawnPoints/bulletSpeedSpawn" instance=ExtResource("3_4l22e")]
 
-[node name="damageSpawn" type="Marker2D" parent="spawns"]
+[node name="damageSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
 visible = false
 position = Vector2(-20, 0)
 
-[node name="damageTimer" type="Timer" parent="spawns/damageSpawn"]
+[node name="damageTimer" type="Timer" parent="powerUpSpawnPoints/damageSpawn"]
 one_shot = true
 
-[node name="addDamageToLaser" parent="spawns/damageSpawn" instance=ExtResource("4_bf8jd")]
+[node name="addDamageToLaser" parent="powerUpSpawnPoints/damageSpawn" instance=ExtResource("4_bf8jd")]
 
-[node name="healthSpawn" type="Marker2D" parent="spawns"]
+[node name="healthSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
 position = Vector2(20, 0)
 
-[node name="healthTimer" type="Timer" parent="spawns/healthSpawn"]
+[node name="healthTimer" type="Timer" parent="powerUpSpawnPoints/healthSpawn"]
+wait_time = 10.0
 one_shot = true
 
-[node name="addHealthCapacity" parent="spawns/healthSpawn" instance=ExtResource("5_l1t5w")]
+[node name="addHealthCapacity" parent="powerUpSpawnPoints/healthSpawn" instance=ExtResource("5_l1t5w")]
 
-[node name="reflectingSpawn" type="Marker2D" parent="spawns"]
+[node name="reflectingSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
 visible = false
 position = Vector2(60, 0)
 
-[node name="reflectingTimer" type="Timer" parent="spawns/reflectingSpawn"]
+[node name="reflectingTimer" type="Timer" parent="powerUpSpawnPoints/reflectingSpawn"]
 one_shot = true
 
-[node name="addReflectingToLaser" parent="spawns/reflectingSpawn" instance=ExtResource("6_jdmfn")]
+[node name="addReflectingToLaser" parent="powerUpSpawnPoints/reflectingSpawn" instance=ExtResource("6_jdmfn")]
 
-[node name="fullAutoSpawn" type="Marker2D" parent="spawns"]
+[node name="fullAutoSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
 position = Vector2(40, 0)
 
-[node name="fullAutoTimer" type="Timer" parent="spawns/fullAutoSpawn"]
+[node name="fullAutoTimer" type="Timer" parent="powerUpSpawnPoints/fullAutoSpawn"]
+wait_time = 10.0
 one_shot = true
 
-[node name="addFullAuto" parent="spawns/fullAutoSpawn" instance=ExtResource("7_1xrge")]
+[node name="addFullAuto" parent="powerUpSpawnPoints/fullAutoSpawn" instance=ExtResource("7_1xrge")]
 
-[connection signal="timeout" from="spawns/ammoSpawn/ammoTimer" to="spawns" method="_on_ammo_timer_timeout"]
-[connection signal="timeout" from="spawns/bulletSpeedSpawn/bulletSpeedTimer" to="spawns" method="_on_bullet_speed_timer_timeout"]
-[connection signal="timeout" from="spawns/damageSpawn/damageTimer" to="spawns" method="_on_damage_timer_timeout"]
-[connection signal="timeout" from="spawns/healthSpawn/healthTimer" to="spawns" method="_on_health_timer_timeout"]
-[connection signal="timeout" from="spawns/reflectingSpawn/reflectingTimer" to="spawns" method="_on_reflecting_timer_timeout"]
-[connection signal="timeout" from="spawns/fullAutoSpawn/fullAutoTimer" to="spawns" method="_on_full_auto_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/ammoSpawn/ammoTimer" to="powerUpSpawnPoints" method="_on_ammo_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/bulletSpeedSpawn/bulletSpeedTimer" to="powerUpSpawnPoints" method="_on_bullet_speed_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/damageSpawn/damageTimer" to="powerUpSpawnPoints" method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/healthSpawn/healthTimer" to="powerUpSpawnPoints" method="_on_health_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/reflectingSpawn/reflectingTimer" to="powerUpSpawnPoints" method="_on_reflecting_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/fullAutoSpawn/fullAutoTimer" to="powerUpSpawnPoints" method="_on_full_auto_timer_timeout"]
