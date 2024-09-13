@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://coddd00j0mvik"]
+
+[ext_resource type="Script" path="res://RigidBody2D.gd" id="1_iqu0e"]
+[ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="2_4cwwt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_81eyj"]
+size = Vector2(10, 10)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pstkx"]
+
+[node name="Jumper" type="Node"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+script = ExtResource("1_iqu0e")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+modulate = Color(0.158472, 0.158472, 0.158472, 1)
+position = Vector2(0, -45)
+texture = ExtResource("2_4cwwt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+visible = false
+position = Vector2(0, -45)
+shape = SubResource("RectangleShape2D_81eyj")
+
+[node name="jumpTimer" type="Timer" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_pstkx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="timeout" from="jumpTimer" to="RigidBody2D" method="_on_jump_timer_timeout"]
