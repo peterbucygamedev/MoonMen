@@ -7,8 +7,8 @@ var bulletNumber = 0
 @onready var area_2d = $Area2D
 @onready var area_timer = $areaTimer
 @onready var point_light_2d = $PointLight2D
-@onready var audio_stream_player_2d = $AudioStreamPlayer2D
-
+var tracker = 0
+var ammoCost = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,7 +20,6 @@ func _ready():
 	area_2d.get_node("CollisionShape2D").disabled = true
 	timer.start()
 	area_timer.start()
-	audio_stream_player_2d.play()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _on_area_2d_body_entered(body):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://blquhnw8unage"]
+[gd_scene load_steps=40 format=3 uid="uid://blquhnw8unage"]
 
 [ext_resource type="Script" path="res://Scripts/moon_slayer.gd" id="1_dpyve"]
 [ext_resource type="PackedScene" uid="uid://dcxybwwp6pdbc" path="res://Scenes/tiles/sacred_tile_v_grey.tscn" id="3_2nl85"]
@@ -17,7 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://dxsdfcd7lo10u" path="res://Assets/lightShapes/pixil-frame-0 - 2024-09-02T111026.793.png" id="18_iy4fa"]
 [ext_resource type="PackedScene" uid="uid://dwpptdobbadjr" path="res://Scenes/powerUps/add_reflecting_to_laser.tscn" id="18_mujti"]
 [ext_resource type="PackedScene" uid="uid://cl5keqdkt1txa" path="res://Scenes/powerUps/full_auto.tscn" id="19_dd6nw"]
+[ext_resource type="Script" path="res://Scripts/teleporter1.gd" id="19_dsrut"]
 [ext_resource type="PackedScene" uid="uid://jas1sb5s4nr4" path="res://Scenes/power_crate.tscn" id="20_rircv"]
+[ext_resource type="Script" path="res://Scripts/teleporter2.gd" id="20_tgih0"]
+[ext_resource type="PackedScene" uid="uid://dvttnjslvlsox" path="res://Scenes/bouncers_pickup.tscn" id="22_ohje3"]
+[ext_resource type="PackedScene" uid="uid://clx4kf33gwkty" path="res://Scenes/death_lasers_pickup.tscn" id="23_4ukom"]
 [ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="26_glsgy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rmbnk"]
@@ -3873,6 +3877,120 @@ sources/0 = SubResource("TileSetAtlasSource_rmbnk")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p00rn"]
 size = Vector2(234, 92)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owmnr"]
+size = Vector2(4, 6)
+
+[sub_resource type="Gradient" id="Gradient_efs0r"]
+offsets = PackedFloat32Array(0.0215054, 0.480287, 0.587814, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.214379, 0.214379, 0.214379, 1, 0.222222, 0.222222, 0.222222, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vexec"]
+gradient = SubResource("Gradient_efs0r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fbcx3"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 0, 0)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+flatness = 1.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 1, 1, 0.4)
+color_ramp = SubResource("GradientTexture1D_vexec")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l1xby"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 0, 0)
+direction = Vector3(0, 0, 0)
+spread = 0.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 1, 1, 0.4)
+color_ramp = SubResource("GradientTexture1D_vexec")
+
+[sub_resource type="GDScript" id="GDScript_58ly2"]
+script/source = "extends Area2D
+@onready var t_4_marker_2d = $\"../teleporter4/t4Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_4_marker_2d.global_position.x, t_4_marker_2d.global_position.y)
+"
+
+[sub_resource type="GDScript" id="GDScript_eyvba"]
+script/source = "extends Area2D
+@onready var t_3_marker_2d = $\"../teleporter3/t3Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_3_marker_2d.global_position.x, t_3_marker_2d.global_position.y)
+"
+
+[sub_resource type="GDScript" id="GDScript_thd5m"]
+script/source = "extends Area2D
+@onready var t_6_marker_2d = $\"../teleporter6/t6Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_6_marker_2d.global_position.x, t_6_marker_2d.global_position.y)
+"
+
+[sub_resource type="GDScript" id="GDScript_iemor"]
+script/source = "extends Area2D
+@onready var t_5_marker_2d = $\"../teleporter5/t5Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_5_marker_2d.global_position.x, t_5_marker_2d.global_position.y)
+"
+
+[sub_resource type="GDScript" id="GDScript_d5m80"]
+script/source = "extends Area2D
+@onready var t_8_marker_2d = $\"../teleporter8/t8Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_8_marker_2d.global_position.x, t_8_marker_2d.global_position.y)
+"
+
+[sub_resource type="GDScript" id="GDScript_s0212"]
+script/source = "extends Area2D
+@onready var t_7_marker_2d = $\"../teleporter7/t7Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_7_marker_2d.global_position.x, t_7_marker_2d.global_position.y)
+"
+
+[sub_resource type="GDScript" id="GDScript_gjt38"]
+script/source = "extends Area2D
+@onready var t_10_marker_2d = $\"../teleporter10/t10Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_10_marker_2d.global_position.x, t_10_marker_2d.global_position.y)
+"
+
+[sub_resource type="GDScript" id="GDScript_j0g3l"]
+script/source = "extends Area2D
+@onready var t_9_marker_2d = $\"../teleporter9/t9Marker2D\"
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\") and body.velocity.y >= 0:
+		body.position = Vector2(t_9_marker_2d.global_position.x, t_9_marker_2d.global_position.y)
+"
+
 [node name="MoonSlayer2" type="Node"]
 script = ExtResource("1_dpyve")
 
@@ -3972,13 +4090,13 @@ position = Vector2(500, -280)
 [node name="sacredTileHGrey" parent="sacredTiles" instance=ExtResource("4_356cg")]
 position = Vector2(-118, -134)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="MoonMen" type="Node2D" parent="."]
 process_physics_priority = 1
 z_index = 2
 z_as_relative = false
 position = Vector2(0, 15)
 
-[node name="MoonMen" type="Label" parent="Node2D"]
+[node name="MoonMen" type="Label" parent="MoonMen"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -3992,13 +4110,13 @@ size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.299999, 0.276472, 0.259663, 1)
 theme_override_colors/font_shadow_color = Color(0.0418184, 0.0383034, 0.0296447, 1)
 theme_override_font_sizes/font_size = 100
-text = "MoonMen"
+text = "MoonSlayer"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="PointLight2D2" type="PointLight2D" parent="Node2D/MoonMen"]
+[node name="PointLight2D2" type="PointLight2D" parent="MoonMen/MoonMen"]
 position = Vector2(402, 73)
-scale = Vector2(4.75, 0.71)
+scale = Vector2(5.80939, 0.71)
 color = Color(0, 1, 1, 1)
 texture = ExtResource("18_iy4fa")
 
@@ -4049,36 +4167,6 @@ position = Vector2(-500, 122)
 [node name="chainLaternGrey6" parent="." instance=ExtResource("13_624xe")]
 position = Vector2(-502, -208)
 
-[node name="powerCrate" parent="." instance=ExtResource("20_rircv")]
-position = Vector2(-34, -176)
-
-[node name="powerCrate2" parent="." instance=ExtResource("20_rircv")]
-position = Vector2(-34, -232)
-
-[node name="powerCrate3" parent="." instance=ExtResource("20_rircv")]
-position = Vector2(233, -166)
-
-[node name="powerCrate4" parent="." instance=ExtResource("20_rircv")]
-position = Vector2(-364, -100)
-
-[node name="powerCrate5" parent="." instance=ExtResource("20_rircv")]
-position = Vector2(424, -91)
-
-[node name="powerCrate6" parent="." instance=ExtResource("20_rircv")]
-position = Vector2(153, 125)
-
-[node name="powerCrate7" parent="." instance=ExtResource("20_rircv")]
-position = Vector2(-136, 166)
-
-[node name="powerCrate8" parent="." instance=ExtResource("20_rircv")]
-position = Vector2(-166, 18)
-
-[node name="powerCrate9" parent="." instance=ExtResource("20_rircv")]
-position = Vector2(140, 16)
-
-[node name="powerCrate10" parent="." instance=ExtResource("20_rircv")]
-position = Vector2(-387, 214)
-
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, -38)
 
@@ -4101,7 +4189,7 @@ texture = ExtResource("17_c6ypu")
 script = ExtResource("13_godvy")
 
 [node name="ammoSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(-343, -276)
+position = Vector2(-500, 185)
 
 [node name="ammoTimer" type="Timer" parent="powerUpSpawnPoints/ammoSpawn"]
 wait_time = 10.0
@@ -4110,7 +4198,7 @@ one_shot = true
 [node name="addAmmo" parent="powerUpSpawnPoints/ammoSpawn" instance=ExtResource("14_wmkm7")]
 
 [node name="bulletSpeedSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(-506, -72)
+position = Vector2(-500, -64)
 
 [node name="bulletSpeedTimer" type="Timer" parent="powerUpSpawnPoints/bulletSpeedSpawn"]
 wait_time = 10.0
@@ -4128,7 +4216,7 @@ one_shot = true
 [node name="addDamageToLaser" parent="powerUpSpawnPoints/damageSpawn" instance=ExtResource("16_vebi6")]
 
 [node name="healthSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(492, -300)
+position = Vector2(500, 35)
 
 [node name="healthTimer" type="Timer" parent="powerUpSpawnPoints/healthSpawn"]
 wait_time = 10.0
@@ -4146,7 +4234,7 @@ one_shot = true
 [node name="addReflectingToLaser" parent="powerUpSpawnPoints/reflectingSpawn" instance=ExtResource("18_mujti")]
 
 [node name="fullAutoSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(555, 298)
+position = Vector2(500, -295)
 
 [node name="fullAutoTimer" type="Timer" parent="powerUpSpawnPoints/fullAutoSpawn"]
 wait_time = 10.0
@@ -4154,9 +4242,489 @@ one_shot = true
 
 [node name="addFullAuto" parent="powerUpSpawnPoints/fullAutoSpawn" instance=ExtResource("19_dd6nw")]
 
+[node name="powerCrate" parent="." instance=ExtResource("20_rircv")]
+position = Vector2(-139, 136)
+
+[node name="powerCrate2" parent="." instance=ExtResource("20_rircv")]
+position = Vector2(131, 140)
+
+[node name="powerCrate3" parent="." instance=ExtResource("20_rircv")]
+position = Vector2(-80, 16)
+
+[node name="powerCrate4" parent="." instance=ExtResource("20_rircv")]
+position = Vector2(80, 16)
+
+[node name="teleporters" type="Node2D" parent="."]
+
+[node name="teleporter1" type="Area2D" parent="teleporters"]
+position = Vector2(-500, 275)
+script = ExtResource("19_dsrut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporters/teleporter1"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_owmnr")
+
+[node name="t1Marker2D" type="Marker2D" parent="teleporters/teleporter1"]
+position = Vector2(-20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporters/teleporter1"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporters/teleporter1"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporters/teleporter1"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_fbcx3")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporters/teleporter1"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_l1xby")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter1"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("18_6hsik")
+
+[node name="teleporter2" type="Area2D" parent="teleporters"]
+position = Vector2(-300, -280)
+script = ExtResource("20_tgih0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporters/teleporter2"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_owmnr")
+
+[node name="t2Marker2D" type="Marker2D" parent="teleporters/teleporter2"]
+position = Vector2(20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporters/teleporter2"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporters/teleporter2"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporters/teleporter2"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_fbcx3")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporters/teleporter2"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_l1xby")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter2"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("18_6hsik")
+
+[node name="teleporter3" type="Area2D" parent="teleporters"]
+position = Vector2(300, -280)
+script = SubResource("GDScript_58ly2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporters/teleporter3"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_owmnr")
+
+[node name="t3Marker2D" type="Marker2D" parent="teleporters/teleporter3"]
+position = Vector2(-20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporters/teleporter3"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporters/teleporter3"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporters/teleporter3"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_fbcx3")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporters/teleporter3"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_l1xby")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter3"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("18_6hsik")
+
+[node name="teleporter4" type="Area2D" parent="teleporters"]
+position = Vector2(330, -75)
+script = SubResource("GDScript_eyvba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporters/teleporter4"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_owmnr")
+
+[node name="t4Marker2D" type="Marker2D" parent="teleporters/teleporter4"]
+position = Vector2(20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporters/teleporter4"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporters/teleporter4"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporters/teleporter4"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_fbcx3")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporters/teleporter4"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_l1xby")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter4"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("18_6hsik")
+
+[node name="teleporter5" type="Area2D" parent="teleporters"]
+position = Vector2(-330, -75)
+script = SubResource("GDScript_thd5m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporters/teleporter5"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_owmnr")
+
+[node name="t5Marker2D" type="Marker2D" parent="teleporters/teleporter5"]
+position = Vector2(-20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporters/teleporter5"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporters/teleporter5"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporters/teleporter5"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_fbcx3")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporters/teleporter5"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_l1xby")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter5"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("18_6hsik")
+
+[node name="teleporter6" type="Area2D" parent="teleporters"]
+position = Vector2(500, 275)
+script = SubResource("GDScript_iemor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporters/teleporter6"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_owmnr")
+
+[node name="t6Marker2D" type="Marker2D" parent="teleporters/teleporter6"]
+position = Vector2(20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporters/teleporter6"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporters/teleporter6"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporters/teleporter6"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_fbcx3")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporters/teleporter6"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_l1xby")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter6"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("18_6hsik")
+
+[node name="teleporter7" type="Area2D" parent="teleporters"]
+position = Vector2(-65, 260)
+script = SubResource("GDScript_d5m80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporters/teleporter7"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_owmnr")
+
+[node name="t7Marker2D" type="Marker2D" parent="teleporters/teleporter7"]
+position = Vector2(-20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporters/teleporter7"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporters/teleporter7"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporters/teleporter7"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_fbcx3")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporters/teleporter7"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_l1xby")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter7"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("18_6hsik")
+
+[node name="teleporter8" type="Area2D" parent="teleporters"]
+position = Vector2(-500, -160)
+script = SubResource("GDScript_s0212")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporters/teleporter8"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_owmnr")
+
+[node name="t8Marker2D" type="Marker2D" parent="teleporters/teleporter8"]
+position = Vector2(20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporters/teleporter8"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporters/teleporter8"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporters/teleporter8"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_fbcx3")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporters/teleporter8"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_l1xby")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter8"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("18_6hsik")
+
+[node name="teleporter9" type="Area2D" parent="teleporters"]
+position = Vector2(500, -160)
+script = SubResource("GDScript_gjt38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporters/teleporter9"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_owmnr")
+
+[node name="t9Marker2D" type="Marker2D" parent="teleporters/teleporter9"]
+position = Vector2(-20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporters/teleporter9"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporters/teleporter9"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporters/teleporter9"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_fbcx3")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporters/teleporter9"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_l1xby")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter9"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("18_6hsik")
+
+[node name="teleporter10" type="Area2D" parent="teleporters"]
+position = Vector2(65, 260)
+script = SubResource("GDScript_j0g3l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporters/teleporter10"]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_owmnr")
+
+[node name="t10Marker2D" type="Marker2D" parent="teleporters/teleporter10"]
+position = Vector2(20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporters/teleporter10"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, 7.5)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="teleporters/teleporter10"]
+modulate = Color(0, 1, 1, 0.623529)
+position = Vector2(0, -7.5)
+rotation = 3.14159
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("18_iy4fa")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="teleporters/teleporter10"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_fbcx3")
+lifetime = 0.3
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="teleporters/teleporter10"]
+position = Vector2(0, 15)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_l1xby")
+lifetime = 1.5
+explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter10"]
+color = Color(0.188235, 1, 1, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("18_6hsik")
+
+[node name="bouncersPickup" parent="." instance=ExtResource("22_ohje3")]
+position = Vector2(-57, 129)
+
+[node name="deathLasersPickup" parent="." instance=ExtResource("23_4ukom")]
+position = Vector2(60, 136)
+
 [connection signal="timeout" from="powerUpSpawnPoints/ammoSpawn/ammoTimer" to="powerUpSpawnPoints" method="_on_ammo_timer_timeout"]
 [connection signal="timeout" from="powerUpSpawnPoints/bulletSpeedSpawn/bulletSpeedTimer" to="powerUpSpawnPoints" method="_on_bullet_speed_timer_timeout"]
 [connection signal="timeout" from="powerUpSpawnPoints/damageSpawn/damageTimer" to="powerUpSpawnPoints" method="_on_damage_timer_timeout"]
 [connection signal="timeout" from="powerUpSpawnPoints/healthSpawn/healthTimer" to="powerUpSpawnPoints" method="_on_health_timer_timeout"]
 [connection signal="timeout" from="powerUpSpawnPoints/reflectingSpawn/reflectingTimer" to="powerUpSpawnPoints" method="_on_reflecting_timer_timeout"]
 [connection signal="timeout" from="powerUpSpawnPoints/fullAutoSpawn/fullAutoTimer" to="powerUpSpawnPoints" method="_on_full_auto_timer_timeout"]
+[connection signal="body_entered" from="teleporters/teleporter1" to="teleporters/teleporter1" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporters/teleporter2" to="teleporters/teleporter2" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporters/teleporter3" to="teleporters/teleporter3" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporters/teleporter4" to="teleporters/teleporter4" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporters/teleporter5" to="teleporters/teleporter5" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporters/teleporter6" to="teleporters/teleporter6" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporters/teleporter7" to="teleporters/teleporter7" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporters/teleporter8" to="teleporters/teleporter8" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporters/teleporter9" to="teleporters/teleporter9" method="_on_body_entered"]
+[connection signal="body_entered" from="teleporters/teleporter10" to="teleporters/teleporter10" method="_on_body_entered"]

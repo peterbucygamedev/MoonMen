@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvttnjslvlsox"]
+
+[ext_resource type="Texture2D" uid="uid://dxsdfcd7lo10u" path="res://Assets/lightShapes/pixil-frame-0 - 2024-09-02T111026.793.png" id="1_tphpp"]
+[ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="2_sburs"]
+
+[sub_resource type="GDScript" id="GDScript_jutjs"]
+script/source = "extends Area2D
+
+func _on_body_entered(body):
+	if body.is_in_group(\"players\"):
+		body.bulletTracker = 1
+		
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2ypm"]
+size = Vector2(6, 6)
+
+[node name="bouncersPickup" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = SubResource("GDScript_jutjs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_y2ypm")
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D"]
+scale = Vector2(0.2, 0.2)
+color = Color(0, 1, 0, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("1_tphpp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_sburs")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

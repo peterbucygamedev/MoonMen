@@ -15,7 +15,7 @@ var speed = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	power_crate_detonation.emitting = false
-	#explosion_collider.disabled = true
+	explosion_collider.disabled = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#print(counter)
@@ -48,7 +48,7 @@ func _on_detontate_timer_timeout():
 	#Engine.time_scale = 1
 	#power_crate_collider.disabled = true
 	#animated_sprite_2d.hide()
-	#explosion_collider.disabled = false
+	explosion_collider.disabled = false
 	explosion_area.explode()
 	power_crate_detonation.restart()
 	power_crate_detonation.emitting = true
@@ -59,16 +59,16 @@ func _on_reset_timer_timeout():
 	#queue_free()
 	counter = 0
 	power_crate_detonation.emitting = false
-	#explosion_collider.disabled = true
+	explosion_collider.disabled = true
 
-"""func _on_explosion_area_body_entered(body):
+func _on_explosion_area_body_entered(body):
 	if body is RigidBody2D:
 			print("found rigidBody")
 			var force = (body.global_position - global_position).normalized()
 			force *= 200
 			body.apply_central_impulse(force)
 			
-	if body.is_in_group("players"):
+	"""if body.is_in_group("players"):
 		print("found player")
 		body.health -= 10
 		body.health_bar.show()

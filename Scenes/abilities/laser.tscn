@@ -1,19 +1,19 @@
 [gd_scene load_steps=9 format=3 uid="uid://dvep2lsg4yw17"]
 
-[ext_resource type="Script" path="res://Scripts/RayCast2D.gd" id="1_jgowd"]
+[ext_resource type="Script" path="res://Scripts/laser.gd" id="1_2o1x4"]
 [ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="2_kd5lv"]
 
 [sub_resource type="Gradient" id="Gradient_ctdy7"]
 offsets = PackedFloat32Array(0, 0.450425)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_0woy3"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4qw0o"]
 gradient = SubResource("Gradient_ctdy7")
 
 [sub_resource type="Curve" id="Curve_r614t"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_hxrtk"]
+[sub_resource type="CurveTexture" id="CurveTexture_bmgi7"]
 curve = SubResource("Curve_r614t")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gb3pn"]
@@ -22,9 +22,9 @@ flatness = 1.0
 initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_hxrtk")
+scale_curve = SubResource("CurveTexture_bmgi7")
 color = Color(1, 1, 1, 0.184314)
-color_ramp = SubResource("GradientTexture1D_0woy3")
+color_ramp = SubResource("GradientTexture1D_4qw0o")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0cmu5"]
 particle_flag_disable_z = true
@@ -34,13 +34,13 @@ initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
 scale_min = 2.0
 scale_max = 2.0
-scale_curve = SubResource("CurveTexture_hxrtk")
+scale_curve = SubResource("CurveTexture_bmgi7")
 color = Color(1, 1, 1, 0.184314)
-color_ramp = SubResource("GradientTexture1D_0woy3")
+color_ramp = SubResource("GradientTexture1D_4qw0o")
 
 [node name="laser" type="RayCast2D" groups=["lasers"]]
 target_position = Vector2(1200, 0)
-script = ExtResource("1_jgowd")
+script = ExtResource("1_2o1x4")
 
 [node name="Line2D" type="Line2D" parent="."]
 scale = Vector2(1.003, 0.571585)

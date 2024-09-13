@@ -2,13 +2,16 @@ extends RayCast2D
 @onready var line_2d = $Line2D
 @onready var casting_particles = $castingParticles
 @onready var collision_particles = $collisionParticles
-@onready var sprite_2d = $Line2D/Sprite2D
-
+@onready var sprite_2d = $Line2D/Sprite2D	
+@onready var laser = $"."
+const LASER = preload("res://Scenes/abilities/laser.tscn")
 
 var counter := 0
 var moveForward := true
 var speed := 20
 var teleportLaser := false
+var cast_point = null
+var laser2 = null
 
 var is_casting: bool = false:
 	set(value):
@@ -38,7 +41,7 @@ func _unhandled_input(event: InputEvent) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#set the target position for where laser starts
-	var cast_point := target_position
+	cast_point = target_position
 	force_raycast_update()
 	
 	#if collding is true, the emit the collision particles
@@ -58,6 +61,7 @@ func _process(delta):
 		#adding collision particles position
 		collision_particles.position = cast_point
 		
+		
 		if get_collider().is_in_group("teleport"):
 			teleportLaser = true
 	
@@ -70,7 +74,6 @@ func _process(delta):
 		
 	if not is_colliding():
 		pass
-	
 	line_2d.points[1] = cast_point
 			
 	#beam_particle.position = cast_point * 0.5
@@ -90,6 +93,9 @@ func disappear() -> void:
 	var tween = create_tween()
 	#the line when laser is complete
 	tween.tween_property(line_2d, "width", 0, 0.1)
+	
+	
+	
 
 
 

@@ -18,8 +18,6 @@ extends Node2D
 @onready var add_reflecting_to_laser = $reflectingSpawn/addReflectingToLaser
 @onready var add_full_auto = $fullAutoSpawn/addFullAuto
 
-
-
 const ADD_AMMO_CAPACITY = preload("res://Scenes/powerUps/add_ammo_capacity.tscn")
 const ADD_BULLET_SPEED = preload("res://Scenes/powerUps/add_bullet_speed.tscn")
 const ADD_DAMAGE_TO_LASER = preload("res://Scenes/powerUps/add_damage_to_laser.tscn")
@@ -53,8 +51,6 @@ func _process(delta):
 			full_auto_timer.start()
 			
 	
-			
-
 func _on_ammo_timer_timeout():
 	var a = ADD_AMMO_CAPACITY.instantiate()
 	add_child(a)

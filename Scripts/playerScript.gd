@@ -17,6 +17,7 @@ extends CharacterBody2D
 @onready var power_crate_timer = $timers/powerCrateTimer
 @onready var shoot_next_timer = $timers/shootNextTimer
 @onready var acid_timer = $timers/acidTimer
+@onready var death_lasers_timer = $timers/deathLasersTimer
 @onready var power_up = $timers/powerUp
 @onready var reload_timer = $timers/reloadTimer
 @onready var health_bar = $progressbars/healthBar
@@ -31,9 +32,10 @@ extends CharacterBody2D
 @onready var power_up_effect = $powerUpEffect
 @onready var power_up_effect_2 = $powerUpEffect2
 @onready var lives_number = $livesNumber
+@onready var bullet_sfx = $bulletSFX
 
 
-
+var bouncers = preload("res://Scenes/bouncers.tscn")
 var bullet := preload("res://Scenes/bullet.tscn")
 
 var SPEED := 200
@@ -64,6 +66,7 @@ var p1MaxAmmo = 10
 var p2MaxAmmo = 10
 var p3MaxAmmo = 10
 var p4MaxAmmo = 10
+var laser2 = null
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -83,8 +86,9 @@ var addBulletSpeed := false
 var burst = false
 var shootNext := true
 var burstNext := true
-
 var burstCounter := 0
+var bulletTracker := 0
+
 
 func _ready() -> void:
 	pass
@@ -122,7 +126,6 @@ func _ready() -> void:
 		p4MaxAmmo = GameManager.player4MaxAmmo
 	energy_shield.shieldNumber = playerNumber
 
-	
 func shoot() -> void:
 	
 	"""if ammo > 0:
@@ -139,8 +142,9 @@ func shoot() -> void:
 		reload.show()"""
 	#var b = bullet.instantiate()
 	if playerNumber == 0 and p1Ammo> 0:
-		var b1 = bullet.instantiate()
-		p1Ammo -= 1
+		var b1 = GameManager.bullets[bulletTracker].instantiate()
+		bullet_sfx.play()
+		p1Ammo -= b1.ammoCost
 		b1.speed = p1BulletSpeed
 		b1.damage = p1Damage
 		player.owner.add_child(b1)
@@ -152,8 +156,9 @@ func shoot() -> void:
 		reload.show()
 		
 	if playerNumber == 1 and p2Ammo > 0:
-		var b2 = bullet.instantiate()
-		p2Ammo -= 1
+		var b2 = GameManager.bullets[bulletTracker].instantiate()
+		bullet_sfx.play()
+		p2Ammo -= b2.ammoCost
 		b2.speed = p2BulletSpeed
 		b2.damage = p2Damage
 		player.owner.add_child(b2)
@@ -165,8 +170,9 @@ func shoot() -> void:
 		reload.show()
 		
 	if playerNumber == 2 and p3Ammo > 0:
-		var b3 = bullet.instantiate()
-		p3Ammo -= 1
+		var b3 = GameManager.bullets[bulletTracker].instantiate()
+		bullet_sfx.play()
+		p3Ammo -= b3.ammoCost
 		b3.speed = p3BulletSpeed
 		b3.damage = p3Damage
 		player.owner.add_child(b3)
@@ -178,8 +184,9 @@ func shoot() -> void:
 		reload.show()
 		
 	if playerNumber == 3 and p4Ammo > 0:
-		var b4 = bullet.instantiate()
-		p4Ammo -= 1
+		var b4 = GameManager.bullets[bulletTracker].instantiate()
+		bullet_sfx.play()
+		p4Ammo -= b4.ammoCost
 		b4.speed = p4BulletSpeed
 		b4.damage = p4Damage
 		player.owner.add_child(b4)
@@ -193,6 +200,8 @@ func shoot() -> void:
 		
 func _process(delta) -> void:
 	
+	print(GameManager.bullets)
+	#print(get_global_mouse_position())
 	lives_number.text = str(lives)
 	#print(is_touching_wall)
 	health_bar.value = health
@@ -259,8 +268,8 @@ func _process(delta) -> void:
 		crouching = false
 		energy_shield.get_node("energyShieldCollider").disabled = true
 		energy_shield.hide()
-		
-		
+	
+	
 	if Input.is_joy_button_pressed(playerNumber, 10) or Input.is_action_pressed("shootLaser"):
 		laser.is_casting = true
 		if !laser_beam_sfx.playing:
@@ -274,6 +283,8 @@ func _process(delta) -> void:
 			
 	else:
 		laser.is_casting = false
+		if laser2 != null:
+			laser2.queue_free()
 		laser_beam_sfx.stop()
 		
 	if crouching == true and energy_shield.shieldEnabled:
@@ -438,7 +449,6 @@ func _on_health_timer_timeout()-> void:
 			#print("hit player")
 			health_bar_timer.start()
 		
-	
 func _on_shield_timer_timeout()-> void:
 	shieldDamage = true
 
@@ -459,6 +469,12 @@ func _on_power_up_timeout():
 
 func _on_acid_timer_timeout():
 	print("acid damage")
+	health -= 2
+	health_bar.show()
+	health_bar_timer.start()
+
+
+func _on_death_lasers_timer_timeout():
 	health -= 2
 	health_bar.show()
 	health_bar_timer.start()

@@ -1,0 +1,588 @@
+[gd_scene load_steps=21 format=3 uid="uid://ct0oyrc3m5g42"]
+
+[ext_resource type="Texture2D" uid="uid://dmbofpmll5h2n" path="res://Assets/sprites/pixil-frame-0 - 2024-09-05T112414.034.png" id="1_nfgu8"]
+[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="3_o2330"]
+[ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="5_4puyy"]
+[ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="5_hlnu6"]
+
+[sub_resource type="GDScript" id="GDScript_qnjw6"]
+script/source = "extends RigidBody2D
+var speed = 2000
+var damage = 1
+var bulletNumber = 0
+@onready var timer = $Timer
+@onready var teleport_timer = $teleportTimer
+@onready var area_2d = $Area2D
+@onready var area_timer = $areaTimer
+@onready var point_light_2d = $PointLight2D
+var tracker = 2
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	set_continuous_collision_detection_mode(1)
+	\"\"\"set_inertia(200)
+	gravity_scale = 1
+	center_of_mass_mode = 1
+	center_of_mass = Vector2(0, 0)\"\"\"
+	area_2d.get_node(\"CollisionTriangle\").disabled = true
+	timer.start()
+	area_timer.start()
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group(\"ground\"):
+		pass
+		#queue_free()
+	if body.is_in_group(\"players\"):
+		print(\"hit player\")
+		body.health -= damage
+		body.health_bar.show()
+		if body.health_bar_timer.is_stopped():
+			body.health_bar_timer.start()
+		#queue_free()
+	if body.is_in_group(\"shield\"):
+		print(\"hit shield\")
+		body.health -= damage
+		#queue_free()
+
+func _on_timer_timeout():
+	queue_free()
+	
+func _process(delta):
+	#print(linear_velocity)
+	point_light_2d.color
+	pass
+	
+func _on_area_timer_timeout():
+	area_2d.get_node(\"CollisionTriangle\").disabled = false
+
+
+func _on_area_2d_area_entered(area):
+	if area.is_in_group(\"teleport\"):
+		if timer.is_stopped():
+			timer.start()
+"
+
+[sub_resource type="GDScript" id="GDScript_if8gq"]
+script/source = "extends RayCast2D
+@onready var line_2d = $Line2D
+@onready var casting_particles = $castingParticles
+@onready var collision_particles = $collisionParticles
+@onready var sprite_2d = $Line2D/Sprite2D	
+@onready var laser = $\".\"
+const LASER = preload(\"res://Scenes/abilities/laser.tscn\")
+
+var counter := 0
+var moveForward := true
+var speed := 20
+var teleportLaser := false
+var cast_point = null
+var laser2 = null
+
+var is_casting: bool = false:
+	set(value):
+		is_casting = value
+		
+		casting_particles.emitting = is_casting
+		
+		if is_casting:
+			appear()
+		else:
+			collision_particles.emitting = false
+			disappear()
+		set_physics_process(is_casting)
+		
+		
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	is_casting = true
+	
+
+func _unhandled_input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton:
+		#if button presed is true that is_casting is true
+		#self.is_casting = event.pressed
+		pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	#set the target position for where laser starts
+	cast_point = target_position
+	force_raycast_update()
+	
+	#if collding is true, the emit the collision particles
+	if is_casting:
+		collision_particles.emitting = is_colliding()
+		
+		
+	else:
+		collision_particles.emitting = false
+		
+	
+	if is_colliding():
+		#find the collisoin point and set cast point to it
+		cast_point = to_local(get_collision_point())
+		#adding collision particles rotation
+		collision_particles.global_rotation = get_collision_normal().angle()
+		#adding collision particles position
+		collision_particles.position = cast_point
+		
+		
+		if get_collider().is_in_group(\"teleport\"):
+			teleportLaser = true
+	
+		if !get_collider().is_in_group(\"teleport\"):
+			teleportLaser = false
+		
+		
+
+	print(teleportLaser)
+		
+	if not is_colliding():
+		pass
+	line_2d.points[1] = cast_point
+			
+	#beam_particle.position = cast_point * 0.5
+	#beam_particle.process_material.emission_box_extents.x = cast_point.length() * 0.5
+	force_raycast_update()
+
+	
+	#this makes the cool grow and shrink the width of the line effect. and shows/hides it
+func appear() -> void:
+	#idk
+	var tween = create_tween()
+	#i think this is the shape of the line
+	tween.tween_property(line_2d, \"width\", 7, 0.1)
+	
+	
+func disappear() -> void:
+	var tween = create_tween()
+	#the line when laser is complete
+	tween.tween_property(line_2d, \"width\", 0, 0.1)
+	
+	
+	
+
+
+
+"
+
+[sub_resource type="Gradient" id="Gradient_8ubvy"]
+offsets = PackedFloat32Array(0, 0.450425)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nup24"]
+gradient = SubResource("Gradient_8ubvy")
+
+[sub_resource type="Curve" id="Curve_1jru2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_h2il6"]
+curve = SubResource("Curve_1jru2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mn8ct"]
+particle_flag_disable_z = true
+flatness = 1.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_h2il6")
+color = Color(1, 1, 1, 0.184314)
+color_ramp = SubResource("GradientTexture1D_nup24")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ey41v"]
+particle_flag_disable_z = true
+flatness = 0.7
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_h2il6")
+color = Color(1, 1, 1, 0.184314)
+color_ramp = SubResource("GradientTexture1D_nup24")
+
+[sub_resource type="GDScript" id="GDScript_2e6jc"]
+script/source = "extends RayCast2D
+@onready var line_2d = $Line2D
+@onready var casting_particles = $castingParticles
+@onready var collision_particles = $collisionParticles
+@onready var sprite_2d = $Line2D/Sprite2D	
+@onready var laser = $\".\"
+const LASER = preload(\"res://Scenes/abilities/laser.tscn\")
+
+var counter := 0
+var moveForward := true
+var speed := 20
+var teleportLaser := false
+var cast_point = null
+var laser2 = null
+
+var is_casting: bool = false:
+	set(value):
+		is_casting = value
+		
+		casting_particles.emitting = is_casting
+		
+		if is_casting:
+			appear()
+		else:
+			collision_particles.emitting = false
+			disappear()
+		set_physics_process(is_casting)
+		
+		
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	is_casting = true
+	
+
+func _unhandled_input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton:
+		#if button presed is true that is_casting is true
+		#self.is_casting = event.pressed
+		pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	#set the target position for where laser starts
+	cast_point = target_position
+	force_raycast_update()
+	
+	#if collding is true, the emit the collision particles
+	if is_casting:
+		collision_particles.emitting = is_colliding()
+		
+		
+	else:
+		collision_particles.emitting = false
+		
+	
+	if is_colliding():
+		#find the collisoin point and set cast point to it
+		cast_point = to_local(get_collision_point())
+		#adding collision particles rotation
+		collision_particles.global_rotation = get_collision_normal().angle()
+		#adding collision particles position
+		collision_particles.position = cast_point
+		
+		
+		if get_collider().is_in_group(\"teleport\"):
+			teleportLaser = true
+	
+		if !get_collider().is_in_group(\"teleport\"):
+			teleportLaser = false
+		
+		
+
+	print(teleportLaser)
+		
+	if not is_colliding():
+		pass
+	line_2d.points[1] = cast_point
+			
+	#beam_particle.position = cast_point * 0.5
+	#beam_particle.process_material.emission_box_extents.x = cast_point.length() * 0.5
+	force_raycast_update()
+
+	
+	#this makes the cool grow and shrink the width of the line effect. and shows/hides it
+func appear() -> void:
+	#idk
+	var tween = create_tween()
+	#i think this is the shape of the line
+	tween.tween_property(line_2d, \"width\", 7, 0.1)
+	
+	
+func disappear() -> void:
+	var tween = create_tween()
+	#the line when laser is complete
+	tween.tween_property(line_2d, \"width\", 0, 0.1)
+	
+	
+	
+
+
+
+"
+
+[sub_resource type="Gradient" id="Gradient_wpc3b"]
+offsets = PackedFloat32Array(0, 0.450425)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fwor6"]
+gradient = SubResource("Gradient_wpc3b")
+
+[sub_resource type="Curve" id="Curve_nsi7h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_buxvy"]
+curve = SubResource("Curve_nsi7h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2t81b"]
+particle_flag_disable_z = true
+flatness = 1.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_buxvy")
+color = Color(1, 1, 1, 0.184314)
+color_ramp = SubResource("GradientTexture1D_fwor6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uub7m"]
+particle_flag_disable_z = true
+flatness = 0.7
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_buxvy")
+color = Color(1, 1, 1, 0.184314)
+color_ramp = SubResource("GradientTexture1D_fwor6")
+
+[sub_resource type="GDScript" id="GDScript_c68nn"]
+script/source = "extends RayCast2D
+@onready var line_2d = $Line2D
+@onready var casting_particles = $castingParticles
+@onready var collision_particles = $collisionParticles
+@onready var sprite_2d = $Line2D/Sprite2D	
+@onready var laser = $\".\"
+const LASER = preload(\"res://Scenes/abilities/laser.tscn\")
+
+var counter := 0
+var moveForward := true
+var speed := 20
+var teleportLaser := false
+var cast_point = null
+var laser2 = null
+
+var is_casting: bool = false:
+	set(value):
+		is_casting = value
+		
+		casting_particles.emitting = is_casting
+		
+		if is_casting:
+			appear()
+		else:
+			collision_particles.emitting = false
+			disappear()
+		set_physics_process(is_casting)
+		
+		
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	is_casting = true
+	
+
+func _unhandled_input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton:
+		#if button presed is true that is_casting is true
+		#self.is_casting = event.pressed
+		pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	#set the target position for where laser starts
+	cast_point = target_position
+	force_raycast_update()
+	
+	#if collding is true, the emit the collision particles
+	if is_casting:
+		collision_particles.emitting = is_colliding()
+		
+		
+	else:
+		collision_particles.emitting = false
+		
+	
+	if is_colliding():
+		#find the collisoin point and set cast point to it
+		cast_point = to_local(get_collision_point())
+		#adding collision particles rotation
+		collision_particles.global_rotation = get_collision_normal().angle()
+		#adding collision particles position
+		collision_particles.position = cast_point
+		
+		
+		if get_collider().is_in_group(\"teleport\"):
+			teleportLaser = true
+	
+		if !get_collider().is_in_group(\"teleport\"):
+			teleportLaser = false
+		
+		
+
+	print(teleportLaser)
+		
+	if not is_colliding():
+		pass
+	line_2d.points[1] = cast_point
+			
+	#beam_particle.position = cast_point * 0.5
+	#beam_particle.process_material.emission_box_extents.x = cast_point.length() * 0.5
+	force_raycast_update()
+
+	
+	#this makes the cool grow and shrink the width of the line effect. and shows/hides it
+func appear() -> void:
+	#idk
+	var tween = create_tween()
+	#i think this is the shape of the line
+	tween.tween_property(line_2d, \"width\", 7, 0.1)
+	
+	
+func disappear() -> void:
+	var tween = create_tween()
+	#the line when laser is complete
+	tween.tween_property(line_2d, \"width\", 0, 0.1)
+	
+	
+	
+
+
+
+"
+
+[node name="deathLasers" type="RigidBody2D"]
+gravity_scale = 0.0
+script = SubResource("GDScript_qnjw6")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -10)
+polygon = PackedVector2Array(-2, -10, 2, -10, 12, 8, 10, 11, -10, 11, -12, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nfgu8")
+region_enabled = true
+region_rect = Rect2(2, 1, 20, 2)
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D"]
+position = Vector2(0, 2)
+
+[node name="laser" type="RayCast2D" parent="Sprite2D/Marker2D" groups=["lasers"]]
+rotation = 1.5708
+target_position = Vector2(200, 0)
+script = SubResource("GDScript_if8gq")
+
+[node name="Line2D" type="Line2D" parent="Sprite2D/Marker2D/laser"]
+scale = Vector2(1.003, 0.571585)
+points = PackedVector2Array(1, 0, 144, 0)
+default_color = Color(0.298039, 1, 1, 0.603922)
+
+[node name="castingParticles" type="GPUParticles2D" parent="Sprite2D/Marker2D/laser"]
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_mn8ct")
+texture = ExtResource("5_4puyy")
+
+[node name="collisionParticles" type="GPUParticles2D" parent="Sprite2D/Marker2D/laser"]
+position = Vector2(0, -1)
+process_material = SubResource("ParticleProcessMaterial_ey41v")
+texture = ExtResource("5_4puyy")
+lifetime = 0.2
+trail_lifetime = 0.2
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-6, -10.5)
+rotation = -1.0472
+texture = ExtResource("1_nfgu8")
+region_enabled = true
+region_rect = Rect2(2, 1, 20, 2)
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D2"]
+position = Vector2(0.299038, -2.48205)
+
+[node name="laser2" type="RayCast2D" parent="Sprite2D2/Marker2D" groups=["lasers"]]
+rotation = -1.5708
+target_position = Vector2(200, 0)
+script = SubResource("GDScript_2e6jc")
+
+[node name="Line2D" type="Line2D" parent="Sprite2D2/Marker2D/laser2"]
+scale = Vector2(1.003, 0.571585)
+points = PackedVector2Array(1, 0, 144, 0)
+default_color = Color(0.298039, 1, 1, 0.603922)
+
+[node name="castingParticles" type="GPUParticles2D" parent="Sprite2D2/Marker2D/laser2"]
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_2t81b")
+texture = ExtResource("5_4puyy")
+
+[node name="collisionParticles" type="GPUParticles2D" parent="Sprite2D2/Marker2D/laser2"]
+position = Vector2(0, -1)
+process_material = SubResource("ParticleProcessMaterial_uub7m")
+texture = ExtResource("5_4puyy")
+lifetime = 0.2
+trail_lifetime = 0.2
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(6, -10.5)
+rotation = 1.0472
+texture = ExtResource("1_nfgu8")
+region_enabled = true
+region_rect = Rect2(2, 1, 20, 2)
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D3"]
+position = Vector2(-0.299038, -2.48205)
+
+[node name="laser3" type="RayCast2D" parent="Sprite2D3/Marker2D" groups=["lasers"]]
+position = Vector2(9.53674e-07, -1.90735e-06)
+rotation = -1.5708
+target_position = Vector2(200, 0)
+script = SubResource("GDScript_c68nn")
+
+[node name="Line2D" type="Line2D" parent="Sprite2D3/Marker2D/laser3"]
+scale = Vector2(1.003, 0.571585)
+points = PackedVector2Array(1, 0, 144, 0)
+default_color = Color(0.298039, 1, 1, 0.603922)
+
+[node name="castingParticles" type="GPUParticles2D" parent="Sprite2D3/Marker2D/laser3"]
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_2t81b")
+texture = ExtResource("5_4puyy")
+
+[node name="collisionParticles" type="GPUParticles2D" parent="Sprite2D3/Marker2D/laser3"]
+position = Vector2(0, -1)
+process_material = SubResource("ParticleProcessMaterial_uub7m")
+texture = ExtResource("5_4puyy")
+lifetime = 0.2
+trail_lifetime = 0.2
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0, -7)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_hlnu6")
+
+[node name="Area2D" type="Area2D" parent="." groups=["bullets"]]
+position = Vector2(1, 0)
+
+[node name="CollisionTriangle" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-1, -11)
+scale = Vector2(1.2, 1.2)
+polygon = PackedVector2Array(-2.5, -9.16667, 2.5, -9.16667, 12.5, 8.33333, 10, 11.6667, -10, 11.6667, -12.5, 8.33333)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="areaTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(0.2, 0.2)
+color = Color(1, 0, 0, 1)
+energy = 10.0
+texture = ExtResource("5_hlnu6")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+texture = ExtResource("3_o2330")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="areaTimer" to="." method="_on_area_timer_timeout"]

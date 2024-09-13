@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://ct0oyrc3m5g42"]
+
+[ext_resource type="Script" path="res://Scripts/death_lasers.gd" id="1_0fo26"]
+[ext_resource type="Texture2D" uid="uid://dmbofpmll5h2n" path="res://Assets/sprites/pixil-frame-0 - 2024-09-05T112414.034.png" id="1_nfgu8"]
+[ext_resource type="PackedScene" uid="uid://dvep2lsg4yw17" path="res://Scenes/abilities/laser.tscn" id="2_ymru6"]
+[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="3_o2330"]
+[ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="5_4puyy"]
+[ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="5_hlnu6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwqj4"]
+size = Vector2(5, 3)
+
+[node name="deathLasers" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_0fo26")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -10)
+polygon = PackedVector2Array(-2, -10, 2, -10, 12, 8, 10, 11, -10, 11, -12, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nfgu8")
+region_enabled = true
+region_rect = Rect2(2, 1, 20, 2)
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D"]
+position = Vector2(0, 2)
+
+[node name="laser" parent="Sprite2D/Marker2D" instance=ExtResource("2_ymru6")]
+rotation = 1.5708
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-6, -10.5)
+rotation = -1.0472
+texture = ExtResource("1_nfgu8")
+region_enabled = true
+region_rect = Rect2(2, 1, 20, 2)
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D2"]
+position = Vector2(0.299038, -2.48205)
+
+[node name="laser" parent="Sprite2D2/Marker2D" instance=ExtResource("2_ymru6")]
+rotation = -1.5708
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(6, -10.5)
+rotation = 1.0472
+texture = ExtResource("1_nfgu8")
+region_enabled = true
+region_rect = Rect2(2, 1, 20, 2)
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D3"]
+position = Vector2(-0.299038, -2.48205)
+
+[node name="laser" parent="Sprite2D3/Marker2D" instance=ExtResource("2_ymru6")]
+rotation = -1.5708
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0, -7)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_hlnu6")
+
+[node name="Area2D" type="Area2D" parent="." groups=["bullets"]]
+position = Vector2(1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_xwqj4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="areaTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 5.21541e-08)
+scale = Vector2(0.4, 0.2)
+color = Color(0, 1, 1, 1)
+energy = 10.0
+texture = ExtResource("5_4puyy")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+texture = ExtResource("3_o2330")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="areaTimer" to="." method="_on_area_timer_timeout"]
