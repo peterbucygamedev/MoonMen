@@ -1,10 +1,14 @@
 extends StaticBody2D
 @onready var energy_sprite = $energyShieldCollider/energySprite
 @onready var shield_timer = $shieldTimer
+@onready var damage_shield_timer = $damageShieldTimer
+
+
 var shieldEnabled = true
 var shieldNumber = 0
 var health : float = 20
 var maxHealth : float = 20
+var damageShield := true
 
 @onready var shield = $shield
 @onready var shield_2 = $shield2
@@ -60,3 +64,7 @@ func _on_shield_timer_timeout():
 	health = maxHealth
 	shieldEnabled = true
 	
+
+
+func _on_damage_shield_timer_timeout():
+	damageShield = true

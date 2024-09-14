@@ -4,7 +4,7 @@ var bullet = preload("res://Scenes/bullet.tscn")
 const GREY_HAVENS = preload("res://Scenes/levels/grey_havens.tscn")
 var devices := []
 @onready var area_2d = $Area2D
-var loadLevel := true
+var loadLevel := false
 var playersInArea := []
 @onready var spawn = $spawns/spawn
 @onready var spawn_2 = $spawns/spawn2
@@ -20,6 +20,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	devices = Input.get_connected_joypads()
+	if GameManager.numberOfPlayers <= 1:
+		area_light.show()
+		
+	if GameManager.numberOfPlayers > 1:
+		area_light.hide()
 	#print (devices)
 	
 	if Input.is_joy_button_pressed(0, 0) and GameManager.allowDevice0:
@@ -86,14 +91,14 @@ func _process(delta):
 		
 func load_level():
 	
-	if loadLevel:
+	if loadLevel and GameManager.numberOfPlayers <= 1:
 		GameManager.allowDevice0 = true
 		GameManager.allowDevice1 = true
 		GameManager.allowDevice2 = true
 		GameManager.allowDevice3 = true
-		get_tree().change_scene_to_file("res://Scenes/levels/grey_havens.tscn")
 		GameManager.numberOfPlayers = 0
-		
+		get_tree().change_scene_to_file("res://Scenes/levels/grey_havens.tscn")
+	
 
 
 func _on_area_2d_body_entered(body):
@@ -107,5 +112,6 @@ func _on_area_2d_body_exited(body):
 	if body.is_in_group("players"):
 		playersInArea.erase(body)
 		if playersInArea.size() <= 0:
+			loadLevel = false
 			player_light.hide()
 

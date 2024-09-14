@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://ddr1bha41i2sx"]
+[gd_scene load_steps=56 format=3 uid="uid://ddr1bha41i2sx"]
 
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="1_7c3vw"]
 [ext_resource type="Script" path="res://Scripts/bottomArea.gd" id="2_0eotd"]
@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://claacv6i7iql2" path="res://Scenes/powerUps/add_health_capacity.tscn" id="20_cauqg"]
 [ext_resource type="PackedScene" uid="uid://dwpptdobbadjr" path="res://Scenes/powerUps/add_reflecting_to_laser.tscn" id="21_s26bi"]
 [ext_resource type="PackedScene" uid="uid://cl5keqdkt1txa" path="res://Scenes/powerUps/full_auto.tscn" id="22_bwyy1"]
+[ext_resource type="PackedScene" uid="uid://dvttnjslvlsox" path="res://Scenes/bouncers_pickup.tscn" id="23_nwpwd"]
+[ext_resource type="PackedScene" uid="uid://clx4kf33gwkty" path="res://Scenes/death_lasers_pickup.tscn" id="24_g7b7j"]
 
 [sub_resource type="GDScript" id="GDScript_2ocff"]
 script/source = "extends Node
@@ -4831,7 +4833,7 @@ position = Vector2(11, 52)
 script = ExtResource("16_228tq")
 
 [node name="ammoSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(-155, -276)
+position = Vector2(-110, -328)
 
 [node name="ammoTimer" type="Timer" parent="powerUpSpawnPoints/ammoSpawn"]
 wait_time = 10.0
@@ -4840,7 +4842,7 @@ one_shot = true
 [node name="addAmmo" parent="powerUpSpawnPoints/ammoSpawn" instance=ExtResource("17_w8on0")]
 
 [node name="bulletSpeedSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(-40, 0)
+position = Vector2(-11, -87)
 
 [node name="bulletSpeedTimer" type="Timer" parent="powerUpSpawnPoints/bulletSpeedSpawn"]
 wait_time = 10.0
@@ -4858,7 +4860,7 @@ one_shot = true
 [node name="addDamageToLaser" parent="powerUpSpawnPoints/damageSpawn" instance=ExtResource("19_wxgev")]
 
 [node name="healthSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(-275, -195)
+position = Vector2(-280, -179)
 
 [node name="healthTimer" type="Timer" parent="powerUpSpawnPoints/healthSpawn"]
 wait_time = 10.0
@@ -4876,13 +4878,19 @@ one_shot = true
 [node name="addReflectingToLaser" parent="powerUpSpawnPoints/reflectingSpawn" instance=ExtResource("21_s26bi")]
 
 [node name="fullAutoSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(429, 241)
+position = Vector2(432, 249)
 
 [node name="fullAutoTimer" type="Timer" parent="powerUpSpawnPoints/fullAutoSpawn"]
 wait_time = 10.0
 one_shot = true
 
 [node name="addFullAuto" parent="powerUpSpawnPoints/fullAutoSpawn" instance=ExtResource("22_bwyy1")]
+
+[node name="bouncersPickup" parent="." instance=ExtResource("23_nwpwd")]
+position = Vector2(-503, 99)
+
+[node name="deathLasersPickup" parent="." instance=ExtResource("24_g7b7j")]
+position = Vector2(510, 99)
 
 [connection signal="body_entered" from="bottomArea" to="bottomArea" method="_on_body_entered"]
 [connection signal="body_exited" from="bottomArea" to="bottomArea" method="_on_body_exited"]

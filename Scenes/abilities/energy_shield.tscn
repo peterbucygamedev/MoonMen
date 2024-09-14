@@ -97,4 +97,7 @@ explosiveness = 1.0
 wait_time = 10.0
 one_shot = true
 
+[node name="damageShieldTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="shieldTimer" to="." method="_on_shield_timer_timeout"]
+[connection signal="timeout" from="damageShieldTimer" to="." method="_on_damage_shield_timer_timeout"]

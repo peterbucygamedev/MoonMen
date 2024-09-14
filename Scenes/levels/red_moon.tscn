@@ -4323,6 +4323,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter1"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("12_8xfwk")
 
 [node name="teleporter2" type="Area2D" parent="teleporters"]
@@ -4367,6 +4368,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter2"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("12_8xfwk")
 
 [node name="teleporter3" type="Area2D" parent="teleporters"]
@@ -4411,6 +4413,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter3"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("12_8xfwk")
 
 [node name="teleporter4" type="Area2D" parent="teleporters"]
@@ -4455,6 +4458,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter4"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("12_8xfwk")
 
 [node name="teleporter5" type="Area2D" parent="teleporters"]
@@ -4499,6 +4503,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter5"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("12_8xfwk")
 
 [node name="teleporter6" type="Area2D" parent="teleporters"]
@@ -4543,6 +4548,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter6"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("12_8xfwk")
 
 [node name="teleporter7" type="Area2D" parent="teleporters"]
@@ -4587,6 +4593,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter7"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("12_8xfwk")
 
 [node name="teleporter8" type="Area2D" parent="teleporters"]
@@ -4631,6 +4638,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter8"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("12_8xfwk")
 
 [node name="teleporter9" type="Area2D" parent="teleporters"]
@@ -4675,6 +4683,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter9"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("12_8xfwk")
 
 [node name="teleporter10" type="Area2D" parent="teleporters"]
@@ -4719,6 +4728,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="teleporters/teleporter10"]
 color = Color(0.188235, 1, 1, 1)
 energy = 2.0
+shadow_enabled = true
 texture = ExtResource("12_8xfwk")
 
 [node name="chain" parent="." instance=ExtResource("15_4da5l")]
@@ -4806,7 +4816,7 @@ bus = &"Music"
 script = ExtResource("18_s04uy")
 
 [node name="ammoSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(-60, 0)
+position = Vector2(-117, -254)
 
 [node name="ammoTimer" type="Timer" parent="powerUpSpawnPoints/ammoSpawn"]
 wait_time = 10.0
@@ -4815,7 +4825,7 @@ one_shot = true
 [node name="addAmmo" parent="powerUpSpawnPoints/ammoSpawn" instance=ExtResource("19_3kh5d")]
 
 [node name="bulletSpeedSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(366, -147)
+position = Vector2(372, -131)
 
 [node name="bulletSpeedTimer" type="Timer" parent="powerUpSpawnPoints/bulletSpeedSpawn"]
 wait_time = 10.0
@@ -4833,7 +4843,7 @@ one_shot = true
 [node name="addDamageToLaser" parent="powerUpSpawnPoints/damageSpawn" instance=ExtResource("21_ir8lb")]
 
 [node name="healthSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(541, -279)
+position = Vector2(549, -254)
 
 [node name="healthTimer" type="Timer" parent="powerUpSpawnPoints/healthSpawn"]
 wait_time = 10.0
@@ -4851,7 +4861,7 @@ one_shot = true
 [node name="addReflectingToLaser" parent="powerUpSpawnPoints/reflectingSpawn" instance=ExtResource("23_gfee1")]
 
 [node name="fullAutoSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(-560, -300)
+position = Vector2(-450, 286)
 
 [node name="fullAutoTimer" type="Timer" parent="powerUpSpawnPoints/fullAutoSpawn"]
 wait_time = 10.0

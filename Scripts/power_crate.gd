@@ -68,9 +68,9 @@ func _on_explosion_area_body_entered(body):
 			force *= 200
 			body.apply_central_impulse(force)
 			
-	"""if body.is_in_group("players"):
+	if body.is_in_group("players"):
 		print("found player")
 		body.health -= 10
 		body.health_bar.show()
 		if body.health_bar_timer.is_stopped():
-			body.health_bar_timer.start()"""
+			body.health_bar_timer.start()

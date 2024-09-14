@@ -227,6 +227,7 @@ func _process(delta) -> void:
 	if health <= 0:
 		GameManager.deaths += 1
 		dead = true
+		bulletTracker = 0
 		if dead:
 			lives -= 1
 			transform = startingTransform
@@ -478,3 +479,4 @@ func _on_death_lasers_timer_timeout():
 	health -= 2
 	health_bar.show()
 	health_bar_timer.start()
+	death_lasers_timer.stop()

@@ -36,9 +36,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group(\"ground\"):
-		pass
-		#queue_free()
+	if body.is_in_group(\"bullets\"):
+		queue_free()
 	if body.is_in_group(\"players\"):
 		body.health -= damage
 		body.health_bar.show()
@@ -135,7 +134,19 @@ func _process(delta):
 		if get_collider().is_in_group(\"players\"):
 			if get_collider().death_lasers_timer.is_stopped():
 				get_collider().death_lasers_timer.start()
-				
+
+		if get_collider().is_in_group(\"power_crate\"):
+			get_collider().counter += 1
+			#print(\"hit power crate\")
+			
+		if get_collider().is_in_group(\"shield\") and get_collider().damageShield == true:
+			get_collider().health -= 2
+			get_collider().damageShield = false
+			if get_collider().damage_shield_timer.is_stopped():
+				get_collider().damage_shield_timer.start()
+			if get_collider().shield_timer.is_stopped():
+				get_collider().shield_timer.start()
+
 		
 	
 
@@ -274,8 +285,17 @@ func _process(delta):
 			if get_collider().death_lasers_timer.is_stopped():
 				get_collider().death_lasers_timer.start()
 		
-		
-		
+		if get_collider().is_in_group(\"power_crate\"):
+			get_collider().counter += 1
+			
+		if get_collider().is_in_group(\"shield\") and get_collider().damageShield == true:
+			get_collider().health -= 2
+			get_collider().damageShield = false
+			if get_collider().damage_shield_timer.is_stopped():
+				get_collider().damage_shield_timer.start()
+			if get_collider().shield_timer.is_stopped():
+				get_collider().shield_timer.start()
+	
 
 	print(teleportLaser)
 		
@@ -412,6 +432,17 @@ func _process(delta):
 			if get_collider().death_lasers_timer.is_stopped():
 				get_collider().death_lasers_timer.start()
 		
+		if get_collider().is_in_group(\"power_crate\"):
+			get_collider().counter += 1
+				
+		if get_collider().is_in_group(\"shield\") and get_collider().damageShield == true:
+			get_collider().health -= 2
+			get_collider().damageShield = false
+			if get_collider().damage_shield_timer.is_stopped():
+				get_collider().damage_shield_timer.start()
+			if get_collider().shield_timer.is_stopped():
+				get_collider().shield_timer.start()
+		
 
 	print(teleportLaser)
 		
@@ -444,7 +475,7 @@ func disappear() -> void:
 
 "
 
-[node name="deathLasers" type="RigidBody2D" groups=["bullets"]]
+[node name="deathLasers" type="RigidBody2D"]
 script = SubResource("GDScript_qnjw6")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -579,7 +610,7 @@ scale = Vector2(0.5, 0.5)
 polygon = PackedVector2Array(-2, -10, 2, -10, 12, 8, 10, 11, -10, 11, -12, 8)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 100.0
 one_shot = true
 
 [node name="areaTimer" type="Timer" parent="."]
