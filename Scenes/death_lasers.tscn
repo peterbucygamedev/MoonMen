@@ -497,7 +497,9 @@ script = SubResource("GDScript_npfuh")
 [node name="Line2D" type="Line2D" parent="Node2D/Sprite2D/Marker2D/laser"]
 scale = Vector2(1.003, 0.571585)
 points = PackedVector2Array(1, 0, 144, 0)
-default_color = Color(1, 0, 0, 0.603922)
+default_color = Color(1, 0, 0, 1)
+texture = ExtResource("5_hlnu6")
+texture_mode = 2
 
 [node name="castingParticles" type="GPUParticles2D" parent="Node2D/Sprite2D/Marker2D/laser"]
 visible = false
@@ -530,7 +532,9 @@ script = SubResource("GDScript_7o57i")
 [node name="Line2D" type="Line2D" parent="Node2D/Sprite2D2/Marker2D/laser2"]
 scale = Vector2(1.003, 0.571585)
 points = PackedVector2Array(1, 0, 144, 0)
-default_color = Color(1, 0, 0, 0.603922)
+default_color = Color(1, 0, 0, 1)
+texture = ExtResource("5_hlnu6")
+texture_mode = 2
 
 [node name="castingParticles" type="GPUParticles2D" parent="Node2D/Sprite2D2/Marker2D/laser2"]
 visible = false
@@ -564,7 +568,9 @@ script = SubResource("GDScript_pkg6y")
 [node name="Line2D" type="Line2D" parent="Node2D/Sprite2D3/Marker2D/laser3"]
 scale = Vector2(1.003, 0.571585)
 points = PackedVector2Array(1, 0, 144, 0)
-default_color = Color(1, 0, 0, 0.603922)
+default_color = Color(1, 0, 0, 1)
+texture = ExtResource("5_hlnu6")
+texture_mode = 2
 
 [node name="castingParticles" type="GPUParticles2D" parent="Node2D/Sprite2D3/Marker2D/laser3"]
 visible = false

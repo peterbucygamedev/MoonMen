@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddjnfktckntkc"]
+
+[ext_resource type="Script" path="res://Scenes/Node2D.gd" id="1_2rpoc"]
+[ext_resource type="Script" path="res://Scenes/Button.gd" id="1_blpvg"]
+
+[node name="pauseMenu" type="Node"]
+process_mode = 3
+
+[node name="pause" type="Node2D" parent="."]
+process_mode = 3
+script = ExtResource("1_2rpoc")
+
+[node name="Control" type="Control" parent="pause"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pause/Control"]
+process_mode = 3
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="pause/Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "PAUSED"
+
+[node name="resume" type="Button" parent="pause/Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Resume"
+script = ExtResource("1_blpvg")
+
+[node name="exit" type="Button" parent="pause/Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="pause/Control/VBoxContainer/resume" to="pause/Control/VBoxContainer/resume" method="_on_pressed"]

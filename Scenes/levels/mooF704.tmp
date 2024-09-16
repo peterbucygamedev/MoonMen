@@ -4714,38 +4714,38 @@ position = Vector2(-57, 129)
 [node name="deathLasersPickup" parent="." instance=ExtResource("23_4ukom")]
 position = Vector2(60, 136)
 
-[node name="pause" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
 process_mode = 3
-position = Vector2(-38, -303)
+position = Vector2(0, -306)
 script = ExtResource("24_cdtjr")
 
-[node name="Control" type="Control" parent="pause"]
+[node name="Control" type="Control" parent="Node2D"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="pause/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/Control"]
 process_mode = 3
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="pause/Control/VBoxContainer"]
-process_mode = 3
+[node name="Label" type="Label" parent="Node2D/Control/VBoxContainer"]
+process_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "PAUSED"
 
-[node name="resume" type="Button" parent="pause/Control/VBoxContainer"]
-process_mode = 3
+[node name="resume" type="Button" parent="Node2D/Control/VBoxContainer"]
+process_mode = 2
 layout_mode = 2
 text = "Resume"
 script = ExtResource("25_hx5t4")
 
-[node name="exit" type="Button" parent="pause/Control/VBoxContainer"]
-process_mode = 3
+[node name="exit" type="Button" parent="Node2D/Control/VBoxContainer"]
+process_mode = 2
 layout_mode = 2
 text = "Exit"
 
@@ -4767,4 +4767,4 @@ text = "Exit"
 [connection signal="body_entered" from="teleporters/teleporter8" to="teleporters/teleporter8" method="_on_body_entered"]
 [connection signal="body_entered" from="teleporters/teleporter9" to="teleporters/teleporter9" method="_on_body_entered"]
 [connection signal="body_entered" from="teleporters/teleporter10" to="teleporters/teleporter10" method="_on_body_entered"]
-[connection signal="pressed" from="pause/Control/VBoxContainer/resume" to="pause/Control/VBoxContainer/resume" method="_on_pressed"]
+[connection signal="pressed" from="Node2D/Control/VBoxContainer/resume" to="Node2D/Control/VBoxContainer/resume" method="_on_pressed"]

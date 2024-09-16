@@ -199,7 +199,7 @@ func shoot() -> void:
 
 		
 func _process(delta) -> void:
-	
+		
 	print(GameManager.bullets)
 	#print(get_global_mouse_position())
 	lives_number.text = str(lives)
