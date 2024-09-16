@@ -3913,6 +3913,7 @@ text = "Start"
 script = SubResource("GDScript_j70iy")
 
 [node name="startTeams" type="Button" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
@@ -3925,6 +3926,7 @@ text = "Teams"
 script = SubResource("GDScript_g5cey")
 
 [node name="controls" type="Button" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
@@ -3937,6 +3939,7 @@ text = "Controls"
 script = SubResource("GDScript_63yed")
 
 [node name="resolution" type="Button" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
@@ -3949,6 +3952,7 @@ text = "Resolution"
 script = SubResource("GDScript_7gbda")
 
 [node name="powerUps" type="CheckButton" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -3962,6 +3966,7 @@ button_pressed = true
 text = "Power-Ups"
 
 [node name="pickUps" type="CheckButton" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -3975,6 +3980,7 @@ button_pressed = true
 text = "Pick-Ups"
 
 [node name="sounds" type="CheckButton" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -3988,6 +3994,7 @@ button_pressed = true
 text = "Sounds"
 
 [node name="music" type="CheckButton" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -4001,6 +4008,7 @@ button_pressed = true
 text = "Music"
 
 [node name="randomLevels" type="CheckButton" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -4013,6 +4021,7 @@ theme_override_constants/outline_size = 2
 text = "Random Levels"
 
 [node name="kills" type="CheckButton" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8

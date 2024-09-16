@@ -1,13 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddjnfktckntkc"]
+[gd_scene load_steps=5 format=3 uid="uid://ddjnfktckntkc"]
 
 [ext_resource type="Script" path="res://Scenes/Node2D.gd" id="1_2rpoc"]
 [ext_resource type="Script" path="res://Scenes/Button.gd" id="1_blpvg"]
+[ext_resource type="Script" path="res://Scenes/exit.gd" id="3_m2l5x"]
+
+[sub_resource type="GDScript" id="GDScript_hxen6"]
+script/source = "extends Button
+var MAIN_MENU = load(\"res://Scenes/levels/main_menu.tscn\")
+
+func _on_pressed():
+	get_tree().change_scene_to_packed(MAIN_MENU)
+"
 
 [node name="pauseMenu" type="Node"]
 process_mode = 3
 
 [node name="pause" type="Node2D" parent="."]
 process_mode = 3
+z_index = 2
 script = ExtResource("1_2rpoc")
 
 [node name="Control" type="Control" parent="pause"]
@@ -29,15 +39,25 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "PAUSED"
 
+[node name="exit" type="Button" parent="pause/Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Exit"
+script = ExtResource("3_m2l5x")
+
 [node name="resume" type="Button" parent="pause/Control/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
 text = "Resume"
 script = ExtResource("1_blpvg")
 
-[node name="exit" type="Button" parent="pause/Control/VBoxContainer"]
+[node name="exit2" type="Button" parent="pause/Control/VBoxContainer"]
 process_mode = 3
+visible = false
 layout_mode = 2
-text = "Exit"
+text = "Exit to Main Menu"
+script = SubResource("GDScript_hxen6")
 
+[connection signal="pressed" from="pause/Control/VBoxContainer/exit" to="pause/Control/VBoxContainer/exit" method="_on_pressed"]
 [connection signal="pressed" from="pause/Control/VBoxContainer/resume" to="pause/Control/VBoxContainer/resume" method="_on_pressed"]
+[connection signal="pressed" from="pause/Control/VBoxContainer/exit2" to="pause/Control/VBoxContainer/exit2" method="_on_pressed"]

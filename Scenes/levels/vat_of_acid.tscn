@@ -24,6 +24,7 @@
 script/source = "extends Node
 var player = preload(\"res://Scenes/player.tscn\")
 var bullet = preload(\"res://Scenes/bullet.tscn\")
+const MOON_SLAYER = preload(\"res://Scenes/levels/moon_slayer.tscn\")
 
 var devices := []
 var loadLevel := false
@@ -120,13 +121,13 @@ func _process(delta):
 	
 func load_level():
 	print(\"start button pressed\")
-	#if loadLevel and GameManager.numberOfPlayers <= 1:
-	#	GameManager.allowDevice0 = true
-	#	GameManager.allowDevice1 = true
-	#	GameManager.allowDevice2 = true
-	#	GameManager.allowDevice3 = true
-	#	GameManager.numberOfPlayers = 0
-	#	get_tree().change_scene_to_file(\"\")
+	if loadLevel and GameManager.numberOfPlayers <= 1:
+		GameManager.allowDevice0 = true
+		GameManager.allowDevice1 = true
+		GameManager.allowDevice2 = true
+		GameManager.allowDevice3 = true
+		GameManager.numberOfPlayers = 0
+		get_tree().change_scene_to_file(\"res://Scenes/levels/moon_slayer.tscn\")
 
 
 func _on_area_2d_body_entered(body):
@@ -4445,6 +4446,8 @@ position = Vector2(-315, -11)
 [node name="deathLasersPickup" parent="." instance=ExtResource("19_6ofmd")]
 position = Vector2(336, 203)
 
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="powerUpSpawnPoints/ammoSpawn/ammoTimer" to="powerUpSpawnPoints" method="_on_ammo_timer_timeout"]
 [connection signal="timeout" from="powerUpSpawnPoints/bulletSpeedSpawn/bulletSpeedTimer" to="powerUpSpawnPoints" method="_on_bullet_speed_timer_timeout"]
 [connection signal="timeout" from="powerUpSpawnPoints/damageSpawn/damageTimer" to="powerUpSpawnPoints" method="_on_damage_timer_timeout"]
