@@ -1,6 +1,6 @@
 extends Area2D
 @onready var bottom_area = $"../bottomArea"
-var bullet = preload("res://Scenes/bullet.tscn")
+var bullets = preload("res://Scenes/pickUps/bullet.tscn")
 @onready var moon_slayer = $".."
 const power_crate = preload("res://Scenes/power_crate.tscn")
 

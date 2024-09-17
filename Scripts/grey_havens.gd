@@ -1,6 +1,6 @@
 extends Node2D
 var player = preload("res://Scenes/player.tscn")
-var bullet = preload("res://Scenes/bullet.tscn")
+var bullets = preload("res://Scenes/pickUps/bullet.tscn")
 
 var devices := []
 var loadLevel := false

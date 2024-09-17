@@ -1,6 +1,6 @@
 extends Node
 var player = preload("res://Scenes/player.tscn")
-var bullet = preload("res://Scenes/bullet.tscn")
+var bullets = preload("res://Scenes/pickUps/bullet.tscn")
 const GREY_HAVENS = preload("res://Scenes/levels/grey_havens.tscn")
 var devices := []
 @onready var area_2d = $Area2D

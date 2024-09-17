@@ -1,7 +1,7 @@
 extends Area2D
 @onready var top_area = $"../topArea"
 @onready var collision_shape_2d = $"../topArea/CollisionShape2D"
-var bullet = preload("res://Scenes/bullet.tscn")
+var bullet = preload("res://Scenes/pickUps/bullet.tscn")
 @onready var moon_slayer = $".."
 var WEAPON = preload("res://Scenes/weapon.tscn")
 #var laser = preload("res://Scenes/laser.tscn")

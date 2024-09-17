@@ -44,7 +44,7 @@ one_shot = true
 position = Vector2(20, 0)
 
 [node name="healthTimer" type="Timer" parent="powerUpSpawnPoints/healthSpawn"]
-wait_time = 10.0
+wait_time = 0.1
 one_shot = true
 
 [node name="addHealthCapacity" parent="powerUpSpawnPoints/healthSpawn" instance=ExtResource("5_l1t5w")]

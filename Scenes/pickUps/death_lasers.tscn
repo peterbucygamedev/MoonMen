@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ct0oyrc3m5g42"]
+[gd_scene load_steps=26 format=3 uid="uid://ct0oyrc3m5g42"]
 
 [ext_resource type="Texture2D" uid="uid://dmbofpmll5h2n" path="res://Assets/sprites/pixil-frame-0 - 2024-09-05T112414.034.png" id="1_nfgu8"]
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="3_o2330"]
@@ -66,6 +66,9 @@ func _on_area_2d_area_entered(area):
 		if timer.is_stopped():
 			timer.start()
 "
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ig7nh"]
+load_path = "res://.godot/imported/pixil-frame-0 - 2024-09-05T112414.034.png-22b918209953ab5402837f5ad805ca1d.ctex"
 
 [sub_resource type="GDScript" id="GDScript_npfuh"]
 script/source = "extends RayCast2D
@@ -216,6 +219,14 @@ scale_curve = SubResource("CurveTexture_h2il6")
 color = Color(1, 1, 1, 0.184314)
 color_ramp = SubResource("GradientTexture1D_nup24")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_20355"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+
 [sub_resource type="GDScript" id="GDScript_7o57i"]
 script/source = "extends RayCast2D
 @onready var line_2d = $Line2D
@@ -363,6 +374,17 @@ scale_curve = SubResource("CurveTexture_buxvy")
 color = Color(1, 1, 1, 0.184314)
 color_ramp = SubResource("GradientTexture1D_fwor6")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8w8n2"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bfqm1"]
+load_path = "res://.godot/imported/pixil-frame-0 - 2024-09-05T112414.034.png-22b918209953ab5402837f5ad805ca1d.ctex"
+
 [sub_resource type="GDScript" id="GDScript_pkg6y"]
 script/source = "extends RayCast2D
 @onready var line_2d = $Line2D
@@ -475,6 +497,14 @@ func disappear() -> void:
 
 "
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4vfin"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+
 [node name="deathLasers" type="RigidBody2D"]
 script = SubResource("GDScript_qnjw6")
 
@@ -482,7 +512,7 @@ script = SubResource("GDScript_qnjw6")
 scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-texture = ExtResource("1_nfgu8")
+texture = SubResource("CompressedTexture2D_ig7nh")
 region_enabled = true
 region_rect = Rect2(2, 1, 20, 2)
 
@@ -513,6 +543,11 @@ process_material = SubResource("ParticleProcessMaterial_ey41v")
 texture = ExtResource("5_4puyy")
 lifetime = 0.2
 trail_lifetime = 0.2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D/Sprite2D"]
+scale = Vector2(2, 2)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_20355")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
 position = Vector2(-6, -10.5)
@@ -549,10 +584,15 @@ texture = ExtResource("5_4puyy")
 lifetime = 0.2
 trail_lifetime = 0.2
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D/Sprite2D2"]
+scale = Vector2(2, 2)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_8w8n2")
+
 [node name="Sprite2D3" type="Sprite2D" parent="Node2D"]
 position = Vector2(6, -10.5)
 rotation = 1.0472
-texture = ExtResource("1_nfgu8")
+texture = SubResource("CompressedTexture2D_bfqm1")
 region_enabled = true
 region_rect = Rect2(2, 1, 20, 2)
 
@@ -584,6 +624,11 @@ process_material = SubResource("ParticleProcessMaterial_uub7m")
 texture = ExtResource("5_4puyy")
 lifetime = 0.2
 trail_lifetime = 0.2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D/Sprite2D3"]
+scale = Vector2(2, 2)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_4vfin")
 
 [node name="PointLight2D" type="PointLight2D" parent="Node2D"]
 position = Vector2(1.90735e-06, -8)

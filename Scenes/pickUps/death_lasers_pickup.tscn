@@ -1,15 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://clx4kf33gwkty"]
 
-[ext_resource type="Texture2D" uid="uid://dxsdfcd7lo10u" path="res://Assets/lightShapes/pixil-frame-0 - 2024-09-02T111026.793.png" id="1_yurdo"]
-[ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="2_obmmm"]
+[ext_resource type="Texture2D" uid="uid://dxsdfcd7lo10u" path="res://Assets/lightShapes/pixil-frame-0 - 2024-09-02T111026.793.png" id="1_bhvyo"]
+[ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="2_a4j47"]
 
 [sub_resource type="GDScript" id="GDScript_8i2jb"]
 script/source = "extends Area2D
+@onready var death_lasers_pickup = $\"..\"
 
 func _on_body_entered(body):
 	if body.is_in_group(\"players\"):
 		body.bulletTracker = 2
-		
+		death_lasers_pickup.queue_free()
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6c3y"]
@@ -28,11 +29,11 @@ scale = Vector2(0.2, 0.2)
 color = Color(1, 0, 0, 1)
 energy = 2.0
 shadow_enabled = true
-texture = ExtResource("1_yurdo")
+texture = ExtResource("1_bhvyo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_obmmm")
+texture = ExtResource("2_a4j47")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

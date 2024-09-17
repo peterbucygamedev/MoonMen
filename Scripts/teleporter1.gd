@@ -1,6 +1,6 @@
 extends Area2D
 @onready var t_2_marker_2d = $"../teleporter2/t2Marker2D"
-var bullet = preload("res://Scenes/bullet.tscn")
+
 
 func _on_body_entered(body):
 	if body.is_in_group("players") and body.velocity.y >= 0:

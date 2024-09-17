@@ -35,8 +35,8 @@ extends CharacterBody2D
 @onready var bullet_sfx = $bulletSFX
 
 
-var bouncers = preload("res://Scenes/bouncers.tscn")
-var bullet := preload("res://Scenes/bullet.tscn")
+#var bouncers = preload("res://Scenes/bouncers.tscn")
+#var bullet := preload("res://Scenes/bullet.tscn")
 
 var SPEED := 200
 #-450
