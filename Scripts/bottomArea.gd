@@ -11,12 +11,14 @@ const power_crate = preload("res://Scenes/power_crate.tscn")
 #var teleportPosition = Vector2(0,0)
 
 func _on_body_entered(body):
-	#print(collision_shape_2d.get_shape().get_rect())
-	#check veloicty to ensure not to teleport back to quick
 	if body.is_in_group("players") and body.velocity.y >= 0:
-		#120 is just over half the width of collider, 
-		#it is thick because players get going fast if the keep falling
+		print("entered")
 		body.position = Vector2(body.position.x, top_area.position.y + 120)
+		
+	if body.is_in_group("remoteBullets") and body.velocity.y >= 0:
+		print("entered")
+		body.position = Vector2(body.position.x, top_area.position.y + 120)
+		
 		
 	if body.is_in_group("bullets") and body.linear_velocity.y >= 0:
 		body.queue_free()

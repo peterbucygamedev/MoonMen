@@ -88,10 +88,10 @@ var shootNext := true
 var burstNext := true
 var burstCounter := 0
 var bulletTracker := 0
+var orbArray := []
 
 
 func _ready() -> void:
-	pass
 	reload.hide()
 	health_bar.hide()
 	energy_shield.hide()
@@ -128,49 +128,44 @@ func _ready() -> void:
 
 func shoot() -> void:
 	
-	"""if ammo > 0:
-		var b = bullet.instantiate()
-		ammo -= 1
-		b.speed = bulletSpeed
-		b.damage = damage
-		player.owner.add_child(b)
-		b.transform = bullet_spawn.global_transform
-		b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
-		
-	elif ammo <= 0 and reload_timer.is_stopped():
-		reload_timer.start()
-		reload.show()"""
-	#var b = bullet.instantiate()
 	if playerNumber == 0 and p1Ammo> 0:
 		var b1 = GameManager.bullets[bulletTracker].instantiate()
+		if bulletTracker == 3:
+			b1.orbNumber = playerNumber
+			print("does equal")
+			orbArray.append(b1)
 		bullet_sfx.play()
 		p1Ammo -= b1.ammoCost
 		b1.speed = p1BulletSpeed
-		b1.damage = p1Damage
+		b1.damage *= p1Damage
 		player.owner.add_child(b1)
 		b1.transform = bullet_spawn.global_transform
-		b1.apply_impulse(weapon.transform.x * b1.speed, Vector2(0,0))
+		if bulletTracker != 3:
+			print("doesn't equal")
+			b1.apply_impulse(weapon.transform.x * b1.speed, Vector2(0,0))
+
 	
-	elif p1Ammo <= 0 and player_1_timer.is_stopped() and playerNumber == 0:
-		player_1_timer.start()
-		reload.show()
-		
 	if playerNumber == 1 and p2Ammo > 0:
 		var b2 = GameManager.bullets[bulletTracker].instantiate()
+		if bulletTracker == 3:
+			b2.orbNumber = playerNumber
+			print("does equal")
+			orbArray.append(b2)
 		bullet_sfx.play()
 		p2Ammo -= b2.ammoCost
 		b2.speed = p2BulletSpeed
-		b2.damage = p2Damage
+		b2.damage *= p2Damage
 		player.owner.add_child(b2)
 		b2.transform = bullet_spawn.global_transform
-		b2.apply_impulse(weapon.transform.x * b2.speed, Vector2(0,0))
+		if bulletTracker != 3:
+			print("doesn't equal")
+			b2.apply_impulse(weapon.transform.x * b2.speed, Vector2(0,0))
 		
-	elif p2Ammo <= 0 and player_2_timer.is_stopped() and playerNumber == 1:
-		player_2_timer.start()
-		reload.show()
 		
 	if playerNumber == 2 and p3Ammo > 0:
 		var b3 = GameManager.bullets[bulletTracker].instantiate()
+		if b3 == GameManager.bullets[3].instantiate():
+			b3.orbNumber = playerNumber
 		bullet_sfx.play()
 		p3Ammo -= b3.ammoCost
 		b3.speed = p3BulletSpeed
@@ -179,12 +174,12 @@ func shoot() -> void:
 		b3.transform = bullet_spawn.global_transform
 		b3.apply_impulse(weapon.transform.x * b3.speed, Vector2(0,0))
 	
-	elif p3Ammo <= 0 and player_3_timer.is_stopped() and playerNumber == 2:
-		player_3_timer.start()
-		reload.show()
+
 		
 	if playerNumber == 3 and p4Ammo > 0:
 		var b4 = GameManager.bullets[bulletTracker].instantiate()
+		if b4 == GameManager.bullets[3].instantiate():
+			b4.orbNumber = playerNumber
 		bullet_sfx.play()
 		p4Ammo -= b4.ammoCost
 		b4.speed = p4BulletSpeed
@@ -193,19 +188,44 @@ func shoot() -> void:
 		b4.transform = bullet_spawn.global_transform
 		b4.apply_impulse(weapon.transform.x * b4.speed, Vector2(0,0))
 		
-	elif p4Ammo <= 0 and player_4_timer.is_stopped() and playerNumber == 3:
-		player_4_timer.start()
-		reload.show()
 
 		
 func _process(delta) -> void:
-		
+	
+	print("orbArray", orbArray)
+	if !orbArray.is_empty() and orbArray[0] == null:
+		print("orbArray = null")
 	print(GameManager.bullets)
-	#print(get_global_mouse_position())
+	print("health", health)
 	lives_number.text = str(lives)
-	#print(is_touching_wall)
 	health_bar.value = health
 	health_bar_2.value = health
+	
+	if p1Ammo <= 0 and player_1_timer.is_stopped() and playerNumber == 0:
+		if bulletTracker != 3:
+			player_1_timer.start()
+			reload.show()
+			
+		if bulletTracker == 3 and !orbArray.is_empty() and orbArray[0] == null:
+			player_1_timer.start()
+			reload.show()
+		
+	if p2Ammo <= 0 and player_2_timer.is_stopped() and playerNumber == 1:
+		if bulletTracker != 3:
+			player_2_timer.start()
+			reload.show()
+			
+		if bulletTracker == 3 and !orbArray.is_empty() and orbArray[0] == null:
+			player_2_timer.start()
+			reload.show()
+		
+	if p3Ammo <= 0 and player_3_timer.is_stopped() and playerNumber == 2:
+		player_3_timer.start()
+		reload.show()
+		
+	if p4Ammo <= 0 and player_4_timer.is_stopped() and playerNumber == 3:
+		player_4_timer.start()
+		reload.show()
 	
 	if playerNumber == 0:
 		ammo_bar.value = p1Ammo
@@ -402,20 +422,19 @@ func _process(delta) -> void:
 
 func _on_player_1_timer_timeout() -> void:
 	#print("player1Reloaded")
-	p1Ammo = p1MaxAmmo
-	reload.hide()
-
+		p1Ammo = p1MaxAmmo
+		reload.hide()
 func _on_player_2_timer_timeout()-> void:
-	p2Ammo = p2MaxAmmo
-	reload.hide()
+		p2Ammo = p2MaxAmmo
+		reload.hide()
 
 func _on_player_3_timer_timeout()-> void:
-	p3Ammo = p3MaxAmmo
-	reload.hide()
+		p3Ammo = p3MaxAmmo
+		reload.hide()
 
 func _on_player_4_timer_timeout()-> void:
-	p4Ammo = p4MaxAmmo
-	reload.hide()
+		p4Ammo = p4MaxAmmo
+		reload.hide()
 
 
 func _on_health_bar_timer_timeout()-> void:

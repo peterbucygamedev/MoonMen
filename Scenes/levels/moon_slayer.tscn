@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://blquhnw8unage"]
+[gd_scene load_steps=34 format=3 uid="uid://blquhnw8unage"]
 
 [ext_resource type="Script" path="res://Scripts/moon_slayer.gd" id="1_dpyve"]
 [ext_resource type="PackedScene" uid="uid://dcxybwwp6pdbc" path="res://Scenes/tiles/sacred_tile_v_grey.tscn" id="3_2nl85"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://c1wdgt70wcxxc" path="res://Scenes/teleport_areas.tscn" id="9_4m8yp"]
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="9_qcia5"]
 [ext_resource type="PackedScene" uid="uid://e6x05c5lhwb0" path="res://Scenes/chainLaterns/chain_latern_grey.tscn" id="13_624xe"]
+[ext_resource type="PackedScene" uid="uid://bme2m1yladb15" path="res://Scenes/pickUps/pick_up_spawner.tscn" id="15_lj3e2"]
+[ext_resource type="PackedScene" uid="uid://ds70at1agjq4h" path="res://Scenes/powerUps/power_up_spawner.tscn" id="16_870ll"]
+[ext_resource type="PackedScene" uid="uid://tg5uhuebxvgq" path="res://Scenes/pickUps/the_orb_pick_up.tscn" id="17_104g6"]
 [ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="17_c6ypu"]
 [ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="18_6hsik"]
 [ext_resource type="Texture2D" uid="uid://dxsdfcd7lo10u" path="res://Assets/lightShapes/pixil-frame-0 - 2024-09-02T111026.793.png" id="18_iy4fa"]
@@ -4643,6 +4646,18 @@ position = Vector2(-80, 16)
 
 [node name="powerCrate4" parent="powerCrates" instance=ExtResource("20_rircv")]
 position = Vector2(80, 16)
+
+[node name="pickUpSpawner" parent="." instance=ExtResource("15_lj3e2")]
+position = Vector2(-434, -110)
+
+[node name="powerUpSpawner" parent="." instance=ExtResource("16_870ll")]
+position = Vector2(442, -79)
+
+[node name="theOrbPickUp" parent="." instance=ExtResource("17_104g6")]
+position = Vector2(-109, -38)
+
+[node name="theOrbPickUp2" parent="." instance=ExtResource("17_104g6")]
+position = Vector2(105, -38)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

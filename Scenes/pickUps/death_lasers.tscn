@@ -38,6 +38,7 @@ func _ready():
 func _on_area_2d_body_entered(body):
 	if body.is_in_group(\"bullets\"):
 		queue_free()
+		
 	if body.is_in_group(\"players\"):
 		body.health -= damage
 		body.health_bar.show()
@@ -226,6 +227,9 @@ spread = 0.0
 initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 1.0
 
 [sub_resource type="GDScript" id="GDScript_7o57i"]
 script/source = "extends RayCast2D
@@ -527,12 +531,11 @@ script = SubResource("GDScript_npfuh")
 [node name="Line2D" type="Line2D" parent="Node2D/Sprite2D/Marker2D/laser"]
 scale = Vector2(1.003, 0.571585)
 points = PackedVector2Array(1, 0, 144, 0)
-default_color = Color(1, 0, 0, 1)
+default_color = Color(1, 0, 0.984314, 1)
 texture = ExtResource("5_hlnu6")
 texture_mode = 2
 
 [node name="castingParticles" type="GPUParticles2D" parent="Node2D/Sprite2D/Marker2D/laser"]
-visible = false
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_mn8ct")
 texture = ExtResource("5_4puyy")
@@ -567,7 +570,7 @@ script = SubResource("GDScript_7o57i")
 [node name="Line2D" type="Line2D" parent="Node2D/Sprite2D2/Marker2D/laser2"]
 scale = Vector2(1.003, 0.571585)
 points = PackedVector2Array(1, 0, 144, 0)
-default_color = Color(1, 0, 0, 1)
+default_color = Color(1, 0, 1, 1)
 texture = ExtResource("5_hlnu6")
 texture_mode = 2
 
@@ -608,7 +611,7 @@ script = SubResource("GDScript_pkg6y")
 [node name="Line2D" type="Line2D" parent="Node2D/Sprite2D3/Marker2D/laser3"]
 scale = Vector2(1.003, 0.571585)
 points = PackedVector2Array(1, 0, 144, 0)
-default_color = Color(1, 0, 0, 1)
+default_color = Color(1, 0, 1, 1)
 texture = ExtResource("5_hlnu6")
 texture_mode = 2
 
@@ -633,27 +636,29 @@ process_material = SubResource("ParticleProcessMaterial_4vfin")
 [node name="PointLight2D" type="PointLight2D" parent="Node2D"]
 position = Vector2(1.90735e-06, -8)
 scale = Vector2(0.2, 0.2)
-color = Color(1, 0, 0, 1)
 energy = 10.0
 texture = ExtResource("5_hlnu6")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Node2D"]
 visible = false
+modulate = Color(1, 0, 1, 1)
 z_index = -2
 texture = ExtResource("3_o2330")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Node2D"]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(1, 0, 1, 1)
 position = Vector2(0, -7)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_hlnu6")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(0, -5)
 scale = Vector2(0.5, 0.5)
 polygon = PackedVector2Array(-2, -10, 2, -10, 12, 8, 10, 11, -10, 11, -12, 8)
 
 [node name="Area2D" type="Area2D" parent="." groups=["bullets"]]
+visible = false
 position = Vector2(0, -5)
 scale = Vector2(0.5, 0.5)
 

@@ -8,7 +8,10 @@ const power_crate = preload("res://Scenes/power_crate.tscn")
 func _on_body_entered(body):
 	if body.is_in_group("players") and body.velocity.x >= 0:
 		body.position = Vector2(left_area.position.x + 105, body.position.y)
-		
+	
+	if body.is_in_group("remoteBullets") and body.velocity.x >= 0:
+		body.position = Vector2(left_area.position.x + 105, body.position.y)
+	
 	if body.is_in_group("bullets") and body.linear_velocity.x >= 0:
 		body.queue_free()
 		var b = GameManager.bullets[body.tracker].instantiate()

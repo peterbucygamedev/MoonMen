@@ -102,6 +102,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 scale = Vector2(0.05, 0.05)
 color = Color(0, 1, 0, 1)
 energy = 10.0

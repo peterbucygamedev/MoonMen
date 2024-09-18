@@ -9,6 +9,9 @@ func _on_body_entered(body):
 	if body.is_in_group("players") and body.velocity.y <= 0:
 		body.position = Vector2(body.position.x, bottom_area.position.y - 120)
 		
+	if body.is_in_group("remoteBullets") and body.velocity.y <= 0:
+		body.position = Vector2(body.position.x, bottom_area.position.y - 120)
+		
 	if body.is_in_group("bullets") and body.linear_velocity.y <= 0:
 		body.queue_free()
 		var b = GameManager.bullets[body.tracker].instantiate()
