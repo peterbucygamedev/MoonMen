@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://k0lcpcvcw0lp"]
+
+[ext_resource type="PackedScene" uid="uid://mh5sd6p1r18b" path="res://Scenes/tiles/sacred_tile_s_green.tscn" id="1_j14gp"]
+
+[sub_resource type="GDScript" id="GDScript_wgr6w"]
+script/source = "extends StaticBody2D
+@onready var up = $up
+@onready var down = $down
+
+var direction = 1
+var speed = 100
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if up.is_colliding():
+		direction = 1
+
+	if down.is_colliding():
+		direction = -1
+		
+	print(position.y)
+	
+		
+	position.y += direction * speed * delta
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qu4ok"]
+
+[node name="verticalMovingPlatform" type="Node2D"]
+position = Vector2(-125, 187)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="sacredTileSGreen2" parent="Node2D" instance=ExtResource("1_j14gp")]
+position = Vector2(-88, 73)
+script = SubResource("GDScript_wgr6w")
+
+[node name="up" type="RayCast2D" parent="Node2D/sacredTileSGreen2"]
+target_position = Vector2(0, -11)
+collision_mask = 524288
+
+[node name="down" type="RayCast2D" parent="Node2D/sacredTileSGreen2"]
+target_position = Vector2(0, 13)
+collision_mask = 524288
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Node2D"]
+position = Vector2(-88, -224)
+collision_layer = 524288
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D3"]
+position = Vector2(0, -190)
+shape = SubResource("RectangleShape2D_qu4ok")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Node2D"]
+position = Vector2(-89, 110)
+collision_layer = 524288
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D4"]
+shape = SubResource("RectangleShape2D_qu4ok")

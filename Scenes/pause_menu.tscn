@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Node2D.gd" id="1_2rpoc"]
 [ext_resource type="Script" path="res://Scripts/Button.gd" id="1_blpvg"]
-[ext_resource type="Script" path="res://exit.gd" id="3_m2l5x"]
+[ext_resource type="Script" path="res://Scripts/exit.gd" id="3_m2l5x"]
 
 [sub_resource type="GDScript" id="GDScript_hxen6"]
 script/source = "extends Button

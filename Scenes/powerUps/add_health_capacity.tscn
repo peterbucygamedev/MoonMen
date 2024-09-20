@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://claacv6i7iql2"]
+[gd_scene load_steps=6 format=3 uid="uid://claacv6i7iql2"]
 
 [ext_resource type="Script" path="res://Scripts/addHealth.gd" id="1_pnh7k"]
 [ext_resource type="Texture2D" uid="uid://nyj5ufkynbvf" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-28T103630.637.png" id="1_v8p5a"]
 [ext_resource type="Texture2D" uid="uid://dxsdfcd7lo10u" path="res://Assets/lightShapes/pixil-frame-0 - 2024-09-02T111026.793.png" id="3_4ub8k"]
+[ext_resource type="Texture2D" uid="uid://cqmvmnglw2t4m" path="res://Assets/sprites/pixil-frame-0 - 2024-08-13T085146.548.png" id="4_elmxn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38bhf"]
 size = Vector2(20, 6)
@@ -21,10 +22,21 @@ region_enabled = true
 region_rect = Rect2(59, 50, 18, 4)
 
 [node name="PointLight2D" type="PointLight2D" parent="Area2D"]
+visible = false
 scale = Vector2(0.2, 0.2)
-color = Color(1, 0, 0, 1)
+color = Color(0, 1, 0, 0.392157)
 energy = 2.0
 shadow_enabled = true
 texture = ExtResource("3_4ub8k")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Area2D"]
+modulate = Color(0, 1, 0, 0.392157)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_4ub8k")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Area2D"]
+position = Vector2(-2.625, 0)
+scale = Vector2(0.552083, 1)
+texture = ExtResource("4_elmxn")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

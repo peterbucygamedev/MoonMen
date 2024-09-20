@@ -21,10 +21,16 @@ region_enabled = true
 region_rect = Rect2(73, 17, 3, 8)
 
 [node name="PointLight2D" type="PointLight2D" parent="Area2D"]
+visible = false
 scale = Vector2(0.2, 0.2)
 color = Color(0, 1, 0.54902, 1)
 energy = 2.0
 shadow_enabled = true
+texture = ExtResource("3_381k5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Area2D"]
+modulate = Color(0, 1, 0.54902, 0.392157)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_381k5")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

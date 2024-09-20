@@ -12,6 +12,7 @@ var speed := 20
 var teleportLaser := false
 var cast_point = null
 var laser2 = null
+var direction = Vector2(0,0)
 
 var is_casting: bool = false:
 	set(value):
@@ -29,7 +30,8 @@ var is_casting: bool = false:
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	is_casting = false
+	is_casting = true
+	direction = laser.target_position.normalized()
 	
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -53,6 +55,7 @@ func _process(delta):
 		collision_particles.emitting = false
 		
 	
+	
 	if is_colliding():
 		#find the collisoin point and set cast point to it
 		cast_point = to_local(get_collision_point())
@@ -61,15 +64,15 @@ func _process(delta):
 		#adding collision particles position
 		collision_particles.position = cast_point
 		
+		var collision_normal = laser.get_collision_normal()
+		print("Collision normal: ", collision_normal)
+		print("direction", direction)
 		
-		if get_collider().is_in_group("teleport"):
-			teleportLaser = true
-	
-		if !get_collider().is_in_group("teleport"):
-			teleportLaser = false
+		#laser.target_position = direction.reflect(collision_normal)
+		#laser.target_position = Vector2(-200,0)
+		print("laser direction", laser.target_position)
 		
 		
-
 	print(teleportLaser)
 		
 	if not is_colliding():

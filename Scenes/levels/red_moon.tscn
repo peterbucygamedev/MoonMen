@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cy7ca26u4m077"]
+[gd_scene load_steps=47 format=3 uid="uid://cy7ca26u4m077"]
 
 [ext_resource type="PackedScene" uid="uid://cgly5n0yo2owa" path="res://Scenes/tiles/sacred_tile_v_red.tscn" id="1_mbr82"]
 [ext_resource type="PackedScene" uid="uid://dnci37okrkx0y" path="res://Scenes/tiles/sacred_tile_h_red.tscn" id="2_f0a1u"]
@@ -17,13 +17,14 @@
 [ext_resource type="PackedScene" uid="uid://dswlsst771n2e" path="res://Scenes/chainLaterns/chain_latern_red.tscn" id="16_taero"]
 [ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="17_h7ho1"]
 [ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="17_ldbgr"]
-[ext_resource type="Script" path="res://spawns.gd" id="18_s04uy"]
+[ext_resource type="Script" path="res://Scripts/spawns.gd" id="18_s04uy"]
 [ext_resource type="PackedScene" uid="uid://6bc2cawlcu8j" path="res://Scenes/powerUps/add_ammo_capacity.tscn" id="19_3kh5d"]
 [ext_resource type="PackedScene" uid="uid://djdurr0u8bais" path="res://Scenes/powerUps/add_bullet_speed.tscn" id="20_orobw"]
-[ext_resource type="PackedScene" uid="uid://behbrcginvsqp" path="res://Scenes/powerUps/add_damage_to_laser.tscn" id="21_ir8lb"]
+[ext_resource type="PackedScene" uid="uid://behbrcginvsqp" path="res://Scenes/powerUps/add_damage.tscn" id="21_ir8lb"]
 [ext_resource type="PackedScene" uid="uid://claacv6i7iql2" path="res://Scenes/powerUps/add_health_capacity.tscn" id="22_u5um6"]
 [ext_resource type="PackedScene" uid="uid://dwpptdobbadjr" path="res://Scenes/powerUps/add_reflecting_to_laser.tscn" id="23_gfee1"]
-[ext_resource type="PackedScene" uid="uid://cl5keqdkt1txa" path="res://Scenes/powerUps/full_auto.tscn" id="24_fc1og"]
+[ext_resource type="PackedScene" uid="uid://cl5keqdkt1txa" path="res://Scenes/powerUps/increase_fire_rate.tscn" id="24_fc1og"]
+[ext_resource type="PackedScene" uid="uid://ddjnfktckntkc" path="res://Scenes/pause_menu.tscn" id="25_7kj0y"]
 
 [sub_resource type="GDScript" id="GDScript_1b0na"]
 script/source = "extends Node
@@ -4868,6 +4869,8 @@ wait_time = 10.0
 one_shot = true
 
 [node name="addFullAuto" parent="powerUpSpawnPoints/fullAutoSpawn" instance=ExtResource("24_fc1og")]
+
+[node name="pauseMenu" parent="." instance=ExtResource("25_7kj0y")]
 
 [connection signal="body_entered" from="bottomArea" to="bottomArea" method="_on_body_entered"]
 [connection signal="body_exited" from="bottomArea" to="bottomArea" method="_on_body_exited"]

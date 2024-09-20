@@ -26,6 +26,7 @@ script = SubResource("GDScript_wkb0b")
 shape = SubResource("RectangleShape2D_2afgt")
 
 [node name="PointLight2D" type="PointLight2D" parent="Area2D"]
+visible = false
 scale = Vector2(0.2, 0.2)
 energy = 2.0
 shadow_enabled = true
@@ -34,5 +35,10 @@ texture = ExtResource("1_cyxvo")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_wenym")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cyxvo")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

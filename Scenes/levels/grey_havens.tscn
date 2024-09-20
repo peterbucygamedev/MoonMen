@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bvkat36vnmays"]
+[gd_scene load_steps=47 format=3 uid="uid://bvkat36vnmays"]
 
 [ext_resource type="Script" path="res://Scripts/grey_havens.gd" id="1_c6lqn"]
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="2_1f1yp"]
@@ -15,16 +15,17 @@
 [ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="15_ord8h"]
 [ext_resource type="Script" path="res://Scripts/teleporter2.gd" id="16_jy316"]
 [ext_resource type="PackedScene" uid="uid://jas1sb5s4nr4" path="res://Scenes/power_crate.tscn" id="18_t7th5"]
-[ext_resource type="Script" path="res://spawns.gd" id="18_x1x8r"]
+[ext_resource type="Script" path="res://Scripts/spawns.gd" id="18_x1x8r"]
 [ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="19_1gqmk"]
 [ext_resource type="PackedScene" uid="uid://6bc2cawlcu8j" path="res://Scenes/powerUps/add_ammo_capacity.tscn" id="19_6y1dr"]
 [ext_resource type="PackedScene" uid="uid://djdurr0u8bais" path="res://Scenes/powerUps/add_bullet_speed.tscn" id="20_lerkn"]
-[ext_resource type="PackedScene" uid="uid://behbrcginvsqp" path="res://Scenes/powerUps/add_damage_to_laser.tscn" id="21_urwba"]
+[ext_resource type="PackedScene" uid="uid://behbrcginvsqp" path="res://Scenes/powerUps/add_damage.tscn" id="21_urwba"]
 [ext_resource type="PackedScene" uid="uid://claacv6i7iql2" path="res://Scenes/powerUps/add_health_capacity.tscn" id="22_6qgt4"]
 [ext_resource type="PackedScene" uid="uid://dwpptdobbadjr" path="res://Scenes/powerUps/add_reflecting_to_laser.tscn" id="23_fehfa"]
 [ext_resource type="PackedScene" uid="uid://dvttnjslvlsox" path="res://Scenes/pickUps/bouncers_pickup.tscn" id="24_5bj82"]
-[ext_resource type="PackedScene" uid="uid://cl5keqdkt1txa" path="res://Scenes/powerUps/full_auto.tscn" id="24_npuvq"]
+[ext_resource type="PackedScene" uid="uid://cl5keqdkt1txa" path="res://Scenes/powerUps/increase_fire_rate.tscn" id="24_npuvq"]
 [ext_resource type="PackedScene" uid="uid://clx4kf33gwkty" path="res://Scenes/pickUps/death_lasers_pickup.tscn" id="25_ti5ov"]
+[ext_resource type="PackedScene" uid="uid://ddjnfktckntkc" path="res://Scenes/pause_menu.tscn" id="26_d3ceq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2eiyb"]
 
@@ -4720,6 +4721,8 @@ position = Vector2(-250, 286)
 
 [node name="deathLasersPickup" parent="." instance=ExtResource("25_ti5ov")]
 position = Vector2(250, 286)
+
+[node name="pauseMenu" parent="." instance=ExtResource("26_d3ceq")]
 
 [connection signal="body_entered" from="bottomArea" to="bottomArea" method="_on_body_entered"]
 [connection signal="body_exited" from="bottomArea" to="bottomArea" method="_on_body_exited"]

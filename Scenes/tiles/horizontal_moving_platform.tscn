@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0ew8v3pf54we"]
+
+[ext_resource type="PackedScene" uid="uid://dq68fw1fe1tiw" path="res://Scenes/tiles/sacred_tile_s_grey.tscn" id="1_urrrc"]
+[ext_resource type="Script" path="res://Scenes/tiles/sacred_tile_s_grey.gd" id="2_svjfd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qu4ok"]
+
+[node name="horizontalMovingPlatform" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="sacredTileSmallGrey" parent="Node2D" instance=ExtResource("1_urrrc")]
+position = Vector2(-122, -107)
+script = ExtResource("2_svjfd")
+
+[node name="right" type="RayCast2D" parent="Node2D/sacredTileSmallGrey"]
+target_position = Vector2(36, 0)
+collision_mask = 524288
+
+[node name="left" type="RayCast2D" parent="Node2D/sacredTileSmallGrey"]
+target_position = Vector2(-36, 0)
+collision_mask = 524288
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+position = Vector2(-124, -107)
+collision_layer = 524288
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2(208, 0)
+shape = SubResource("RectangleShape2D_qu4ok")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Node2D"]
+position = Vector2(-532, -108)
+collision_layer = 524288
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_qu4ok")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c54kddm0bohv3"]
+[gd_scene load_steps=32 format=3 uid="uid://c54kddm0bohv3"]
 
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="1_2r468"]
 [ext_resource type="PackedScene" uid="uid://mh5sd6p1r18b" path="res://Scenes/tiles/sacred_tile_s_green.tscn" id="2_1g252"]
@@ -10,15 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://ccnhd5mmxx2eu" path="res://Scenes/tiles/sacred_tile_v_green.tscn" id="8_x1tp5"]
 [ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="9_w0jwv"]
 [ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="10_0x3lv"]
-[ext_resource type="Script" path="res://spawns.gd" id="11_edpft"]
 [ext_resource type="PackedScene" uid="uid://6bc2cawlcu8j" path="res://Scenes/powerUps/add_ammo_capacity.tscn" id="12_3umgt"]
+[ext_resource type="Script" path="res://Scripts/spawns.gd" id="12_14q7k"]
 [ext_resource type="PackedScene" uid="uid://djdurr0u8bais" path="res://Scenes/powerUps/add_bullet_speed.tscn" id="13_5wh5q"]
-[ext_resource type="PackedScene" uid="uid://behbrcginvsqp" path="res://Scenes/powerUps/add_damage_to_laser.tscn" id="14_aqcxp"]
+[ext_resource type="PackedScene" uid="uid://behbrcginvsqp" path="res://Scenes/powerUps/add_damage.tscn" id="14_aqcxp"]
 [ext_resource type="PackedScene" uid="uid://claacv6i7iql2" path="res://Scenes/powerUps/add_health_capacity.tscn" id="15_bkcwy"]
 [ext_resource type="PackedScene" uid="uid://dwpptdobbadjr" path="res://Scenes/powerUps/add_reflecting_to_laser.tscn" id="16_ja4ds"]
-[ext_resource type="PackedScene" uid="uid://cl5keqdkt1txa" path="res://Scenes/powerUps/full_auto.tscn" id="17_cwr00"]
+[ext_resource type="PackedScene" uid="uid://cl5keqdkt1txa" path="res://Scenes/powerUps/increase_fire_rate.tscn" id="17_cwr00"]
 [ext_resource type="PackedScene" uid="uid://dvttnjslvlsox" path="res://Scenes/pickUps/bouncers_pickup.tscn" id="18_37cnu"]
 [ext_resource type="PackedScene" uid="uid://clx4kf33gwkty" path="res://Scenes/pickUps/death_lasers_pickup.tscn" id="19_0ih8f"]
+[ext_resource type="PackedScene" uid="uid://ddjnfktckntkc" path="res://Scenes/pause_menu.tscn" id="20_kmrkb"]
 
 [sub_resource type="GDScript" id="GDScript_hbe50"]
 script/source = "extends Node
@@ -4036,6 +4037,36 @@ func _process(delta):
 	position.y += direction * speed * delta
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3alkr"]
+
+[sub_resource type="GDScript" id="GDScript_ont1s"]
+script/source = "extends StaticBody2D
+@onready var up = $up
+@onready var down = $down
+
+var direction = 1
+var speed = 100
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if up.is_colliding():
+		direction = 1
+
+	if down.is_colliding():
+		direction = -1
+		
+	print(position.y)
+	
+		
+	position.y += direction * speed * delta
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ay6xg"]
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bvexk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_01vc0"]
@@ -4120,37 +4151,6 @@ position = Vector2(245, 162)
 
 [node name="sacredMovingTiles" type="Node2D" parent="."]
 
-[node name="horizontalMovingPlatform" type="Node2D" parent="sacredMovingTiles"]
-
-[node name="sacredTileSGreen" parent="sacredMovingTiles/horizontalMovingPlatform" instance=ExtResource("2_1g252")]
-position = Vector2(-321, -108)
-script = ExtResource("3_nq3lr")
-
-[node name="right" type="RayCast2D" parent="sacredMovingTiles/horizontalMovingPlatform/sacredTileSGreen"]
-target_position = Vector2(36, 0)
-collision_mask = 524288
-
-[node name="left" type="RayCast2D" parent="sacredMovingTiles/horizontalMovingPlatform/sacredTileSGreen"]
-target_position = Vector2(-36, 0)
-collision_mask = 524288
-
-[node name="StaticBody2D" type="StaticBody2D" parent="sacredMovingTiles/horizontalMovingPlatform"]
-position = Vector2(-124, -107)
-collision_layer = 524288
-collision_mask = 524288
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="sacredMovingTiles/horizontalMovingPlatform/StaticBody2D"]
-position = Vector2(208, 0)
-shape = SubResource("RectangleShape2D_qu4ok")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="sacredMovingTiles/horizontalMovingPlatform"]
-position = Vector2(-532, -108)
-collision_layer = 524288
-collision_mask = 524288
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="sacredMovingTiles/horizontalMovingPlatform/StaticBody2D2"]
-shape = SubResource("RectangleShape2D_qu4ok")
-
 [node name="horizontalMovingPlatform2" type="Node2D" parent="sacredMovingTiles"]
 position = Vector2(388, 327)
 
@@ -4212,38 +4212,6 @@ collision_mask = 524288
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sacredMovingTiles/horizontalMovingPlatform3/StaticBody2D2"]
 position = Vector2(-206, 0)
-shape = SubResource("RectangleShape2D_qu4ok")
-
-[node name="verticalMovingPlatform" type="Node2D" parent="sacredMovingTiles"]
-position = Vector2(-125, 187)
-
-[node name="sacredTileSGreen2" parent="sacredMovingTiles/verticalMovingPlatform" instance=ExtResource("2_1g252")]
-position = Vector2(-88, 73)
-script = SubResource("GDScript_wgr6w")
-
-[node name="up" type="RayCast2D" parent="sacredMovingTiles/verticalMovingPlatform/sacredTileSGreen2"]
-target_position = Vector2(0, -11)
-collision_mask = 524288
-
-[node name="down" type="RayCast2D" parent="sacredMovingTiles/verticalMovingPlatform/sacredTileSGreen2"]
-target_position = Vector2(0, 13)
-collision_mask = 524288
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="sacredMovingTiles/verticalMovingPlatform"]
-position = Vector2(-88, -224)
-collision_layer = 524288
-collision_mask = 524288
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="sacredMovingTiles/verticalMovingPlatform/StaticBody2D3"]
-position = Vector2(0, -190)
-shape = SubResource("RectangleShape2D_qu4ok")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="sacredMovingTiles/verticalMovingPlatform"]
-position = Vector2(-89, 110)
-collision_layer = 524288
-collision_mask = 524288
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="sacredMovingTiles/verticalMovingPlatform/StaticBody2D4"]
 shape = SubResource("RectangleShape2D_qu4ok")
 
 [node name="verticalMovingPlatform2" type="Node2D" parent="sacredMovingTiles"]
@@ -4308,6 +4276,68 @@ collision_mask = 524288
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sacredMovingTiles/verticalMovingPlatform3/StaticBody2D4"]
 shape = SubResource("RectangleShape2D_qu4ok")
+
+[node name="Node2D" type="Node2D" parent="sacredMovingTiles"]
+
+[node name="sacredTileSGreen" parent="sacredMovingTiles/Node2D" instance=ExtResource("2_1g252")]
+position = Vector2(-321, -108)
+script = ExtResource("3_nq3lr")
+
+[node name="right" type="RayCast2D" parent="sacredMovingTiles/Node2D/sacredTileSGreen"]
+target_position = Vector2(36, 0)
+collision_mask = 524288
+
+[node name="left" type="RayCast2D" parent="sacredMovingTiles/Node2D/sacredTileSGreen"]
+target_position = Vector2(-36, 0)
+collision_mask = 524288
+
+[node name="StaticBody2D" type="StaticBody2D" parent="sacredMovingTiles/Node2D"]
+position = Vector2(-124, -107)
+collision_layer = 524288
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sacredMovingTiles/Node2D/StaticBody2D"]
+position = Vector2(208, 0)
+shape = SubResource("RectangleShape2D_3alkr")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="sacredMovingTiles/Node2D"]
+position = Vector2(-532, -108)
+collision_layer = 524288
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sacredMovingTiles/Node2D/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_3alkr")
+
+[node name="Node2D2" type="Node2D" parent="sacredMovingTiles"]
+
+[node name="sacredTileSGreen2" parent="sacredMovingTiles/Node2D2" instance=ExtResource("2_1g252")]
+position = Vector2(-88, 73)
+script = SubResource("GDScript_ont1s")
+
+[node name="up" type="RayCast2D" parent="sacredMovingTiles/Node2D2/sacredTileSGreen2"]
+target_position = Vector2(0, -11)
+collision_mask = 524288
+
+[node name="down" type="RayCast2D" parent="sacredMovingTiles/Node2D2/sacredTileSGreen2"]
+target_position = Vector2(0, 13)
+collision_mask = 524288
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="sacredMovingTiles/Node2D2"]
+position = Vector2(-88, -224)
+collision_layer = 524288
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sacredMovingTiles/Node2D2/StaticBody2D3"]
+position = Vector2(0, -190)
+shape = SubResource("RectangleShape2D_ay6xg")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="sacredMovingTiles/Node2D2"]
+position = Vector2(-89, 110)
+collision_layer = 524288
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sacredMovingTiles/Node2D2/StaticBody2D4"]
+shape = SubResource("RectangleShape2D_ay6xg")
 
 [node name="PointLight2D3" type="PointLight2D" parent="."]
 position = Vector2(13, -28)
@@ -4384,7 +4414,7 @@ autoplay = true
 bus = &"Music"
 
 [node name="powerUpSpawnPoints" type="Node2D" parent="."]
-script = ExtResource("11_edpft")
+script = ExtResource("12_14q7k")
 
 [node name="ammoSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
 position = Vector2(-321, -122)
@@ -4445,6 +4475,8 @@ position = Vector2(-315, -11)
 
 [node name="deathLasersPickup" parent="." instance=ExtResource("19_0ih8f")]
 position = Vector2(336, 203)
+
+[node name="pauseMenu" parent="." instance=ExtResource("20_kmrkb")]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

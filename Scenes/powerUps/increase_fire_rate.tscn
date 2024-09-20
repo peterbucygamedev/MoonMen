@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl5keqdkt1txa"]
+
+[ext_resource type="Script" path="res://Scripts/fullAuto.gd" id="1_xs021"]
+[ext_resource type="Texture2D" uid="uid://nyj5ufkynbvf" path="res://Assets/spriteSheets/pixil-frame-0 - 2024-08-28T103630.637.png" id="2_o7svj"]
+[ext_resource type="Texture2D" uid="uid://dxsdfcd7lo10u" path="res://Assets/lightShapes/pixil-frame-0 - 2024-09-02T111026.793.png" id="3_xxbge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_io6b5"]
+size = Vector2(20, 6)
+
+[node name="increaseFireRate" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_xs021")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_io6b5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("2_o7svj")
+region_enabled = true
+region_rect = Rect2(56, 39, 11, 2)
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D"]
+visible = false
+scale = Vector2(0.2, 0.2)
+color = Color(0, 1, 0.254902, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("3_xxbge")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Area2D"]
+modulate = Color(0, 1, 0.254902, 0.392157)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_xxbge")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

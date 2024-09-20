@@ -137,7 +137,7 @@ func shoot() -> void:
 		bullet_sfx.play()
 		p1Ammo -= b1.ammoCost
 		b1.speed = p1BulletSpeed
-		b1.damage *= p1Damage
+		b1.damage *= damage
 		player.owner.add_child(b1)
 		b1.transform = bullet_spawn.global_transform
 		if bulletTracker != 3:
@@ -154,7 +154,7 @@ func shoot() -> void:
 		bullet_sfx.play()
 		p2Ammo -= b2.ammoCost
 		b2.speed = p2BulletSpeed
-		b2.damage *= p2Damage
+		b2.damage *= damage
 		player.owner.add_child(b2)
 		b2.transform = bullet_spawn.global_transform
 		if bulletTracker != 3:
@@ -166,13 +166,17 @@ func shoot() -> void:
 		var b3 = GameManager.bullets[bulletTracker].instantiate()
 		if b3 == GameManager.bullets[3].instantiate():
 			b3.orbNumber = playerNumber
+			print("does equal")
+			orbArray.append(b3)
 		bullet_sfx.play()
 		p3Ammo -= b3.ammoCost
 		b3.speed = p3BulletSpeed
-		b3.damage = p3Damage
+		b3.damage = damage
 		player.owner.add_child(b3)
 		b3.transform = bullet_spawn.global_transform
-		b3.apply_impulse(weapon.transform.x * b3.speed, Vector2(0,0))
+		if bulletTracker != 3:
+			print("doesn't equal")
+			b3.apply_impulse(weapon.transform.x * b3.speed, Vector2(0,0))
 	
 
 		
@@ -180,23 +184,28 @@ func shoot() -> void:
 		var b4 = GameManager.bullets[bulletTracker].instantiate()
 		if b4 == GameManager.bullets[3].instantiate():
 			b4.orbNumber = playerNumber
+			print("does equal")
+			orbArray.append(b4)
 		bullet_sfx.play()
 		p4Ammo -= b4.ammoCost
 		b4.speed = p4BulletSpeed
-		b4.damage = p4Damage
+		b4.damage = damage
 		player.owner.add_child(b4)
 		b4.transform = bullet_spawn.global_transform
-		b4.apply_impulse(weapon.transform.x * b4.speed, Vector2(0,0))
+		if bulletTracker != 3:
+			print("doesn't equal")
+			b4.apply_impulse(weapon.transform.x * b4.speed, Vector2(0,0))
 		
 
 		
 func _process(delta) -> void:
 	
-	print("orbArray", orbArray)
-	if !orbArray.is_empty() and orbArray[0] == null:
-		print("orbArray = null")
-	print(GameManager.bullets)
-	print("health", health)
+	print("damage", damage)
+	#print("orbArray", orbArray)
+	#if !orbArray.is_empty() and orbArray[0] == null:
+	#	print("orbArray = null")
+	#print(GameManager.bullets)
+	#print("health", health)
 	lives_number.text = str(lives)
 	health_bar.value = health
 	health_bar_2.value = health

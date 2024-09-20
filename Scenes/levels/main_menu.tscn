@@ -9,14 +9,8 @@
 
 [sub_resource type="GDScript" id="GDScript_j70iy"]
 script/source = "extends Button
-const MOON_SLAYER = preload(\"res://Scenes/levels/moon_slayer.tscn\")
-
-func _ready():
-	grab_focus()
-	
 func _on_pressed():
-	GameManager.numberOfPlayers = 0
-	get_tree().change_scene_to_file(\"res://Scenes/levels/moon_slayer.tscn\")
+	get_tree().quit()
 "
 
 [sub_resource type="GDScript" id="GDScript_g5cey"]
@@ -3909,7 +3903,19 @@ theme_override_colors/font_hover_color = Color(0, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.2484, 0.2484, 0.2484, 1)
 theme_override_colors/font_outline_color = Color(0.0646965, 0.0646966, 0.0646965, 1)
 theme_override_constants/outline_size = 2
-text = "Start"
+text = "Start Again"
+script = SubResource("GDScript_j70iy")
+
+[node name="exit" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.251874, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.2484, 0.2484, 0.2484, 1)
+theme_override_colors/font_outline_color = Color(0.0646965, 0.0646966, 0.0646965, 1)
+theme_override_constants/outline_size = 2
+text = "Exit"
 script = SubResource("GDScript_j70iy")
 
 [node name="startTeams" type="Button" parent="HBoxContainer"]
@@ -4110,7 +4116,8 @@ size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.299999, 0.276472, 0.259663, 1)
 theme_override_colors/font_shadow_color = Color(0.0418184, 0.0383034, 0.0296447, 1)
 theme_override_font_sizes/font_size = 100
-text = "MoonMen"
+text = "The End(
+for now)"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -4121,6 +4128,7 @@ color = Color(0, 1, 1, 1)
 texture = ExtResource("2_j0c8i")
 
 [connection signal="pressed" from="HBoxContainer/start" to="HBoxContainer/start" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/exit" to="HBoxContainer/exit" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer/startTeams" to="HBoxContainer/startTeams" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer/controls" to="HBoxContainer/controls" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer/resolution" to="HBoxContainer/resolution" method="_on_pressed"]

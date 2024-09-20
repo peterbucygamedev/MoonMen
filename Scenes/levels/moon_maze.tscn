@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://ddr1bha41i2sx"]
+[gd_scene load_steps=57 format=3 uid="uid://ddr1bha41i2sx"]
 
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="1_7c3vw"]
 [ext_resource type="Script" path="res://Scripts/bottomArea.gd" id="2_0eotd"]
@@ -15,15 +15,16 @@
 [ext_resource type="PackedScene" uid="uid://cghq4buv1fica" path="res://Scenes/tiles/sacred_tile_h_blue.tscn" id="13_b8c5b"]
 [ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="15_1up2j"]
 [ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="15_t8q8i"]
-[ext_resource type="Script" path="res://spawns.gd" id="16_228tq"]
+[ext_resource type="Script" path="res://Scripts/spawns.gd" id="16_228tq"]
 [ext_resource type="PackedScene" uid="uid://6bc2cawlcu8j" path="res://Scenes/powerUps/add_ammo_capacity.tscn" id="17_w8on0"]
 [ext_resource type="PackedScene" uid="uid://djdurr0u8bais" path="res://Scenes/powerUps/add_bullet_speed.tscn" id="18_4vqq1"]
-[ext_resource type="PackedScene" uid="uid://behbrcginvsqp" path="res://Scenes/powerUps/add_damage_to_laser.tscn" id="19_wxgev"]
+[ext_resource type="PackedScene" uid="uid://behbrcginvsqp" path="res://Scenes/powerUps/add_damage.tscn" id="19_wxgev"]
 [ext_resource type="PackedScene" uid="uid://claacv6i7iql2" path="res://Scenes/powerUps/add_health_capacity.tscn" id="20_cauqg"]
 [ext_resource type="PackedScene" uid="uid://dwpptdobbadjr" path="res://Scenes/powerUps/add_reflecting_to_laser.tscn" id="21_s26bi"]
-[ext_resource type="PackedScene" uid="uid://cl5keqdkt1txa" path="res://Scenes/powerUps/full_auto.tscn" id="22_bwyy1"]
+[ext_resource type="PackedScene" uid="uid://cl5keqdkt1txa" path="res://Scenes/powerUps/increase_fire_rate.tscn" id="22_bwyy1"]
 [ext_resource type="PackedScene" uid="uid://dvttnjslvlsox" path="res://Scenes/pickUps/bouncers_pickup.tscn" id="23_lwmqi"]
 [ext_resource type="PackedScene" uid="uid://clx4kf33gwkty" path="res://Scenes/pickUps/death_lasers_pickup.tscn" id="24_veddv"]
+[ext_resource type="PackedScene" uid="uid://ddjnfktckntkc" path="res://Scenes/pause_menu.tscn" id="25_s5kij"]
 
 [sub_resource type="GDScript" id="GDScript_2ocff"]
 script/source = "extends Node
@@ -4891,6 +4892,8 @@ position = Vector2(-503, 99)
 
 [node name="deathLasersPickup" parent="." instance=ExtResource("24_veddv")]
 position = Vector2(510, 99)
+
+[node name="pauseMenu" parent="." instance=ExtResource("25_s5kij")]
 
 [connection signal="body_entered" from="bottomArea" to="bottomArea" method="_on_body_entered"]
 [connection signal="body_exited" from="bottomArea" to="bottomArea" method="_on_body_exited"]

@@ -11,6 +11,11 @@ const BOUNCERS_PICKUP = preload("res://Scenes/pickUps/bouncers_pickup.tscn")
 @onready var death_laser_pickup_timer = $deathLaserSpawn/deathLaserPickupTimer
 @onready var death_lasers_pickup = $"../deathLaserSpawn/deathLasersPickup"
 const DEATH_LASERS_PICKUP = preload("res://Scenes/pickUps/death_lasers_pickup.tscn")
+@onready var the_orb_spawn = $theOrbSpawn
+@onready var the_orb_pick_up_timer = $theOrbSpawn/theOrbPickUpTimer
+@onready var the_orb_pick_up = $theOrbSpawn/theOrbPickUp
+const THE_ORB_PICK_UP = preload("res://Scenes/pickUps/the_orb_pick_up.tscn")
+
 
 func _process(delta):
 	print ("bulletPickUp", bullet_pick_up)
@@ -27,6 +32,11 @@ func _process(delta):
 	if  death_lasers_pickup == null:
 		if death_laser_pickup_timer.is_stopped():
 			death_laser_pickup_timer.start()
+			
+	print ("the_orb_pick_up", the_orb_pick_up)
+	if  the_orb_pick_up == null:
+		if the_orb_pick_up_timer.is_stopped():
+			the_orb_pick_up_timer.start()
 			
 func _on_bullet_pick_up_timer_timeout():
 	var b = BULLET_PICKUP.instantiate()
@@ -48,3 +58,10 @@ func _on_death_laser_pickup_timer_timeout():
 	d.transform = death_laser_spawn.transform
 	death_lasers_pickup = d
 	#death_laser_pickup_timer.stop()
+	
+func _on_the_orb_pick_up_timer_timeout():
+	var t = THE_ORB_PICK_UP.instantiate()
+	add_child(t)
+	t.transform = the_orb_spawn.transform
+	the_orb_pick_up = t
+	#the_orb_pick_up_timer.stop()
