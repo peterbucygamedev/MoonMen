@@ -1,5 +1,6 @@
 extends Area2D
-@onready var full_auto = $".."
+@onready var increase_fire_rate = $".."
+
 
 
 func _on_body_entered(body):
@@ -10,6 +11,6 @@ func _on_body_entered(body):
 	#body.power_up_effect_2.show()
 	#if body.power_up.is_stopped():
 	#	body.power_up.start()
-		
-	full_auto.queue_free()
+	increase_fire_rate.queue_free()
+
 	

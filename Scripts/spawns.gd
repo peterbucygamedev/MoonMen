@@ -14,7 +14,7 @@ extends Node2D
 @onready var add_ammo = $ammoSpawn/addAmmo
 @onready var add_bullet_speed = $bulletSpeedSpawn/addBulletSpeed
 @onready var add_health_capacity = $healthSpawn/addHealthCapacity
-@onready var increase_fire_rate = $increaseFireRate/increaseFireRate
+@onready var increase_fire_rate = $increaseFireRateSpawn/increaseFireRate
 @onready var add_damage = $addDamageSpawn/addDamage
 
 
@@ -25,6 +25,9 @@ const INCREASE_FIRE_RATE = preload("res://Scenes/powerUps/increase_fire_rate.tsc
 const ADD_DAMAGE = preload("res://Scenes/powerUps/add_damage.tscn")
 
 func _process(delta):
+	
+	print("testing", increase_fire_rate)
+	print("testing2", add_ammo)
 	if add_ammo == null:
 		if ammo_timer.is_stopped():
 			ammo_timer.start()
@@ -40,6 +43,10 @@ func _process(delta):
 	if increase_fire_rate == null:
 		if increase_fire_rate_timer.is_stopped():
 			increase_fire_rate_timer.start()
+			
+	if add_damage == null:
+		if add_damage_timer.is_stopped():
+			add_damage_timer.start()
 	
 func _on_ammo_timer_timeout():
 	var a = ADD_AMMO_CAPACITY.instantiate()

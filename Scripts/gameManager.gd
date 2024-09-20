@@ -38,7 +38,8 @@ var bullet = preload("res://Scenes/pickUps/bullet.tscn")
 var bouncer = preload("res://Scenes/pickUps/bouncers.tscn")
 var death_lasers = preload("res://Scenes/pickUps/death_lasers.tscn")
 var the_orb = preload("res://Scenes/pickUps/the_orb.tscn")
-var bullets := [bullet, bouncer, death_lasers, the_orb]
+const stealer = preload("res://Scenes/stealer.tscn")
+var bullets := [bullet, bouncer, death_lasers, the_orb, stealer]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

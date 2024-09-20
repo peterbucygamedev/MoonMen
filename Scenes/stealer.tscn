@@ -1,0 +1,147 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtm5w180wvbij"]
+
+[ext_resource type="Texture2D" uid="uid://pes8ocjqq5wr" path="res://Assets/sprites/pixil-frame-0 - 2024-09-05T112355.324.png" id="1_rw3sj"]
+
+[sub_resource type="GDScript" id="GDScript_lgn7i"]
+script/source = "extends RigidBody2D
+@onready var timer = $Timer
+@onready var area_timer = $areaTimer
+@onready var area_2d = $Area2D
+var damage := 1
+var tracker := 4
+var ammoCost := 10
+var speed := 1000
+var collided = false
+var collidedTracker := 0
+var collidedHealth := 0
+var collidedAmmo := 0
+var playerStealing := []
+
+func _ready():
+	set_continuous_collision_detection_mode(1)
+	\"\"\"set_inertia(200)
+	gravity_scale = 1
+	center_of_mass_mode = 1
+	center_of_mass = Vector2(0, 0)\"\"\"
+	area_2d.get_node(\"CollisionShape2D\").disabled = true
+	timer.start()
+	area_timer.start()
+	
+	
+func _process(delta):
+	print(\"playerStealing\", playerStealing)
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group(\"ground\"):
+		queue_free()
+	if body.is_in_group(\"players\"):
+		collided = true
+		print(\"hit player\")
+		
+		body.health -= damage
+		body.health_bar.show()
+		if body.health_bar_timer.is_stopped():
+			body.health_bar_timer.start()
+
+		playerStealing[0].damage = body.damage
+		playerStealing[0].bulletTracker = body.bulletTracker
+		playerStealing[0].ammo_bar.max_value = body.ammo_bar.max_value
+		playerStealing[0].health = body.health
+		playerStealing[0].maxHealth = body.maxHealth
+		playerStealing[0].health_bar.max_value = body.health_bar.max_value
+		playerStealing[0].health_bar_2.max_value = body.health_bar_2.max_value
+		playerStealing[0].shoot_next_timer.wait_time = body.shoot_next_timer.wait_time
+
+
+		for b in range(4):
+			if body.playerNumber == b:
+				body.ammo_bar.max_value = 10
+				body.shoot_next_timer.wait_time = 0.2
+				body.damage = 0
+				body.health = 10
+				body.maxHealth = 10
+				body.health_bar.max_value = 10
+				body.health_bar_2.max_value = 10
+				body.bulletTracker = 0
+				
+				if b == 0:
+					body.p1BulletSpeed = 1000
+					body.p1Ammo = 10
+					body.p1MaxAmmo = 10
+					
+				if b == 1:
+					#bulletSpeed = body.p2BulletSpeed
+					#ammo = body.p2Ammo
+					#maxAmmo = body.p2MaxAmmo
+					body.p2BulletSpeed = 1000
+					body.p2Ammo = 10
+					body.p2MaxAmmo = 10
+					
+				if b == 2:
+					body.p3BulletSpeed = 1000
+					body.p3Ammo = 10
+					body.p3MaxAmmo = 10
+
+				if b == 3:
+					body.p4BulletSpeed = 1000
+					body.p4Ammo = 10
+					body.p4MaxAmmo = 10
+
+					
+		
+		queue_free()
+	if body.is_in_group(\"shield\"):
+		print(\"hit shield\")
+		body.health -= damage
+		queue_free()
+
+func _on_timer_timeout():
+	queue_free()
+
+func _on_area_timer_timeout():
+	area_2d.get_node(\"CollisionShape2D\").disabled = false
+
+
+func _on_area_2d_area_entered(area):
+	if area.is_in_group(\"teleport\"):
+		if timer.is_stopped():
+			timer.start()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_146ru"]
+size = Vector2(6, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ydga"]
+size = Vector2(10, 3)
+
+[node name="stealer" type="RigidBody2D"]
+script = SubResource("GDScript_lgn7i")
+
+[node name="stealerCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_146ru")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(-2.38419e-07, 0)
+scale = Vector2(0.4, 1)
+texture = ExtResource("1_rw3sj")
+region_enabled = true
+region_rect = Rect2(2, 1, 20, 2)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="areaTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_7ydga")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="areaTimer" to="." method="_on_area_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

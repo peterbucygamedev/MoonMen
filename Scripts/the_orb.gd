@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var speed = 200
+var speed = 0
 var orbNumber = 0
 var ammoCost = 10
 var damage = 5

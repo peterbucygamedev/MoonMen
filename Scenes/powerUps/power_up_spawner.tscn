@@ -10,10 +10,11 @@
 [node name="powerUpSpawner" type="Node2D"]
 
 [node name="powerUpSpawnPoints" type="Node2D" parent="."]
+position = Vector2(-1, 22)
 script = ExtResource("1_4c5qg")
 
 [node name="ammoSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(-57, 0)
+position = Vector2(-91, 1)
 
 [node name="ammoTimer" type="Timer" parent="powerUpSpawnPoints/ammoSpawn"]
 wait_time = 20.0
@@ -22,7 +23,7 @@ one_shot = true
 [node name="addAmmo" parent="powerUpSpawnPoints/ammoSpawn" instance=ExtResource("2_turgd")]
 
 [node name="bulletSpeedSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(-32, 0)
+position = Vector2(-43, 0)
 
 [node name="bulletSpeedTimer" type="Timer" parent="powerUpSpawnPoints/bulletSpeedSpawn"]
 wait_time = 20.0
@@ -31,7 +32,6 @@ one_shot = true
 [node name="addBulletSpeed" parent="powerUpSpawnPoints/bulletSpeedSpawn" instance=ExtResource("3_4l22e")]
 
 [node name="healthSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(1, 0)
 
 [node name="healthTimer" type="Timer" parent="powerUpSpawnPoints/healthSpawn"]
 wait_time = 20.0
@@ -40,7 +40,7 @@ one_shot = true
 [node name="addHealthCapacity" parent="powerUpSpawnPoints/healthSpawn" instance=ExtResource("5_l1t5w")]
 
 [node name="increaseFireRateSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(24, 0)
+position = Vector2(40, 0)
 
 [node name="increaseFireRateTimer" type="Timer" parent="powerUpSpawnPoints/increaseFireRateSpawn"]
 wait_time = 20.0
@@ -49,14 +49,13 @@ one_shot = true
 [node name="increaseFireRate" parent="powerUpSpawnPoints/increaseFireRateSpawn" instance=ExtResource("7_1xrge")]
 
 [node name="addDamageSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(24, 0)
+position = Vector2(86, 1)
 
 [node name="addDamageTimer" type="Timer" parent="powerUpSpawnPoints/addDamageSpawn"]
 wait_time = 20.0
 one_shot = true
 
 [node name="addDamage" parent="powerUpSpawnPoints/addDamageSpawn" instance=ExtResource("6_bpwup")]
-position = Vector2(25, 0)
 
 [connection signal="timeout" from="powerUpSpawnPoints/ammoSpawn/ammoTimer" to="powerUpSpawnPoints" method="_on_ammo_timer_timeout"]
 [connection signal="timeout" from="powerUpSpawnPoints/bulletSpeedSpawn/bulletSpeedTimer" to="powerUpSpawnPoints" method="_on_bullet_speed_timer_timeout"]

@@ -87,7 +87,7 @@ var burst = false
 var shootNext := true
 var burstNext := true
 var burstCounter := 0
-var bulletTracker := 0
+var bulletTracker := 4
 var orbArray := []
 
 
@@ -134,9 +134,11 @@ func shoot() -> void:
 			b1.orbNumber = playerNumber
 			print("does equal")
 			orbArray.append(b1)
+		if bulletTracker == 4:
+			b1.playerStealing.append(player)
 		bullet_sfx.play()
 		p1Ammo -= b1.ammoCost
-		b1.speed = p1BulletSpeed
+		b1.speed += p1BulletSpeed
 		b1.damage *= damage
 		player.owner.add_child(b1)
 		b1.transform = bullet_spawn.global_transform
@@ -153,7 +155,7 @@ func shoot() -> void:
 			orbArray.append(b2)
 		bullet_sfx.play()
 		p2Ammo -= b2.ammoCost
-		b2.speed = p2BulletSpeed
+		b2.speed += p2BulletSpeed
 		b2.damage *= damage
 		player.owner.add_child(b2)
 		b2.transform = bullet_spawn.global_transform
@@ -170,7 +172,7 @@ func shoot() -> void:
 			orbArray.append(b3)
 		bullet_sfx.play()
 		p3Ammo -= b3.ammoCost
-		b3.speed = p3BulletSpeed
+		b3.speed += p3BulletSpeed
 		b3.damage = damage
 		player.owner.add_child(b3)
 		b3.transform = bullet_spawn.global_transform
@@ -188,7 +190,7 @@ func shoot() -> void:
 			orbArray.append(b4)
 		bullet_sfx.play()
 		p4Ammo -= b4.ammoCost
-		b4.speed = p4BulletSpeed
+		b4.speed += p4BulletSpeed
 		b4.damage = damage
 		player.owner.add_child(b4)
 		b4.transform = bullet_spawn.global_transform
@@ -433,6 +435,7 @@ func _on_player_1_timer_timeout() -> void:
 	#print("player1Reloaded")
 		p1Ammo = p1MaxAmmo
 		reload.hide()
+		
 func _on_player_2_timer_timeout()-> void:
 		p2Ammo = p2MaxAmmo
 		reload.hide()

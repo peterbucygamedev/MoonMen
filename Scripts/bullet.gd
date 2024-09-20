@@ -1,5 +1,5 @@
 extends RigidBody2D
-var speed = 2000
+var speed = 0
 var damage = 1
 var bulletNumber = 0
 @onready var timer = $Timer
