@@ -15,10 +15,10 @@ const DEATH_LASERS_PICKUP = preload("res://Scenes/pickUps/death_lasers_pickup.ts
 @onready var the_orb_pick_up_timer = $theOrbSpawn/theOrbPickUpTimer
 var the_orb_pick_up = null
 const THE_ORB_PICK_UP = preload("res://Scenes/pickUps/the_orb_pick_up.tscn")
-@onready var ginyu_gun_spawn = $ginyuGunSpawn
-@onready var ginyu_gun_pick_up_timer = $ginyuGunSpawn/ginyuGunPickUpTimer
-var ginyu_gun_pick_up = null
-const GINYU_GUN_PICK_UP = preload("res://Scenes/pickUps/ginyu_gun_pick_up.tscn")
+@onready var stealer_spawn = $stealerSpawn
+@onready var stealer_pick_up_timer = $stealerSpawn/stealerPickUpTimer
+var stealer_pick_up = null
+const STEALER_PICKUP = preload("res://Scenes/pickUps/stealer_pickup.tscn")
 
 
 func _ready():
@@ -49,13 +49,14 @@ func _ready():
 	t.transform = the_orb_spawn.transform
 	the_orb_pick_up = t
 	#the_orb_pick_up_timer.stop()
+	
+	var s = STEALER_PICKUP.instantiate()
+	add_child(s)
+	s.transform = stealer_spawn
+	stealer_pick_up = s
+	#stealer_pick_up_timer.stop()
 
 
-	var g = GINYU_GUN_PICK_UP.instantiate()
-	add_child(g)
-	g.transform = ginyu_gun_spawn.transform
-	the_orb_pick_up = g
-	#the_orb_pick_up_timer.stop()
 	
 	
 	
@@ -80,10 +81,12 @@ func _process(delta):
 		if the_orb_pick_up_timer.is_stopped():
 			the_orb_pick_up_timer.start()
 			
-	print ("the_orb_pick_up", the_orb_pick_up)
-	if  ginyu_gun_pick_up == null:
-		if ginyu_gun_pick_up_timer.is_stopped():
-			ginyu_gun_pick_up_timer.start()
+	print ("stealer_pick_up", stealer_pick_up)
+	if  stealer_pick_up == null:
+		if stealer_pick_up_timer.is_stopped():
+			stealer_pick_up_timer.start()
+			
+
 			
 func _on_bullet_pick_up_timer_timeout():
 	var b = BULLET_PICKUP.instantiate()
@@ -113,9 +116,9 @@ func _on_the_orb_pick_up_timer_timeout():
 	the_orb_pick_up = t
 	#the_orb_pick_up_timer.stop()
 
-func _on_ginyu_gun_pick_up_timer_timeout():
-	var g = GINYU_GUN_PICK_UP.instantiate()
-	add_child(g)
-	g.transform = ginyu_gun_spawn.transform
-	the_orb_pick_up = g
-	#the_orb_pick_up_timer.stop()
+func _on_stealer_pick_up_timer_timeout():
+	var s = STEALER_PICKUP.instantiate()
+	add_child(s)
+	s.transform = stealer_spawn
+	stealer_pick_up = s
+	#stealer_pick_up_timer.stop()

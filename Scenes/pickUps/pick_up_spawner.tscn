@@ -34,10 +34,10 @@ position = Vector2(61, 0)
 wait_time = 20.0
 one_shot = true
 
-[node name="ginyuGunSpawn" type="Marker2D" parent="pickUpSpawnPoints"]
+[node name="stealerSpawn" type="Marker2D" parent="pickUpSpawnPoints"]
 position = Vector2(118, 0)
 
-[node name="ginyuGunPickUpTimer" type="Timer" parent="pickUpSpawnPoints/ginyuGunSpawn"]
+[node name="stealerPickUpTimer" type="Timer" parent="pickUpSpawnPoints/stealerSpawn"]
 wait_time = 20.0
 one_shot = true
 
@@ -45,4 +45,4 @@ one_shot = true
 [connection signal="timeout" from="pickUpSpawnPoints/bouncerSpawn/bouncerPickUpTimer" to="pickUpSpawnPoints" method="_on_bouncer_pick_up_timer_timeout"]
 [connection signal="timeout" from="pickUpSpawnPoints/deathLaserSpawn/deathLaserPickupTimer" to="pickUpSpawnPoints" method="_on_death_laser_pickup_timer_timeout"]
 [connection signal="timeout" from="pickUpSpawnPoints/theOrbSpawn/theOrbPickUpTimer" to="pickUpSpawnPoints" method="_on_the_orb_pick_up_timer_timeout"]
-[connection signal="timeout" from="pickUpSpawnPoints/ginyuGunSpawn/ginyuGunPickUpTimer" to="pickUpSpawnPoints" method="_on_ginyu_gun_pick_up_timer_timeout"]
+[connection signal="timeout" from="pickUpSpawnPoints/stealerSpawn/stealerPickUpTimer" to="pickUpSpawnPoints" method="_on_stealer_pick_up_timer_timeout"]
