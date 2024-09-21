@@ -676,10 +676,9 @@ tint_progress = Color(1, 1, 1, 0.568627)
 wait_time = 2.0
 one_shot = true
 
-[node name="fullAutoTimer" type="Timer" parent="timers"]
-wait_time = 10.0
-
 [node name="healthTimer" type="Timer" parent="timers"]
+wait_time = 0.2
+one_shot = true
 
 [node name="shieldTimer" type="Timer" parent="timers"]
 wait_time = 0.2
@@ -707,7 +706,6 @@ one_shot = true
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="timers/healthBarTimer" to="." method="_on_health_bar_timer_timeout"]
-[connection signal="timeout" from="timers/fullAutoTimer" to="." method="_on_burst_timer_timeout"]
 [connection signal="timeout" from="timers/healthTimer" to="." method="_on_health_timer_timeout"]
 [connection signal="timeout" from="timers/shieldTimer" to="." method="_on_shield_timer_timeout"]
 [connection signal="timeout" from="timers/powerCrateTimer" to="." method="_on_power_crate_timer_timeout"]

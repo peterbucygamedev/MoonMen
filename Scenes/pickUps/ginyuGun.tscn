@@ -16,7 +16,7 @@ var collidedTracker := 0
 var collidedHealth := 0
 var collidedAmmo := 0
 var playerStealing := []
-var storedNumber = 0
+var storedNumber := 0
 
 func _ready():
 	set_continuous_collision_detection_mode(1)
@@ -107,7 +107,6 @@ func _on_area_2d_body_entered(body):
 					body.p4MaxAmmo = 10\"\"\"
 
 					
-		
 		queue_free()
 	if body.is_in_group(\"shield\"):
 		print(\"hit shield\")

@@ -568,7 +568,6 @@ target_position = Vector2(200, 0)
 script = SubResource("GDScript_7o57i")
 
 [node name="castingParticles" type="GPUParticles2D" parent="Node2D/Sprite2D2/Marker2D/laser2"]
-visible = false
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_2t81b")
 texture = ExtResource("5_4puyy")
@@ -616,7 +615,6 @@ target_position = Vector2(200, 0)
 script = SubResource("GDScript_pkg6y")
 
 [node name="castingParticles" type="GPUParticles2D" parent="Node2D/Sprite2D3/Marker2D/laser3"]
-visible = false
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_2t81b")
 texture = ExtResource("5_4puyy")

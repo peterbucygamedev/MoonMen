@@ -15,8 +15,8 @@ extends CharacterBody2D
 @onready var shoot_next_timer = $timers/shootNextTimer
 @onready var acid_timer = $timers/acidTimer
 @onready var death_lasers_timer = $timers/deathLasersTimer
-@onready var power_up = $timers/powerUp
 @onready var reload_timer = $timers/reloadTimer
+@onready var power_up = $timers/powerUp
 @onready var health_bar = $progressbars/healthBar
 @onready var health_bar_2 = $progressbars/healthBar2
 @onready var ammo_bar = $progressbars/ammoBar
@@ -111,6 +111,7 @@ func shoot() -> void:
 			b.orbNumber = playerNumber
 			print("does equal")
 			orbArray.append(b)
+			b.playerControlling.append(player)
 		if bulletTracker == 4:
 			b.playerStealing.append(player)
 		bullet_sfx.play()
@@ -125,13 +126,7 @@ func shoot() -> void:
 	
 func _process(delta) -> void:
 	
-	
-	print("damage", damage)
-	#print("orbArray", orbArray)
-	#if !orbArray.is_empty() and orbArray[0] == null:
-	#print("orbArray = null")
-	#print(GameManager.bullets)
-	#print("health", health)
+
 	lives_number.text = str(lives)
 	health_bar.value = health
 	health_bar_2.value = health
@@ -140,7 +135,7 @@ func _process(delta) -> void:
 		if bulletTracker != 3:
 			player_timer.start()
 			reload.show()
-		if bulletTracker == 3 and !orbArray.is_empty() and orbArray[0] == null:
+		if bulletTracker == 3 and orbArray.is_empty():
 			player_timer.start()
 			reload.show()
 	
@@ -148,6 +143,10 @@ func _process(delta) -> void:
 	print("orbArray", orbArray)
 	
 	if health <= 0:
+		if !orbArray.is_empty():
+			var orb = orbArray.pop_at(0)
+			orb.queue_free()
+			
 		GameManager.deaths += 1
 		dead = true
 		bulletTracker = 0
@@ -220,7 +219,7 @@ func _process(delta) -> void:
 		
 
 		
-	if Input.is_joy_button_pressed(playerNumber, 0) and (is_on_floor() or is_touching_wall) and jumpCounter < 1:
+	if (Input.get_joy_axis(playerNumber, 4) or Input.is_joy_button_pressed(playerNumber, 0)) and (is_on_floor() or is_touching_wall) and jumpCounter < 1:
 		velocity.y = JUMP_VELOCITY
 		jumpCounter += 1
 		#print("button pressed")
@@ -320,8 +319,8 @@ func _on_health_timer_timeout()-> void:
 		if laser.get_collider() != null and laser.get_collider().is_in_group("players"):
 			laser.get_collider().health -= 1
 			laser.get_collider().health_bar.show()
-			#print("hit player")
-			health_bar_timer.start()
+
+	health_bar_timer.start()
 		
 func _on_shield_timer_timeout()-> void:
 	shieldDamage = true
@@ -331,7 +330,6 @@ func _on_power_crate_timer_timeout()-> void:
 
 func _on_shoot_next_timer_timeout():
 	shootNext = true
-
 
 
 func _on_power_up_timeout():
