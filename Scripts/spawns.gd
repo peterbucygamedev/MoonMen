@@ -11,11 +11,11 @@ extends Node2D
 @onready var increase_fire_rate_timer = $increaseFireRateSpawn/increaseFireRateTimer
 @onready var add_damage_timer = $addDamageSpawn/addDamageTimer
 
-@onready var add_ammo = $ammoSpawn/addAmmo
-@onready var add_bullet_speed = $bulletSpeedSpawn/addBulletSpeed
-@onready var add_health_capacity = $healthSpawn/addHealthCapacity
-@onready var increase_fire_rate = $increaseFireRateSpawn/increaseFireRate
-@onready var add_damage = $addDamageSpawn/addDamage
+var add_ammo = null
+var add_bullet_speed = null
+var add_health_capacity = null
+var increase_fire_rate = null
+var add_damage = null
 
 
 const ADD_AMMO_CAPACITY = preload("res://Scenes/powerUps/add_ammo_capacity.tscn")
@@ -23,6 +23,37 @@ const ADD_BULLET_SPEED = preload("res://Scenes/powerUps/add_bullet_speed.tscn")
 const ADD_HEALTH_CAPACITY = preload("res://Scenes/powerUps/add_health_capacity.tscn")
 const INCREASE_FIRE_RATE = preload("res://Scenes/powerUps/increase_fire_rate.tscn")
 const ADD_DAMAGE = preload("res://Scenes/powerUps/add_damage.tscn")
+
+func _ready():
+	
+	var a = ADD_AMMO_CAPACITY.instantiate()
+	add_child(a)
+	a.transform = ammo_spawn.transform
+	add_ammo = a
+	
+
+	var b = ADD_BULLET_SPEED.instantiate()
+	add_child(b)
+	b.transform = bullet_speed_spawn.transform
+	add_bullet_speed = b
+
+
+	var h = ADD_HEALTH_CAPACITY.instantiate()
+	add_child(h)
+	h.transform = health_spawn.transform
+	add_health_capacity = h
+	
+
+	var f = INCREASE_FIRE_RATE.instantiate()
+	add_child(f)
+	f.transform = increase_fire_rate_spawn.transform
+	increase_fire_rate = f
+
+
+	var d = ADD_DAMAGE.instantiate()
+	add_child(d)
+	d.transform = add_damage_spawn.transform
+	add_damage = d
 
 func _process(delta):
 	

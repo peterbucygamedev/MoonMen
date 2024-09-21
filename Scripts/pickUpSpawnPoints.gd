@@ -1,26 +1,64 @@
 extends Node2D
 @onready var bullet_spawn = $bulletSpawn
 @onready var bullet_pick_up_timer = $bulletSpawn/bulletPickUpTimer
-@onready var bullet_pick_up = $bulletSpawn/bulletPickUP
+var bullet_pick_up = null
 const BULLET_PICKUP = preload("res://Scenes/pickUps/bullet_pickup.tscn")
 @onready var bouncer_spawn = $bouncerSpawn
 @onready var bouncer_pick_up_timer = $bouncerSpawn/bouncerPickUpTimer
-@onready var bouncers_pickup = $bouncerSpawn/bouncersPickup
+var bouncers_pickup = null
 const BOUNCERS_PICKUP = preload("res://Scenes/pickUps/bouncers_pickup.tscn")
 @onready var death_laser_spawn = $deathLaserSpawn
 @onready var death_laser_pickup_timer = $deathLaserSpawn/deathLaserPickupTimer
-@onready var death_lasers_pickup = $"../deathLaserSpawn/deathLasersPickup"
+var death_lasers_pickup = null
 const DEATH_LASERS_PICKUP = preload("res://Scenes/pickUps/death_lasers_pickup.tscn")
 @onready var the_orb_spawn = $theOrbSpawn
 @onready var the_orb_pick_up_timer = $theOrbSpawn/theOrbPickUpTimer
-@onready var the_orb_pick_up = $theOrbSpawn/theOrbPickUp
+var the_orb_pick_up = null
 const THE_ORB_PICK_UP = preload("res://Scenes/pickUps/the_orb_pick_up.tscn")
 @onready var ginyu_gun_spawn = $ginyuGunSpawn
 @onready var ginyu_gun_pick_up_timer = $ginyuGunSpawn/ginyuGunPickUpTimer
-@onready var ginyu_gun_pick_up = $ginyuGunSpawn/ginyuGunPickUp
+var ginyu_gun_pick_up = null
 const GINYU_GUN_PICK_UP = preload("res://Scenes/pickUps/ginyu_gun_pick_up.tscn")
 
 
+func _ready():
+
+	var b = BULLET_PICKUP.instantiate()
+	add_child(b)
+	b.transform = bullet_spawn.transform
+	bullet_pick_up = b
+	#bullet_pick_up_timer.stop()
+	
+
+	var c = BOUNCERS_PICKUP.instantiate()
+	add_child(c)
+	c.transform = bouncer_spawn.transform
+	bouncers_pickup = c
+	#bouncer_pick_up_timer.stop()
+	
+
+	var d = DEATH_LASERS_PICKUP.instantiate()
+	add_child(d)
+	d.transform = death_laser_spawn.transform
+	death_lasers_pickup = d
+	#death_laser_pickup_timer.stop()
+	
+
+	var t = THE_ORB_PICK_UP.instantiate()
+	add_child(t)
+	t.transform = the_orb_spawn.transform
+	the_orb_pick_up = t
+	#the_orb_pick_up_timer.stop()
+
+
+	var g = GINYU_GUN_PICK_UP.instantiate()
+	add_child(g)
+	g.transform = ginyu_gun_spawn.transform
+	the_orb_pick_up = g
+	#the_orb_pick_up_timer.stop()
+	
+	
+	
 func _process(delta):
 	print ("bulletPickUp", bullet_pick_up)
 	if  bullet_pick_up == null:

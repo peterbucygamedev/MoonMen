@@ -89,7 +89,6 @@ func _process(delta):
 		GameManager.numberOfPlayers += 1
 		p3.startingTransform = spawn_4.transform
 		p3.lives = 3
-
 	print(GameManager.numberOfPlayers)
 	
 	if Input.is_joy_button_pressed(0, 6):
