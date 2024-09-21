@@ -6,7 +6,11 @@ var addAmount := 20
 
 func _on_body_entered(body):
 	if body.is_in_group("players"):
-		if body.playerNumber == 0:
+		body.ammo += addAmount
+		body.maxAmmo += addAmount
+		body.ammo_bar.max_value += addAmount
+		
+		"""if body.playerNumber == 0:
 			body.p1MaxAmmo += addAmount
 			body.p1Ammo = body.p1MaxAmmo
 			body.ammo_bar.max_value += addAmount
@@ -24,7 +28,7 @@ func _on_body_entered(body):
 		if body.playerNumber == 3:
 			body.p4MaxAmmo += addAmount
 			body.p4Ammo = body.p4MaxAmmo
-			body.ammo_bar.max_value += addAmount
+			body.ammo_bar.max_value += addAmount"""
 			
 		body.power_up_effect.show()
 		body.power_up_effect_2.show()

@@ -531,7 +531,7 @@ script = SubResource("GDScript_npfuh")
 [node name="Line2D" type="Line2D" parent="Node2D/Sprite2D/Marker2D/laser"]
 scale = Vector2(1.003, 0.571585)
 points = PackedVector2Array(1, 0, 144, 0)
-default_color = Color(1, 0, 0.984314, 1)
+default_color = Color(0.051971, 0.051971, 0.051971, 1)
 texture = ExtResource("5_hlnu6")
 texture_mode = 2
 
@@ -567,13 +567,6 @@ rotation = -1.5708
 target_position = Vector2(200, 0)
 script = SubResource("GDScript_7o57i")
 
-[node name="Line2D" type="Line2D" parent="Node2D/Sprite2D2/Marker2D/laser2"]
-scale = Vector2(1.003, 0.571585)
-points = PackedVector2Array(1, 0, 144, 0)
-default_color = Color(1, 0, 1, 1)
-texture = ExtResource("5_hlnu6")
-texture_mode = 2
-
 [node name="castingParticles" type="GPUParticles2D" parent="Node2D/Sprite2D2/Marker2D/laser2"]
 visible = false
 amount = 30
@@ -586,6 +579,20 @@ process_material = SubResource("ParticleProcessMaterial_uub7m")
 texture = ExtResource("5_4puyy")
 lifetime = 0.2
 trail_lifetime = 0.2
+
+[node name="Line2D" type="Line2D" parent="Node2D/Sprite2D2/Marker2D/laser2"]
+scale = Vector2(1.003, 0.571585)
+points = PackedVector2Array(1, 0, 144, 0)
+default_color = Color(0.165656, 0.165656, 0.165656, 1)
+texture = ExtResource("5_hlnu6")
+texture_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="Node2D/Sprite2D2/Marker2D/laser2"]
+scale = Vector2(1.003, 0.571585)
+points = PackedVector2Array(1, 0, 144, 0)
+default_color = Color(0.051971, 0.051971, 0.051971, 1)
+texture = ExtResource("5_hlnu6")
+texture_mode = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D/Sprite2D2"]
 scale = Vector2(2, 2)
@@ -608,13 +615,6 @@ rotation = -1.5708
 target_position = Vector2(200, 0)
 script = SubResource("GDScript_pkg6y")
 
-[node name="Line2D" type="Line2D" parent="Node2D/Sprite2D3/Marker2D/laser3"]
-scale = Vector2(1.003, 0.571585)
-points = PackedVector2Array(1, 0, 144, 0)
-default_color = Color(1, 0, 1, 1)
-texture = ExtResource("5_hlnu6")
-texture_mode = 2
-
 [node name="castingParticles" type="GPUParticles2D" parent="Node2D/Sprite2D3/Marker2D/laser3"]
 visible = false
 amount = 30
@@ -627,6 +627,13 @@ process_material = SubResource("ParticleProcessMaterial_uub7m")
 texture = ExtResource("5_4puyy")
 lifetime = 0.2
 trail_lifetime = 0.2
+
+[node name="Line2D" type="Line2D" parent="Node2D/Sprite2D3/Marker2D/laser3"]
+scale = Vector2(1.003, 0.571585)
+points = PackedVector2Array(1, 0, 144, 0)
+default_color = Color(0.051971, 0.051971, 0.051971, 1)
+texture = ExtResource("5_hlnu6")
+texture_mode = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D/Sprite2D3"]
 scale = Vector2(2, 2)
@@ -641,12 +648,11 @@ texture = ExtResource("5_hlnu6")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Node2D"]
 visible = false
-modulate = Color(1, 0, 1, 1)
 z_index = -2
 texture = ExtResource("3_o2330")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Node2D"]
-modulate = Color(1, 0, 1, 1)
+modulate = Color(0.118581, 0.118581, 0.118581, 1)
 position = Vector2(0, -7)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_hlnu6")

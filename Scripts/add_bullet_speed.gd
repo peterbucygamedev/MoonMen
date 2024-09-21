@@ -1,10 +1,13 @@
 extends Area2D
 @onready var add_bullet_speed = $".."
-var addAMount := 750
+var addAmount := 750
 
 func _on_body_entered(body):
 	if body.is_in_group("players"):
-		if body.playerNumber == 0:
+		
+		body.bulletSpeed += addAmount
+		
+		"""if body.playerNumber == 0:
 			body.p1BulletSpeed += addAMount
 			
 		if body.playerNumber == 1:
@@ -14,7 +17,7 @@ func _on_body_entered(body):
 			body.p3BulletSpeed += addAMount
 			
 		if body.playerNumber == 3:
-			body.p4BulletSpeed += addAMount
+			body.p4BulletSpeed += addAMount"""
 		
 		body.power_up_effect.show()
 		body.power_up_effect_2.show()

@@ -47,7 +47,7 @@ color_ramp = SubResource("GradientTexture1D_8awgq")
 script = ExtResource("1_qei3m")
 
 [node name="shield" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 1, 0.623529)
+modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(-7.5, -4)
 rotation = -1.5708
 scale = Vector2(0.286081, 0.15)
@@ -55,7 +55,7 @@ texture = ExtResource("2_nvx0w")
 
 [node name="shield2" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(0, 0.423529, 1, 0.623529)
+modulate = Color(0.505882, 0.505882, 0.505882, 0.392157)
 position = Vector2(-7.50002, -4)
 rotation = -1.5708
 scale = Vector2(0.286081, 0.15)
@@ -63,7 +63,7 @@ texture = SubResource("CompressedTexture2D_po25g")
 
 [node name="shield3" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(0.619608, 0.572549, 1, 0.623529)
+modulate = Color(0.231373, 0.231373, 0.231373, 0.392157)
 position = Vector2(-7.50002, -4)
 rotation = -1.5708
 scale = Vector2(0.286081, 0.15)

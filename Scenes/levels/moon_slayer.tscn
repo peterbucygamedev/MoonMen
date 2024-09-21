@@ -4086,11 +4086,11 @@ position = Vector2(-118, -134)
 
 [node name="MoonMen" type="Node2D" parent="."]
 process_physics_priority = 1
-z_index = 2
 z_as_relative = false
 position = Vector2(0, 15)
 
 [node name="MoonMen" type="Label" parent="MoonMen"]
+modulate = Color(1, 1, 1, 0.392157)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

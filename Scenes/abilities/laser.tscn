@@ -45,7 +45,7 @@ script = ExtResource("1_2o1x4")
 [node name="Line2D" type="Line2D" parent="."]
 scale = Vector2(1.003, 0.571585)
 points = PackedVector2Array(1, 0, 144, 0)
-default_color = Color(0.298039, 1, 1, 0.603922)
+default_color = Color(1, 1, 1, 0.392157)
 
 [node name="castingParticles" type="GPUParticles2D" parent="."]
 amount = 30

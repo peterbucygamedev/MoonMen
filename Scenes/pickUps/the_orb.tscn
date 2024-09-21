@@ -27,14 +27,13 @@ particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
 scale_min = 2.0
 scale_max = 2.0
-color = Color(0, 0, 1, 1)
 color_ramp = SubResource("GradientTexture1D_f3ypa")
 color_initial_ramp = SubResource("GradientTexture1D_jikxa")
 alpha_curve = SubResource("CurveTexture_28vaf")
 emission_curve = SubResource("CurveTexture_8tk50")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ngdap"]
-radius = 6.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6v5qw"]
+size = Vector2(9, 10)
 
 [node name="theOrb" type="CharacterBody2D" groups=["remoteBullets"]]
 script = ExtResource("1_nnbit")
@@ -44,7 +43,6 @@ script = ExtResource("1_nnbit")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
 scale = Vector2(0.1, 0.1)
-color = Color(0, 0, 1, 1)
 energy = 10.0
 texture = ExtResource("3_7cw88")
 offset = Vector2(1, 1)
@@ -55,31 +53,31 @@ z_index = -2
 position = Vector2(-1, -1)
 texture = ExtResource("2_iwvb1")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
-position = Vector2(1, 0)
-rotation = -1.5708
-scale = Vector2(0.02, 0.02)
-texture = ExtResource("4_bivkv")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pd2wt")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 z_index = 1
-amount = 10
+position = Vector2(0, -4)
+amount = 20
 process_material = SubResource("ParticleProcessMaterial_jft7t")
-lifetime = 0.2
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 1, 1)
 z_index = 1
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_7cw88")
+rotation = -1.5708
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_bivkv")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" groups=["players"]]
-shape = SubResource("CircleShape2D_ngdap")
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_6v5qw")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(0, 4)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_jft7t")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

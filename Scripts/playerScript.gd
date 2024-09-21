@@ -7,10 +7,11 @@ extends CharacterBody2D
 @onready var bullet_spawn = $weapon/bulletSpawn
 @export var playerNumber = 0
 @onready var player_collision = $playerCollision
-@onready var player_1_timer = $timers/player1Timer
+@onready var player_timer = $timers/playerTimer
+"""@onready var player_1_timer = $timers/player1Timer
 @onready var player_2_timer = $timers/player2Timer
 @onready var player_3_timer = $timers/player3Timer
-@onready var player_4_timer = $timers/player4Timer
+@onready var player_4_timer = $timers/player4Timer"""
 @onready var health_bar_timer = $timers/healthBarTimer
 @onready var health_timer = $timers/healthTimer
 @onready var shield_timer = $timers/shieldTimer
@@ -47,10 +48,11 @@ var maxHealth = 10
 var jumpCounter := 0
 var lastHealth := health
 var lives := 3
+var damage = 1
 var ammo = 10
 var maxAmmo = 10
-var damage = 1
-var p1BulletSpeed = 100
+var bulletSpeed = 750
+"""var p1BulletSpeed = 100
 var p2BulletSpeed = 100
 var p3BulletSpeed = 100
 var p4BulletSpeed = 100
@@ -65,8 +67,8 @@ var p4Ammo = 10
 var p1MaxAmmo = 10
 var p2MaxAmmo = 10
 var p3MaxAmmo = 10
-var p4MaxAmmo = 10
-var laser2 = null
+var p4MaxAmmo = 100"""
+#var laser2 = null
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -87,9 +89,13 @@ var burst = false
 var shootNext := true
 var burstNext := true
 var burstCounter := 0
-var bulletTracker := 4
+var bulletTracker := 0
 var orbArray := []
-
+var color1 := Color(1,1,1)
+var color2 := Color(1,0,1)
+var color3 := Color(0,1,1)
+var color4 := Color(0,1,0)
+var playerColor = color1
 
 func _ready() -> void:
 	reload.hide()
@@ -97,38 +103,62 @@ func _ready() -> void:
 	energy_shield.hide()
 	energy_shield.get_node("energyShieldCollider").disabled = true
 	if playerNumber == 0:
-		weapon_sprite.play("weaponGrey")
+		"""weapon_sprite.play("weaponGrey")
 		health = GameManager.player1Health
 		p1BulletSpeed = GameManager.player1BulletSpeed
 		p1Damage = GameManager.player1Damage
 		p1Ammo = GameManager.player1Ammo
-		p1MaxAmmo = GameManager.player1MaxAmmo
+		p1MaxAmmo = GameManager.player1MaxAmmo"""
 	if playerNumber == 1:
-		weapon_sprite.play("weaponPink")
+		modulate = color2
+		playerColor = color2
+		"""weapon_sprite.play("weaponPink")
 		health = GameManager.player2Health
 		p2BulletSpeed = GameManager.player2BulletSpeed
 		p2Damage = GameManager.player2Damage
 		p2Ammo = GameManager.player2Ammo
-		p2MaxAmmo = GameManager.player2MaxAmmo
+		p2MaxAmmo = GameManager.player2MaxAmmo"""
 	if playerNumber == 2:
-		weapon_sprite.play("weaponGreen")
+		modulate = color3
+		playerColor = color3
+		"""weapon_sprite.play("weaponGreen")
 		health = GameManager.player3Health
 		p3BulletSpeed = GameManager.player3BulletSpeed
 		p3Damage = GameManager.player3Damage
 		p3Ammo = GameManager.player3Ammo
-		p3MaxAmmo = GameManager.player3MaxAmmo
+		p3MaxAmmo = GameManager.player3MaxAmmo"""
 	if playerNumber == 3:
-		weapon_sprite.play("weaponBlue")
+		modulate = color4
+		playerColor = color4
+		"""weapon_sprite.play("weaponBlue")
 		health = GameManager.player4Health
 		p4BulletSpeed = GameManager.player4BulletSpeed
 		p4Damage = GameManager.player4Damage
 		p4Ammo = GameManager.player4Ammo
-		p4MaxAmmo = GameManager.player4MaxAmmo
+		p4MaxAmmo = GameManager.player4MaxAmmo"""
 	energy_shield.shieldNumber = playerNumber
 
 func shoot() -> void:
+	if ammo > 0:
+		var b = GameManager.bullets[bulletTracker].instantiate()
+		b.modulate = playerColor
+		if bulletTracker == 3:
+			b.orbNumber = playerNumber
+			print("does equal")
+			orbArray.append(b)
+		if bulletTracker == 4:
+			b.playerStealing.append(player)
+		bullet_sfx.play()
+		ammo -= b.ammoCost
+		b.speed += bulletSpeed
+		b.damage *= damage
+		player.owner.add_child(b)
+		b.transform = bullet_spawn.global_transform
+		if bulletTracker != 3:
+			print("doesn't equal")
+			b.apply_impulse(weapon.transform.x * b.speed, Vector2(0,0))
 	
-	if playerNumber == 0 and p1Ammo> 0:
+	"""if playerNumber == 0 and p1Ammo> 0:
 		var b1 = GameManager.bullets[bulletTracker].instantiate()
 		if bulletTracker == 3:
 			b1.orbNumber = playerNumber
@@ -196,23 +226,32 @@ func shoot() -> void:
 		b4.transform = bullet_spawn.global_transform
 		if bulletTracker != 3:
 			print("doesn't equal")
-			b4.apply_impulse(weapon.transform.x * b4.speed, Vector2(0,0))
+			b4.apply_impulse(weapon.transform.x * b4.speed, Vector2(0,0))"""
 		
 
 		
 func _process(delta) -> void:
 	
+	
 	print("damage", damage)
 	#print("orbArray", orbArray)
 	#if !orbArray.is_empty() and orbArray[0] == null:
-	#	print("orbArray = null")
+	#print("orbArray = null")
 	#print(GameManager.bullets)
 	#print("health", health)
 	lives_number.text = str(lives)
 	health_bar.value = health
 	health_bar_2.value = health
 	
-	if p1Ammo <= 0 and player_1_timer.is_stopped() and playerNumber == 0:
+	if ammo <= 0 and player_timer.is_stopped():
+		if bulletTracker != 3:
+			player_timer.start()
+			reload.show()
+		if bulletTracker == 3 and !orbArray.is_empty() and orbArray[0] == null:
+			player_timer.start()
+			reload.show()
+	
+	"""if p1Ammo <= 0 and player_1_timer.is_stopped() and playerNumber == 0:
 		if bulletTracker != 3:
 			player_1_timer.start()
 			reload.show()
@@ -236,9 +275,13 @@ func _process(delta) -> void:
 		
 	if p4Ammo <= 0 and player_4_timer.is_stopped() and playerNumber == 3:
 		player_4_timer.start()
-		reload.show()
+		reload.show()"""
 	
-	if playerNumber == 0:
+	
+	ammo_bar.value = ammo
+	
+	
+	"""if playerNumber == 0:
 		ammo_bar.value = p1Ammo
 		
 	if playerNumber == 1:
@@ -248,13 +291,17 @@ func _process(delta) -> void:
 		ammo_bar.value = p3Ammo
 		
 	if playerNumber == 3:
-		ammo_bar.value = p4Ammo
+		ammo_bar.value = p4Ammo"""
+		
+		
 	#reload.play()
 	#print(playerDamage)
 	#print(health)
 	#print(position)
 	#print(velocity)	
 		
+	print("orbArray", orbArray)
+	
 	if health <= 0:
 		GameManager.deaths += 1
 		dead = true
@@ -286,14 +333,14 @@ func _process(delta) -> void:
 	
 	if Input.is_joy_button_pressed(playerNumber, 9):
 			crouching = true
-			if playerNumber == 0 and crouching:
-				animated_sprite_2d.play("slideGrey")
-			if playerNumber == 1:
+			#if playerNumber == 0 and crouching:
+			animated_sprite_2d.play("slideGrey")
+			"""if playerNumber == 1:
 				animated_sprite_2d.play("slidePink")
 			if playerNumber == 2:
 				animated_sprite_2d.play("slideGreen")
 			if playerNumber == 3:
-				animated_sprite_2d.play("slideBlue")
+				animated_sprite_2d.play("slideBlue")"""
 
 			
 	elif !Input.is_joy_button_pressed(playerNumber, 9):
@@ -315,8 +362,8 @@ func _process(delta) -> void:
 			
 	else:
 		laser.is_casting = false
-		if laser2 != null:
-			laser2.queue_free()
+		#if laser2 != null:
+		#	laser2.queue_free()
 		laser_beam_sfx.stop()
 		
 	if crouching == true and energy_shield.shieldEnabled:
@@ -357,14 +404,14 @@ func _process(delta) -> void:
 		sprite_2d.flip_v = false
 		weapon_sprite.flip_v = false
 		velocity.x = direction * SPEED
-		if playerNumber == 0:
-			animated_sprite_2d.play("movingGrey")
-		if playerNumber == 1:
+		#if playerNumber == 0:
+		animated_sprite_2d.play("movingGrey")
+		"""if playerNumber == 1:
 			animated_sprite_2d.play("movingPink")
 		if playerNumber == 2:
 			animated_sprite_2d.play("movingGreen")
 		if playerNumber == 3:
-			animated_sprite_2d.play("movingBlue")
+			animated_sprite_2d.play("movingBlue")"""
 		
 	elif (direction < -0.05 or direction2 < -0.05) and crouching == false:
 		animated_sprite_2d.flip_h = true
@@ -375,26 +422,26 @@ func _process(delta) -> void:
 		sprite_2d.flip_v = true
 		weapon_sprite.flip_v = true
 		velocity.x = direction * SPEED
-		if playerNumber == 0:
-			animated_sprite_2d.play("movingGrey")
-		if playerNumber == 1:
+		#if playerNumber == 0:
+		animated_sprite_2d.play("movingGrey")
+		"""if playerNumber == 1:
 			animated_sprite_2d.play("movingPink")
 		if playerNumber == 2:
 			animated_sprite_2d.play("movingGreen")
 		if playerNumber == 3:
-			animated_sprite_2d.play("movingBlue")
+			animated_sprite_2d.play("movingBlue")"""
 		
 	elif crouching == false:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		#print("stop")
-		if playerNumber == 0:
-			animated_sprite_2d.play("idleGrey")
-		if playerNumber == 1:
+		#if playerNumber == 0:
+		animated_sprite_2d.play("idleGrey")
+		"""if playerNumber == 1:
 			animated_sprite_2d.play("idlePink")
 		if playerNumber == 2:
 			animated_sprite_2d.play("idleGreen")
 		if playerNumber == 3:
-			animated_sprite_2d.play("idleBlue")
+			animated_sprite_2d.play("idleBlue")"""
 		
 	#if explosion == true:
 	#	velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -431,7 +478,7 @@ func _process(delta) -> void:
 	ammo = maxAmmo
 	reload.hide()"""
 
-func _on_player_1_timer_timeout() -> void:
+"""func _on_player_1_timer_timeout() -> void:
 	#print("player1Reloaded")
 		p1Ammo = p1MaxAmmo
 		reload.hide()
@@ -446,7 +493,7 @@ func _on_player_3_timer_timeout()-> void:
 
 func _on_player_4_timer_timeout()-> void:
 		p4Ammo = p4MaxAmmo
-		reload.hide()
+		reload.hide()"""
 
 
 func _on_health_bar_timer_timeout()-> void:
@@ -511,3 +558,8 @@ func _on_death_lasers_timer_timeout():
 	health_bar.show()
 	health_bar_timer.start()
 	death_lasers_timer.stop()
+
+
+func _on_player_timer_timeout():
+	ammo = maxAmmo
+	reload.hide()

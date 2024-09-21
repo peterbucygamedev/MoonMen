@@ -1,7 +1,7 @@
 extends Node
 
 var numberOfPlayers := 0
-var player1BulletSpeed := 1000
+"""var player1BulletSpeed := 1000
 var player1Damage := 1
 var player1Health := 10
 var player1MaxHealth := 10
@@ -24,7 +24,7 @@ var player4Damage := 1
 var player4Health := 10
 var player4MaxHealth := 10
 var player4Ammo := 10
-var player4MaxAmmo := 10
+var player4MaxAmmo := 10"""
 var deaths := 0
 var nextLevel := false
 var allowDevice0 := true

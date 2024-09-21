@@ -16,6 +16,7 @@ var collidedTracker := 0
 var collidedHealth := 0
 var collidedAmmo := 0
 var playerStealing := []
+var storedNumber = 0
 
 func _ready():
 	set_continuous_collision_detection_mode(1)
@@ -26,6 +27,7 @@ func _ready():
 	area_2d.get_node(\"CollisionShape2D\").disabled = true
 	timer.start()
 	area_timer.start()
+	storedNumber = playerStealing[0].playerNumber
 	
 	
 func _process(delta):
@@ -42,8 +44,11 @@ func _on_area_2d_body_entered(body):
 		body.health_bar.show()
 		if body.health_bar_timer.is_stopped():
 			body.health_bar_timer.start()
+			
+		playerStealing[0].playerNumber = body.playerNumber
+		body.playerNumber = storedNumber
 
-		playerStealing[0].damage = body.damage
+		\"\"\"playerStealing[0].damage = body.damage
 		playerStealing[0].bulletTracker = body.bulletTracker
 		playerStealing[0].ammo_bar.max_value = body.ammo_bar.max_value
 		playerStealing[0].health = body.health
@@ -51,9 +56,23 @@ func _on_area_2d_body_entered(body):
 		playerStealing[0].health_bar.max_value = body.health_bar.max_value
 		playerStealing[0].health_bar_2.max_value = body.health_bar_2.max_value
 		playerStealing[0].shoot_next_timer.wait_time = body.shoot_next_timer.wait_time
+		playerStealing[0].bulletSpeed = body.bulletSpeed
+		playerStealing[0].ammo = body.ammo
+		playerStealing[0].maxAmmo = body.maxAmmo
+		
+		body.ammo_bar.max_value = 10
+		body.shoot_next_timer.wait_time = 0.2
+		body.damage = 0
+		body.health = 10
+		body.maxHealth = 10
+		body.health_bar.max_value = 10
+		body.health_bar_2.max_value = 10
+		body.bulletTracker = 0
+		body.bulletSpeed = 100
+		body.ammo = 10
+		body.maxAmmo = 10\"\"\"
 
-
-		for b in range(4):
+		\"\"\"for b in range(4):
 			if body.playerNumber == b:
 				body.ammo_bar.max_value = 10
 				body.shoot_next_timer.wait_time = 0.2
@@ -85,7 +104,7 @@ func _on_area_2d_body_entered(body):
 				if b == 3:
 					body.p4BulletSpeed = 1000
 					body.p4Ammo = 10
-					body.p4MaxAmmo = 10
+					body.p4MaxAmmo = 10\"\"\"
 
 					
 		
