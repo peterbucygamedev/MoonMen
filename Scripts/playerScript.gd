@@ -313,6 +313,7 @@ func _process(delta) -> void:
 			dead = false
 			health = maxHealth
 		if lives <= 0:
+			#GameManager.allowedDevices[playerNumber] = true
 			GameManager.numberOfPlayers -= 1
 			queue_free()
 		

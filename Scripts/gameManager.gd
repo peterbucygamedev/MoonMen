@@ -31,6 +31,7 @@ var allowDevice0 := true
 var allowDevice1 := true
 var allowDevice2 := true
 var allowDevice3 := true
+var allowedDevices = [allowDevice0,allowDevice1,allowDevice2,allowDevice3]
 #var bullet = preload("res://Scenes/bullet.tscn")
 #var bouncers = preload("res://Scenes/bouncers.tscn")
 #var death_lasers = preload("res://Scenes/death_lasers.tscn")

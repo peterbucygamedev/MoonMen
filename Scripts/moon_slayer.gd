@@ -12,6 +12,7 @@ var playersInArea := []
 @onready var spawn_4 = $spawns/spawn4
 @onready var area_light = $Area2D/areaLight
 @onready var player_light = $Area2D/areaLight/playerLight
+var deviceNumbers := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,7 +27,23 @@ func _process(delta):
 	if GameManager.numberOfPlayers > 1:
 		area_light.hide()
 	#print (devices)
+	"""for a in range(4):
+		if deviceNumbers.size() <= 4:
+			deviceNumbers.append(Input.get_joy_info(a).values())
+		print("device info", deviceNumbers)
 	
+	for b in range(4):
+		if Input.is_joy_button_pressed(deviceNumbers[b], 0) and GameManager.allowedDevices[0]:
+			#print("device info", deviceNumbers)
+			var c = player.instantiate()
+			c.playerNumber = deviceNumbers[b]
+			add_child(c)
+			c.set_owner($".")
+			GameManager.numberOfPlayers += 1
+			c.startingTransform = spawn.transform
+			GameManager.allowedDevices[0] = false"""
+			
+			
 	if Input.is_joy_button_pressed(0, 0) and GameManager.allowDevice0:
 		var p0 = player.instantiate()
 		p0.playerNumber = 0

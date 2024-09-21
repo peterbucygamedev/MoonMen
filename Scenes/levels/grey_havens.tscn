@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bvkat36vnmays"]
+[gd_scene load_steps=40 format=3 uid="uid://bvkat36vnmays"]
 
 [ext_resource type="Script" path="res://Scripts/grey_havens.gd" id="1_c6lqn"]
 [ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="2_1f1yp"]
@@ -15,15 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="15_ord8h"]
 [ext_resource type="Script" path="res://Scripts/teleporter2.gd" id="16_jy316"]
 [ext_resource type="PackedScene" uid="uid://jas1sb5s4nr4" path="res://Scenes/power_crate.tscn" id="18_t7th5"]
-[ext_resource type="Script" path="res://Scripts/spawns.gd" id="18_x1x8r"]
 [ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="19_1gqmk"]
-[ext_resource type="PackedScene" uid="uid://6bc2cawlcu8j" path="res://Scenes/powerUps/add_ammo_capacity.tscn" id="19_6y1dr"]
-[ext_resource type="PackedScene" uid="uid://djdurr0u8bais" path="res://Scenes/powerUps/add_bullet_speed.tscn" id="20_lerkn"]
-[ext_resource type="PackedScene" uid="uid://behbrcginvsqp" path="res://Scenes/powerUps/add_damage.tscn" id="21_urwba"]
-[ext_resource type="PackedScene" uid="uid://claacv6i7iql2" path="res://Scenes/powerUps/add_health_capacity.tscn" id="22_6qgt4"]
-[ext_resource type="PackedScene" uid="uid://dwpptdobbadjr" path="res://Scenes/powerUps/add_reflecting_to_laser.tscn" id="23_fehfa"]
 [ext_resource type="PackedScene" uid="uid://dvttnjslvlsox" path="res://Scenes/pickUps/bouncers_pickup.tscn" id="24_5bj82"]
-[ext_resource type="PackedScene" uid="uid://cl5keqdkt1txa" path="res://Scenes/powerUps/increase_fire_rate.tscn" id="24_npuvq"]
 [ext_resource type="PackedScene" uid="uid://clx4kf33gwkty" path="res://Scenes/pickUps/death_lasers_pickup.tscn" id="25_ti5ov"]
 [ext_resource type="PackedScene" uid="uid://ddjnfktckntkc" path="res://Scenes/pause_menu.tscn" id="26_d3ceq"]
 
@@ -4659,63 +4652,6 @@ stream = ExtResource("19_1gqmk")
 autoplay = true
 bus = &"Music"
 
-[node name="powerUpSpawnPoints" type="Node2D" parent="."]
-script = ExtResource("18_x1x8r")
-
-[node name="ammoSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(-465, 100)
-
-[node name="ammoTimer" type="Timer" parent="powerUpSpawnPoints/ammoSpawn"]
-wait_time = 10.0
-one_shot = true
-
-[node name="addAmmo" parent="powerUpSpawnPoints/ammoSpawn" instance=ExtResource("19_6y1dr")]
-
-[node name="bulletSpeedSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(460, 100)
-
-[node name="bulletSpeedTimer" type="Timer" parent="powerUpSpawnPoints/bulletSpeedSpawn"]
-wait_time = 10.0
-one_shot = true
-
-[node name="addBulletSpeed" parent="powerUpSpawnPoints/bulletSpeedSpawn" instance=ExtResource("20_lerkn")]
-
-[node name="damageSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-visible = false
-position = Vector2(-20, 0)
-
-[node name="damageTimer" type="Timer" parent="powerUpSpawnPoints/damageSpawn"]
-one_shot = true
-
-[node name="addDamageToLaser" parent="powerUpSpawnPoints/damageSpawn" instance=ExtResource("21_urwba")]
-
-[node name="healthSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(-560, -134)
-
-[node name="healthTimer" type="Timer" parent="powerUpSpawnPoints/healthSpawn"]
-wait_time = 10.0
-one_shot = true
-
-[node name="addHealthCapacity" parent="powerUpSpawnPoints/healthSpawn" instance=ExtResource("22_6qgt4")]
-
-[node name="reflectingSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-visible = false
-position = Vector2(60, 0)
-
-[node name="reflectingTimer" type="Timer" parent="powerUpSpawnPoints/reflectingSpawn"]
-one_shot = true
-
-[node name="addReflectingToLaser" parent="powerUpSpawnPoints/reflectingSpawn" instance=ExtResource("23_fehfa")]
-
-[node name="fullAutoSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
-position = Vector2(560, -134)
-
-[node name="fullAutoTimer" type="Timer" parent="powerUpSpawnPoints/fullAutoSpawn"]
-wait_time = 10.0
-one_shot = true
-
-[node name="addFullAuto" parent="powerUpSpawnPoints/fullAutoSpawn" instance=ExtResource("24_npuvq")]
-
 [node name="bouncersPickup" parent="." instance=ExtResource("24_5bj82")]
 position = Vector2(-250, 286)
 
@@ -4742,9 +4678,3 @@ position = Vector2(250, 286)
 [connection signal="body_entered" from="teleporters/teleporter8" to="teleporters/teleporter8" method="_on_body_entered"]
 [connection signal="body_entered" from="teleporters/teleporter9" to="teleporters/teleporter9" method="_on_body_entered"]
 [connection signal="body_entered" from="teleporters/teleporter10" to="teleporters/teleporter10" method="_on_body_entered"]
-[connection signal="timeout" from="powerUpSpawnPoints/ammoSpawn/ammoTimer" to="powerUpSpawnPoints" method="_on_ammo_timer_timeout"]
-[connection signal="timeout" from="powerUpSpawnPoints/bulletSpeedSpawn/bulletSpeedTimer" to="powerUpSpawnPoints" method="_on_bullet_speed_timer_timeout"]
-[connection signal="timeout" from="powerUpSpawnPoints/damageSpawn/damageTimer" to="powerUpSpawnPoints" method="_on_damage_timer_timeout"]
-[connection signal="timeout" from="powerUpSpawnPoints/healthSpawn/healthTimer" to="powerUpSpawnPoints" method="_on_health_timer_timeout"]
-[connection signal="timeout" from="powerUpSpawnPoints/reflectingSpawn/reflectingTimer" to="powerUpSpawnPoints" method="_on_reflecting_timer_timeout"]
-[connection signal="timeout" from="powerUpSpawnPoints/fullAutoSpawn/fullAutoTimer" to="powerUpSpawnPoints" method="_on_full_auto_timer_timeout"]

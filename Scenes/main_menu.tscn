@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://b42gjxat5sh2b"]
 
-[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="1_ljado"]
-[ext_resource type="Texture2D" uid="uid://dxsdfcd7lo10u" path="res://Assets/lightShapes/pixil-frame-0 - 2024-09-02T111026.793.png" id="2_j0c8i"]
-[ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="3_g2t6o"]
-[ext_resource type="PackedScene" uid="uid://bgtbj4kncqs3l" path="res://Scenes/chainLaterns/chain_latern_green.tscn" id="4_j2m35"]
-[ext_resource type="PackedScene" uid="uid://e6x05c5lhwb0" path="res://Scenes/chainLaterns/chain_latern_grey.tscn" id="5_5e1f3"]
-[ext_resource type="PackedScene" uid="uid://btcwbvecpby8i" path="res://Scenes/tiles/sacred_tile_h_teal.tscn" id="6_30pdl"]
+[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="1_y0eid"]
+[ext_resource type="Texture2D" uid="uid://dxsdfcd7lo10u" path="res://Assets/lightShapes/pixil-frame-0 - 2024-09-02T111026.793.png" id="2_4wuld"]
+[ext_resource type="Texture2D" uid="uid://bfigqvk6exul7" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-27T190302.340.png" id="3_vp8cq"]
+[ext_resource type="PackedScene" uid="uid://bgtbj4kncqs3l" path="res://Scenes/chainLaterns/chain_latern_green.tscn" id="4_1ry77"]
+[ext_resource type="PackedScene" uid="uid://e6x05c5lhwb0" path="res://Scenes/chainLaterns/chain_latern_grey.tscn" id="5_c2q2e"]
+[ext_resource type="PackedScene" uid="uid://btcwbvecpby8i" path="res://Scenes/tiles/sacred_tile_h_teal.tscn" id="6_32eq3"]
 
 [sub_resource type="GDScript" id="GDScript_j70iy"]
 script/source = "extends Button
@@ -32,7 +32,7 @@ func _on_pressed():
 "
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1jgj"]
-texture = ExtResource("1_ljado")
+texture = ExtResource("1_y0eid")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -4055,7 +4055,7 @@ scale = Vector2(11.52, 6.52)
 energy = 4.0
 blend_mode = 1
 shadow_enabled = true
-texture = ExtResource("2_j0c8i")
+texture = ExtResource("2_4wuld")
 
 [node name="backgroundLight2" type="PointLight2D" parent="."]
 position = Vector2(576, 325)
@@ -4064,14 +4064,14 @@ scale = Vector2(11.52, 6.52)
 energy = 2.0
 blend_mode = 1
 shadow_enabled = true
-texture = ExtResource("2_j0c8i")
+texture = ExtResource("2_4wuld")
 
 [node name="spotLight" type="PointLight2D" parent="."]
 position = Vector2(570, 500)
 scale = Vector2(-14.921, -14.921)
 energy = 2.0
 shadow_enabled = true
-texture = ExtResource("3_g2t6o")
+texture = ExtResource("3_vp8cq")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(575, 167.657)
@@ -4079,21 +4079,21 @@ rotation = 3.14159
 scale = Vector2(11.51, 3.45314)
 color = Color(0, 0.462745, 0.470588, 1)
 shadow_enabled = true
-texture = ExtResource("2_j0c8i")
+texture = ExtResource("2_4wuld")
 
-[node name="chainLaternGreen" parent="." instance=ExtResource("4_j2m35")]
+[node name="chainLaternGreen" parent="." instance=ExtResource("4_1ry77")]
 position = Vector2(85, 184)
 
-[node name="chainLaternGreen2" parent="." instance=ExtResource("4_j2m35")]
+[node name="chainLaternGreen2" parent="." instance=ExtResource("4_1ry77")]
 position = Vector2(1003, 192)
 
-[node name="chainLaternGrey" parent="." instance=ExtResource("5_5e1f3")]
+[node name="chainLaternGrey" parent="." instance=ExtResource("5_c2q2e")]
 position = Vector2(84, 388)
 
-[node name="chainLaternGrey2" parent="." instance=ExtResource("5_5e1f3")]
+[node name="chainLaternGrey2" parent="." instance=ExtResource("5_c2q2e")]
 position = Vector2(1011, 414)
 
-[node name="sacredTileHTeal" parent="." instance=ExtResource("6_30pdl")]
+[node name="sacredTileHTeal" parent="." instance=ExtResource("6_32eq3")]
 position = Vector2(575, 500)
 
 [node name="MoonMen" type="Node2D" parent="."]
@@ -4125,7 +4125,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(402, 73)
 scale = Vector2(4.75, 0.71)
 color = Color(0, 1, 1, 1)
-texture = ExtResource("2_j0c8i")
+texture = ExtResource("2_4wuld")
 
 [connection signal="pressed" from="HBoxContainer/start" to="HBoxContainer/start" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer/exit" to="HBoxContainer/exit" method="_on_pressed"]
