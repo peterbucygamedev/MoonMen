@@ -31,7 +31,6 @@ extends CharacterBody2D
 @onready var lives_number = $livesNumber
 @onready var bullet_sfx = $bulletSFX
 
-
 #var bouncers = preload("res://Scenes/bouncers.tscn")
 #var bullet := preload("res://Scenes/bullet.tscn")
 
