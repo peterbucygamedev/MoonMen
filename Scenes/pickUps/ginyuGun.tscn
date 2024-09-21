@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dtm5w180wvbij"]
 
-[ext_resource type="Texture2D" uid="uid://pes8ocjqq5wr" path="res://Assets/sprites/pixil-frame-0 - 2024-09-05T112355.324.png" id="1_rw3sj"]
+[ext_resource type="Texture2D" uid="uid://pes8ocjqq5wr" path="res://Assets/sprites/pixil-frame-0 - 2024-09-05T112355.324.png" id="1_suykr"]
 
 [sub_resource type="GDScript" id="GDScript_lgn7i"]
 script/source = "extends RigidBody2D
@@ -133,17 +133,16 @@ size = Vector2(6, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ydga"]
 size = Vector2(10, 3)
 
-[node name="stealer" type="RigidBody2D"]
+[node name="ginyuGun" type="RigidBody2D"]
 script = SubResource("GDScript_lgn7i")
 
 [node name="stealerCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_146ru")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 1, 1)
 position = Vector2(-2.38419e-07, 0)
 scale = Vector2(0.4, 1)
-texture = ExtResource("1_rw3sj")
+texture = ExtResource("1_suykr")
 region_enabled = true
 region_rect = Rect2(2, 1, 20, 2)
 

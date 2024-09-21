@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bme2m1yladb15"]
+[gd_scene load_steps=7 format=3 uid="uid://bme2m1yladb15"]
 
 [ext_resource type="Script" path="res://Scripts/pickUpSpawnPoints.gd" id="1_37j5r"]
 [ext_resource type="PackedScene" uid="uid://beusl0on7jgj" path="res://Scenes/pickUps/bullet_pickup.tscn" id="2_0anvv"]
 [ext_resource type="PackedScene" uid="uid://dvttnjslvlsox" path="res://Scenes/pickUps/bouncers_pickup.tscn" id="3_ha8fy"]
 [ext_resource type="PackedScene" uid="uid://clx4kf33gwkty" path="res://Scenes/pickUps/death_lasers_pickup.tscn" id="4_50dyv"]
 [ext_resource type="PackedScene" uid="uid://tg5uhuebxvgq" path="res://Scenes/pickUps/the_orb_pick_up.tscn" id="5_gq1hy"]
+[ext_resource type="PackedScene" uid="uid://sky1slgs25jo" path="res://Scenes/pickUps/ginyu_gun_pick_up.tscn" id="6_veeu5"]
 
 [node name="pickUpSpawner" type="Node2D"]
 
@@ -12,7 +13,7 @@
 script = ExtResource("1_37j5r")
 
 [node name="bulletSpawn" type="Marker2D" parent="pickUpSpawnPoints"]
-position = Vector2(-90, 0)
+position = Vector2(-119, 0)
 
 [node name="bulletPickUpTimer" type="Timer" parent="pickUpSpawnPoints/bulletSpawn"]
 wait_time = 20.0
@@ -21,7 +22,7 @@ one_shot = true
 [node name="bulletPickup" parent="pickUpSpawnPoints/bulletSpawn" instance=ExtResource("2_0anvv")]
 
 [node name="bouncerSpawn" type="Marker2D" parent="pickUpSpawnPoints"]
-position = Vector2(-30, 0)
+position = Vector2(-59, 0)
 
 [node name="bouncerPickUpTimer" type="Timer" parent="pickUpSpawnPoints/bouncerSpawn"]
 wait_time = 20.0
@@ -30,7 +31,6 @@ one_shot = true
 [node name="bouncersPickup" parent="pickUpSpawnPoints/bouncerSpawn" instance=ExtResource("3_ha8fy")]
 
 [node name="deathLaserSpawn" type="Marker2D" parent="pickUpSpawnPoints"]
-position = Vector2(29, 0)
 
 [node name="deathLaserPickupTimer" type="Timer" parent="pickUpSpawnPoints/deathLaserSpawn"]
 wait_time = 20.0
@@ -39,7 +39,7 @@ one_shot = true
 [node name="deathLasersPickup" parent="pickUpSpawnPoints/deathLaserSpawn" instance=ExtResource("4_50dyv")]
 
 [node name="theOrbSpawn" type="Marker2D" parent="pickUpSpawnPoints"]
-position = Vector2(90, 0)
+position = Vector2(61, 0)
 
 [node name="theOrbPickUpTimer" type="Timer" parent="pickUpSpawnPoints/theOrbSpawn"]
 wait_time = 20.0
@@ -47,7 +47,17 @@ one_shot = true
 
 [node name="theOrbPickUp" parent="pickUpSpawnPoints/theOrbSpawn" instance=ExtResource("5_gq1hy")]
 
+[node name="ginyuGunSpawn" type="Marker2D" parent="pickUpSpawnPoints"]
+position = Vector2(118, 0)
+
+[node name="ginyuGunPickUpTimer" type="Timer" parent="pickUpSpawnPoints/ginyuGunSpawn"]
+wait_time = 20.0
+one_shot = true
+
+[node name="ginyuGunPickUp" parent="pickUpSpawnPoints/ginyuGunSpawn" instance=ExtResource("6_veeu5")]
+
 [connection signal="timeout" from="pickUpSpawnPoints/bulletSpawn/bulletPickUpTimer" to="pickUpSpawnPoints" method="_on_bullet_pick_up_timer_timeout"]
 [connection signal="timeout" from="pickUpSpawnPoints/bouncerSpawn/bouncerPickUpTimer" to="pickUpSpawnPoints" method="_on_bouncer_pick_up_timer_timeout"]
 [connection signal="timeout" from="pickUpSpawnPoints/deathLaserSpawn/deathLaserPickupTimer" to="pickUpSpawnPoints" method="_on_death_laser_pickup_timer_timeout"]
 [connection signal="timeout" from="pickUpSpawnPoints/theOrbSpawn/theOrbPickUpTimer" to="pickUpSpawnPoints" method="_on_the_orb_pick_up_timer_timeout"]
+[connection signal="timeout" from="pickUpSpawnPoints/ginyuGunSpawn/ginyuGunPickUpTimer" to="pickUpSpawnPoints" method="_on_ginyu_gun_pick_up_timer_timeout"]

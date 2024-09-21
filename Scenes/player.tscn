@@ -672,22 +672,6 @@ tint_progress = Color(1, 1, 1, 0.568627)
 
 [node name="timers" type="Node2D" parent="."]
 
-[node name="player1Timer" type="Timer" parent="timers"]
-wait_time = 2.0
-one_shot = true
-
-[node name="player2Timer" type="Timer" parent="timers"]
-wait_time = 2.0
-one_shot = true
-
-[node name="player3Timer" type="Timer" parent="timers"]
-wait_time = 2.0
-one_shot = true
-
-[node name="player4Timer" type="Timer" parent="timers"]
-wait_time = 2.0
-one_shot = true
-
 [node name="healthBarTimer" type="Timer" parent="timers"]
 wait_time = 2.0
 one_shot = true
@@ -722,10 +706,6 @@ one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="timeout" from="timers/player1Timer" to="." method="_on_player_1_timer_timeout"]
-[connection signal="timeout" from="timers/player2Timer" to="." method="_on_player_2_timer_timeout"]
-[connection signal="timeout" from="timers/player3Timer" to="." method="_on_player_3_timer_timeout"]
-[connection signal="timeout" from="timers/player4Timer" to="." method="_on_player_4_timer_timeout"]
 [connection signal="timeout" from="timers/healthBarTimer" to="." method="_on_health_bar_timer_timeout"]
 [connection signal="timeout" from="timers/fullAutoTimer" to="." method="_on_burst_timer_timeout"]
 [connection signal="timeout" from="timers/healthTimer" to="." method="_on_health_timer_timeout"]
