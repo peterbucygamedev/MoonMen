@@ -118,13 +118,13 @@ animations = [{
 size = Vector2(34, 34)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vxi7a"]
-radius = 44.0114
+radius = 118.017
 
 [node name="powerCrate" type="RigidBody2D" groups=["power_crate"]]
 collision_layer = 527
 collision_mask = 527
 mass = 0.1
-gravity_scale = 0.1
+gravity_scale = 0.0
 script = ExtResource("1_wpobk")
 
 [node name="powerCrateCollider" type="CollisionShape2D" parent="."]

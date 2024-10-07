@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://vkieqasongx2"]
+
+[ext_resource type="PackedScene" uid="uid://dvep2lsg4yw17" path="res://Scenes/abilities/laser.tscn" id="1_abovp"]
+[ext_resource type="Script" path="res://lasers.gd" id="1_fvu6n"]
+[ext_resource type="Texture2D" uid="uid://c72rux1f7mch1" path="res://pixil-frame-0 - 2024-10-02T065242.470.png" id="3_agrso"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g56go"]
+
+[node name="lasers" type="Node2D"]
+script = ExtResource("1_fvu6n")
+
+[node name="laser" parent="." instance=ExtResource("1_abovp")]
+visible = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(58, -34)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+modulate = Color(0.454524, 0.454524, 0.454524, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_agrso")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_g56go")
+one_way_collision = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(141, -2)
+rotation = 0.226013
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_g56go")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+modulate = Color(0.466181, 0.466181, 0.466181, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_agrso")
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -26,6 +26,9 @@ const ADD_DAMAGE = preload("res://Scenes/powerUps/add_damage.tscn")
 
 func _ready():
 	
+	if GameManager.powerUpsOn == false:
+		queue_free()
+		
 	var a = ADD_AMMO_CAPACITY.instantiate()
 	add_child(a)
 	a.transform = ammo_spawn.transform

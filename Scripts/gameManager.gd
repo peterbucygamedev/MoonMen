@@ -17,6 +17,8 @@ var death_lasers = preload("res://Scenes/pickUps/death_lasers.tscn")
 var the_orb = preload("res://Scenes/pickUps/the_orb.tscn")
 var stealer = preload("res://Scenes/pickUps/stealer.tscn")
 var bullets := [bullet, bouncer, death_lasers, the_orb, stealer]
+var powerUpsOn = true
+var pickUpsOn = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

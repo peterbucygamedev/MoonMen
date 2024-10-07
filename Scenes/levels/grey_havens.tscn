@@ -16,8 +16,8 @@
 [ext_resource type="Script" path="res://Scripts/teleporter2.gd" id="16_jy316"]
 [ext_resource type="PackedScene" uid="uid://jas1sb5s4nr4" path="res://Scenes/power_crate.tscn" id="18_t7th5"]
 [ext_resource type="AudioStream" uid="uid://downuj1ysroc4" path="res://Assets/music/build_it.mp3" id="19_1gqmk"]
-[ext_resource type="PackedScene" uid="uid://dvttnjslvlsox" path="res://Scenes/pickUps/bouncers_pickup.tscn" id="24_5bj82"]
-[ext_resource type="PackedScene" uid="uid://clx4kf33gwkty" path="res://Scenes/pickUps/death_lasers_pickup.tscn" id="25_ti5ov"]
+[ext_resource type="Script" path="res://Scripts/pickUpSpawnPoints.gd" id="20_niw8q"]
+[ext_resource type="Script" path="res://Scripts/spawns.gd" id="21_y8117"]
 [ext_resource type="PackedScene" uid="uid://ddjnfktckntkc" path="res://Scenes/pause_menu.tscn" id="26_d3ceq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2eiyb"]
@@ -4652,13 +4652,84 @@ stream = ExtResource("19_1gqmk")
 autoplay = true
 bus = &"Music"
 
-[node name="bouncersPickup" parent="." instance=ExtResource("24_5bj82")]
-position = Vector2(-250, 286)
-
-[node name="deathLasersPickup" parent="." instance=ExtResource("25_ti5ov")]
-position = Vector2(250, 286)
-
 [node name="pauseMenu" parent="." instance=ExtResource("26_d3ceq")]
+
+[node name="pickUpSpawnPoints" type="Node2D" parent="."]
+position = Vector2(0, -232)
+script = ExtResource("20_niw8q")
+
+[node name="bulletSpawn" type="Marker2D" parent="pickUpSpawnPoints"]
+position = Vector2(-435, 82)
+
+[node name="bulletPickUpTimer" type="Timer" parent="pickUpSpawnPoints/bulletSpawn"]
+wait_time = 20.0
+one_shot = true
+
+[node name="bouncerSpawn" type="Marker2D" parent="pickUpSpawnPoints"]
+position = Vector2(-394, 180)
+
+[node name="bouncerPickUpTimer" type="Timer" parent="pickUpSpawnPoints/bouncerSpawn"]
+wait_time = 20.0
+one_shot = true
+
+[node name="deathLaserSpawn" type="Marker2D" parent="pickUpSpawnPoints"]
+
+[node name="deathLaserPickupTimer" type="Timer" parent="pickUpSpawnPoints/deathLaserSpawn"]
+wait_time = 20.0
+one_shot = true
+
+[node name="theOrbSpawn" type="Marker2D" parent="pickUpSpawnPoints"]
+position = Vector2(397, 182)
+
+[node name="theOrbPickUpTimer" type="Timer" parent="pickUpSpawnPoints/theOrbSpawn"]
+wait_time = 20.0
+one_shot = true
+
+[node name="stealerSpawn" type="Marker2D" parent="pickUpSpawnPoints"]
+position = Vector2(488, 87)
+
+[node name="stealerPickUpTimer" type="Timer" parent="pickUpSpawnPoints/stealerSpawn"]
+wait_time = 20.0
+one_shot = true
+
+[node name="powerUpSpawnPoints" type="Node2D" parent="."]
+position = Vector2(-1, 22)
+script = ExtResource("21_y8117")
+
+[node name="ammoSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
+position = Vector2(-460, 54)
+
+[node name="ammoTimer" type="Timer" parent="powerUpSpawnPoints/ammoSpawn"]
+wait_time = 20.0
+one_shot = true
+
+[node name="bulletSpeedSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
+position = Vector2(467, 67)
+
+[node name="bulletSpeedTimer" type="Timer" parent="powerUpSpawnPoints/bulletSpeedSpawn"]
+wait_time = 20.0
+one_shot = true
+
+[node name="healthSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
+position = Vector2(-309, -77)
+
+[node name="healthTimer" type="Timer" parent="powerUpSpawnPoints/healthSpawn"]
+wait_time = 20.0
+one_shot = true
+
+[node name="increaseFireRateSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
+position = Vector2(317, -78)
+
+[node name="increaseFireRateTimer" type="Timer" parent="powerUpSpawnPoints/increaseFireRateSpawn"]
+wait_time = 20.0
+one_shot = true
+
+[node name="addDamageSpawn" type="Marker2D" parent="powerUpSpawnPoints"]
+position = Vector2(0, 104)
+
+[node name="addDamageTimer" type="Timer" parent="powerUpSpawnPoints/addDamageSpawn"]
+wait_time = 20.0
+one_shot = true
 
 [connection signal="body_entered" from="bottomArea" to="bottomArea" method="_on_body_entered"]
 [connection signal="body_exited" from="bottomArea" to="bottomArea" method="_on_body_exited"]
@@ -4678,3 +4749,13 @@ position = Vector2(250, 286)
 [connection signal="body_entered" from="teleporters/teleporter8" to="teleporters/teleporter8" method="_on_body_entered"]
 [connection signal="body_entered" from="teleporters/teleporter9" to="teleporters/teleporter9" method="_on_body_entered"]
 [connection signal="body_entered" from="teleporters/teleporter10" to="teleporters/teleporter10" method="_on_body_entered"]
+[connection signal="timeout" from="pickUpSpawnPoints/bulletSpawn/bulletPickUpTimer" to="pickUpSpawnPoints" method="_on_bullet_pick_up_timer_timeout"]
+[connection signal="timeout" from="pickUpSpawnPoints/bouncerSpawn/bouncerPickUpTimer" to="pickUpSpawnPoints" method="_on_bouncer_pick_up_timer_timeout"]
+[connection signal="timeout" from="pickUpSpawnPoints/deathLaserSpawn/deathLaserPickupTimer" to="pickUpSpawnPoints" method="_on_death_laser_pickup_timer_timeout"]
+[connection signal="timeout" from="pickUpSpawnPoints/theOrbSpawn/theOrbPickUpTimer" to="pickUpSpawnPoints" method="_on_the_orb_pick_up_timer_timeout"]
+[connection signal="timeout" from="pickUpSpawnPoints/stealerSpawn/stealerPickUpTimer" to="pickUpSpawnPoints" method="_on_stealer_pick_up_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/ammoSpawn/ammoTimer" to="powerUpSpawnPoints" method="_on_ammo_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/bulletSpeedSpawn/bulletSpeedTimer" to="powerUpSpawnPoints" method="_on_bullet_speed_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/healthSpawn/healthTimer" to="powerUpSpawnPoints" method="_on_health_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/increaseFireRateSpawn/increaseFireRateTimer" to="powerUpSpawnPoints" method="_on_increase_fire_rate_timer_timeout"]
+[connection signal="timeout" from="powerUpSpawnPoints/addDamageSpawn/addDamageTimer" to="powerUpSpawnPoints" method="_on_add_damage_timer_timeout"]

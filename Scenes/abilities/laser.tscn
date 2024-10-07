@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvep2lsg4yw17"]
+[gd_scene load_steps=12 format=3 uid="uid://dvep2lsg4yw17"]
 
 [ext_resource type="Script" path="res://Scripts/laser.gd" id="1_2o1x4"]
+[ext_resource type="Texture2D" uid="uid://c72rux1f7mch1" path="res://Assets/sprites/pixil-frame-0 - 2024-10-02T065242.470.png" id="2_hego5"]
 [ext_resource type="Texture2D" uid="uid://h5sk2ejx41t4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195620.126.png" id="2_kd5lv"]
+[ext_resource type="Texture2D" uid="uid://t33rubl2xksw" path="res://Assets/backgrounds/pixil-frame-0 - 2024-08-27T090244.840.png" id="3_0fvtk"]
 
 [sub_resource type="Gradient" id="Gradient_ctdy7"]
 offsets = PackedFloat32Array(0, 0.450425)
@@ -38,14 +40,21 @@ scale_curve = SubResource("CurveTexture_bmgi7")
 color = Color(1, 1, 1, 0.184314)
 color_ramp = SubResource("GradientTexture1D_4qw0o")
 
+[sub_resource type="Environment" id="Environment_r0kx7"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_strength = 2.0
+glow_blend_mode = 0
+
 [node name="laser" type="RayCast2D" groups=["lasers"]]
-target_position = Vector2(1200, 0)
+target_position = Vector2(1465, 6)
 script = ExtResource("1_2o1x4")
 
 [node name="Line2D" type="Line2D" parent="."]
-scale = Vector2(1.003, 0.571585)
+scale = Vector2(1, 0.2)
 points = PackedVector2Array(1, 0, 144, 0)
-default_color = Color(1, 1, 1, 0.392157)
+texture = ExtResource("2_hego5")
 
 [node name="castingParticles" type="GPUParticles2D" parent="."]
 amount = 30
@@ -53,8 +62,18 @@ process_material = SubResource("ParticleProcessMaterial_gb3pn")
 texture = ExtResource("2_kd5lv")
 
 [node name="collisionParticles" type="GPUParticles2D" parent="."]
+visible = false
 position = Vector2(0, -1)
 process_material = SubResource("ParticleProcessMaterial_0cmu5")
 texture = ExtResource("2_kd5lv")
 lifetime = 0.2
 trail_lifetime = 0.2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+position = Vector2(95, -22)
+texture = ExtResource("3_0fvtk")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r0kx7")

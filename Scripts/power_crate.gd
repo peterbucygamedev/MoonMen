@@ -65,7 +65,7 @@ func _on_explosion_area_body_entered(body):
 	if body is RigidBody2D:
 			print("found rigidBody")
 			var force = (body.global_position - global_position).normalized()
-			force *= 200
+			force *= 1000
 			body.apply_central_impulse(force)
 			
 	if body.is_in_group("players"):

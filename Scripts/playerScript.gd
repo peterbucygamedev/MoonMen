@@ -126,7 +126,7 @@ func shoot() -> void:
 	
 func _process(delta) -> void:
 	
-
+	print("z_index: ", weapon.z_index)
 	lives_number.text = str(lives)
 	health_bar.value = health
 	health_bar_2.value = health

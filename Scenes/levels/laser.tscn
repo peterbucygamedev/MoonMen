@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0ffua0sgphct"]
+
+[ext_resource type="Script" path="res://laser2.gd" id="1_rjhle"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pvco"]
+
+[node name="laser" type="Node2D"]
+script = ExtResource("1_rjhle")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = -1.5708
+target_position = Vector2(-62, 218)
+
+[node name="Line2D" type="Line2D" parent="RayCast2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-1, -98)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_6pvco")

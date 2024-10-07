@@ -4,22 +4,14 @@ extends RayCast2D
 @onready var collision_particles = $collisionParticles
 @onready var sprite_2d = $Line2D/Sprite2D	
 @onready var laser = $"."
-const LASER = preload("res://Scenes/abilities/laser.tscn")
 
-var counter := 0
-var moveForward := true
-var speed := 20
-var teleportLaser := false
 var cast_point = null
-var laser2 = null
 var direction = Vector2(0,0)
 
-var is_casting: bool = false:
+var is_casting: bool = true:
 	set(value):
 		is_casting = value
-		
 		casting_particles.emitting = is_casting
-		
 		if is_casting:
 			appear()
 		else:
@@ -27,19 +19,11 @@ var is_casting: bool = false:
 			disappear()
 		set_physics_process(is_casting)
 		
-		
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	is_casting = true
 	direction = laser.target_position.normalized()
 	
-
-func _unhandled_input(event: InputEvent) -> void:
-	#if event is InputEventMouseButton:
-		#if button presed is true that is_casting is true
-		#self.is_casting = event.pressed
-		pass
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#set the target position for where laser starts
@@ -50,12 +34,10 @@ func _process(delta):
 	if is_casting:
 		collision_particles.emitting = is_colliding()
 		
-		
 	else:
 		collision_particles.emitting = false
-		
 	
-	
+	#print("is colliding ", is_colliding())
 	if is_colliding():
 		#find the collisoin point and set cast point to it
 		cast_point = to_local(get_collision_point())
@@ -65,26 +47,14 @@ func _process(delta):
 		collision_particles.position = cast_point
 		
 		var collision_normal = laser.get_collision_normal()
-		print("Collision normal: ", collision_normal)
-		print("direction", direction)
-		
-		#laser.target_position = direction.reflect(collision_normal)
-		#laser.target_position = Vector2(-200,0)
-		print("laser direction", laser.target_position)
-		
-		
-	print(teleportLaser)
-		
+
+
 	if not is_colliding():
 		pass
+		
 	line_2d.points[1] = cast_point
-			
-	#beam_particle.position = cast_point * 0.5
-	#beam_particle.process_material.emission_box_extents.x = cast_point.length() * 0.5
 	force_raycast_update()
 
-	
-	#this makes the cool grow and shrink the width of the line effect. and shows/hides it
 func appear() -> void:
 	#idk
 	var tween = create_tween()

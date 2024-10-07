@@ -19,7 +19,8 @@ func _on_body_entered(body):
 		b.transform = Transform2D(body.rotation, body.scale, body.skew, Vector2(body.position.x, bottom_area.position.y - 120))
 		b.apply_impulse(body.linear_velocity, Vector2(0,0))
 		#b.apply_impulse(body.transform.x * body.speed, Vector2(0,0))
-		
+
+			
 	if body.is_in_group("power_crate") and body.linear_velocity.y <= 0:
 		body.queue_free()
 		var c = power_crate.instantiate()

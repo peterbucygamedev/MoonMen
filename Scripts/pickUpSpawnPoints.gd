@@ -22,6 +22,9 @@ const STEALER_PICKUP = preload("res://Scenes/pickUps/stealer_pickup.tscn")
 
 
 func _ready():
+	
+	if GameManager.pickUpsOn== false:
+		queue_free()
 
 	var b = BULLET_PICKUP.instantiate()
 	add_child(b)
@@ -52,7 +55,7 @@ func _ready():
 	
 	var s = STEALER_PICKUP.instantiate()
 	add_child(s)
-	s.transform = stealer_spawn
+	s.transform = stealer_spawn.transform
 	stealer_pick_up = s
 	#stealer_pick_up_timer.stop()
 
@@ -119,6 +122,6 @@ func _on_the_orb_pick_up_timer_timeout():
 func _on_stealer_pick_up_timer_timeout():
 	var s = STEALER_PICKUP.instantiate()
 	add_child(s)
-	s.transform = stealer_spawn
+	s.transform = stealer_spawn.transform
 	stealer_pick_up = s
 	#stealer_pick_up_timer.stop()

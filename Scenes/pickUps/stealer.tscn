@@ -47,6 +47,8 @@ func _on_area_2d_body_entered(body):
 			
 		playerStealing[0].playerNumber = body.playerNumber
 		body.playerNumber = storedNumber
+		
+		
 
 		\"\"\"playerStealing[0].damage = body.damage
 		playerStealing[0].bulletTracker = body.bulletTracker

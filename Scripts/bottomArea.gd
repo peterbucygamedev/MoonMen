@@ -28,6 +28,7 @@ func _on_body_entered(body):
 		b.apply_impulse(body.linear_velocity, Vector2(0,0))
 		#b.apply_impulse(body.transform.x * body.speed, Vector2(0,0))
 		b.timer.set_wait_time(1)
+
 		
 	if body.is_in_group("power_crate") and body.linear_velocity.y >= 0:
 		body.queue_free()
