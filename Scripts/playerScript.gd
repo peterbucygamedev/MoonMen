@@ -4,9 +4,10 @@ extends CharacterBody2D
 @onready var weapon = $weapon
 @onready var sprite_2d = $weapon/Sprite2D
 @onready var player = $"."
-@onready var bullet_spawn = $weapon/bulletSpawn
 @export var playerNumber = 0
 @onready var player_collision = $playerCollision
+@onready var bullet_spawn = $weapon/bulletSpawn
+
 @onready var player_timer = $timers/playerTimer
 @onready var health_bar_timer = $timers/healthBarTimer
 @onready var health_timer = $timers/healthTimer
@@ -176,7 +177,7 @@ func _process(delta) -> void:
 	
 	if Input.is_joy_button_pressed(playerNumber, 9):
 			crouching = true
-			animated_sprite_2d.play("slideGrey")
+			animated_sprite_2d.play("slide")
 			
 	elif !Input.is_joy_button_pressed(playerNumber, 9):
 		crouching = false
@@ -236,11 +237,12 @@ func _process(delta) -> void:
 		energy_shield.scale.x = 1
 		#energy_shield.energy_sprite.flip_h = false
 		#health_outline.flip_h = false
-		sprite_2d.flip_v = false
-		weapon_sprite.flip_v = false
+		#sprite_2d.flip_v = false
+		#weapon_sprite.flip_v = false
+		weapon.scale.y = 1
 		velocity.x = direction * SPEED
 		#if playerNumber == 0:
-		animated_sprite_2d.play("movingGrey")
+		animated_sprite_2d.play("moving")
 		
 	elif (direction < -0.05 or direction2 < -0.05) and crouching == false:
 		animated_sprite_2d.flip_h = true
@@ -248,17 +250,18 @@ func _process(delta) -> void:
 		energy_shield.scale.x = -1
 		#energy_shield.energy_sprite.flip_h = true
 		#health_outline.flip_h = true
-		sprite_2d.flip_v = true
-		weapon_sprite.flip_v = true
+		#sprite_2d.flip_v = true
+		#weapon_sprite.flip_v = true
+		weapon.scale.y = -1
 		velocity.x = direction * SPEED
 		#if playerNumber == 0:
-		animated_sprite_2d.play("movingGrey")
+		animated_sprite_2d.play("moving")
 
 	elif crouching == false:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		#print("stop")
 		#if playerNumber == 0:
-		animated_sprite_2d.play("idleGrey")
+		animated_sprite_2d.play("idle")
 
 	#if explosion == true:
 	#	velocity.x = move_toward(velocity.x, 0, SPEED)

@@ -1,6 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c64cpar7nrcf6"]
-
-[ext_resource type="Texture2D" uid="uid://0w7qmdlqcht4" path="res://Assets/lightShapes/pixil-frame-0 - 2024-08-18T195208.878.png" id="1_xo81n"]
+[gd_scene load_steps=4 format=3 uid="uid://c64cpar7nrcf6"]
 
 [sub_resource type="Curve" id="Curve_1gpbb"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.450549), 0.0, 0.0, 0, 0]
@@ -17,12 +15,9 @@ spread = 180.0
 initial_velocity_min = 1000.0
 initial_velocity_max = 1000.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.2
-scale_max = 0.2
 scale_curve = SubResource("CurveTexture_r35p0")
 
 [node name="powerCrateDetonation" type="GPUParticles2D"]
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_fru3u")
-texture = ExtResource("1_xo81n")
 explosiveness = 1.0

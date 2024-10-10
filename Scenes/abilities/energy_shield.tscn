@@ -74,7 +74,6 @@ position = Vector2(-2.50003, -4.5)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_6v0mp")
 one_way_collision = true
-one_way_collision_margin = 2.0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="energyShieldCollider"]
 visible = false

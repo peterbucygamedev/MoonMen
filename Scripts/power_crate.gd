@@ -70,7 +70,7 @@ func _on_explosion_area_body_entered(body):
 			
 	if body.is_in_group("players"):
 		print("found player")
-		body.health -= 10
+		body.health -= 2
 		body.health_bar.show()
 		if body.health_bar_timer.is_stopped():
 			body.health_bar_timer.start()
